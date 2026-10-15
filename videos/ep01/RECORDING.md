@@ -3,7 +3,8 @@
 Script, numbers and storyboard: [episodes/EP01-1-Lakh-Salary-Family-Future.md](../../episodes/EP01-1-Lakh-Salary-Family-Future.md)
 
 **Teleprompter:** https://claude.ai/artifact/T3fZH9kvCKB4NxEjnGajKi
-- "Money Plan 1 — full episode" (10 scenes, aim 6–8 min)
+- "Money Plan 1 — story" (10 scenes, story-telling version: Amit and Neha's month, same numbers; aim 6–8 min)
+- "Money Plan 1 — full episode" (10 scenes, the talking-points version, aim 6–8 min)
 - "Money Plan 1 — Short" (4 scenes, aim 30–40 s)
 
 These are talking points: glance, look at the lens, say it like explaining to a friend over chai. Any wording is fine,
