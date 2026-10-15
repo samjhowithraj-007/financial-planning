@@ -38,8 +38,9 @@ You stand, and the whole of you is in the frame with room to move your hands.
 - `raw/ep01-short.mp4`
 Then tell Claude: "Part 1 recording is in raw/".
 
-## Edit rules for this video (full body, never cropped)
-These replace the usual talking-head rules wherever they clash.
+## Edit rules for the full (long) video only: full body, never cropped
+These apply to the YouTube long video only and replace the usual talking-head rules wherever they clash. The Short
+follows its own rule (below).
 - **You stay whole in every frame:** head, hands and feet are never cropped, by a zoom, a card or the 9:16 reframe.
 - **No punch-ins or creeps on you.** Camera moves only on 4K footage, at most 1.05, and only if your outstretched
   hands still fit (checked on a snapshot of the widest gesture in that stretch). On 1080p footage the camera stays at 100%.
@@ -48,8 +49,11 @@ These replace the usual talking-head rules wherever they clash.
   left, the animation on the right, so you stay on screen the whole video.
 - **Lower lines go under the animation side,** not across your legs.
 - **Retakes still get removed** (your "cut this line" spots and long pauses). The rest is kept as it is.
-- **The Short (9:16):** you full-length in the bottom ~60% of the frame, scaled down so your hands still fit; the
-  animations go in the top 40%. No crop that loses an arm.
+
+## The Short (9:16): you in a small frame
+For the YouTube Short and the Instagram/Facebook Reels, the animations get the whole frame and you sit in a **small
+rounded frame in the bottom-right corner**, like the chai shorts. It is cropped from the same footage (head and
+shoulders), so cropping is fine here. Record the Short in the same full-body setup; no separate setup needed.
 
 ## What gets made from it
 | Platform | File | Format |
