@@ -12,3 +12,6 @@ renders/
 .hyperframes/
 node_modules/
 *.log
+*.mp3
+*.wav
+sample-*/

@@ -1,0 +1,15 @@
+{
+  "assets/fonts/courier-prime-700.woff2": "654a1d16c0b027ead89781bd3a4360d7f0af17a3ddf78c287d0e1843c6bca8d7",
+  "assets/fonts/permanent-marker-400.woff2": "8963f64fa28dc4aea162405d784baa23ff6499df554d9b4cdee898e28d19cca4",
+  "assets/sfx-production.wav": "1f67e32b14a9ed2e9445c6031859054d3ab9b30194f8dd2a03b86aef52635ad9",
+  "compositions/apple-money-count.html": "689aa4fc8e0b8565cc4042178b4fd8300a52bcc17552e34e93f15745496f53d0",
+  "compositions/components/chart-story.html": "d65180b77637521ea98676c9af1d59395f1e70ce0d0d5e1f604d02bee2821310",
+  "compositions/components/comparison-split.html": "2637b4dd260eb9ef272fad2f3b3921fe8f282cb498b8de112ec6faa76d5ef3b8",
+  "compositions/components/count-up.html": "6b34b9873a243fedb060d23f4eb5cef1b61a5b169ec1ae064030b70b48beea66",
+  "compositions/components/filmed-screen.html": "aaa79bd2dc2f85d19388795161a770304aff7aece46fd43acef66b472fbe856b",
+  "compositions/components/marker-checklist-card.html": "c99d951e0f361447109f50b5301cbbd8bcfed621cd7a66d92d9c5a65ec1614f0",
+  "compositions/components/number-wheel.html": "04e3b1d13a044f9e8ad88b701b27315fc69eded6e951ab99b046ab760dc91110",
+  "compositions/components/onboarding-stepper-flow.html": "985712b460ba2203ae3a05aeb4ed0d580d8446a4c09aab1fc555c53eaf2b4746",
+  "compositions/components/success-check.html": "49f306892b85ecdbe9510593b8dc8d76b2e3c7becfff06726d967407ff01c393",
+  "compositions/components/yt-screen-warp.html": "921151ab59f117958a387eab5260daa962656fb1af659f8f76c1bc05c9da6bdf"
+}
