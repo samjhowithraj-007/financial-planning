@@ -160,8 +160,14 @@ scene_close()
 # ---------------------------------------------------------------------------------------------- 4. Aaj ka paisa
 scene_open("today", 2)
 tag("t-tag", 2, 75.2)
-tiles = [("t-s", "Savings account", "₹0", 76.5, 60000), ("t-e", "Amit ka EPF", "₹0", 78.5, 400000),
-         ("t-h", "Health cover", "Company policy", 80.5, None), ("t-k", "Karz", "₹0", 82.5, None)]
+html.append('<div id="t-sun" class="h eyebrow" style="left:%dpx;top:160px;width:%dpx;text-align:center">EK SUNDAY · HISAAB</div>' % (L, W))
+html.append('<div id="t-amit" class="h" style="left:%dpx;top:330px">%s</div>' % (L + 170, character("amit", "t-amit", 430)))
+html.append('<div id="t-neha" class="h" style="left:%dpx;top:350px">%s</div>' % (L + 470, character("neha", "t-neha", 410, pencil=True)))
+html.append('<div id="t-bub" class="h bub" style="left:%dpx;top:215px;width:560px;white-space:normal">Koi loan nahi! Hum <b>theek chal rahe</b> hain.</div>' % (L + 300))
+js += ["rise('#t-sun',77.0);", "rise('#t-amit',77.1);", "rise('#t-neha',77.3);", "rise('#t-bub',78.0);", "blink('#t-amit-eyes',79.0);",
+       "out('#t-sun,#t-amit,#t-neha,#t-bub',80.2);"]
+tiles = [("t-s", "Savings account", "₹0", 80.6, 60000), ("t-e", "Amit ka EPF", "₹0", 81.6, 400000),
+         ("t-h", "Health cover", "Company policy", 82.6, None), ("t-k", "Karz", "₹0", 83.4, None)]
 for k, (tid, lab, val, t, n) in enumerate(tiles):
     x = L + 20 + (k % 2) * 450
     y = 170 + (k // 2) * 200
@@ -277,9 +283,13 @@ for k, (lab, yrs, top, t, tone) in enumerate(goals):
 js.append("grow('#g-axis',226.0,.8);")
 html.append('<div id="g-par" class="h" style="left:%dpx;top:%dpx;width:%dpx;height:46px;border-radius:12px;background:rgba(255,185,4,.16);'
             'border:2px solid rgba(255,185,4,.6);font-size:28px;font-weight:700;display:flex;align-items:center;padding-left:18px">'
-            'Parents ki care: <span class="amber" style="margin-left:10px">kabhi bhi</span></div>' % (AX0, AY + 70, AX1 - AX0))
+            'Parents ki care: <span class="amber" style="margin-left:10px">kabhi bhi</span></div>' % (AX0, AY + 70, AX1 - AX0 - 230))
+html.append('<div id="g-amit" class="h" style="left:%dpx;top:720px">%s</div>' % (L + 690, character("amit", "g-amit", 170)))
+html.append('<div id="g-neha" class="h" style="left:%dpx;top:720px">%s</div>' % (L + 800, character("neha", "g-neha", 170, pencil=True)))
+js += ["rise('#g-amit',228.0);", "rise('#g-neha',228.3);", "write('#g-neha-arm',228.8);", "write('#g-neha-arm',253.6);",
+       "blink('#g-amit-eyes',236.0);", "blink('#g-neha-eyes',241.0);", "mood('g-amit',254.0,'sad');", "blink('#g-amit-eyes',262.5);"]
 html.append('<div id="g-ghar" class="h goal" style="left:%dpx;top:%dpx;border:3px dashed rgba(255,185,4,.8);border-radius:20px;'
-            'background:rgba(255,185,4,.06)">Apna ghar:&nbsp;<span class="amber">kabhi na kabhi?</span></div>' % (gx(9), AY + 140))
+            'background:rgba(255,185,4,.06)">Apna ghar:&nbsp;<span class="amber">kabhi na kabhi?</span></div>' % (gx(4), AY + 140))
 broll("v-ghar", "A couple looking at a flat for sale", 248.6, 253.0)
 js += ["rise('#g-ghar',253.4);", "rise('#g-par',262.0);"]
 line("g-l1", "Har goal ki apni deadline", {3, 4}, "cyan", 268.0, 283.0, top=950)
@@ -291,16 +301,18 @@ tag("j-tag", 5, 285.2)
 for k, (lab, n, sub, t) in enumerate([("Padhai · ₹10,000 × 10 saal", 1200000, "dono bachchon ke liye", 286.0),
                                       ("Retirement · ₹13,000 × 25 saal", 3900000, "EPF alag se", 295.0)]):
     top = 170 + k * 300
-    html.append('<div id="j-c%d" class="card h" style="left:%dpx;top:%dpx;width:880px;height:270px;padding:24px 34px">'
+    html.append('<div id="j-c%d" class="card h" style="left:%dpx;top:%dpx;width:660px;height:270px;padding:24px 34px">'
                 '<div style="font-size:36px;font-weight:700;color:rgba(255,255,255,.88)">%s</div>'
-                '<div id="j-v%d" class="amber" style="font-size:118px;font-weight:700;line-height:1.15">₹0</div>'
+                '<div id="j-v%d" class="amber" style="font-size:100px;font-weight:700;line-height:1.25">₹0</div>'
                 '<div style="font-size:30px;color:rgba(255,255,255,.75)">%s</div></div>' % (k, L + 20, top, E(lab), k, sub))
     js.append("rise('#j-c%d',%.2f); count('#j-v%d',0,%d,%.2f,1.6);" % (k, t, k, n, t + 3.0))
     money_sounds.append(t + 4.6)
 html.append('<div id="j-cap" class="h" style="left:%dpx;top:790px;width:880px;text-align:center;font-size:28px;'
             'color:rgba(255,255,255,.8)">Sirf jama rakam: growth aur mehngai shamil nahi · <b>Illustrative</b></div>' % (L + 20))
 html.append('<div id="j-ep" class="chip h" style="left:%dpx;top:880px;width:680px">Asli kharcha kitna?&nbsp;<b class="cyan">Episode 41 &amp; 46</b></div>' % (CX - 340))
-js += ["rise('#j-cap',289.0);", "rise('#j-ep',305.0);"]
+html.append('<div id="j-amit" class="h" style="left:%dpx;top:330px">%s</div>' % (L + 690, character("amit", "j-amit", 400, phone=True)))
+js += ["rise('#j-cap',289.0);", "rise('#j-ep',305.0);", "rise('#j-amit',285.8);", "blink('#j-amit-eyes',290.5);",
+       "blink('#j-amit-eyes',300.0);", "mood('j-amit',305.2,'sad');", "blink('#j-amit-eyes',312.0);"]
 scene_close()
 
 # ---------------------------------------------------------------------------------------------- 8. Har goal ka dabba
@@ -340,6 +352,10 @@ html.append('<div id="k-paper" class="h paper" style="left:%dpx;top:160px">'
             '<div class="prow pcols"><span>Goal</span><span>Kab</span><span>Kitna (andaaza)</span></div>%s</div>' % (L + 40, rh))
 broll("v-write", "A hand writing a goals list in a notebook", 345.4, 349.6)
 js.append("rise('#k-paper',349.7);")
+html.append('<div id="k-neha" class="h" style="left:%dpx;top:590px;z-index:3">%s</div>' % (L + 720, character("neha", "k-neha", 300, pencil=True)))
+js.append("rise('#k-neha',350.0);")
+js += ["write('#k-neha-arm',%.2f);" % (t + 0.1) for t in (350.0, 354.0, 358.0, 362.0, 366.0)]
+js += ["blink('#k-neha-eyes',356.5);", "blink('#k-neha-eyes',371.0);", "blink('#k-neha-eyes',384.0);"]
 js += ["tl.fromTo('#k-m%d',{scaleX:1},{scaleX:0,duration:1.0,ease:'power1.inOut'},%.2f);" % (k, t) for k, (_, _, t, _) in enumerate(rows)]
 line("k-l1", "Kab chahiye + lagbhag kitna", {0, 1, 3, 4}, "cyan", 375.0, 385.0)
 html.append('<div id="k-chip" class="chip h" style="left:%dpx;top:920px;width:620px">Saal nahi? Toh abhi&nbsp;<b class="mag">sapna</b>&nbsp;hai</div>' % (CX - 310))
@@ -543,6 +559,7 @@ function rise(s,t){ tl.fromTo(s,{opacity:0,y:26},{opacity:1,y:0,duration:.4,ease
 function out(s,t){ tl.to(s,{opacity:0,duration:.35,ease:'power2.in'},t); }
 function blink(s,t){ tl.to(s,{scaleY:.1,duration:.07,ease:'none'},t); tl.to(s,{scaleY:1,duration:.09,ease:'none'},t+.07); }
 function mood(c,t,m){ tl.to('#'+c+'-'+(m==='sad'?'happy':'sad'),{opacity:0,duration:.2},t); tl.to('#'+c+'-'+m,{opacity:1,duration:.2},t+.1); }
+function write(s,t){ tl.fromTo(s,{rotation:0},{rotation:-9,duration:.12,yoyo:true,repeat:7,ease:'none'},t); }
 function grow(s,t,d){ tl.fromTo(s,{scaleX:0},{scaleX:1,duration:d||.6,ease:'power2.out'},t); }
 function inr(n){ const s=String(Math.round(n)); if(s.length<=3) return s;
   return s.slice(0,-3).replace(/\\B(?=(\\d{2})+(?!\\d))/g,',')+','+s.slice(-3); }

@@ -1,6 +1,6 @@
 """The Verma family as flat SVG characters (Money Plan series), so the same faces return in every episode.
 
-character(kind, cid, height, phone=False) -> an <svg> string. kind: amit | neha | aarav | pihu.
+character(kind, cid, height, phone=False, pencil=False) -> an <svg> string. kind: amit | neha | aarav | pihu.
 Animatable parts carry ids: #<cid>-eyes (blink: scaleY), #<cid>-happy and #<cid>-sad (swap mouths with opacity),
 #<cid>-arm (the right arm, rotates from the shoulder). CSS for .ch-part must be on the page (CHAR_CSS below).
 """
@@ -14,7 +14,7 @@ CHAR_CSS = (".ch-part{transform-box:fill-box;transform-origin:50% 50%}"
             ".ch-arm{transform-box:fill-box;transform-origin:50% 6%}")
 
 
-def character(kind, cid, height, phone=False):
+def character(kind, cid, height, phone=False, pencil=False):
     skin, top, bottom = SKIN[kind], TOP[kind], BOTTOM[kind]
     w = round(height * 200 / 340)
     p = []
@@ -48,6 +48,9 @@ def character(kind, cid, height, phone=False):
                '<rect x="104" y="168" width="26" height="44" rx="5" fill="#121418" stroke="#3a3f4a" stroke-width="2"/>'
                '<rect x="108" y="173" width="18" height="30" rx="2" fill="#0AF0F0" opacity=".85"/>'
                '<circle cx="112" cy="206" r="9" fill="%s"/>' % skin)
+    if pencil:
+        arm += ('<rect x="150" y="200" width="7" height="44" rx="2" fill="#FFB904" transform="rotate(-30 153 222)"/>'
+                '<rect x="150" y="238" width="7" height="7" fill="#3a2a1a" transform="rotate(-30 153 222)"/>')
     if kind == "aarav":
         arm += '<rect x="158" y="150" width="11" height="100" rx="5" fill="#D9A35B" transform="rotate(14 163 150)"/>'
     p.append('<g id="%s-arm" class="ch-arm">%s</g>' % (cid, arm))
