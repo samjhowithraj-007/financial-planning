@@ -10,6 +10,7 @@ Usage: python build-draft.py   (then: npx --yes hyperframes@0.8.154 check draft)
 """
 import os
 from html import escape
+from characters import character, CHAR_CSS
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "draft", "index.html")
@@ -90,23 +91,25 @@ def broll(bid, what, t_in, t_out):
 # ---------------------------------------------------------------------------------------------- 1. Hook
 scene_open("hook", 1)
 html.append('''
-<div id="h-cal" class="card h" style="left:%dpx;top:230px;width:290px;height:330px;padding:0;overflow:hidden">
-  <div style="height:78px;background:#FFB904;color:#111;font-size:34px;font-weight:700;display:flex;align-items:center;justify-content:center;letter-spacing:.08em">TAREEKH</div>
-  <div id="h-d1" style="position:absolute;left:0;right:0;top:100px;text-align:center;font-size:190px;font-weight:700;line-height:1">1</div>
-  <div id="h-d25" class="h" style="position:absolute;left:0;right:0;top:100px;text-align:center;font-size:190px;font-weight:700;line-height:1">25</div>
+<div id="h-cal" class="card h" style="left:%dpx;top:150px;width:220px;height:250px;padding:0;overflow:hidden">
+  <div style="height:62px;background:#FFB904;color:#111;font-size:28px;font-weight:700;display:flex;align-items:center;justify-content:center;letter-spacing:.08em">TAREEKH</div>
+  <div id="h-d1" style="position:absolute;left:0;right:0;top:80px;text-align:center;font-size:150px;font-weight:700;line-height:1">1</div>
+  <div id="h-d25" class="h" style="position:absolute;left:0;right:0;top:80px;text-align:center;font-size:150px;font-weight:700;line-height:1">25</div>
 </div>
-<div id="h-amt" class="h big amber" style="left:%dpx;top:250px;font-size:116px">₹0</div>
-<div id="h-aayi" class="h" style="left:%dpx;top:395px;font-size:46px;font-weight:700">Salary aayi!</div>
-<div id="h-q1" class="pill h" style="left:%dpx;top:300px">College fees<b class="amber">?</b></div>
-<div id="h-q2" class="pill h" style="left:%dpx;top:420px">Apna ghar<b class="amber">?</b></div>
-<div id="h-q3" class="pill h" style="left:%dpx;top:540px">Retirement<b class="amber">?</b></div>
-''' % (L + 20, L + 360, L + 365, L + 365, L + 365, L + 365))
-js += ["rise('#h-cal',0.3);", "rise('#h-amt',1.1);", "count('#h-amt',0,100000,1.2,1.4);", "rise('#h-aayi',5.2);",
+<div id="h-sms" class="h sms" style="left:%dpx;top:170px"><div class="smsh">BANK · SMS · 9:00</div>
+  <div style="font-size:28px">Salary credited</div><div id="h-amt" class="amber" style="font-size:66px;font-weight:700;line-height:1.1">₹0</div></div>
+<div id="h-amit" class="h" style="left:%dpx;top:380px">%s</div>
+<div id="h-neha" class="h" style="left:%dpx;top:420px">%s</div>
+<div id="h-b1" class="h bub" style="left:%dpx;top:450px">Is mahine toh <b>sab set</b> hai!</div>
+<div id="h-b2" class="h bub" style="left:%dpx;top:170px;width:470px;white-space:normal">Aarav ki college fees ka kya socha? Aur <b>apna ghar</b> kab?</div>
+''' % (L + 20, L + 590, L + 300, character("amit", "c-amit", 510, phone=True), L + 640, character("neha", "c-neha", 470),
+       L + 20, L + 260))
+js += ["rise('#h-cal',0.3);", "rise('#h-amit',0.6);", "rise('#h-sms',1.0);", "count('#h-amt',0,100000,1.2,1.4);",
+       "blink('#c-amit-eyes',2.9);", "rise('#h-b1',5.2); out('#h-b1',6.8);",
        "tl.to('#h-d1',{opacity:0,duration:.35},7.0);", "tl.fromTo('#h-d25',{opacity:0},{opacity:1,duration:.4},7.1);",
-       "out('#h-amt',7.0); out('#h-aayi',7.0);",
-       "rise('#h-q1',7.6); rise('#h-q2',8.3); rise('#h-q3',9.0);"]
+       "out('#h-sms',7.0);", "mood('c-amit',7.5,'sad');", "blink('#c-amit-eyes',8.3);",
+       "rise('#h-neha',8.6);", "rise('#h-b2',9.1);", "blink('#c-neha-eyes',10.2);", "blink('#c-amit-eyes',11.0);"]
 money_sounds.append(2.6)
-broll("v-hook", "Month-end: a father checks his bank SMS, worried", 9.7, 11.5)
 line("h-l1", "Shuruaat kahan se karein?", {1, 2}, "cyan", 11.6, 14.4)
 scene_close()
 
@@ -129,25 +132,27 @@ scene_close()
 # ---------------------------------------------------------------------------------------------- 3. Verma family
 scene_open("family", 1)
 tag("f-tag", 1, 30.2)
-people = [("A", "Amit", "35", "#0AF0F0", 36.0), ("N", "Neha", "33", "#0AF0F0", 38.0),
-          ("Aa", "Aarav", "8 saal", "#FFB904", 41.0), ("P", "Pihu", "4 saal", "#FFB904", 43.0)]
-html.append('<div id="f-title" class="h title" style="left:%dpx;top:170px;width:%dpx;text-align:center">Verma family</div>' % (L, W))
-html.append('<div id="f-where" class="h" style="left:%dpx;top:275px;width:%dpx;text-align:center;font-size:38px;color:rgba(255,255,255,.85)">'
+people = [("amit", "Amit", "35 · private job", 330, 30, 36.0), ("neha", "Neha", "33 · tuitions", 330, 250, 38.0),
+          ("aarav", "Aarav", "8 saal", 245, 480, 41.0), ("pihu", "Pihu", "4 saal", 200, 670, 43.0)]
+html.append('<div id="f-title" class="h title" style="left:%dpx;top:150px;width:%dpx;text-align:center">Verma family</div>' % (L, W))
+html.append('<div id="f-where" class="h" style="left:%dpx;top:252px;width:%dpx;text-align:center;font-size:38px;color:rgba(255,255,255,.85)">'
             '<span class="cyan">●</span> Lucknow · kiraye ka 2BHK</div>' % (L, W))
-for k, (ini, name, age, col, t) in enumerate(people):
-    x = L + 40 + k * 215
-    html.append('<div id="f-p%d" class="h" style="left:%dpx;top:370px;width:200px;text-align:center">'
-                '<div class="av" style="border-color:%s">%s</div>'
-                '<div style="font-size:40px;font-weight:700;margin-top:16px">%s</div>'
-                '<div style="font-size:30px;color:rgba(255,255,255,.75)">%s</div></div>' % (k, x, col, ini, name, age))
-    js.append("rise('#f-p%d',%.2f);" % (k, t))
-html.append('<div id="f-inc" class="card h" style="left:%dpx;top:660px;width:640px;height:150px;text-align:center;padding-top:14px">'
+for k, (kind, name, sub, h, dx, t) in enumerate(people):
+    w = round(h * 200 / 340)
+    html.append('<div id="f-p%d" class="h" style="left:%dpx;top:%dpx;width:%dpx;text-align:center">%s'
+                '<div style="font-size:36px;font-weight:700;margin-top:4px">%s</div>'
+                '<div style="font-size:24px;color:rgba(255,255,255,.75);white-space:nowrap;margin-left:-40px;margin-right:-40px">%s</div></div>'
+                % (k, L + dx, 640 - h, w, character(kind, "f-" + kind, h), name, sub))
+    js.append("rise('#f-p%d',%.2f); blink('#f-%s-eyes',%.2f);" % (k, t, kind, t + 1.6))
+js.append("tl.fromTo('#f-aarav-arm',{rotation:0},{rotation:-24,duration:.3,yoyo:true,repeat:3,ease:'power1.inOut'},41.5);")
+js.append("blink('#f-amit-eyes',47.0); blink('#f-neha-eyes',52.5); blink('#f-pihu-eyes',58.0); blink('#f-aarav-eyes',63.0);")
+html.append('<div id="f-inc" class="card h" style="left:%dpx;top:735px;width:640px;height:150px;text-align:center;padding-top:14px">'
             '<div id="f-incv" class="amber" style="font-size:78px;font-weight:700;line-height:1.1">₹0</div>'
             '<div style="font-size:28px;color:rgba(255,255,255,.78)">har mahine · ghar ki kul take-home</div></div>' % (CX - 320))
-html.append('<div id="f-ex" class="chip h" style="left:%dpx;top:836px;width:520px">Example family ·&nbsp;<b class="mag">asli nahi</b></div>' % (CX - 260))
+html.append('<div id="f-ex" class="chip h" style="left:%dpx;top:760px;width:520px">Example family ·&nbsp;<b class="mag">asli nahi</b></div>' % (CX - 260))
 broll("v-lko", "Lucknow apartment buildings, evening", 33.6, 36.0)
 js += ["rise('#f-title',31.0);", "rise('#f-where',33.0);", "rise('#f-inc',48.0);",
-       "count('#f-incv',0,100000,48.2,1.4);", "rise('#f-ex',56.0);", "out('#f-ex',59.6);"]
+       "count('#f-incv',0,100000,48.2,1.4);", "out('#f-inc',55.4);", "rise('#f-ex',56.0);", "out('#f-ex',59.6);"]
 money_sounds.append(49.6)
 line("f-l1", "Bilkul hamari-aapki jaisi family", {1}, "cyan", 60.0, 66.0)
 scene_close()
@@ -506,6 +511,13 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 .drow span{position:relative}
 .dtot{border-bottom:none;border-top:3px solid #111;margin-top:4px}
 .dhl{position:absolute;inset:4px 0;background:#FFE14D;border-radius:8px;transform-origin:0 50%}
+.sms{width:330px;padding:16px 22px;border-radius:22px;background:#f4f6fa;color:#111;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.smsh{font-size:20px;font-weight:700;color:#667;letter-spacing:.06em;margin-bottom:6px}
+.sms .amber{color:#b37400}
+.bub{padding:18px 26px;border-radius:26px;background:#fff;color:#111;font-size:38px;font-weight:700;line-height:1.25;white-space:nowrap;
+  box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.bub b{color:#0005EE}
+/*CHAR_CSS*/
 #draftmark{position:absolute;right:40px;bottom:22px;font-size:20px;color:rgba(255,255,255,.6);letter-spacing:.08em}
 '''
 
@@ -529,6 +541,8 @@ window.__timelines = window.__timelines || {};
 const tl = gsap.timeline({ paused: true });
 function rise(s,t){ tl.fromTo(s,{opacity:0,y:26},{opacity:1,y:0,duration:.4,ease:'power2.out'},t); }
 function out(s,t){ tl.to(s,{opacity:0,duration:.35,ease:'power2.in'},t); }
+function blink(s,t){ tl.to(s,{scaleY:.1,duration:.07,ease:'none'},t); tl.to(s,{scaleY:1,duration:.09,ease:'none'},t+.07); }
+function mood(c,t,m){ tl.to('#'+c+'-'+(m==='sad'?'happy':'sad'),{opacity:0,duration:.2},t); tl.to('#'+c+'-'+m,{opacity:1,duration:.2},t+.1); }
 function grow(s,t,d){ tl.fromTo(s,{scaleX:0},{scaleX:1,duration:d||.6,ease:'power2.out'},t); }
 function inr(n){ const s=String(Math.round(n)); if(s.length<=3) return s;
   return s.slice(0,-3).replace(/\\B(?=(\\d{2})+(?!\\d))/g,',')+','+s.slice(-3); }
@@ -539,7 +553,7 @@ tl.to({}, { duration: %.2f }, 0);
 window.__timelines["main"] = tl;
 </script>
 </body></html>
-''' % (CSS, DUR, placeholder, "\n".join(html), "\n".join(roots), DUR, "\n".join(js), DUR)
+''' % (CSS.replace('/*CHAR_CSS*/', CHAR_CSS), DUR, placeholder, "\n".join(html), "\n".join(roots), DUR, "\n".join(js), DUR)
 
 with open(OUT, "w", encoding="utf-8") as f:
     f.write(page)
