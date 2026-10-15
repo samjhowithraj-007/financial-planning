@@ -1,0 +1,6 @@
+Includes HyperFrames skills by HeyGen, Apache-2.0.
+Source: https://github.com/heygen-com/hyperframes
+Commit: a403ea1e8b283c6bdcbe21b5cab2a2a50b5f35f3
+CLI release: 0.8.162
+Personal modifications: plugin identity, launcher manifest lookup, transcription, library and planning skills, export helper and icons.
+Whisper runtime and model weights are downloaded separately, not distributed in this archive.

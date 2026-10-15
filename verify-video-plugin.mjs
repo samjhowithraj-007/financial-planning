@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {makeExports} from './hyperframes-whisper/skills/whisper-transcription/scripts/export-transcript.mjs';
+import {pluginVersion,invocation} from './hyperframes-whisper/skills/hyperframes/scripts/plugin-cli.mjs';
+const out=makeExports([{text:'Hello',start:0,end:.4},{text:'world.',start:.5,end:1.2},{text:'Again!',start:3,end:4}]);
+assert.equal(out.txt,'Hello world. Again!\n');
+assert.match(out.srt,/00:00:00,000 --> 00:00:01,200\nHello world\./);
+assert.match(out.vtt,/^WEBVTT\n/);
+assert.match(out.srt,/2\n00:00:03,000/);
+assert.throws(()=>makeExports([{text:'bad',start:2,end:1}]));
+assert.throws(()=>makeExports([]));
+assert.equal(pluginVersion(),'0.8.162');
+assert.ok(invocation(['--help']).args.includes('hyperframes@0.8.162'));
+console.log('Passed subtitle formatting, invalid input, and pinned launcher checks.');

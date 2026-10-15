@@ -1,0 +1,14 @@
+# third-party clone (rebuilt by build_video_plugin.py) and build output
+/hyperframes-upstream/
+*.zip
+
+# raw footage, audio, renders and tool caches stay on this computer
+raw/
+renders/
+*.mp4
+*.mov
+*.wav
+*.webm
+.hyperframes/
+node_modules/
+*.log

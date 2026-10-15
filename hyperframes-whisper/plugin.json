@@ -1,0 +1,37 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "hyperframes-whisper",
+  "version": "0.1.0",
+  "description": "Personal HyperFrames video creation, script planning, local video library and Whisper transcription workflows.",
+  "author": {
+    "name": "Personal workspace"
+  },
+  "license": "Apache-2.0",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "HyperFrames + Whisper",
+        "shortDescription": "Videos, scripts & transcripts",
+        "longDescription": "Create and edit videos with bundled HyperFrames skills, plan scripts, find local videos, and transcribe audio or video with local Whisper. Requires a desktop coding runtime, Node.js 22+ and FFmpeg. Runtime and speech models download on first use. No HeyGen account library connection is included. Personal customization, not an official HeyGen or OpenAI product.",
+        "developerName": "Personal workspace",
+        "category": "Productivity",
+        "capabilities": [],
+        "logo": "./assets/logo.svg",
+        "logoDark": "./assets/logo-dark.svg",
+        "composerIcon": "./assets/logo.svg",
+        "composerIconDark": "./assets/logo-dark.svg",
+        "brandColor": "#7C3AED",
+        "brandColorDark": "#C4B5FD",
+        "defaultPrompt": [
+          "Create a video from my script.",
+          "Transcribe my video and export subtitles.",
+          "Find and summarize videos in my project folder."
+        ]
+      }
+    },
+    "dev.personal.hyperframes": {
+      "cliVersion": "0.8.162",
+      "sourceCommit": "a403ea1e8b283c6bdcbe21b5cab2a2a50b5f35f3"
+    }
+  }
+}
