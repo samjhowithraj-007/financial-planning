@@ -24,7 +24,10 @@ You stand, and the whole of you is in the frame with room to move your hands.
 - **Teleprompter:** put the laptop just below the camera, Narrow **off**, Text at A+ (~96–110 px) so you can read it
   from 3 m.
 - Plain background, bright even light on the front of you (your purple LED cove lights behind are fine).
-- No background removal. Same framing for the whole session, a second of silence at each end.
+- **CapCut studio room:** replace the background with the virtual studio in CapCut, keep yourself in the left third,
+  and leave the right side of the set plain (the studio screen with the animations goes there in the edit). Export
+  1080p or 4K at 30 fps, with no trimming, captions or zooms baked in.
+- Same framing for the whole session, a second of silence at each end.
 - Fluffed a line? Say **"cut this line"**, pause ~2 s, restart the whole sentence. The last take wins.
 - If a number comes out wrong, redo the whole sentence.
 - No notes to yourself on mic; clap if you need a marker.
