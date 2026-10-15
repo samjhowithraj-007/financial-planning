@@ -72,6 +72,30 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
   background:repeating-linear-gradient(135deg,rgba(255,185,4,.10) 0 18px,rgba(255,185,4,.03) 18px 36px),#111520}
 .btag{font-size:30px;font-weight:700;letter-spacing:.2em;color:#FFB904}
 .bwhat{font-size:46px;font-weight:700;line-height:1.2}
+.disc{position:absolute;inset:0;z-index:30;opacity:0;background:#0b0d12;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}
+.dtitle{font-size:72px;font-weight:700;color:#FFB904}
+.dsub{font-size:34px;color:rgba(255,255,255,.85);max-width:1300px;text-align:center;line-height:1.35}
+.lt3{position:absolute;left:40px;top:930px;z-index:12;display:flex;align-items:center;gap:18px;padding:12px 26px 12px 16px;border-radius:14px;
+  background:rgba(10,13,20,.85)}
+.ltbar{width:8px;height:78px;border-radius:4px;background:#0AF0F0;box-shadow:0 0 14px rgba(10,240,240,.8)}
+.ltname{font-size:46px;font-weight:700;letter-spacing:.06em;line-height:1}
+.ltsub{font-size:26px;color:rgba(255,255,255,.8);margin-top:6px}
+.secard{position:absolute;left:926px;top:118px;width:948px;height:788px;border-radius:16px;z-index:7;background:#EEF1F5;color:#10131a;
+  display:flex;flex-direction:column;justify-content:center;padding:0 90px;
+  background-image:linear-gradient(rgba(16,19,26,.05) 2px,transparent 2px),linear-gradient(90deg,rgba(16,19,26,.05) 2px,transparent 2px);background-size:64px 64px}
+.secn{font-size:150px;font-weight:700;line-height:1;color:#0005EE}
+.secq{font-size:66px;font-weight:700;margin-top:18px;line-height:1.15}
+.kwbox{position:absolute;left:670px;top:132px;z-index:12;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.kw{background:#fff;color:#0b0b0b;font-size:40px;font-weight:700;padding:8px 22px;border-radius:14px;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+.kwx{background:#fff;color:#0b0b0b;font-size:30px;font-weight:700;padding:4px 16px;border-radius:10px;white-space:nowrap;
+  text-decoration:line-through;text-decoration-color:#E0242E;text-decoration-thickness:5px}
+.dcard{width:880px;border-radius:18px;background:#fff;color:#111;padding:18px 26px 14px;box-shadow:0 30px 90px rgba(0,0,0,.55)}
+.dhead{display:flex;justify-content:space-between;font-size:26px;font-weight:700;color:#555;letter-spacing:.04em;padding:0 14px 10px;
+  border-bottom:3px solid #111}
+.drow{position:relative;display:flex;justify-content:space-between;font-size:38px;font-weight:700;padding:8px 14px;border-bottom:1px solid #e3e3e3}
+.drow span{position:relative}
+.dtot{border-bottom:none;border-top:3px solid #111;margin-top:4px}
+.dhl{position:absolute;inset:4px 0;background:#FFE14D;border-radius:8px;transform-origin:0 50%}
 #draftmark{position:absolute;right:40px;bottom:22px;font-size:20px;color:rgba(255,255,255,.6);letter-spacing:.08em}
 </style></head>
 <body>
@@ -149,12 +173,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 <div id="b-bar" class="h" style="left:960px;top:250px;width:880px;height:84px;border-radius:16px;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.18)"><div id="b-s1" class="seg" style="left:0px;width:506px;background:rgba(255,255,255,.88)"></div><div id="b-s2" class="seg" style="left:510px;width:49px;background:#FFB904"></div><div id="b-s3" class="seg" style="left:563px;width:40px;background:rgba(255,185,4,.55)"></div><div id="b-s4" class="seg" style="left:607px;width:269px;background:#0AF0F0"></div></div>
 <div id="b-lab1" class="h seglab" style="left:960px;top:350px">Zaroori <span class="amber">₹58,000</span> · 58%</div>
 <div id="b-lab4" class="h seglab" style="left:960px;top:350px;width:880px;text-align:right">Future <span class="cyan">₹31,000</span> · 31%</div>
-<div id="b-e0" class="card h row" style="left:960px;top:440px;width:430px"><span>Kiraya</span><span class="amber">₹18,000</span></div>
-<div id="b-e1" class="card h row" style="left:960px;top:560px;width:430px"><span>Ration</span><span class="amber">₹14,000</span></div>
-<div id="b-e2" class="card h row" style="left:960px;top:680px;width:430px"><span>Bills</span><span class="amber">₹4,000</span></div>
-<div id="b-e3" class="card h row" style="left:1410px;top:440px;width:430px"><span>Transport</span><span class="amber">₹6,000</span></div>
-<div id="b-e4" class="card h row" style="left:1410px;top:560px;width:430px"><span>School</span><span class="amber">₹10,000</span></div>
-<div id="b-e5" class="card h row" style="left:1410px;top:680px;width:430px"><span>Health</span><span class="amber">₹6,000</span></div>
+<div id="b-data" class="h dcard" style="left:960px;top:400px"><div class="dhead"><span>Verma family · har mahine</span><span>₹</span></div><div class="drow"><div id="b-hl0" class="dhl"></div><span>Kiraya</span><span>₹18,000</span></div><div class="drow"><div id="b-hl1" class="dhl"></div><span>Ration</span><span>₹14,000</span></div><div class="drow"><div id="b-hl2" class="dhl"></div><span>Bills</span><span>₹4,000</span></div><div class="drow"><div id="b-hl3" class="dhl"></div><span>Transport</span><span>₹6,000</span></div><div class="drow"><div id="b-hl4" class="dhl"></div><span>School</span><span>₹10,000</span></div><div class="drow"><div id="b-hl5" class="dhl"></div><span>Health</span><span>₹6,000</span></div><div class="drow dtot"><div id="b-hl6" class="dhl"></div><span>Zaroori total</span><span>₹58,000</span></div></div>
 <div id="b-l1" class="ll" style="top:930px"><span class="w">Har</span><span class="w">mahine</span><span class="w">ka</span><span class="w cyan">pakka</span><span class="w">kharcha</span></div>
 <div id="b-ann" class="card h" style="left:960px;top:440px;width:880px;height:170px;padding:22px 30px"><div style="font-size:46px;font-weight:700">Saal bhar ke kharche <span class="amber">₹6,000</span></div><div style="font-size:32px;color:rgba(255,255,255,.78);margin-top:10px">Diwali · admission · shaadi ke gifts</div></div>
 <div id="b-fun" class="card h" style="left:960px;top:640px;width:880px;height:110px;padding:22px 30px"><div style="font-size:46px;font-weight:700">Masti <span class="amber">₹5,000</span></div></div>
@@ -183,7 +202,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 <div id="g-g4" class="card h goal" style="left:1530px;top:150px;border-color:rgba(255,255,255,.5)">Retirement</div>
 <div id="g-s4" class="h" style="left:1799px;top:230px;width:3px;height:410px;background:rgba(255,255,255,.5)"></div>
 <div id="g-par" class="h" style="left:1000px;top:710px;width:800px;height:46px;border-radius:12px;background:rgba(255,185,4,.16);border:2px solid rgba(255,185,4,.6);font-size:28px;font-weight:700;display:flex;align-items:center;padding-left:18px">Parents ki care: <span class="amber" style="margin-left:10px">kabhi bhi</span></div>
-<div id="g-ghar" class="h goal" style="left:1288px;top:780px;border:3px dashed rgba(255,185,4,.8);border-radius:20px;background:rgba(255,185,4,.06)">Apna ghar: <span class="amber">kabhi na kabhi?</span></div>
+<div id="g-ghar" class="h goal" style="left:1288px;top:780px;border:3px dashed rgba(255,185,4,.8);border-radius:20px;background:rgba(255,185,4,.06)">Apna ghar:&nbsp;<span class="amber">kabhi na kabhi?</span></div>
 <div id="g-l1" class="ll" style="top:950px"><span class="w">Har</span><span class="w">goal</span><span class="w">ki</span><span class="w cyan">apni</span><span class="w cyan">deadline</span></div>
 </div>
 <div id="sc-jama" class="scene clip" data-start="285.00" data-duration="35.00" data-track-index="1">
@@ -228,14 +247,30 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 <audio id="sfx-cc2" src="assets/sfx/chaching.mp3" data-start="290.60" data-duration="1.4" data-track-index="12" data-volume="0.16"></audio>
 <audio id="sfx-cc3" src="assets/sfx/chaching.mp3" data-start="299.60" data-duration="1.4" data-track-index="12" data-volume="0.16"></audio>
 <div id="screenfx"></div>
-<div id="draftmark">DRAFT 1 · timed to the plan, not the voice</div>
-<div id="v-hook" class="clip bslot" data-layout-allow-occlusion data-start="8.40" data-duration="2.00" data-track-index="5"><div class="btag">AI / STOCK VIDEO</div><div class="bwhat">Month-end: a father checks his bank SMS, worried</div></div>
+<div id="draftmark">DRAFT 2 · finance style · timed to the plan, not the voice</div>
+<div id="v-hook" class="clip bslot" data-layout-allow-occlusion data-start="9.70" data-duration="1.80" data-track-index="5"><div class="btag">AI / STOCK VIDEO</div><div class="bwhat">Month-end: a father checks his bank SMS, worried</div></div>
 <div id="v-lko" class="clip bslot" data-layout-allow-occlusion data-start="33.60" data-duration="2.40" data-track-index="5"><div class="btag">AI / STOCK VIDEO</div><div class="bwhat">Lucknow apartment buildings, evening</div></div>
 <div id="v-diwali" class="clip bslot" data-layout-allow-occlusion data-start="165.00" data-duration="5.00" data-track-index="5"><div class="btag">AI / STOCK VIDEO</div><div class="bwhat">Family shopping for Diwali; school admission desk</div></div>
 <div id="x-donut" class="clip" data-composition-id="chart-story" data-composition-src="compositions/components/chart-story.html" data-start="199.20" data-duration="25.40" data-track-index="7" data-variable-values='{"type": "donut", "data": "58, 6, 5, 31", "labels": "Zaroori, Saal bhar, Masti, Future", "emphasize": 3, "unit": "%", "accent": "green", "exit": "none"}' style="position:absolute;left:960px;top:130px;width:880px;height:760px;z-index:6"></div>
 <div id="v-ghar" class="clip bslot" data-layout-allow-occlusion data-start="248.60" data-duration="4.40" data-track-index="5"><div class="btag">AI / STOCK VIDEO</div><div class="bwhat">A couple looking at a flat for sale</div></div>
 <div id="x-safety" class="clip" data-composition-id="marker-checklist-card" data-composition-src="compositions/components/marker-checklist-card.html" data-start="334.00" data-duration="10.60" data-track-index="7" data-variable-values='{"top": "SABSE", "mid": "PEHLE", "circled": "SAFETY", "rest": "!", "l1": "EMERGENCY", "v1": "FUND", "l2": "INSURANCE", "v2": "CHECK", "l3": "KARZ", "v3": "NAHI"}' style="position:absolute;left:960px;top:120px;width:880px;height:780px;z-index:6"></div>
 <div id="v-write" class="clip bslot" data-layout-allow-occlusion data-start="345.40" data-duration="4.20" data-track-index="5"><div class="btag">AI / STOCK VIDEO</div><div class="bwhat">A hand writing a goals list in a notebook</div></div>
+<div id="o-disc" class="clip disc" data-start="3.00" data-duration="2.00" data-track-index="9"><div class="dtitle">Educational example</div><div class="dsub">Financial advice nahi · numbers illustrative hain · apni situation ke hisaab se decide karein</div></div>
+<div id="o-name" class="clip lt3" data-start="16.00" data-duration="4.60" data-track-index="9"><div class="ltbar"></div><div><div class="ltname">RAJ</div><div class="ltsub">Samjho with Raj</div></div></div>
+<div id="o-sec1" class="clip secard" data-start="30.00" data-duration="2.60" data-track-index="10"><div class="secn">#1</div><div class="secq">Verma family kaun hai?</div></div>
+<div id="o-sec2" class="clip secard" data-start="75.00" data-duration="2.60" data-track-index="10"><div class="secn">#2</div><div class="secq">Aaj unke paas kya hai?</div></div>
+<div id="o-sec3" class="clip secard" data-start="105.00" data-duration="2.60" data-track-index="10"><div class="secn">#3</div><div class="secq">₹1 lakh kahan jaata hai?</div></div>
+<div id="o-sec4" class="clip secard" data-start="225.00" data-duration="2.60" data-track-index="10"><div class="secn">#4</div><div class="secq">Kaunsa goal kab?</div></div>
+<div id="o-sec5" class="clip secard" data-start="285.00" data-duration="2.60" data-track-index="10"><div class="secn">#5</div><div class="secq">Kitna jama hoga?</div></div>
+<div id="o-sec6" class="clip secard" data-start="320.00" data-duration="2.60" data-track-index="10"><div class="secn">#6</div><div class="secq">Paisa kaise baantein?</div></div>
+<div id="o-sec7" class="clip secard" data-start="345.00" data-duration="2.60" data-track-index="10"><div class="secn">#7</div><div class="secq">Aapko kya karna hai?</div></div>
+<div id="o-kw1" class="clip kwbox" data-start="97.00" data-duration="3.50" data-track-index="11"><div class="kw">Sirf 1 mahina</div></div>
+<div id="o-kw2" class="clip kwbox" data-start="213.00" data-duration="3.50" data-track-index="11"><div class="kw">Kaafi?</div></div>
+<div id="o-kw3" class="clip kwbox" data-start="268.50" data-duration="3.50" data-track-index="11"><div class="kw">Deadline!</div></div>
+<div id="o-kw4" class="clip kwbox" data-start="309.00" data-duration="4.00" data-track-index="11"><div class="kwx">Final amount</div><div class="kw">Sirf jama</div></div>
+<div id="o-kw5" class="clip kwbox" data-start="388.00" data-duration="3.50" data-track-index="11"><div class="kw">Sapna ≠ Goal</div></div>
+<div id="o-kw6" class="clip kwbox" data-start="277.00" data-duration="4.00" data-track-index="11"><div class="kw">Mushkil!</div></div>
+<div id="o-kw7" class="clip kwbox" data-start="340.00" data-duration="3.50" data-track-index="11"><div class="kw">Pehle safety</div></div>
 <audio id="bed" src="assets/audio/bed.mp3" data-start="0" data-duration="420.00" data-track-index="11" data-volume="0.35"></audio>
 </div>
 <script>
@@ -253,13 +288,13 @@ tl.to('#sc-hook',{opacity:0,duration:.35,ease:'power2.in'},14.60);
 rise('#h-cal',0.3);
 rise('#h-amt',1.1);
 count('#h-amt',0,100000,1.2,1.4);
-rise('#h-aayi',2.9);
-tl.to('#h-d1',{opacity:0,duration:.35},5.0);
-tl.fromTo('#h-d25',{opacity:0},{opacity:1,duration:.4},5.1);
-out('#h-amt',5.0); out('#h-aayi',5.0);
-rise('#h-q1',5.6); rise('#h-q2',6.6); rise('#h-q3',7.6);
-tl.fromTo('#v-hook',{opacity:0},{opacity:1,duration:.3},8.40); tl.to('#v-hook',{opacity:0,duration:.3},10.10);
-tl.fromTo('#h-l1 .w',{opacity:0,y:26},{opacity:1,y:0,duration:.4,ease:'power2.out',stagger:.055},10.50);
+rise('#h-aayi',5.2);
+tl.to('#h-d1',{opacity:0,duration:.35},7.0);
+tl.fromTo('#h-d25',{opacity:0},{opacity:1,duration:.4},7.1);
+out('#h-amt',7.0); out('#h-aayi',7.0);
+rise('#h-q1',7.6); rise('#h-q2',8.3); rise('#h-q3',9.0);
+tl.fromTo('#v-hook',{opacity:0},{opacity:1,duration:.3},9.70); tl.to('#v-hook',{opacity:0,duration:.3},11.20);
+tl.fromTo('#h-l1 .w',{opacity:0,y:26},{opacity:1,y:0,duration:.4,ease:'power2.out',stagger:.055},11.60);
 tl.to('#h-l1',{opacity:0,duration:.35,ease:'power2.in'},14.40);
 tl.fromTo('#sc-intro',{opacity:0},{opacity:1,duration:.4,ease:'power2.out'},15.00);
 tl.to('#sc-intro',{opacity:0,duration:.35,ease:'power2.in'},29.60);
@@ -312,13 +347,22 @@ grow('#b-s4',181.00,.7);
 rise('#b-title',105.4);
 rise('#b-bar',106.6);
 rise('#b-lab1',132.0);
-rise('#b-e0',110.00);
-rise('#b-e1',114.00);
-rise('#b-e2',118.00);
-rise('#b-e3',121.00);
-rise('#b-e4',124.00);
-rise('#b-e5',128.00);
-out('#b-e0,#b-e1,#b-e2,#b-e3,#b-e4,#b-e5',149.0);
+tl.fromTo('#b-hl0',{scaleX:0,opacity:1},{scaleX:1,duration:.35,ease:'power2.out'},110.00);
+tl.to('#b-hl0',{opacity:0,duration:.25},113.90);
+tl.fromTo('#b-hl1',{scaleX:0,opacity:1},{scaleX:1,duration:.35,ease:'power2.out'},114.00);
+tl.to('#b-hl1',{opacity:0,duration:.25},117.90);
+tl.fromTo('#b-hl2',{scaleX:0,opacity:1},{scaleX:1,duration:.35,ease:'power2.out'},118.00);
+tl.to('#b-hl2',{opacity:0,duration:.25},120.90);
+tl.fromTo('#b-hl3',{scaleX:0,opacity:1},{scaleX:1,duration:.35,ease:'power2.out'},121.00);
+tl.to('#b-hl3',{opacity:0,duration:.25},123.90);
+tl.fromTo('#b-hl4',{scaleX:0,opacity:1},{scaleX:1,duration:.35,ease:'power2.out'},124.00);
+tl.to('#b-hl4',{opacity:0,duration:.25},127.90);
+tl.fromTo('#b-hl5',{scaleX:0,opacity:1},{scaleX:1,duration:.35,ease:'power2.out'},128.00);
+tl.to('#b-hl5',{opacity:0,duration:.25},131.90);
+tl.fromTo('#b-hl6',{scaleX:0,opacity:1},{scaleX:1,duration:.35,ease:'power2.out'},132.00);
+tl.to('#b-hl6',{opacity:0,duration:.25},148.50);
+rise('#b-data',109.4);
+out('#b-data',149.0);
 tl.fromTo('#b-l1 .w',{opacity:0,y:26},{opacity:1,y:0,duration:.4,ease:'power2.out',stagger:.055},138.00);
 tl.to('#b-l1',{opacity:0,duration:.35,ease:'power2.in'},148.00);
 rise('#b-ann',152.0);
@@ -396,6 +440,22 @@ rise('#e-web',407.0);
 rise('#e-dis',408.0);
 rise('#e-sb',410.0);
 tl.fromTo('#e-btn',{scale:1},{scale:1.08,duration:.22,yoyo:true,repeat:5,ease:'power1.inOut'},410.6);
+tl.fromTo('#o-disc',{opacity:0},{opacity:1,duration:.25},3.0); tl.to('#o-disc',{opacity:0,duration:.25},4.75);
+tl.fromTo('#o-name',{opacity:0,x:-40},{opacity:1,x:0,duration:.4,ease:'power2.out'},16.0); out('#o-name',20.2);
+tl.fromTo('#o-sec1',{opacity:0},{opacity:1,duration:.3},30.10); tl.to('#o-sec1',{opacity:0,duration:.3},32.30);
+tl.fromTo('#o-sec2',{opacity:0},{opacity:1,duration:.3},75.10); tl.to('#o-sec2',{opacity:0,duration:.3},77.30);
+tl.fromTo('#o-sec3',{opacity:0},{opacity:1,duration:.3},105.10); tl.to('#o-sec3',{opacity:0,duration:.3},107.30);
+tl.fromTo('#o-sec4',{opacity:0},{opacity:1,duration:.3},225.10); tl.to('#o-sec4',{opacity:0,duration:.3},227.30);
+tl.fromTo('#o-sec5',{opacity:0},{opacity:1,duration:.3},285.10); tl.to('#o-sec5',{opacity:0,duration:.3},287.30);
+tl.fromTo('#o-sec6',{opacity:0},{opacity:1,duration:.3},320.10); tl.to('#o-sec6',{opacity:0,duration:.3},322.30);
+tl.fromTo('#o-sec7',{opacity:0},{opacity:1,duration:.3},345.10); tl.to('#o-sec7',{opacity:0,duration:.3},347.30);
+rise('#o-kw1',97.00); out('#o-kw1',100.15);
+rise('#o-kw2',213.00); out('#o-kw2',216.15);
+rise('#o-kw3',268.50); out('#o-kw3',271.65);
+rise('#o-kw4',309.00); out('#o-kw4',312.65);
+rise('#o-kw5',388.00); out('#o-kw5',391.15);
+rise('#o-kw6',277.00); out('#o-kw6',280.65);
+rise('#o-kw7',340.00); out('#o-kw7',343.15);
 tl.to({}, { duration: 420.00 }, 0);
 window.__timelines["main"] = tl;
 </script>

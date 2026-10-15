@@ -4,7 +4,7 @@ Draft slots, timed to the plan. Each needs a source chosen and approved before a
 
 | Slot | Shows | In | Out | Length |
 |---|---|---|---|---|
-| v-hook | Month-end: a father checks his bank SMS, worried | 8.4 s | 10.4 s | 2.0 s |
+| v-hook | Month-end: a father checks his bank SMS, worried | 9.7 s | 11.5 s | 1.8 s |
 | v-lko | Lucknow apartment buildings, evening | 33.6 s | 36.0 s | 2.4 s |
 | v-diwali | Family shopping for Diwali; school admission desk | 165.0 s | 170.0 s | 5.0 s |
 | v-ghar | A couple looking at a flat for sale | 248.6 s | 253.0 s | 4.4 s |

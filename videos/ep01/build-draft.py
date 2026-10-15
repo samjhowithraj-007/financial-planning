@@ -101,13 +101,13 @@ html.append('''
 <div id="h-q2" class="pill h" style="left:%dpx;top:420px">Apna ghar<b class="amber">?</b></div>
 <div id="h-q3" class="pill h" style="left:%dpx;top:540px">Retirement<b class="amber">?</b></div>
 ''' % (L + 20, L + 360, L + 365, L + 365, L + 365, L + 365))
-js += ["rise('#h-cal',0.3);", "rise('#h-amt',1.1);", "count('#h-amt',0,100000,1.2,1.4);", "rise('#h-aayi',2.9);",
-       "tl.to('#h-d1',{opacity:0,duration:.35},5.0);", "tl.fromTo('#h-d25',{opacity:0},{opacity:1,duration:.4},5.1);",
-       "out('#h-amt',5.0); out('#h-aayi',5.0);",
-       "rise('#h-q1',5.6); rise('#h-q2',6.6); rise('#h-q3',7.6);"]
+js += ["rise('#h-cal',0.3);", "rise('#h-amt',1.1);", "count('#h-amt',0,100000,1.2,1.4);", "rise('#h-aayi',5.2);",
+       "tl.to('#h-d1',{opacity:0,duration:.35},7.0);", "tl.fromTo('#h-d25',{opacity:0},{opacity:1,duration:.4},7.1);",
+       "out('#h-amt',7.0); out('#h-aayi',7.0);",
+       "rise('#h-q1',7.6); rise('#h-q2',8.3); rise('#h-q3',9.0);"]
 money_sounds.append(2.6)
-broll("v-hook", "Month-end: a father checks his bank SMS, worried", 8.4, 10.4)
-line("h-l1", "Shuruaat kahan se karein?", {1, 2}, "cyan", 10.5, 14.4)
+broll("v-hook", "Month-end: a father checks his bank SMS, worried", 9.7, 11.5)
+line("h-l1", "Shuruaat kahan se karein?", {1, 2}, "cyan", 11.6, 14.4)
 scene_close()
 
 # ---------------------------------------------------------------------------------------------- 2. Series intro
@@ -203,16 +203,20 @@ html.append('<div id="b-bar" class="h" style="left:%dpx;top:250px;width:%dpx;hei
 html.append('<div id="b-lab1" class="h seglab" style="left:%dpx;top:350px">Zaroori <span class="amber">₹58,000</span> · 58%%</div>' % (L + 20))
 html.append('<div id="b-lab4" class="h seglab" style="left:%dpx;top:350px;width:%dpx;text-align:right">Future <span class="cyan">₹31,000</span> · 31%%</div>' % (L + 20, BW))
 js += ["rise('#b-title',105.4);", "rise('#b-bar',106.6);", "rise('#b-lab1',132.0);"]
-# essentials breakdown: two columns of three
+# essentials: a white data card (Pranjal style), the yellow marker moves to each row as it is said
 ess = [("Kiraya", 18000, 110.0), ("Ration", 14000, 114.0), ("Bills", 4000, 118.0),
-       ("Transport", 6000, 121.0), ("School", 10000, 124.0), ("Health", 6000, 128.0)]
+       ("Transport", 6000, 121.0), ("School", 10000, 124.0), ("Health", 6000, 128.0), ("Zaroori total", 58000, 132.0)]
+rows_html = ""
 for k, (lab, amt, t) in enumerate(ess):
-    x = L + 20 + (k // 3) * 450
-    y = 440 + (k % 3) * 120
-    html.append('<div id="b-e%d" class="card h row" style="left:%dpx;top:%dpx;width:430px">'
-                '<span>%s</span><span class="amber">₹%s</span></div>' % (k, x, y, lab, format(amt, ",")))
-    js.append("rise('#b-e%d',%.2f);" % (k, t))
-js.append("out('#b-e0,#b-e1,#b-e2,#b-e3,#b-e4,#b-e5',149.0);")
+    total = k == len(ess) - 1
+    rows_html += ('<div class="drow%s"><div id="b-hl%d" class="dhl"></div><span>%s</span><span>₹%s</span></div>'
+                  % (" dtot" if total else "", k, lab, format(amt, ",")))
+    nxt = ess[k + 1][1 + 1] if not total else 148.6
+    js.append("tl.fromTo('#b-hl%d',{scaleX:0,opacity:1},{scaleX:1,duration:.35,ease:'power2.out'},%.2f);" % (k, t))
+    js.append("tl.to('#b-hl%d',{opacity:0,duration:.25},%.2f);" % (k, nxt - 0.1))
+html.append('<div id="b-data" class="h dcard" style="left:%dpx;top:400px"><div class="dhead"><span>Verma family · har mahine</span>'
+            '<span>₹</span></div>%s</div>' % (L + 20, rows_html))
+js += ["rise('#b-data',109.4);", "out('#b-data',149.0);"]
 line("b-l1", "Har mahine ka pakka kharcha", {3}, "cyan", 138.0, 148.0)
 # annual + fun
 html.append('<div id="b-ann" class="card h" style="left:%dpx;top:440px;width:880px;height:170px;padding:22px 30px">'
@@ -270,7 +274,7 @@ html.append('<div id="g-par" class="h" style="left:%dpx;top:%dpx;width:%dpx;heig
             'border:2px solid rgba(255,185,4,.6);font-size:28px;font-weight:700;display:flex;align-items:center;padding-left:18px">'
             'Parents ki care: <span class="amber" style="margin-left:10px">kabhi bhi</span></div>' % (AX0, AY + 70, AX1 - AX0))
 html.append('<div id="g-ghar" class="h goal" style="left:%dpx;top:%dpx;border:3px dashed rgba(255,185,4,.8);border-radius:20px;'
-            'background:rgba(255,185,4,.06)">Apna ghar: <span class="amber">kabhi na kabhi?</span></div>' % (gx(9), AY + 140))
+            'background:rgba(255,185,4,.06)">Apna ghar:&nbsp;<span class="amber">kabhi na kabhi?</span></div>' % (gx(9), AY + 140))
 broll("v-ghar", "A couple looking at a flat for sale", 248.6, 253.0)
 js += ["rise('#g-ghar',253.4);", "rise('#g-par',262.0);"]
 line("g-l1", "Har goal ki apni deadline", {3, 4}, "cyan", 268.0, 283.0, top=950)
@@ -356,6 +360,39 @@ js += ["rise('#e-eye',400.3);", "rise('#e-t',400.6);", "rise('#e-c',404.0);", "r
        "rise('#e-sb',410.0);",
        "tl.fromTo('#e-btn',{scale:1},{scale:1.08,duration:.22,yoyo:true,repeat:5,ease:'power1.inOut'},410.6);"]
 scene_close()
+
+# disclaimer card (2 s, after the hook visual)
+roots.append('<div id="o-disc" class="clip disc" data-start="3.00" data-duration="2.00" data-track-index="9">'
+             '<div class="dtitle">Educational example</div><div class="dsub">Financial advice nahi · numbers illustrative hain · '
+             'apni situation ke hisaab se decide karein</div></div>')
+js.append("tl.fromTo('#o-disc',{opacity:0},{opacity:1,duration:.25},3.0); tl.to('#o-disc',{opacity:0,duration:.25},4.75);")
+
+# name lower-third, left of Raj's feet (never over the body)
+roots.append('<div id="o-name" class="clip lt3" data-start="16.00" data-duration="4.60" data-track-index="9">'
+             '<div class="ltbar"></div><div><div class="ltname">RAJ</div><div class="ltsub">Samjho with Raj</div></div></div>')
+js.append("tl.fromTo('#o-name',{opacity:0,x:-40},{opacity:1,x:0,duration:.4,ease:'power2.out'},16.0); out('#o-name',20.2);")
+
+# section cards #1..#7 on the studio screen, 2.2 s at each chapter start
+SECTIONS = [("family", "Verma family kaun hai?"), ("today", "Aaj unke paas kya hai?"), ("budget", "₹1 lakh kahan jaata hai?"),
+            ("goals", "Kaunsa goal kab?"), ("jama", "Kitna jama hoga?"), ("dabba", "Paisa kaise baantein?"),
+            ("kaam", "Aapko kya karna hai?")]
+for n, (key, q) in enumerate(SECTIONS, 1):
+    a = T[key][0]
+    roots.append('<div id="o-sec%d" class="clip secard" data-start="%.2f" data-duration="2.60" data-track-index="10">'
+                 '<div class="secn">#%d</div><div class="secq">%s</div></div>' % (n, a, n, E(q)))
+    js.append("tl.fromTo('#o-sec%d',{opacity:0},{opacity:1,duration:.3},%.2f); tl.to('#o-sec%d',{opacity:0,duration:.3},%.2f);"
+              % (n, a + 0.1, n, a + 2.3))
+
+# white keyword labels next to Raj's head (one at a time, 2-4 s); a struck label = "X nahi, Y"
+KW = [("o-kw1", "Sirf 1 mahina", None, 97.0, 100.5), ("o-kw2", "Kaafi?", None, 213.0, 216.5),
+      ("o-kw3", "Deadline!", None, 268.5, 272.0), ("o-kw4", "Sirf jama", "Final amount", 309.0, 313.0),
+      ("o-kw5", "Sapna ≠ Goal", None, 388.0, 391.5),
+      ("o-kw6", "Mushkil!", None, 277.0, 281.0), ("o-kw7", "Pehle safety", None, 340.0, 343.5)]
+for kid, word, struck, a, b in KW:
+    top = '<div class="kwx">%s</div>' % E(struck) if struck else ""
+    roots.append('<div id="%s" class="clip kwbox" data-start="%.2f" data-duration="%.2f" data-track-index="11">%s<div class="kw">%s</div></div>'
+                 % (kid, a, b - a, top, E(word)))
+    js.append("rise('#%s',%.2f); out('#%s',%.2f);" % (kid, a, kid, b - 0.35))
 
 for k, t in enumerate(money_sounds):
     chaching("sfx-cc%d" % k, t)
@@ -445,6 +482,30 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
   background:repeating-linear-gradient(135deg,rgba(255,185,4,.10) 0 18px,rgba(255,185,4,.03) 18px 36px),#111520}
 .btag{font-size:30px;font-weight:700;letter-spacing:.2em;color:#FFB904}
 .bwhat{font-size:46px;font-weight:700;line-height:1.2}
+.disc{position:absolute;inset:0;z-index:30;opacity:0;background:#0b0d12;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}
+.dtitle{font-size:72px;font-weight:700;color:#FFB904}
+.dsub{font-size:34px;color:rgba(255,255,255,.85);max-width:1300px;text-align:center;line-height:1.35}
+.lt3{position:absolute;left:40px;top:930px;z-index:12;display:flex;align-items:center;gap:18px;padding:12px 26px 12px 16px;border-radius:14px;
+  background:rgba(10,13,20,.85)}
+.ltbar{width:8px;height:78px;border-radius:4px;background:#0AF0F0;box-shadow:0 0 14px rgba(10,240,240,.8)}
+.ltname{font-size:46px;font-weight:700;letter-spacing:.06em;line-height:1}
+.ltsub{font-size:26px;color:rgba(255,255,255,.8);margin-top:6px}
+.secard{position:absolute;left:926px;top:118px;width:948px;height:788px;border-radius:16px;z-index:7;background:#EEF1F5;color:#10131a;
+  display:flex;flex-direction:column;justify-content:center;padding:0 90px;
+  background-image:linear-gradient(rgba(16,19,26,.05) 2px,transparent 2px),linear-gradient(90deg,rgba(16,19,26,.05) 2px,transparent 2px);background-size:64px 64px}
+.secn{font-size:150px;font-weight:700;line-height:1;color:#0005EE}
+.secq{font-size:66px;font-weight:700;margin-top:18px;line-height:1.15}
+.kwbox{position:absolute;left:670px;top:132px;z-index:12;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.kw{background:#fff;color:#0b0b0b;font-size:40px;font-weight:700;padding:8px 22px;border-radius:14px;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+.kwx{background:#fff;color:#0b0b0b;font-size:30px;font-weight:700;padding:4px 16px;border-radius:10px;white-space:nowrap;
+  text-decoration:line-through;text-decoration-color:#E0242E;text-decoration-thickness:5px}
+.dcard{width:880px;border-radius:18px;background:#fff;color:#111;padding:18px 26px 14px;box-shadow:0 30px 90px rgba(0,0,0,.55)}
+.dhead{display:flex;justify-content:space-between;font-size:26px;font-weight:700;color:#555;letter-spacing:.04em;padding:0 14px 10px;
+  border-bottom:3px solid #111}
+.drow{position:relative;display:flex;justify-content:space-between;font-size:38px;font-weight:700;padding:8px 14px;border-bottom:1px solid #e3e3e3}
+.drow span{position:relative}
+.dtot{border-bottom:none;border-top:3px solid #111;margin-top:4px}
+.dhl{position:absolute;inset:4px 0;background:#FFE14D;border-radius:8px;transform-origin:0 50%}
 #draftmark{position:absolute;right:40px;bottom:22px;font-size:20px;color:rgba(255,255,255,.6);letter-spacing:.08em}
 '''
 
@@ -459,7 +520,7 @@ page = '''<!doctype html>
 <div id="screen"></div>
 %s
 <div id="screenfx"></div>
-<div id="draftmark">DRAFT 1 · timed to the plan, not the voice</div>
+<div id="draftmark">DRAFT 2 · finance style · timed to the plan, not the voice</div>
 %s
 <audio id="bed" src="assets/audio/bed.mp3" data-start="0" data-duration="%.2f" data-track-index="11" data-volume="0.35"></audio>
 </div>
