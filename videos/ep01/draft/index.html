@@ -29,7 +29,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
   justify-content:center;font-size:46px;font-weight:700;white-space:nowrap}
 .ll{position:absolute;left:940px;width:920px;text-align:center;font-size:0;white-space:nowrap}
 .ll span{display:inline-block;font-size:60px;font-weight:700;letter-spacing:-.015em;margin:0 .14em;opacity:0}
-.tag{right:60px;top:44px;height:66px;padding:0 26px;border-radius:9999px;background:rgba(255,255,255,.1);border:3px solid rgba(255,255,255,.45);
+.tag{right:60px;top:70px;height:66px;padding:0 26px;border-radius:9999px;background:rgba(255,255,255,.1);border:3px solid rgba(255,255,255,.45);
   display:flex;align-items:center;gap:14px;font-size:32px;font-weight:700;white-space:nowrap}
 .tag .dot{width:16px;height:16px;border-radius:50%;background:#0AF0F0;box-shadow:0 0 14px #0AF0F0}
 .pips{display:flex;gap:7px;margin-left:6px}.pips i{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.25)}.pips i.on{background:#0AF0F0}
@@ -75,7 +75,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 .disc{position:absolute;inset:0;z-index:30;opacity:0;background:#0b0d12;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}
 .dtitle{font-size:72px;font-weight:700;color:#FFB904}
 .dsub{font-size:34px;color:rgba(255,255,255,.85);max-width:1300px;text-align:center;line-height:1.35}
-.lt3{position:absolute;left:40px;top:930px;z-index:12;display:flex;align-items:center;gap:18px;padding:12px 26px 12px 16px;border-radius:14px;
+.lt3{position:absolute;left:60px;top:150px;z-index:12;display:flex;align-items:center;gap:18px;padding:12px 26px 12px 16px;border-radius:14px;
   background:rgba(10,13,20,.85)}
 .ltbar{width:8px;height:78px;border-radius:4px;background:#0AF0F0;box-shadow:0 0 14px rgba(10,240,240,.8)}
 .ltname{font-size:46px;font-weight:700;letter-spacing:.06em;line-height:1}
@@ -85,7 +85,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
   background-image:linear-gradient(rgba(16,19,26,.05) 2px,transparent 2px),linear-gradient(90deg,rgba(16,19,26,.05) 2px,transparent 2px);background-size:64px 64px}
 .secn{font-size:150px;font-weight:700;line-height:1;color:#0005EE}
 .secq{font-size:66px;font-weight:700;margin-top:18px;line-height:1.15}
-.kwbox{position:absolute;left:670px;top:132px;z-index:12;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.kwbox{position:absolute;left:60px;top:270px;z-index:12;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
 .kw{background:#fff;color:#0b0b0b;font-size:40px;font-weight:700;padding:8px 22px;border-radius:14px;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.45)}
 .kwx{background:#fff;color:#0b0b0b;font-size:30px;font-weight:700;padding:4px 16px;border-radius:10px;white-space:nowrap;
   text-decoration:line-through;text-decoration-color:#E0242E;text-decoration-thickness:5px}
@@ -103,23 +103,13 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
   box-shadow:0 18px 50px rgba(0,0,0,.45)}
 .bub b{color:#0005EE}
 .ch-part{transform-box:fill-box;transform-origin:50% 50%}.ch-arm{transform-box:fill-box;transform-origin:50% 6%}
+#panel{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:940px 120px;transform:translate(157px,-63px) scale(.85)}
 #draftmark{position:absolute;right:40px;bottom:22px;font-size:20px;color:rgba(255,255,255,.6);letter-spacing:.08em}
 </style></head>
 <body>
 <div id="stage" data-composition-id="main" data-start="0" data-duration="420.00" data-fps="30" data-width="1920" data-height="1080">
 <div id="grid"></div>
-
-<svg id="ph" width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute;left:0;top:0">
-  <rect x="250" y="96" width="652" height="944" rx="28" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="3" stroke-dasharray="14 12"/>
-  <g fill="rgba(10,240,240,.06)" stroke="rgba(10,240,240,.6)" stroke-width="4" stroke-dasharray="12 10" stroke-linejoin="round">
-    <circle cx="576" cy="212" r="64"/>
-    <path d="M470 312 Q576 284 682 312 L700 600 L652 610 L640 1000 L592 1000 L580 660 L572 660 L560 1000 L512 1000 L500 610 L452 600 Z"/>
-    <path d="M478 330 L360 470 L318 560 L346 572 L392 494 L486 420 Z"/>
-    <path d="M674 330 L792 470 L834 560 L806 572 L760 494 L666 420 Z"/>
-  </g>
-  <text x="576" y="70" text-anchor="middle" font-size="27" font-weight="700" fill="rgba(10,240,240,.85)" letter-spacing="3">RAJ YAHAN · FULL BODY</text>
-  <text x="576" y="1066" text-anchor="middle" font-size="21" fill="rgba(255,255,255,.5)">placeholder · CapCut studio room · haath aur pair kabhi crop nahi honge</text>
-</svg>
+<div id="panel">
 <div id="screen"></div>
 <div id="sc-hook" class="scene clip" data-start="0.00" data-duration="15.00" data-track-index="1">
 
@@ -135,7 +125,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 <div id="h-b1" class="h bub" style="left:960px;top:450px">Is mahine toh <b>sab set</b> hai!</div>
 <div id="h-b2" class="h bub" style="left:1200px;top:170px;width:470px;white-space:normal">Aarav ki college fees ka kya socha? Aur <b>apna ghar</b> kab?</div>
 
-<div id="h-l1" class="ll" style="top:930px"><span class="w">Shuruaat</span><span class="w cyan">kahan</span><span class="w cyan">se</span><span class="w">karein?</span></div>
+<div id="h-l1" class="ll" style="top:912px"><span class="w">Shuruaat</span><span class="w cyan">kahan</span><span class="w cyan">se</span><span class="w">karein?</span></div>
 </div>
 <div id="sc-intro" class="scene clip" data-start="15.00" data-duration="15.00" data-track-index="2">
 
@@ -156,7 +146,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 <div id="f-p3" class="h" style="left:1610px;top:440px;width:118px;text-align:center"><svg width="118" height="200" viewBox="0 0 200 340" aria-label="Pihu"><rect x="70" y="232" width="26" height="88" rx="11" fill="#D9A070"/><rect x="104" y="232" width="26" height="88" rx="11" fill="#D9A070"/><ellipse cx="81" cy="322" rx="19" ry="8" fill="#1a1a1a"/><ellipse cx="119" cy="322" rx="19" ry="8" fill="#1a1a1a"/><path d="M70 128 L130 128 L156 262 L44 262 Z" fill="#FF7BB0"/><rect x="60" y="250" width="80" height="14" rx="7" fill="#ffffff" opacity=".55"/><rect x="36" y="134" width="22" height="94" rx="11" fill="#FF7BB0"/><circle cx="47" cy="230" r="11" fill="#D9A070"/><g id="f-pihu-arm" class="ch-arm"><rect x="142" y="134" width="22" height="94" rx="11" fill="#FF7BB0"/><circle cx="153" cy="230" r="11" fill="#D9A070"/></g><g transform="translate(18 196)"><circle cx="18" cy="14" r="16" fill="#B07A4C"/><circle cx="6" cy="0" r="7" fill="#B07A4C"/><circle cx="30" cy="0" r="7" fill="#B07A4C"/><circle cx="12" cy="12" r="2.5" fill="#1a1a1a"/><circle cx="24" cy="12" r="2.5" fill="#1a1a1a"/></g><rect x="90" y="110" width="20" height="24" fill="#D9A070"/><circle cx="56" cy="82" r="8" fill="#D9A070"/><circle cx="144" cy="82" r="8" fill="#D9A070"/><circle cx="100" cy="78" r="44" fill="#D9A070"/><path d="M56 80 Q56 32 100 32 Q144 32 144 80 Q130 54 100 56 Q70 54 56 80 Z" fill="#1E1A18"/><circle cx="48" cy="62" r="15" fill="#1E1A18"/><circle cx="152" cy="62" r="15" fill="#1E1A18"/><circle cx="56" cy="56" r="5" fill="#FF7BB0"/><circle cx="144" cy="56" r="5" fill="#FF7BB0"/><g id="f-pihu-eyes" class="ch-part"><ellipse cx="84" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/><ellipse cx="116" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/></g><circle cx="74" cy="96" r="6" fill="#E46A6A" opacity=".25"/><circle cx="126" cy="96" r="6" fill="#E46A6A" opacity=".25"/><path id="f-pihu-happy" d="M86 100 Q100 113 114 100" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round"/><path id="f-pihu-sad" d="M88 108 Q100 97 112 108" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round" opacity="0"/></svg><div style="font-size:36px;font-weight:700;margin-top:4px">Pihu</div><div style="font-size:24px;color:rgba(255,255,255,.75);white-space:nowrap;margin-left:-40px;margin-right:-40px">4 saal</div></div>
 <div id="f-inc" class="card h" style="left:1080px;top:735px;width:640px;height:150px;text-align:center;padding-top:14px"><div id="f-incv" class="amber" style="font-size:78px;font-weight:700;line-height:1.1">₹0</div><div style="font-size:28px;color:rgba(255,255,255,.78)">har mahine · ghar ki kul take-home</div></div>
 <div id="f-ex" class="chip h" style="left:1140px;top:760px;width:520px">Example family ·&nbsp;<b class="mag">asli nahi</b></div>
-<div id="f-l1" class="ll" style="top:930px"><span class="w">Bilkul</span><span class="w cyan">hamari-aapki</span><span class="w">jaisi</span><span class="w">family</span></div>
+<div id="f-l1" class="ll" style="top:912px"><span class="w">Bilkul</span><span class="w cyan">hamari-aapki</span><span class="w">jaisi</span><span class="w">family</span></div>
 </div>
 <div id="sc-today" class="scene clip" data-start="75.00" data-duration="30.00" data-track-index="2">
 <div id="t-tag" class="tag h"><span class="dot"></span><span>2 · Aaj ka paisa</span><span class="pips"><i class="pip on"></i><i class="pip on"></i><i class="pip"></i><i class="pip"></i><i class="pip"></i><i class="pip"></i><i class="pip"></i></span></div>
@@ -177,7 +167,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 </div>
 <div id="t-one" class="chip h" style="left:1170px;top:830px;width:460px"><b class="amber">≈ sirf 1 mahina</b></div>
 
-<div id="t-l1" class="ll" style="top:930px"><span class="w">Buffer</span><span class="w">sirf</span><span class="w amber">ek</span><span class="w amber">mahine</span><span class="w">ka</span></div>
+<div id="t-l1" class="ll" style="top:912px"><span class="w">Buffer</span><span class="w">sirf</span><span class="w amber">ek</span><span class="w amber">mahine</span><span class="w">ka</span></div>
 </div>
 <div id="sc-budget" class="scene clip" data-start="105.00" data-duration="120.00" data-track-index="1">
 <div id="b-tag" class="tag h"><span class="dot"></span><span>3 · ₹1 lakh kahan jaata hai</span><span class="pips"><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip"></i><i class="pip"></i><i class="pip"></i><i class="pip"></i></span></div>
@@ -186,14 +176,14 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 <div id="b-lab1" class="h seglab" style="left:960px;top:350px">Zaroori <span class="amber">₹58,000</span> · 58%</div>
 <div id="b-lab4" class="h seglab" style="left:960px;top:350px;width:880px;text-align:right">Future <span class="cyan">₹31,000</span> · 31%</div>
 <div id="b-data" class="h dcard" style="left:960px;top:400px"><div class="dhead"><span>Verma family · har mahine</span><span>₹</span></div><div class="drow"><div id="b-hl0" class="dhl"></div><span>Kiraya</span><span>₹18,000</span></div><div class="drow"><div id="b-hl1" class="dhl"></div><span>Ration</span><span>₹14,000</span></div><div class="drow"><div id="b-hl2" class="dhl"></div><span>Bills</span><span>₹4,000</span></div><div class="drow"><div id="b-hl3" class="dhl"></div><span>Transport</span><span>₹6,000</span></div><div class="drow"><div id="b-hl4" class="dhl"></div><span>School</span><span>₹10,000</span></div><div class="drow"><div id="b-hl5" class="dhl"></div><span>Health</span><span>₹6,000</span></div><div class="drow dtot"><div id="b-hl6" class="dhl"></div><span>Zaroori total</span><span>₹58,000</span></div></div>
-<div id="b-l1" class="ll" style="top:930px"><span class="w">Har</span><span class="w">mahine</span><span class="w">ka</span><span class="w cyan">pakka</span><span class="w">kharcha</span></div>
+<div id="b-l1" class="ll" style="top:912px"><span class="w">Har</span><span class="w">mahine</span><span class="w">ka</span><span class="w cyan">pakka</span><span class="w">kharcha</span></div>
 <div id="b-ann" class="card h" style="left:960px;top:440px;width:880px;height:170px;padding:22px 30px"><div style="font-size:46px;font-weight:700">Saal bhar ke kharche <span class="amber">₹6,000</span></div><div style="font-size:32px;color:rgba(255,255,255,.78);margin-top:10px">Diwali · admission · shaadi ke gifts</div></div>
 <div id="b-fun" class="card h" style="left:960px;top:640px;width:880px;height:110px;padding:22px 30px"><div style="font-size:46px;font-weight:700">Masti <span class="amber">₹5,000</span></div></div>
-<div id="b-l2" class="ll" style="top:930px"><span class="w">Ye</span><span class="w">har</span><span class="w cyan">saal</span><span class="w cyan">aate</span><span class="w">hain</span></div>
+<div id="b-l2" class="ll" style="top:912px"><span class="w">Ye</span><span class="w">har</span><span class="w cyan">saal</span><span class="w cyan">aate</span><span class="w">hain</span></div>
 <div id="b-p0" class="h" style="left:1000px;top:430px;width:230px;height:400px"><div class="jar"><div id="b-pf0" class="jarfill" style="height:160px"></div></div><div style="text-align:center;font-size:34px;font-weight:700;margin-top:14px">Emergency</div><div class="amber" style="text-align:center;font-size:40px;font-weight:700">₹8,000</div></div>
 <div id="b-p1" class="h" style="left:1290px;top:430px;width:230px;height:400px"><div class="jar"><div id="b-pf1" class="jarfill" style="height:260px"></div></div><div style="text-align:center;font-size:34px;font-weight:700;margin-top:14px">Retirement</div><div class="amber" style="text-align:center;font-size:40px;font-weight:700">₹13,000</div></div>
 <div id="b-p2" class="h" style="left:1580px;top:430px;width:230px;height:400px"><div class="jar"><div id="b-pf2" class="jarfill" style="height:200px"></div></div><div style="text-align:center;font-size:34px;font-weight:700;margin-top:14px">Padhai</div><div class="amber" style="text-align:center;font-size:40px;font-weight:700">₹10,000</div></div>
-<div id="b-l3" class="ll" style="top:930px"><span class="w cyan">31%</span><span class="w cyan">bachat:</span><span class="w">achha</span><span class="w">start</span><span class="w">hai</span></div>
+<div id="b-l3" class="ll" style="top:912px"><span class="w cyan">31%</span><span class="w cyan">bachat:</span><span class="w">achha</span><span class="w">start</span><span class="w">hai</span></div>
 <div id="b-q" class="chip h" style="left:1120px;top:920px;width:560px">Par kya ye&nbsp;<b class="mag">kaafi</b>&nbsp;hai?</div>
 </div>
 <div id="sc-goals" class="scene clip" data-start="225.00" data-duration="60.00" data-track-index="2">
@@ -217,7 +207,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 <div id="g-amit" class="h" style="left:1630px;top:720px"><svg width="100" height="170" viewBox="0 0 200 340" aria-label="Amit"><rect x="70" y="232" width="26" height="88" rx="11" fill="#2B2F3A"/><rect x="104" y="232" width="26" height="88" rx="11" fill="#2B2F3A"/><ellipse cx="81" cy="322" rx="19" ry="8" fill="#1a1a1a"/><ellipse cx="119" cy="322" rx="19" ry="8" fill="#1a1a1a"/><rect x="58" y="128" width="84" height="116" rx="26" fill="#2F6FDB"/><path d="M86 128 L100 150 L114 128 Z" fill="#ffffff" opacity=".9"/><rect x="36" y="134" width="22" height="94" rx="11" fill="#2F6FDB"/><circle cx="47" cy="230" r="11" fill="#C68A5C"/><g id="g-amit-arm" class="ch-arm"><rect x="142" y="134" width="22" height="94" rx="11" fill="#2F6FDB"/><circle cx="153" cy="230" r="11" fill="#C68A5C"/></g><rect x="90" y="110" width="20" height="24" fill="#C68A5C"/><circle cx="56" cy="82" r="8" fill="#C68A5C"/><circle cx="144" cy="82" r="8" fill="#C68A5C"/><circle cx="100" cy="78" r="44" fill="#C68A5C"/><path d="M55 78 Q54 30 100 30 Q146 30 145 78 Q134 50 100 50 Q68 50 55 78 Z" fill="#1E1A18"/><g id="g-amit-eyes" class="ch-part"><ellipse cx="84" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/><ellipse cx="116" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/></g><g fill="none" stroke="#1b1b1b" stroke-width="3"><circle cx="84" cy="80" r="13"/><circle cx="116" cy="80" r="13"/><path d="M97 80 L103 80"/></g><circle cx="74" cy="96" r="6" fill="#E46A6A" opacity=".25"/><circle cx="126" cy="96" r="6" fill="#E46A6A" opacity=".25"/><path id="g-amit-happy" d="M86 100 Q100 113 114 100" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round"/><path id="g-amit-sad" d="M88 108 Q100 97 112 108" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round" opacity="0"/></svg></div>
 <div id="g-neha" class="h" style="left:1740px;top:720px"><svg width="100" height="170" viewBox="0 0 200 340" aria-label="Neha"><rect x="70" y="232" width="26" height="88" rx="11" fill="#5B2A4C"/><rect x="104" y="232" width="26" height="88" rx="11" fill="#5B2A4C"/><ellipse cx="81" cy="322" rx="19" ry="8" fill="#1a1a1a"/><ellipse cx="119" cy="322" rx="19" ry="8" fill="#1a1a1a"/><path d="M52 82 Q50 26 100 26 Q150 26 148 82 L154 172 Q132 160 126 120 L74 120 Q68 160 46 172 Z" fill="#1E1A18"/><path d="M60 130 Q100 118 140 130 L150 270 L50 270 Z" fill="#C2367A"/><path d="M60 130 Q100 118 140 130 L136 150 Q100 140 64 150 Z" fill="#FFB904" opacity=".85"/><rect x="36" y="134" width="22" height="94" rx="11" fill="#C2367A"/><circle cx="47" cy="230" r="11" fill="#D9A070"/><g id="g-neha-arm" class="ch-arm"><rect x="142" y="134" width="22" height="94" rx="11" fill="#C2367A"/><circle cx="153" cy="230" r="11" fill="#D9A070"/><rect x="150" y="200" width="7" height="44" rx="2" fill="#FFB904" transform="rotate(-30 153 222)"/><rect x="150" y="238" width="7" height="7" fill="#3a2a1a" transform="rotate(-30 153 222)"/></g><rect x="90" y="110" width="20" height="24" fill="#D9A070"/><circle cx="56" cy="82" r="8" fill="#D9A070"/><circle cx="144" cy="82" r="8" fill="#D9A070"/><circle cx="100" cy="78" r="44" fill="#D9A070"/><path d="M55 84 Q54 30 100 30 Q146 30 145 84 Q132 50 100 50 Q68 50 55 84 Z" fill="#1E1A18"/><circle cx="100" cy="28" r="17" fill="#1E1A18"/><circle cx="100" cy="62" r="3.5" fill="#E0242E"/><g id="g-neha-eyes" class="ch-part"><ellipse cx="84" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/><ellipse cx="116" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/></g><circle cx="74" cy="96" r="6" fill="#E46A6A" opacity=".25"/><circle cx="126" cy="96" r="6" fill="#E46A6A" opacity=".25"/><path id="g-neha-happy" d="M86 100 Q100 113 114 100" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round"/><path id="g-neha-sad" d="M88 108 Q100 97 112 108" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round" opacity="0"/></svg></div>
 <div id="g-ghar" class="h goal" style="left:1128px;top:780px;border:3px dashed rgba(255,185,4,.8);border-radius:20px;background:rgba(255,185,4,.06)">Apna ghar:&nbsp;<span class="amber">kabhi na kabhi?</span></div>
-<div id="g-l1" class="ll" style="top:950px"><span class="w">Har</span><span class="w">goal</span><span class="w">ki</span><span class="w cyan">apni</span><span class="w cyan">deadline</span></div>
+<div id="g-l1" class="ll" style="top:912px"><span class="w">Har</span><span class="w">goal</span><span class="w">ki</span><span class="w cyan">apni</span><span class="w cyan">deadline</span></div>
 </div>
 <div id="sc-jama" class="scene clip" data-start="285.00" data-duration="35.00" data-track-index="1">
 <div id="j-tag" class="tag h"><span class="dot"></span><span>5 · Sirf jama rakam</span><span class="pips"><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip"></i><i class="pip"></i></span></div>
@@ -240,7 +230,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 <div id="k-tag" class="tag h"><span class="dot"></span><span>7 · Aapka kaam</span><span class="pips"><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i></span></div>
 <div id="k-paper" class="h paper" style="left:980px;top:160px"><div class="phead">Hamare 5 goals</div><div class="prow pcols"><span>Goal</span><span>Kab</span><span>Kitna (andaaza)</span></div><div class="prow" id="k-r0"><span>Emergency fund</span><span>Abhi</span><span>₹ ______</span><div id="k-m0" class="pmask"></div></div><div class="prow" id="k-r1"><span>Aarav ka college</span><span>2036</span><span>₹ ______</span><div id="k-m1" class="pmask"></div></div><div class="prow" id="k-r2"><span>Pihu ka college</span><span>2040</span><span>₹ ______</span><div id="k-m2" class="pmask"></div></div><div class="prow" id="k-r3"><span>Retirement</span><span>2051</span><span>₹ ______</span><div id="k-m3" class="pmask"></div></div><div class="prow" id="k-r4"><span>Apna ghar</span><span><b class="amber">? sapna</b></span><span>₹ ______</span><div id="k-m4" class="pmask"></div></div></div>
 <div id="k-neha" class="h" style="left:1660px;top:590px;z-index:3"><svg width="176" height="300" viewBox="0 0 200 340" aria-label="Neha"><rect x="70" y="232" width="26" height="88" rx="11" fill="#5B2A4C"/><rect x="104" y="232" width="26" height="88" rx="11" fill="#5B2A4C"/><ellipse cx="81" cy="322" rx="19" ry="8" fill="#1a1a1a"/><ellipse cx="119" cy="322" rx="19" ry="8" fill="#1a1a1a"/><path d="M52 82 Q50 26 100 26 Q150 26 148 82 L154 172 Q132 160 126 120 L74 120 Q68 160 46 172 Z" fill="#1E1A18"/><path d="M60 130 Q100 118 140 130 L150 270 L50 270 Z" fill="#C2367A"/><path d="M60 130 Q100 118 140 130 L136 150 Q100 140 64 150 Z" fill="#FFB904" opacity=".85"/><rect x="36" y="134" width="22" height="94" rx="11" fill="#C2367A"/><circle cx="47" cy="230" r="11" fill="#D9A070"/><g id="k-neha-arm" class="ch-arm"><rect x="142" y="134" width="22" height="94" rx="11" fill="#C2367A"/><circle cx="153" cy="230" r="11" fill="#D9A070"/><rect x="150" y="200" width="7" height="44" rx="2" fill="#FFB904" transform="rotate(-30 153 222)"/><rect x="150" y="238" width="7" height="7" fill="#3a2a1a" transform="rotate(-30 153 222)"/></g><rect x="90" y="110" width="20" height="24" fill="#D9A070"/><circle cx="56" cy="82" r="8" fill="#D9A070"/><circle cx="144" cy="82" r="8" fill="#D9A070"/><circle cx="100" cy="78" r="44" fill="#D9A070"/><path d="M55 84 Q54 30 100 30 Q146 30 145 84 Q132 50 100 50 Q68 50 55 84 Z" fill="#1E1A18"/><circle cx="100" cy="28" r="17" fill="#1E1A18"/><circle cx="100" cy="62" r="3.5" fill="#E0242E"/><g id="k-neha-eyes" class="ch-part"><ellipse cx="84" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/><ellipse cx="116" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/></g><circle cx="74" cy="96" r="6" fill="#E46A6A" opacity=".25"/><circle cx="126" cy="96" r="6" fill="#E46A6A" opacity=".25"/><path id="k-neha-happy" d="M86 100 Q100 113 114 100" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round"/><path id="k-neha-sad" d="M88 108 Q100 97 112 108" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round" opacity="0"/></svg></div>
-<div id="k-l1" class="ll" style="top:930px"><span class="w cyan">Kab</span><span class="w cyan">chahiye</span><span class="w">+</span><span class="w cyan">lagbhag</span><span class="w cyan">kitna</span></div>
+<div id="k-l1" class="ll" style="top:912px"><span class="w cyan">Kab</span><span class="w cyan">chahiye</span><span class="w">+</span><span class="w cyan">lagbhag</span><span class="w cyan">kitna</span></div>
 <div id="k-chip" class="chip h" style="left:1090px;top:920px;width:620px">Saal nahi? Toh abhi&nbsp;<b class="mag">sapna</b>&nbsp;hai</div>
 </div>
 <div id="sc-end" class="scene clip" data-start="400.00" data-duration="20.00" data-track-index="2">
@@ -263,15 +253,12 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 <audio id="sfx-cc2" src="assets/sfx/chaching.mp3" data-start="290.60" data-duration="1.4" data-track-index="12" data-volume="0.16"></audio>
 <audio id="sfx-cc3" src="assets/sfx/chaching.mp3" data-start="299.60" data-duration="1.4" data-track-index="12" data-volume="0.16"></audio>
 <div id="screenfx"></div>
-<div id="draftmark">DRAFT 2 · finance style · timed to the plan, not the voice</div>
 <div id="v-lko" class="clip bslot" data-layout-allow-occlusion data-start="33.60" data-duration="2.40" data-track-index="5"><div class="btag">AI / STOCK VIDEO</div><div class="bwhat">Lucknow apartment buildings, evening</div></div>
 <div id="v-diwali" class="clip bslot" data-layout-allow-occlusion data-start="165.00" data-duration="5.00" data-track-index="5"><div class="btag">AI / STOCK VIDEO</div><div class="bwhat">Family shopping for Diwali; school admission desk</div></div>
 <div id="x-donut" class="clip" data-composition-id="chart-story" data-composition-src="compositions/components/chart-story.html" data-start="199.20" data-duration="25.40" data-track-index="7" data-variable-values='{"type": "donut", "data": "58, 6, 5, 31", "labels": "Zaroori, Saal bhar, Masti, Future", "emphasize": 3, "unit": "%", "accent": "green", "exit": "none"}' style="position:absolute;left:960px;top:130px;width:880px;height:760px;z-index:6"></div>
 <div id="v-ghar" class="clip bslot" data-layout-allow-occlusion data-start="248.60" data-duration="4.40" data-track-index="5"><div class="btag">AI / STOCK VIDEO</div><div class="bwhat">A couple looking at a flat for sale</div></div>
 <div id="x-safety" class="clip" data-composition-id="marker-checklist-card" data-composition-src="compositions/components/marker-checklist-card.html" data-start="334.00" data-duration="10.60" data-track-index="7" data-variable-values='{"top": "SABSE", "mid": "PEHLE", "circled": "SAFETY", "rest": "!", "l1": "EMERGENCY", "v1": "FUND", "l2": "INSURANCE", "v2": "CHECK", "l3": "KARZ", "v3": "NAHI"}' style="position:absolute;left:960px;top:120px;width:880px;height:780px;z-index:6"></div>
 <div id="v-write" class="clip bslot" data-layout-allow-occlusion data-start="345.40" data-duration="4.20" data-track-index="5"><div class="btag">AI / STOCK VIDEO</div><div class="bwhat">A hand writing a goals list in a notebook</div></div>
-<div id="o-disc" class="clip disc" data-start="3.00" data-duration="2.00" data-track-index="9"><div class="dtitle">Educational example</div><div class="dsub">Financial advice nahi · numbers illustrative hain · apni situation ke hisaab se decide karein</div></div>
-<div id="o-name" class="clip lt3" data-start="16.00" data-duration="4.60" data-track-index="9"><div class="ltbar"></div><div><div class="ltname">RAJ</div><div class="ltsub">Samjho with Raj</div></div></div>
 <div id="o-sec1" class="clip secard" data-start="30.00" data-duration="2.60" data-track-index="10"><div class="secn">#1</div><div class="secq">Verma family kaun hai?</div></div>
 <div id="o-sec2" class="clip secard" data-start="75.00" data-duration="2.60" data-track-index="10"><div class="secn">#2</div><div class="secq">Aaj unke paas kya hai?</div></div>
 <div id="o-sec3" class="clip secard" data-start="105.00" data-duration="2.60" data-track-index="10"><div class="secn">#3</div><div class="secq">₹1 lakh kahan jaata hai?</div></div>
@@ -279,6 +266,10 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 <div id="o-sec5" class="clip secard" data-start="285.00" data-duration="2.60" data-track-index="10"><div class="secn">#5</div><div class="secq">Kitna jama hoga?</div></div>
 <div id="o-sec6" class="clip secard" data-start="320.00" data-duration="2.60" data-track-index="10"><div class="secn">#6</div><div class="secq">Paisa kaise baantein?</div></div>
 <div id="o-sec7" class="clip secard" data-start="345.00" data-duration="2.60" data-track-index="10"><div class="secn">#7</div><div class="secq">Aapko kya karna hai?</div></div>
+</div>
+<img id="raj" src="assets/img/raj-still.png" alt="" style="position:absolute;left:-279px;top:0;width:1920px;height:1080px;z-index:15">
+<div id="o-disc" class="clip disc" data-start="3.00" data-duration="2.00" data-track-index="9"><div class="dtitle">Educational example</div><div class="dsub">Financial advice nahi · numbers illustrative hain · apni situation ke hisaab se decide karein</div></div>
+<div id="o-name" class="clip lt3" data-start="16.00" data-duration="4.60" data-track-index="9"><div class="ltbar"></div><div><div class="ltname">RAJ</div><div class="ltsub">Samjho with Raj</div></div></div>
 <div id="o-kw1" class="clip kwbox" data-start="97.00" data-duration="3.50" data-track-index="11"><div class="kw">Sirf 1 mahina</div></div>
 <div id="o-kw2" class="clip kwbox" data-start="213.00" data-duration="3.50" data-track-index="11"><div class="kw">Kaafi?</div></div>
 <div id="o-kw3" class="clip kwbox" data-start="268.50" data-duration="3.50" data-track-index="11"><div class="kw">Deadline!</div></div>
@@ -286,6 +277,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 <div id="o-kw5" class="clip kwbox" data-start="388.00" data-duration="3.50" data-track-index="11"><div class="kw">Sapna ≠ Goal</div></div>
 <div id="o-kw6" class="clip kwbox" data-start="277.00" data-duration="4.00" data-track-index="11"><div class="kw">Mushkil!</div></div>
 <div id="o-kw7" class="clip kwbox" data-start="340.00" data-duration="3.50" data-track-index="11"><div class="kw">Pehle safety</div></div>
+<div id="draftmark">DRAFT 3 · your recording, placement test · timed to the plan, not the voice</div>
 <audio id="bed" src="assets/audio/bed.mp3" data-start="0" data-duration="420.00" data-track-index="11" data-volume="0.35"></audio>
 </div>
 <script>

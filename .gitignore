@@ -15,3 +15,8 @@ node_modules/
 *.mp3
 *.wav
 sample-*/
+audio*.wav
+place/*.png
+place/*.npy
+raw-sheet.png
+transcript*.log

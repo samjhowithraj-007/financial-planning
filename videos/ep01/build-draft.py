@@ -36,7 +36,7 @@ def em(text, idx, cls):
     return " ".join('<span class="%s">%s</span>' % (cls, E(w)) if i in idx else E(w)
                     for i, w in enumerate(text.split()))
 
-def line(sid, text, idx, cls, t_in, t_out, top=930):
+def line(sid, text, idx, cls, t_in, t_out, top=912):
     """Lower line (format 2), centred under the animation side; words rise staggered."""
     words = "".join('<span class="w%s">%s</span>' % (" " + cls if i in idx else "", E(w))
                     for i, w in enumerate(text.split()))
@@ -68,6 +68,7 @@ def chaching(sid, t):
                 'data-track-index="12" data-volume="0.16"></audio>' % (sid, t))
 
 money_sounds = []
+fullroots = []     # frame-level overlays that must not scale with the panel (disclaimer, name, labels)
 roots = []         # root-level elements: registry sub-compositions, video slots (absolute times)
 broll_slots = []   # (id, what the clip shows, in, out) -> BROLL.md
 
@@ -292,7 +293,7 @@ html.append('<div id="g-ghar" class="h goal" style="left:%dpx;top:%dpx;border:3p
             'background:rgba(255,185,4,.06)">Apna ghar:&nbsp;<span class="amber">kabhi na kabhi?</span></div>' % (gx(4), AY + 140))
 broll("v-ghar", "A couple looking at a flat for sale", 248.6, 253.0)
 js += ["rise('#g-ghar',253.4);", "rise('#g-par',262.0);"]
-line("g-l1", "Har goal ki apni deadline", {3, 4}, "cyan", 268.0, 283.0, top=950)
+line("g-l1", "Har goal ki apni deadline", {3, 4}, "cyan", 268.0, 283.0, top=912)
 scene_close()
 
 # ---------------------------------------------------------------------------------------------- 7. Sirf jama rakam
@@ -383,13 +384,13 @@ js += ["rise('#e-eye',400.3);", "rise('#e-t',400.6);", "rise('#e-c',404.0);", "r
 scene_close()
 
 # disclaimer card (2 s, after the hook visual)
-roots.append('<div id="o-disc" class="clip disc" data-start="3.00" data-duration="2.00" data-track-index="9">'
+fullroots.append('<div id="o-disc" class="clip disc" data-start="3.00" data-duration="2.00" data-track-index="9">'
              '<div class="dtitle">Educational example</div><div class="dsub">Financial advice nahi · numbers illustrative hain · '
              'apni situation ke hisaab se decide karein</div></div>')
 js.append("tl.fromTo('#o-disc',{opacity:0},{opacity:1,duration:.25},3.0); tl.to('#o-disc',{opacity:0,duration:.25},4.75);")
 
 # name lower-third, left of Raj's feet (never over the body)
-roots.append('<div id="o-name" class="clip lt3" data-start="16.00" data-duration="4.60" data-track-index="9">'
+fullroots.append('<div id="o-name" class="clip lt3" data-start="16.00" data-duration="4.60" data-track-index="9">'
              '<div class="ltbar"></div><div><div class="ltname">RAJ</div><div class="ltsub">Samjho with Raj</div></div></div>')
 js.append("tl.fromTo('#o-name',{opacity:0,x:-40},{opacity:1,x:0,duration:.4,ease:'power2.out'},16.0); out('#o-name',20.2);")
 
@@ -411,7 +412,7 @@ KW = [("o-kw1", "Sirf 1 mahina", None, 97.0, 100.5), ("o-kw2", "Kaafi?", None, 2
       ("o-kw6", "Mushkil!", None, 277.0, 281.0), ("o-kw7", "Pehle safety", None, 340.0, 343.5)]
 for kid, word, struck, a, b in KW:
     top = '<div class="kwx">%s</div>' % E(struck) if struck else ""
-    roots.append('<div id="%s" class="clip kwbox" data-start="%.2f" data-duration="%.2f" data-track-index="11">%s<div class="kw">%s</div></div>'
+    fullroots.append('<div id="%s" class="clip kwbox" data-start="%.2f" data-duration="%.2f" data-track-index="11">%s<div class="kw">%s</div></div>'
                  % (kid, a, b - a, top, E(word)))
     js.append("rise('#%s',%.2f); out('#%s',%.2f);" % (kid, a, kid, b - 0.35))
 
@@ -419,18 +420,11 @@ for k, t in enumerate(money_sounds):
     chaching("sfx-cc%d" % k, t)
 
 # ---------------------------------------------------------------------------------------------- placeholder (left third)
-placeholder = '''
-<svg id="ph" width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute;left:0;top:0">
-  <rect x="250" y="96" width="652" height="944" rx="28" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="3" stroke-dasharray="14 12"/>
-  <g fill="rgba(10,240,240,.06)" stroke="rgba(10,240,240,.6)" stroke-width="4" stroke-dasharray="12 10" stroke-linejoin="round">
-    <circle cx="576" cy="212" r="64"/>
-    <path d="M470 312 Q576 284 682 312 L700 600 L652 610 L640 1000 L592 1000 L580 660 L572 660 L560 1000 L512 1000 L500 610 L452 600 Z"/>
-    <path d="M478 330 L360 470 L318 560 L346 572 L392 494 L486 420 Z"/>
-    <path d="M674 330 L792 470 L834 560 L806 572 L760 494 L666 420 Z"/>
-  </g>
-  <text x="576" y="70" text-anchor="middle" font-size="27" font-weight="700" fill="rgba(10,240,240,.85)" letter-spacing="3">RAJ YAHAN · FULL BODY</text>
-  <text x="576" y="1066" text-anchor="middle" font-size="21" fill="rgba(255,255,255,.5)">placeholder · CapCut studio room · haath aur pair kabhi crop nahi honge</text>
-</svg>'''
+# Raj: the cut-out from the black-background recording at natural size (1.0 = no upscale), anchored to the bottom edge,
+# body centre at x 700. Measured envelope over the whole take: hands from 16% to 86% of the source width, head top at
+# ~28% height, so at this offset his hands stay inside the frame and pass IN FRONT of the studio screen.
+RAJ_X = 700 - 979
+placeholder = '<img id="raj" src="assets/img/raj-still.png" alt="" style="position:absolute;left:%dpx;top:0;width:1920px;height:1080px;z-index:15">' % RAJ_X
 
 CSS = '''
 @font-face{font-family:"DM Sans";src:url(fonts/DMSans-400.woff2) format("woff2");font-weight:400}
@@ -460,7 +454,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
   justify-content:center;font-size:46px;font-weight:700;white-space:nowrap}
 .ll{position:absolute;left:940px;width:920px;text-align:center;font-size:0;white-space:nowrap}
 .ll span{display:inline-block;font-size:60px;font-weight:700;letter-spacing:-.015em;margin:0 .14em;opacity:0}
-.tag{right:60px;top:44px;height:66px;padding:0 26px;border-radius:9999px;background:rgba(255,255,255,.1);border:3px solid rgba(255,255,255,.45);
+.tag{right:60px;top:70px;height:66px;padding:0 26px;border-radius:9999px;background:rgba(255,255,255,.1);border:3px solid rgba(255,255,255,.45);
   display:flex;align-items:center;gap:14px;font-size:32px;font-weight:700;white-space:nowrap}
 .tag .dot{width:16px;height:16px;border-radius:50%;background:#0AF0F0;box-shadow:0 0 14px #0AF0F0}
 .pips{display:flex;gap:7px;margin-left:6px}.pips i{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.25)}.pips i.on{background:#0AF0F0}
@@ -506,7 +500,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 .disc{position:absolute;inset:0;z-index:30;opacity:0;background:#0b0d12;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}
 .dtitle{font-size:72px;font-weight:700;color:#FFB904}
 .dsub{font-size:34px;color:rgba(255,255,255,.85);max-width:1300px;text-align:center;line-height:1.35}
-.lt3{position:absolute;left:40px;top:930px;z-index:12;display:flex;align-items:center;gap:18px;padding:12px 26px 12px 16px;border-radius:14px;
+.lt3{position:absolute;left:60px;top:150px;z-index:12;display:flex;align-items:center;gap:18px;padding:12px 26px 12px 16px;border-radius:14px;
   background:rgba(10,13,20,.85)}
 .ltbar{width:8px;height:78px;border-radius:4px;background:#0AF0F0;box-shadow:0 0 14px rgba(10,240,240,.8)}
 .ltname{font-size:46px;font-weight:700;letter-spacing:.06em;line-height:1}
@@ -516,7 +510,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
   background-image:linear-gradient(rgba(16,19,26,.05) 2px,transparent 2px),linear-gradient(90deg,rgba(16,19,26,.05) 2px,transparent 2px);background-size:64px 64px}
 .secn{font-size:150px;font-weight:700;line-height:1;color:#0005EE}
 .secq{font-size:66px;font-weight:700;margin-top:18px;line-height:1.15}
-.kwbox{position:absolute;left:670px;top:132px;z-index:12;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.kwbox{position:absolute;left:60px;top:270px;z-index:12;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
 .kw{background:#fff;color:#0b0b0b;font-size:40px;font-weight:700;padding:8px 22px;border-radius:14px;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.45)}
 .kwx{background:#fff;color:#0b0b0b;font-size:30px;font-weight:700;padding:4px 16px;border-radius:10px;white-space:nowrap;
   text-decoration:line-through;text-decoration-color:#E0242E;text-decoration-thickness:5px}
@@ -534,6 +528,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
   box-shadow:0 18px 50px rgba(0,0,0,.45)}
 .bub b{color:#0005EE}
 /*CHAR_CSS*/
+#panel{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:940px 120px;transform:translate(157px,-63px) scale(.85)}
 #draftmark{position:absolute;right:40px;bottom:22px;font-size:20px;color:rgba(255,255,255,.6);letter-spacing:.08em}
 '''
 
@@ -544,12 +539,15 @@ page = '''<!doctype html>
 <body>
 <div id="stage" data-composition-id="main" data-start="0" data-duration="%.2f" data-fps="30" data-width="1920" data-height="1080">
 <div id="grid"></div>
-%s
+<div id="panel">
 <div id="screen"></div>
 %s
 <div id="screenfx"></div>
-<div id="draftmark">DRAFT 2 · finance style · timed to the plan, not the voice</div>
 %s
+</div>
+%s
+%s
+<div id="draftmark">DRAFT 3 · your recording, placement test · timed to the plan, not the voice</div>
 <audio id="bed" src="assets/audio/bed.mp3" data-start="0" data-duration="%.2f" data-track-index="11" data-volume="0.35"></audio>
 </div>
 <script>
@@ -570,7 +568,7 @@ tl.to({}, { duration: %.2f }, 0);
 window.__timelines["main"] = tl;
 </script>
 </body></html>
-''' % (CSS.replace('/*CHAR_CSS*/', CHAR_CSS), DUR, placeholder, "\n".join(html), "\n".join(roots), DUR, "\n".join(js), DUR)
+''' % (CSS.replace('/*CHAR_CSS*/', CHAR_CSS), DUR, "\n".join(html), "\n".join(roots), placeholder, "\n".join(fullroots), DUR, "\n".join(js), DUR)
 
 with open(OUT, "w", encoding="utf-8") as f:
     f.write(page)
