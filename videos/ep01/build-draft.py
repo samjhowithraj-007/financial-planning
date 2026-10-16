@@ -117,12 +117,17 @@ def block(bid, src, cid, t_in, t_out, box, values, track):
                  "data-variable-values='%s' style=\"position:absolute;left:%dpx;top:%dpx;width:%dpx;height:%dpx;z-index:6\"></div>"
                  % (bid, cid, src, t_in, t_out - t_in, track, _j.dumps(values, ensure_ascii=False), x, y, w, h))
 
-# Reshoot: free Pexels stock clips (broll/, conformed 1422x1182 to the screen slot; list in STOCK.md) replace the drawn
+# Reshoot: free Pexels stock clips (broll/; the Verma family ones come from videos/_shared/verma-family/, conformed 1422x1182 to the screen slot; list in STOCK.md) replace the drawn
 # scenes. USE_STOCK = False brings the animated cutaways (scenes_art.py) back.
 USE_STOCK = True
 STOCK = {"v-lko": ("04-city-rooftops.mp4", "Lucknow · kiraye ka 2BHK"),
-         "v-diwali": ("06-diwali-street.mp4", "Ye har saal aate hain"),
-         "v-ghar": ("09-flat-viewing.mp4", "Apna ghar: kab?")}
+         "v-diwali": ("06-family-9346226.mp4", "Ye har saal aate hain"),
+         "v-ghar": ("09-family-9346245.mp4", "Apna ghar: kab?")}
+# the clips the draft plays are copied from broll/ into draft/assets/broll/ on every build
+import shutil as _sh
+os.makedirs(os.path.join(HERE, "draft", "assets", "broll"), exist_ok=True)
+for _clip, _cap in STOCK.values():
+    _sh.copy2(os.path.join(HERE, "broll", _clip), os.path.join(HERE, "draft", "assets", "broll", _clip))
 
 def stock(bid, clip, caption, t_in, t_out, skip=0.0):
     """A stock clip on the studio screen (the bslot box), muted, with the white caption at the bottom."""
