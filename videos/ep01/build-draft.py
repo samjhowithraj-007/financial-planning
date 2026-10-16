@@ -9,6 +9,7 @@ magenta punchlines, 0.4 s soft entrances, no bounces, Indian digit grouping (12,
 Usage: python build-draft.py   (then: npx --yes hyperframes@0.8.154 check draft)
 """
 import os
+import explain_art as XA
 from html import escape
 from characters import character, CHAR_CSS
 from scenes_art import ART
@@ -38,6 +39,13 @@ def TW(t):
         if t <= a1:
             return b0 + (b1 - b0) * (t - a0) / (a1 - a0) if a1 > a0 else b1
     return WARP[-1][1]
+
+def FP(f):
+    """Flat-cut second -> plan second (inverse of TW), for fills placed by screen-scan.py."""
+    for (a0, b0), (a1, b1) in zip(WARP, WARP[1:]):
+        if f <= b1:
+            return a0 + (a1 - a0) * (f - b0) / (b1 - b0) if b1 > b0 else a1
+    return WARP[-1][0]
 
 # Scene windows (seconds), from the storyboard in episodes/EP01-*.md
 T = {"hook": (0.0, 15.0), "intro": (15.0, 30.0), "family": (30.0, 75.0), "today": (75.0, 105.0),
@@ -116,7 +124,8 @@ STOCK = {"v-lko": ("04-ai-lucknow-evening.mp4", "Lucknow · kiraye ka 2BHK"),
 AI_MOMENTS = {"salary-sms": "01-ai-salary-sms.mp4", "month-end": "02-ai-month-end-worry.mp4",
               "neha-asks": "03-ai-neha-asks.mp4", "kirana": "05-ai-kirana.mp4",
               "college": "07-ai-aarav-study.mp4", "parents": "08-ai-parents-care.mp4",
-              "five-goals": "10-ai-write-goals.mp4", "family-still": "00-ai-family-still.mp4"}
+              "five-goals": "10-ai-write-goals.mp4", "family-still": "00-ai-family-still.mp4",
+              "night-writing": "10b-ai-night-writing.mp4"}
 # the clips the draft plays are copied from broll/ into draft/assets/broll/ on every build
 import shutil as _sh
 os.makedirs(os.path.join(HERE, "draft", "assets", "broll"), exist_ok=True)
@@ -127,16 +136,16 @@ def stock(bid, clip, caption, t_in, t_out, skip=0.0):
     """A stock clip on the studio screen (the bslot box), muted, with the white caption at the bottom."""
     roots.append('<div id="%s-bk" class="clip" data-start="%.2f" data-duration="%.2f" data-track-index="7" style="position:absolute;'
                  'left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:7;opacity:0"></div>'
-                 % (bid, t_in, t_out - t_in))
+                 % (bid, t_in, t_out - t_in + 0.25))
     roots.append('<video id="%s-v" class="clip" src="assets/broll/%s" muted playsinline data-start="%.2f" data-duration="%.2f" '
                  'data-media-start="%.2f" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;'
                  'height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>'
-                 % (bid, clip, t_in, t_out - t_in, skip))
+                 % (bid, clip, t_in, t_out - t_in + 0.25, skip))
     roots.append('<div id="%s" class="clip bslot" data-layout-allow-occlusion data-start="%.2f" data-duration="%.2f" '
                  'data-track-index="6" style="background:none;opacity:0"><div class="bcap">%s</div></div>'
-                 % (bid, t_in, t_out - t_in, E(caption)))
+                 % (bid, t_in, t_out - t_in + 0.25, E(caption)))
     js.append("tl.fromTo(['#%s','#%s-v','#%s-bk'],{opacity:0},{opacity:1,duration:.3},%.2f); tl.to(['#%s','#%s-v','#%s-bk'],{opacity:0,duration:.3},%.2f);"
-              % (bid, bid, bid, t_in, bid, bid, bid, t_out - 0.3))
+              % (bid, bid, bid, t_in, bid, bid, bid, t_out - 0.05))
 
 def broll(bid, what, t_in, t_out):
     """An explanation cutaway on the studio screen: a stock clip (STOCK) or an animated scene (scenes_art.py)."""
@@ -154,7 +163,7 @@ def broll(bid, what, t_in, t_out):
 # ---------------------------------------------------------------------------------------------- 1. Hook
 scene_open("hook", 1)
 # AI family (CapCut): 1 tareekh salary SMS -> 25 tareekh worry -> Neha asks
-stock("h-c1", AI_MOMENTS["salary-sms"], "1 tareekh · ₹1,00,000 salary aayi", 0.4, 7.0)
+stock("h-c1", AI_MOMENTS["salary-sms"], "1 tareekh · ₹1,00,000 salary aayi", 0.0, 7.0)
 stock("h-c2", AI_MOMENTS["month-end"], "25 tareekh… account khaali", 7.0, 8.6)
 stock("h-c3", AI_MOMENTS["neha-asks"], "College fees? Apna ghar?", 8.6, 11.5)
 stock("h-c4", AI_MOMENTS["family-still"], "Ye kahani aapki bhi hai", 11.5, 15.0)
@@ -202,12 +211,11 @@ for k, (kind, name, sub, h, dx, t) in enumerate(people):
     html.append('<div id="f-p%d" class="h namechip" style="left:%dpx;top:%dpx"><b>%s</b><span>%s</span></div>'
                 % (k, left, y - 30, name, sub))
     js.append("rise('#f-p%d',%.2f);" % (k, t))
-js.append("out('#f-pic,#f-p0,#f-p1,#f-p2,#f-p3',59.6);")
 html.append('<div id="f-inc" class="card h" style="left:%dpx;top:762px;width:640px;height:150px;text-align:center;padding-top:14px">'
             '<div id="f-incv" class="amber" style="font-size:78px;font-weight:700;line-height:1.1">₹0</div>'
             '<div style="font-size:28px;color:rgba(255,255,255,.78)">har mahine · ghar ki kul take-home</div></div>' % (CX - 320))
 html.append('<div id="f-ex" class="chip h" style="left:%dpx;top:760px;width:520px">Example family ·&nbsp;<b class="mag">asli nahi</b></div>' % (CX - 260))
-broll("v-lko", "Lucknow apartment buildings, evening", 33.6, 36.0)
+broll("v-lko", "Lucknow apartment buildings, evening", 30.6, 36.0)
 js += ["rise('#f-title',31.0);", "rise('#f-where',33.0);", "rise('#f-inc',48.0);",
        "count('#f-incv',0,100000,48.2,1.4);", "out('#f-inc',55.4);", "rise('#f-ex',56.0);", "out('#f-ex',59.6);"]
 money_sounds.append(49.6)
@@ -217,7 +225,7 @@ scene_close()
 # ---------------------------------------------------------------------------------------------- 4. Aaj ka paisa
 scene_open("today", 2)
 tag("t-tag", 2, 75.2)
-stock("t-c10", AI_MOMENTS["five-goals"], "Ek Sunday · poora hisaab", 77.0, 80.2)
+stock("t-c10", AI_MOMENTS["five-goals"], "Ek Sunday · poora hisaab", 75.3, 80.9)
 tiles = [("t-s", "Savings account", "₹0", 80.6, 60000), ("t-e", "Amit ka EPF", "₹0", 81.6, 400000),
          ("t-h", "Health cover", "Company policy", 82.6, None), ("t-k", "Karz", "₹0", 83.4, None)]
 for k, (tid, lab, val, t, n) in enumerate(tiles):
@@ -266,6 +274,9 @@ html.append('<div id="b-bar" class="h" style="left:%dpx;top:250px;width:%dpx;hei
 html.append('<div id="b-lab1" class="h seglab" style="left:%dpx;top:350px">Zaroori <span class="amber">₹58,000</span> · 58%%</div>' % (L + 20))
 html.append('<div id="b-lab4" class="h seglab" style="left:%dpx;top:350px;width:%dpx;text-align:right">Future <span class="cyan">₹31,000</span> · 31%%</div>' % (L + 20, BW))
 js += ["rise('#b-title',105.4);", "rise('#b-bar',106.6);", "rise('#b-lab1',132.0);"]
+# "₹1 lakh jaata kahan hai?": a wallet sends notes out to the big spends, under the title and bar, until the table comes
+_h, _j = XA.wallet("x-wal", FP(156.4), 109.6, out_labels=("Kiraya", "Ration", "Bills", "School"), low=True)
+roots.append(_h); js.extend(_j)
 stock("b-c5", AI_MOMENTS["kirana"], "Kiraya, ration, bills…", 113.8, 117.8)
 # essentials: a white data card (Pranjal style), the yellow marker moves to each row as it is said
 ess = [("Kiraya", 18000, 110.0), ("Ration", 14000, 114.0), ("Bills", 4000, 118.0),
@@ -337,6 +348,7 @@ js.append("grow('#g-axis',226.0,.8);")
 html.append('<div id="g-par" class="h" style="left:%dpx;top:%dpx;width:%dpx;height:46px;border-radius:12px;background:rgba(255,185,4,.16);'
             'border:2px solid rgba(255,185,4,.6);font-size:28px;font-weight:700;display:flex;align-items:center;padding-left:18px">'
             'Parents ki care: <span class="amber" style="margin-left:10px">kabhi bhi</span></div>' % (AX0, AY + 70, AX1 - AX0 - 230))
+stock("g-c10", AI_MOMENTS["night-writing"], "Us raat: saare sapne, ek-ek karke", FP(251.0), FP(261.0))
 stock("g-c7", AI_MOMENTS["college"], "Aarav ka college", 238.2, 242.2)
 stock("g-c8", AI_MOMENTS["parents"], "Maa-papa ki dekhbhaal", 248.0, 250.4)
 html.append('<div id="g-ghar" class="h goal" style="left:%dpx;top:%dpx;border:3px dashed rgba(255,185,4,.8);border-radius:20px;'
@@ -383,7 +395,7 @@ js += ["tl.fromTo('#d-q%d',{opacity:0,y:26},{opacity:1,y:0,duration:.4,ease:'pow
 html.append('<!-- d-o1 class="card h step" style="left:%dpx;top:680px"><b class="cyan">1</b> Pehle safety<div class="stepsub">emergency fund · insurance · mehnga karz nahi</div></div> -->' % (L + 20))
 html.append('<!-- d-o2 class="card h step" style="left:%dpx;top:680px"><b class="cyan">2</b> Phir lambe goals<div class="stepsub">college · ghar · retirement</div></div> -->' % (L + 470))
 js.append("out('#d-j0,#d-j1,#d-j2,#d-eq',333.6);")
-block("x-safety", "compositions/components/marker-checklist-card.html", "marker-checklist-card", 334.0, 344.6, (L + 20, 120, 880, 780),
+block("x-safety", "compositions/components/marker-checklist-card.html", "marker-checklist-card", 334.0, 346.1, (L + 20, 120, 880, 780),
       {"top": "SABSE", "mid": "PEHLE", "circled": "SAFETY", "rest": "!", "l1": "EMERGENCY", "v1": "FUND", "l2": "INSURANCE", "v2": "CHECK",
        "l3": "KARZ", "v3": "NAHI"}, 7)
 scene_close()
@@ -404,7 +416,7 @@ js += ["tl.fromTo('#k-m%d',{scaleX:1},{scaleX:0,duration:1.0,ease:'power1.inOut'
 line("k-l1", "Kab chahiye + lagbhag kitna", {0, 1, 3, 4}, "cyan", 355.0, 365.5)
 html.append('<div id="k-chip" class="chip h" style="left:%dpx;top:920px;width:620px">Saal nahi? Toh abhi&nbsp;<b class="mag">sapna</b>&nbsp;hai</div>' % (CX - 310))
 js += ["rise('#k-chip',386.0);", "out('#k-chip',391.6);"]
-stock("k-c10", AI_MOMENTS["five-goals"], "Hamare 5 goals: likh liye!", 392.0, 398.0, skip=3.0)
+stock("k-c10", AI_MOMENTS["five-goals"], "Hamare 5 goals: likh liye!", 392.0, 400.5, skip=3.0)
 scene_close()
 
 # ---------------------------------------------------------------------------------------------- 10. End
@@ -422,6 +434,8 @@ html.append('''
   <div id="e-btn" class="sbbtn">Subscribe</div>
 </div>
 ''' % (L, W, L + 20, W - 40, CX - 350, L, W, L, W, L + 70))
+_h, _j = XA.wallet("x-wal2", 400.3, 403.9, out_labels=("Kiraya", "EMI", "Shopping", "???"), low=True)
+roots.append(_h); js.extend(_j)
 js += ["rise('#e-eye',400.3);", "rise('#e-t',400.6);", "rise('#e-c',404.0);", "rise('#e-web',408.0);", "rise('#e-dis',406.5);",
        "rise('#e-sb',410.0);",
        "tl.fromTo('#e-btn',{scale:1},{scale:1.08,duration:.22,yoyo:true,repeat:5,ease:'power1.inOut'},410.6);"]
@@ -515,7 +529,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 .pill b{margin-left:6px}
 .chip{left:960px !important;width:880px !important;font-size:42px !important;height:96px;border-radius:16px;background:rgba(17,17,17,.6);border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;
   justify-content:center;font-size:46px;font-weight:700;white-space:nowrap}
-.ll{position:absolute;left:60px;top:168px;width:980px;text-align:center;font-size:0;white-space:nowrap;z-index:14}
+.ll{position:absolute;left:40px;top:168px;width:860px;text-align:center;font-size:0;white-space:normal;line-height:1.25;z-index:14}
 .ll span{display:inline-block;font-size:58px;text-shadow:0 4px 18px rgba(0,0,0,.7);font-weight:700;letter-spacing:-.015em;margin:0 .14em;opacity:0}
 .tag{right:60px;top:70px;height:66px;padding:0 26px;border-radius:9999px;background:rgba(255,255,255,.1);border:3px solid rgba(255,255,255,.45);
   display:flex;align-items:center;gap:14px;font-size:32px;font-weight:700;white-space:nowrap}
@@ -661,7 +675,7 @@ tl.to({}, { duration: %.2f }, 0);
 window.__timelines["main"] = tl;
 </script>
 </body></html>
-''' % (CSS.replace('/*CHAR_CSS*/', CHAR_CSS), FINAL, "\n".join(html), "\n".join(roots), placeholder, "\n".join(fullroots), "\n".join(js), FINAL)
+''' % (CSS.replace('/*CHAR_CSS*/', CHAR_CSS) + XA.CSS, FINAL, "\n".join(html), "\n".join(roots), placeholder, "\n".join(fullroots), "\n".join(js), FINAL)
 
 import re as _re
 def _warp_attr(m):
