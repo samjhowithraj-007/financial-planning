@@ -39,17 +39,29 @@ samjho with raj, samjhowithraj
 **Upload settings:** Not made for kids · Altered or synthetic content: **No** (animations only, no AI video) ·
 Playlist: "Middle-Class Family Ka Money Plan (50 Parts)" (create it on first upload).
 
-## Instagram (Reel — from the Short, made next)
+## YouTube Shorts (money-plan-01-short-yt.mp4)
+**Title:** ₹1 Lakh Salary, 31% Bachat… Kya Ye Kaafi Hai? 🤔 #shorts
+
+**Description**
+Verma family har mahine ₹31,000 bachati hai. Par padhai ke ₹12 lakh "sirf jama rakam" hai: na growth, na mehngai.
+Apni family ke 5 goals likho, aur free Financial Tracker try karo 👇
+🧮 Free Financial Tracker: https://www.samjhowithraj.online/#tracker
+▶️ Poora Part 1: youtube.com/@SamjhowithRaj
+📸 Instagram: https://www.instagram.com/samjhowithraj/
+👍 Facebook: https://www.facebook.com/profile.php?id=61595088790170&sk=reels_tab
+Educational example, financial advice nahi. #shorts #personalfinance #moneyplan
+
+## Instagram (Reel: money-plan-01-short-ig.mp4, cover money-plan-01-short-cover.png)
 ₹1 lakh salary. 31% bachat. Kya future set hai? 🤔
 Verma family ka poora money plan, Part 1 se 50 tak 👇
-📘 Free notes: samjhowithraj.online (link in bio)
+🧮 Free Financial Tracker: samjhowithraj.online (link in bio)
 ▶️ Full video: youtube.com/@SamjhowithRaj
 Educational example, financial advice nahi.
 #personalfinance #moneyplan #familybudget #financehindi #samjhowithraj
 
-## Facebook (Reel — same Short)
+## Facebook (Reel: same -ig file)
 ₹1 lakh salary mein family ka future kaise banayein? Part 1: Verma family ka hisaab.
-📘 Free notes: https://www.samjhowithraj.online
+🧮 Free Financial Tracker: https://www.samjhowithraj.online/#tracker
 ▶️ YouTube: https://www.youtube.com/@SamjhowithRaj
 📸 Instagram: https://www.instagram.com/samjhowithraj/
 Educational example, financial advice nahi.

@@ -20,6 +20,7 @@ import json as _json
 _CM = _json.load(open(os.path.join(HERE, "cut-map.json")))
 FLAT = _CM["flat_duration"]
 FINAL = round(FLAT + 0.6, 2)
+END0 = round(FLAT + 0.3, 2)
 def raw2flat(r):
     """A moment in the raw take -> the flat cut (inside a kept segment, or the next kept start)."""
     for g in _CM["segments"]:
@@ -74,7 +75,8 @@ def line(sid, text, idx, cls, t_in, t_out, top=912):
     """Lower line (format 2), centred under the animation side; words rise staggered."""
     words = "".join('<span class="w%s">%s</span>' % (" " + cls if i in idx else "", E(w))
                     for i, w in enumerate(text.split()))
-    html.append('<div id="%s" class="ll" style="top:%dpx">%s</div>' % (sid, top, words))
+    fullroots.append('<div id="%s" class="clip ll" data-start="%.2f" data-duration="%.2f" data-track-index="13">%s</div>'
+                     % (sid, t_in, t_out + 0.4 - t_in, words))
     js.append("tl.fromTo('#%s .w',{opacity:0,y:26},{opacity:1,y:0,duration:.4,ease:'power2.out',stagger:.055},%.2f);"
               % (sid, t_in))
     js.append("tl.to('#%s',{opacity:0,duration:.35,ease:'power2.in'},%.2f);" % (sid, t_out))
@@ -434,12 +436,21 @@ js.append("tl.fromTo('#o-name',{opacity:0,x:-40},{opacity:1,x:0,duration:.4,ease
 SECTIONS = [("family", "Verma family kaun hai?"), ("today", "Aaj unke paas kya hai?"), ("budget", "₹1 lakh kahan jaata hai?"),
             ("goals", "Kaunsa goal kab?"), ("jama", "Kitna jama hoga?"), ("dabba", "Paisa kaise baantein?"),
             ("kaam", "Aapko kya karna hai?")]
+SEC_HTML = []     # section cards run on the flat clock (exactly 2.2 s each), inserted after the warp
 for n, (key, q) in enumerate(SECTIONS, 1):
-    a = T[key][0]
-    roots.append('<div id="o-sec%d" class="clip secard" data-start="%.2f" data-duration="2.60" data-track-index="10">'
-                 '<div class="secn">#%d</div><div class="secq">%s</div></div>' % (n, a, n, E(q)))
-    js.append("tl.fromTo('#o-sec%d',{opacity:0},{opacity:1,duration:.3},%.2f); tl.to('#o-sec%d',{opacity:0,duration:.3},%.2f);"
-              % (n, a + 0.1, n, a + 2.3))
+    f = TW(T[key][0])
+    SEC_HTML.append('<div id="o-sec%d" class="clip secard" data-start="%.2f" data-duration="2.30" data-track-index="10">'
+                    '<div class="secn">#%d</div><div class="secq">%s</div></div>' % (n, f, n, E(q)))
+    js.append("tl.fromTo('#o-sec%d',{opacity:0},{opacity:1,duration:.25},%.2f); tl.to('#o-sec%d',{opacity:0,duration:.25},%.2f);"
+              % (n, 10000 + f, n, 10000 + f + 2.0))
+WEB0 = raw2flat(571.1)
+SEC_HTML.append('<div id="o-web" class="clip webcard" data-start="%.2f" data-duration="%.2f" data-track-index="10">'
+                '<div class="wbar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i>'
+                '<span class="wurl">🔒&nbsp;<b>samjhowithraj.online</b>/#tracker</span></div>'
+                '<img id="o-web-img" src="assets/img/tracker-top.jpg" alt=""></div>' % (WEB0, FLAT - WEB0))
+js.append("tl.fromTo('#o-web',{opacity:0,y:30},{opacity:1,y:0,duration:.45,ease:'power2.out'},%.2f);" % (10000 + WEB0))
+js.append("tl.to('#o-web-img',{y:-160,duration:6,ease:'power1.inOut'},%.2f);" % (10000 + WEB0 + 1.5))
+roots.append("<!--SECCARDS-->")
 
 # white keyword labels next to Raj's head (one at a time, 2-4 s); a struck label = "X nahi, Y"
 KW = [("o-kw1", "Sirf 1 mahina", None, 97.0, 100.5), ("o-kw2", "Kaafi?", None, 213.0, 216.5),
@@ -489,10 +500,10 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 .pill{height:92px;padding:0 34px;border-radius:9999px;background:rgba(255,255,255,.08);border:3px solid rgba(255,255,255,.4);
   display:flex;align-items:center;font-size:50px;font-weight:700;white-space:nowrap}
 .pill b{margin-left:6px}
-.chip{height:96px;border-radius:16px;background:rgba(17,17,17,.6);border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;
+.chip{left:960px !important;width:880px !important;font-size:42px !important;height:96px;border-radius:16px;background:rgba(17,17,17,.6);border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;
   justify-content:center;font-size:46px;font-weight:700;white-space:nowrap}
-.ll{position:absolute;left:940px;width:920px;text-align:center;font-size:0;white-space:nowrap}
-.ll span{display:inline-block;font-size:60px;font-weight:700;letter-spacing:-.015em;margin:0 .14em;opacity:0}
+.ll{position:absolute;left:60px;top:168px;width:980px;text-align:center;font-size:0;white-space:nowrap;z-index:14}
+.ll span{display:inline-block;font-size:58px;text-shadow:0 4px 18px rgba(0,0,0,.7);font-weight:700;letter-spacing:-.015em;margin:0 .14em;opacity:0}
 .tag{right:60px;top:70px;height:66px;padding:0 26px;border-radius:9999px;background:rgba(255,255,255,.1);border:3px solid rgba(255,255,255,.45);
   display:flex;align-items:center;gap:14px;font-size:32px;font-weight:700;white-space:nowrap}
 .tag .dot{width:16px;height:16px;border-radius:50%;background:#0AF0F0;box-shadow:0 0 14px #0AF0F0}
@@ -527,13 +538,13 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
   box-shadow:0 24px 80px rgba(0,0,0,.5);display:flex;align-items:center;gap:22px;white-space:nowrap}
 .sbav{width:100px;height:100px;border-radius:50%;overflow:hidden;background:#111;flex:none}.sbav img{width:100px;height:100px;display:block}
 .sbbtn{margin-left:10px;background:#FF0000;color:#fff;font-weight:700;font-size:32px;padding:16px 30px;border-radius:9999px}
-#screen{position:absolute;left:920px;top:112px;width:960px;height:800px;border-radius:22px;background:rgba(6,9,15,.82);
+#screen{position:absolute;left:920px;top:112px;width:960px;height:860px;border-radius:22px;background:rgba(6,9,15,.82);
   border:6px solid #1c2230;box-shadow:0 0 0 2px rgba(255,255,255,.12),0 30px 90px rgba(0,0,0,.6)}
-#screenfx{position:absolute;left:926px;top:118px;width:948px;height:788px;border-radius:16px;pointer-events:none;z-index:9;
+#screenfx{position:absolute;left:926px;top:118px;width:948px;height:848px;border-radius:16px;pointer-events:none;z-index:9;
   background:linear-gradient(115deg,rgba(255,255,255,.07) 0%,transparent 30%),repeating-linear-gradient(0deg,rgba(0,0,0,.08) 0 1px,transparent 1px 3px)}
-.bslot{position:absolute;left:926px;top:118px;width:948px;height:788px;border-radius:16px;z-index:8;display:flex;flex-direction:column;
+.bslot{position:absolute;left:926px;top:118px;width:948px;height:848px;border-radius:16px;z-index:8;display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:18px;padding:60px;text-align:center;
-  background:repeating-linear-gradient(135deg,rgba(255,185,4,.10) 0 18px,rgba(255,185,4,.03) 18px 36px),#111520}
+  background:#0b1826}
 .bcap{position:absolute;left:0;right:0;bottom:34px;text-align:center;font-size:44px;font-weight:700;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.8)}
 .btag{font-size:30px;font-weight:700;letter-spacing:.2em;color:#FFB904}
 .bwhat{font-size:46px;font-weight:700;line-height:1.2}
@@ -545,7 +556,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 .ltbar{width:8px;height:78px;border-radius:4px;background:#0AF0F0;box-shadow:0 0 14px rgba(10,240,240,.8)}
 .ltname{font-size:46px;font-weight:700;letter-spacing:.06em;line-height:1}
 .ltsub{font-size:26px;color:rgba(255,255,255,.8);margin-top:6px}
-.secard{position:absolute;left:926px;top:118px;width:948px;height:788px;border-radius:16px;z-index:7;background:#EEF1F5;color:#10131a;
+.secard{position:absolute;left:926px;top:118px;width:948px;height:848px;border-radius:16px;z-index:7;background:#EEF1F5;color:#10131a;
   display:flex;flex-direction:column;justify-content:center;padding:0 90px;
   background-image:linear-gradient(rgba(16,19,26,.05) 2px,transparent 2px),linear-gradient(90deg,rgba(16,19,26,.05) 2px,transparent 2px);background-size:64px 64px}
 .secn{font-size:150px;font-weight:700;line-height:1;color:#0005EE}
@@ -569,6 +580,24 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 .bub b{color:#0005EE}
 /*CHAR_CSS*/
 #panel{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:940px 120px;transform:translate(157px,-63px) scale(.85)}
+.endc{position:absolute;inset:0;z-index:40;opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:46px;
+  background:radial-gradient(900px 600px at 50% 40%,rgba(10,240,240,.12),transparent 70%),#0a0d14}
+.endt{font-size:84px;font-weight:700}
+.endrow{display:flex;gap:34px}
+.endb{display:flex;align-items:center;gap:18px;padding:22px 26px;border-radius:28px;background:rgba(255,255,255,.08);border:3px solid rgba(255,255,255,.3)}
+.endb .ico{width:76px;height:76px;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:700;background:#FF0000;color:#fff}
+.endb .ico.ig{background:linear-gradient(135deg,#F58529,#DD2A7B,#8134AF)}
+.endb .ico.fb{background:#1877F2;font-size:50px}
+.endk{font-size:26px;color:rgba(255,255,255,.75)}
+.endh{font-size:36px;font-weight:700}
+.btn{font-size:30px;font-weight:700;padding:14px 26px;border-radius:9999px;color:#fff}
+.btn.red{background:#FF0000}.btn.blue{background:#0095F6}
+.endw{font-size:40px;color:rgba(255,255,255,.88)}.endw b{color:#0AF0F0}
+.webcard{position:absolute;left:926px;top:118px;width:948px;height:848px;border-radius:16px;z-index:11;overflow:hidden;background:#141414;opacity:0}
+.wbar{position:absolute;left:0;top:0;right:0;height:58px;background:#24262b;display:flex;align-items:center;gap:10px;padding:0 20px;z-index:2}
+.wbar i{width:13px;height:13px;border-radius:50%;display:inline-block}
+.wurl{margin-left:18px;height:34px;padding:0 18px;border-radius:17px;background:#15171b;display:flex;align-items:center;font-size:21px;color:rgba(255,255,255,.85)}
+#o-web-img{position:absolute;left:0;top:58px;width:948px}
 #draftmark{position:absolute;right:40px;bottom:22px;font-size:20px;color:rgba(255,255,255,.6);letter-spacing:.08em}
 '''
 
@@ -587,6 +616,7 @@ page = '''<!doctype html>
 </div>
 %s
 %s
+<!--ENDCARD-->
 </div>
 <script>
 window.__timelines = window.__timelines || {};
@@ -595,12 +625,13 @@ const WARP = /*WARPDATA*/[];
 function W(t){ for (let i = 1; i < WARP.length; i++){ const [a0,b0] = WARP[i-1], [a1,b1] = WARP[i];
   if (t <= a1) return a1 > a0 ? b0 + (b1-b0)*(t-a0)/(a1-a0) : b1; } return WARP[WARP.length-1][1]; }
 ['to','fromTo','set','from'].forEach(m => { const f = tl[m].bind(tl);
-  tl[m] = function(...a){ const i = a.length-1; if (typeof a[i] === 'number' && a[i] > 0) a[i] = W(a[i]); return f(...a); }; });
+  tl[m] = function(...a){ const i = a.length-1; if (typeof a[i] === 'number' && a[i] >= 10000) a[i] -= 10000;
+    else if (typeof a[i] === 'number' && a[i] > 0) a[i] = W(a[i]); return f(...a); }; });
 function rise(s,t){ tl.fromTo(s,{opacity:0,y:26},{opacity:1,y:0,duration:.4,ease:'power2.out'},t); }
 function out(s,t){ tl.to(s,{opacity:0,duration:.35,ease:'power2.in'},t); }
 function blink(s,t){ tl.to(s,{scaleY:.1,duration:.07,ease:'none'},t); tl.to(s,{scaleY:1,duration:.09,ease:'none'},t+.07); }
 function mood(c,t,m){ tl.to('#'+c+'-'+(m==='sad'?'happy':'sad'),{opacity:0,duration:.2},t); tl.to('#'+c+'-'+m,{opacity:1,duration:.2},t+.1); }
-function write(s,t){ tl.fromTo(s,{rotation:0},{rotation:-9,duration:.12,yoyo:true,repeat:7,ease:'none'},t); }
+function write(s,t){ tl.to(s,{rotation:-9,duration:.12,yoyo:true,repeat:7,ease:'none'},t); }
 function grow(s,t,d){ tl.fromTo(s,{scaleX:0},{scaleX:1,duration:d||.6,ease:'power2.out'},t); }
 function inr(n){ const s=String(Math.round(n)); if(s.length<=3) return s;
   return s.slice(0,-3).replace(/\\B(?=(\\d{2})+(?!\\d))/g,',')+','+s.slice(-3); }
@@ -608,6 +639,7 @@ function count(s,a,b,t,d){ const el=document.querySelector(s); const p={v:a}; el
   tl.to(p,{v:b,duration:d||1.4,ease:'power2.out',onUpdate:()=>{ el.textContent='₹'+inr(p.v); }},t); }
 %s
 tl.to({}, { duration: %.2f }, 0);
+/*ENDJS*/
 window.__timelines["main"] = tl;
 </script>
 </body></html>
@@ -625,6 +657,24 @@ _stage, _sep2, _script = _tail.partition("<script>")
 _stage = _re.sub(r'data-start="([0-9.]+)" data-duration="([0-9.]+)"', _warp_attr, _stage)
 page = _head + _sep + _stage + _sep2 + _script
 page = page.replace('/*WARPDATA*/[]', _json.dumps(WARP))
+ENDCARD = ('<div id="o-end" class="clip endc" data-start="%.2f" data-duration="%.2f" data-track-index="15">'
+  '<div class="endt">Video pasand aaya?</div>'
+  '<div class="endrow">'
+  '<div id="o-end-yt" class="endb yt"><span class="ico">▶</span><div><div class="endk">YouTube</div><div class="endh">@SamjhowithRaj</div></div><span class="btn red">Subscribe</span></div>'
+  '<div id="o-end-ig" class="endb"><span class="ico ig">◎</span><div><div class="endk">Instagram</div><div class="endh">@samjhowithraj</div></div><span class="btn blue">Follow</span></div>'
+  '<div id="o-end-fb" class="endb"><span class="ico fb">f</span><div><div class="endk">Facebook</div><div class="endh">Samjho with Raj</div></div><span class="btn blue">Follow</span></div>'
+  '</div><div class="endw">Free notes: <b>samjhowithraj.online</b> · Part 2 jaldi aa raha hai!</div></div>') % (END0, FINAL - END0)
+END_JS = ("tl.fromTo('#o-end',{opacity:0},{opacity:1,duration:.5},%.2f);"
+          "tl.fromTo('#o-end .endt',{opacity:0,y:30},{opacity:1,y:0,duration:.45,ease:'power2.out'},%.2f);"
+          "tl.fromTo('#o-end-yt',{opacity:0,y:40},{opacity:1,y:0,duration:.45,ease:'power2.out'},%.2f);"
+          "tl.fromTo('#o-end-ig',{opacity:0,y:40},{opacity:1,y:0,duration:.45,ease:'power2.out'},%.2f);"
+          "tl.fromTo('#o-end-fb',{opacity:0,y:40},{opacity:1,y:0,duration:.45,ease:'power2.out'},%.2f);"
+          "tl.fromTo('#o-end .endw',{opacity:0},{opacity:1,duration:.4},%.2f);"
+          "tl.fromTo('#o-end-yt .btn',{scale:1},{scale:1.1,duration:.22,yoyo:true,repeat:5,ease:'power1.inOut'},%.2f);"
+          "tl.fromTo('#o-end-ig .btn,#o-end-fb .btn',{scale:1},{scale:1.08,duration:.22,yoyo:true,repeat:3,ease:'power1.inOut'},%.2f);"
+          % tuple(10000 + END0 + d for d in (0, .3, .8, 1.2, 1.6, 2.0, 1.4, 3.0)))
+page = page.replace('<!--ENDCARD-->', '').replace('/*ENDJS*/', '')
+page = page.replace('<!--SECCARDS-->', chr(10).join(SEC_HTML))
 with open(OUT, "w", encoding="utf-8") as f:
     f.write(page)
 NL = chr(10)

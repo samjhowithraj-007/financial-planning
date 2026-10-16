@@ -23,6 +23,9 @@ Recurring fictional household: Two adults, two children, ₹1,00,000 monthly hou
 - Label every scenario and projection as illustrative. State horizon, inflation, returns, fees/taxes treatment and contribution timing. Recheck arithmetic.
 - Avoid guaranteed-return claims and fabricated proof, balances or earnings. Match risk to the goal and deadline.
 - Use only supplied or appropriately licensed footage and music. Verify social links before publication.
+- **Every episode ends the same way:** Raj says "agar aapko financial planner chahiye, visit karo samjhowithraj.online" (the
+  studio screen shows the tracker), then the shared outro `videos/_shared/outro/outro.mp4` plays: a 24 s Financial Tracker
+  walkthrough, then 6 s of Subscribe (YouTube) + Follow (Instagram, Facebook). Put the website line in every script's ending.
 - Creating scripts or assets does not publish them. Publishing needs an explicit publishing request and access to the destination.
 
 ## Episode roadmap

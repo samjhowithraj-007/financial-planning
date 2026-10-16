@@ -31,22 +31,24 @@ def diwali(bid, t):
     js = []
     for k, (lab, art) in enumerate(items):
         cx = 170 + k * 300
-        svg.append('<g id="%s-i%d" transform="translate(%d 380)">%s<text y="140" text-anchor="middle" font-size="40" '
-                   'font-weight="700" fill="#fff" font-family="DM Sans, sans-serif">%s</text></g>' % (bid, k, cx, art, lab))
+        svg.append('<g transform="translate(%d 380)"><g id="%s-i%d">%s<text y="140" text-anchor="middle" font-size="40" '
+                   'font-weight="700" fill="#fff" font-family="DM Sans, sans-serif">%s</text></g></g>' % (cx, bid, k, art, lab))
         js.append("tl.fromTo('#%s-i%d',{opacity:0,y:-60},{opacity:1,y:0,duration:.45,ease:'power2.out'},%.2f);" % (bid, k, t + 0.2 + k * 0.5))
     return "".join(svg), "Ye har saal aate hain", js
 
 
 def ghar(bid, t):
-    """A flat with a FOR SALE board; Amit and Neha look at it, Neha unsure."""
+    """A flat with a FOR SALE board; Amit and Neha look at it, Neha unsure. Left to right, nothing overlapping:
+    Amit (x 30-200), Neha (x 210-375), the board (x 405-565), the flat (x 590-910)."""
     svg = ['<rect x="0" y="0" width="948" height="788" fill="#11253a"/>',
-           '<g id="%s-h"><rect x="430" y="250" width="380" height="440" fill="#e8e1d4"/>' % bid +
-           "".join('<rect x="%d" y="%d" width="60" height="70" fill="#7fb3e6"/>' % (465 + c * 110, 290 + r * 120) for r in range(3) for c in range(3)) +
-           '<rect x="590" y="600" width="60" height="90" fill="#6b4a2b"/></g>',
-           '<g id="%s-s"><rect x="300" y="520" width="12" height="170" fill="#6b4a2b"/><rect x="230" y="470" width="160" height="70" rx="8" fill="#E0242E"/>'
-           '<text x="310" y="516" text-anchor="middle" font-size="30" font-weight="700" fill="#fff" font-family="DM Sans, sans-serif">FOR SALE</text></g>' % bid,
-           '<g transform="translate(40 410)">%s</g>' % character("amit", bid + "-a", 290),
-           '<g transform="translate(140 420)">%s</g>' % character("neha", bid + "-n", 280)]
+           '<rect x="0" y="700" width="948" height="88" fill="#0b1826"/>',
+           '<g id="%s-h"><rect x="590" y="250" width="320" height="450" fill="#e8e1d4"/>' % bid +
+           "".join('<rect x="%d" y="%d" width="56" height="70" fill="#7fb3e6"/>' % (615 + c * 100, 290 + r * 120) for r in range(3) for c in range(3)) +
+           '<rect x="722" y="610" width="56" height="90" fill="#6b4a2b"/></g>',
+           '<g id="%s-s"><rect x="479" y="540" width="12" height="160" fill="#6b4a2b"/><rect x="405" y="470" width="160" height="76" rx="8" fill="#E0242E"/>'
+           '<text x="485" y="519" text-anchor="middle" font-size="30" font-weight="700" fill="#fff" font-family="DM Sans, sans-serif">FOR SALE</text></g>' % bid,
+           '<g transform="translate(30 410)">%s</g>' % character("amit", bid + "-a", 290),
+           '<g transform="translate(210 420)">%s</g>' % character("neha", bid + "-n", 280)]
     js = ["tl.fromTo('#%s-h',{opacity:0,y:40},{opacity:1,y:0,duration:.5,ease:'power2.out'},%.2f);" % (bid, t + 0.1),
           "tl.fromTo('#%s-s',{opacity:0,rotation:-8},{opacity:1,rotation:0,duration:.4,ease:'power2.out'},%.2f);" % (bid, t + 0.6),
           "mood('%s-n',%.2f,'sad');" % (bid, t + 1.6)]
