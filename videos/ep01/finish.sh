@@ -44,7 +44,7 @@ cp renders/money-plan-01-yt.mp4 renders/final-sheet.png "$OUT/"
 md5sum renders/money-plan-01-yt.mp4 "$OUT/money-plan-01-yt.mp4"
 
 log "save project"
-cd "/c/samjhowithraj/financial planning" && git add -A && git commit -q -m "Part 1 long video v2: captions above Raj, taller screen, 2 s section cards, subscribe + follow end screen, clean scenes, full-width labels, tracker walkthrough outro
+cd "/c/samjhowithraj/financial planning" && git add -A && git commit -q -m "Part 1 reshoot: higher-energy take, 10 AI family clips, bigger studio screen, Raj at 64% on the left, small website window, tracker outro
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>" && GIT_TERMINAL_PROMPT=0 git push -q 2>&1 | tail -1
 log "ALL DONE"

@@ -70,7 +70,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 .bslot{position:absolute;left:926px;top:118px;width:948px;height:848px;border-radius:16px;z-index:8;display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:18px;padding:60px;text-align:center;
   background:#0b1826}
-.bcap{position:absolute;left:0;right:0;bottom:34px;text-align:center;font-size:44px;font-weight:700;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.8)}
+.bcap{position:absolute;left:0;right:0;bottom:4px;text-align:center;font-size:44px;font-weight:700;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.8)}
 .btag{font-size:30px;font-weight:700;letter-spacing:.2em;color:#FFB904}
 .bwhat{font-size:46px;font-weight:700;line-height:1.2}
 .disc{position:absolute;left:40px;top:40px;width:560px;padding:16px 22px;z-index:30;opacity:0;background:rgba(10,13,20,.88);border:2px solid rgba(255,185,4,.55);border-radius:16px;display:flex;flex-direction:column;gap:6px}
@@ -104,7 +104,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
   box-shadow:0 18px 50px rgba(0,0,0,.45)}
 .bub b{color:#0005EE}
 .ch-part{transform-box:fill-box;transform-origin:50% 50%}.ch-arm{transform-box:fill-box;transform-origin:50% 6%}
-#panel{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:940px 120px;transform:translate(157px,-63px) scale(.85)}
+#panel{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:940px 120px;transform:translate(30px,-72px) scale(.99)}
 .endc{position:absolute;inset:0;z-index:40;opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:46px;
   background:radial-gradient(900px 600px at 50% 40%,rgba(10,240,240,.12),transparent 70%),#0a0d14}
 .endt{font-size:84px;font-weight:700}
@@ -118,34 +118,26 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 .btn{font-size:30px;font-weight:700;padding:14px 26px;border-radius:9999px;color:#fff}
 .btn.red{background:#FF0000}.btn.blue{background:#0095F6}
 .endw{font-size:40px;color:rgba(255,255,255,.88)}.endw b{color:#0AF0F0}
-.webcard{position:absolute;left:926px;top:118px;width:948px;height:848px;border-radius:16px;z-index:11;overflow:hidden;background:#141414;opacity:0}
+.namechip{position:absolute;display:flex;flex-direction:column;padding:8px 16px;border-radius:12px;background:rgba(10,13,20,.88);border:2px solid rgba(10,240,240,.6);width:180px}.namechip b{font-size:30px}.namechip span{font-size:20px;color:rgba(255,255,255,.75)}
+.webback{position:absolute;left:926px;top:118px;width:948px;height:848px;border-radius:16px;z-index:10;background:#0a0d14;opacity:0}
+.webcard{position:absolute;left:1060px;top:262px;width:680px;height:540px;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 2px rgba(10,240,240,.35);border-radius:16px;z-index:11;overflow:hidden;background:#141414;opacity:0}
 .wbar{position:absolute;left:0;top:0;right:0;height:58px;background:#24262b;display:flex;align-items:center;gap:10px;padding:0 20px;z-index:2}
 .wbar i{width:13px;height:13px;border-radius:50%;display:inline-block}
 .wurl{margin-left:18px;height:34px;padding:0 18px;border-radius:17px;background:#15171b;display:flex;align-items:center;font-size:21px;color:rgba(255,255,255,.85)}
-#o-web-img{position:absolute;left:0;top:58px;width:948px}
+#o-web-img{position:absolute;left:0;top:0;width:680px}
+.wview{position:absolute;left:0;right:0;top:58px;bottom:66px;overflow:hidden}
+.wfoot{position:absolute;left:0;right:0;bottom:0;height:66px;display:flex;align-items:center;justify-content:center;font-size:27px;color:#fff;background:#0b0f16;border-top:1px solid rgba(255,255,255,.08)}
+.wfoot b{color:#0AF0F0;margin:0 .3em}
 #draftmark{position:absolute;right:40px;bottom:22px;font-size:20px;color:rgba(255,255,255,.6);letter-spacing:.08em}
 </style></head>
 <body>
-<div id="stage" data-composition-id="main" data-start="0.00" data-duration="509.63" data-fps="30" data-width="1920" data-height="1080">
+<div id="stage" data-composition-id="main" data-start="0.00" data-duration="433.63" data-fps="30" data-width="1920" data-height="1080">
 <div id="grid"></div>
 <div id="panel">
 <div id="screen"></div>
-<div id="sc-hook" class="scene clip" data-start="0.10" data-duration="50.93" data-track-index="1">
-
-<div id="h-cal" class="card h" style="left:960px;top:150px;width:220px;height:250px;padding:0;overflow:hidden">
-  <div style="height:62px;background:#FFB904;color:#111;font-size:28px;font-weight:700;display:flex;align-items:center;justify-content:center;letter-spacing:.08em">TAREEKH</div>
-  <div id="h-d1" style="position:absolute;left:0;right:0;top:80px;text-align:center;font-size:150px;font-weight:700;line-height:1">1</div>
-  <div id="h-d25" class="h" style="position:absolute;left:0;right:0;top:80px;text-align:center;font-size:150px;font-weight:700;line-height:1">25</div>
+<div id="sc-hook" class="scene clip" data-start="0.14" data-duration="43.42" data-track-index="1">
 </div>
-<div id="h-sms" class="h sms" style="left:1530px;top:170px"><div class="smsh">BANK · SMS · 9:00</div>
-  <div style="font-size:28px">Salary credited</div><div id="h-amt" class="amber" style="font-size:66px;font-weight:700;line-height:1.1">₹0</div></div>
-<div id="h-amit" class="h" style="left:1240px;top:380px"><svg width="300" height="510" viewBox="0 0 200 340" aria-label="Amit"><rect x="70" y="232" width="26" height="88" rx="11" fill="#2B2F3A"/><rect x="104" y="232" width="26" height="88" rx="11" fill="#2B2F3A"/><ellipse cx="81" cy="322" rx="19" ry="8" fill="#1a1a1a"/><ellipse cx="119" cy="322" rx="19" ry="8" fill="#1a1a1a"/><rect x="58" y="128" width="84" height="116" rx="26" fill="#2F6FDB"/><path d="M86 128 L100 150 L114 128 Z" fill="#ffffff" opacity=".9"/><rect x="36" y="134" width="22" height="94" rx="11" fill="#2F6FDB"/><circle cx="47" cy="230" r="11" fill="#C68A5C"/><g id="c-amit-arm" class="ch-arm"><rect x="142" y="134" width="22" height="70" rx="11" fill="#2F6FDB"/><rect x="128" y="168" width="22" height="58" rx="11" fill="#2F6FDB" transform="rotate(-38 139 172)"/><rect x="104" y="168" width="26" height="44" rx="5" fill="#121418" stroke="#3a3f4a" stroke-width="2"/><rect x="108" y="173" width="18" height="30" rx="2" fill="#0AF0F0" opacity=".85"/><circle cx="112" cy="206" r="9" fill="#C68A5C"/></g><rect x="90" y="110" width="20" height="24" fill="#C68A5C"/><circle cx="56" cy="82" r="8" fill="#C68A5C"/><circle cx="144" cy="82" r="8" fill="#C68A5C"/><circle cx="100" cy="78" r="44" fill="#C68A5C"/><path d="M55 78 Q54 30 100 30 Q146 30 145 78 Q134 50 100 50 Q68 50 55 78 Z" fill="#1E1A18"/><g id="c-amit-eyes" class="ch-part"><ellipse cx="84" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/><ellipse cx="116" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/></g><g fill="none" stroke="#1b1b1b" stroke-width="3"><circle cx="84" cy="80" r="13"/><circle cx="116" cy="80" r="13"/><path d="M97 80 L103 80"/></g><circle cx="74" cy="96" r="6" fill="#E46A6A" opacity=".25"/><circle cx="126" cy="96" r="6" fill="#E46A6A" opacity=".25"/><path id="c-amit-happy" d="M86 100 Q100 113 114 100" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round"/><path id="c-amit-sad" d="M88 108 Q100 97 112 108" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round" opacity="0"/></svg></div>
-<div id="h-neha" class="h" style="left:1580px;top:420px"><svg width="276" height="470" viewBox="0 0 200 340" aria-label="Neha"><rect x="70" y="232" width="26" height="88" rx="11" fill="#5B2A4C"/><rect x="104" y="232" width="26" height="88" rx="11" fill="#5B2A4C"/><ellipse cx="81" cy="322" rx="19" ry="8" fill="#1a1a1a"/><ellipse cx="119" cy="322" rx="19" ry="8" fill="#1a1a1a"/><path d="M52 82 Q50 26 100 26 Q150 26 148 82 L154 172 Q132 160 126 120 L74 120 Q68 160 46 172 Z" fill="#1E1A18"/><path d="M60 130 Q100 118 140 130 L150 270 L50 270 Z" fill="#C2367A"/><path d="M60 130 Q100 118 140 130 L136 150 Q100 140 64 150 Z" fill="#FFB904" opacity=".85"/><rect x="36" y="134" width="22" height="94" rx="11" fill="#C2367A"/><circle cx="47" cy="230" r="11" fill="#D9A070"/><g id="c-neha-arm" class="ch-arm"><rect x="142" y="134" width="22" height="94" rx="11" fill="#C2367A"/><circle cx="153" cy="230" r="11" fill="#D9A070"/></g><rect x="90" y="110" width="20" height="24" fill="#D9A070"/><circle cx="56" cy="82" r="8" fill="#D9A070"/><circle cx="144" cy="82" r="8" fill="#D9A070"/><circle cx="100" cy="78" r="44" fill="#D9A070"/><path d="M55 84 Q54 30 100 30 Q146 30 145 84 Q132 50 100 50 Q68 50 55 84 Z" fill="#1E1A18"/><circle cx="100" cy="28" r="17" fill="#1E1A18"/><circle cx="100" cy="62" r="3.5" fill="#E0242E"/><g id="c-neha-eyes" class="ch-part"><ellipse cx="84" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/><ellipse cx="116" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/></g><circle cx="74" cy="96" r="6" fill="#E46A6A" opacity=".25"/><circle cx="126" cy="96" r="6" fill="#E46A6A" opacity=".25"/><path id="c-neha-happy" d="M86 100 Q100 113 114 100" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round"/><path id="c-neha-sad" d="M88 108 Q100 97 112 108" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round" opacity="0"/></svg></div>
-<div id="h-b1" class="h bub" style="left:960px;top:450px">Is mahine toh <b>sab set</b> hai!</div>
-<div id="h-b2" class="h bub" style="left:1200px;top:170px;width:470px;white-space:normal">Aarav ki college fees ka kya socha? Aur <b>apna ghar</b> kab?</div>
-
-</div>
-<div id="sc-intro" class="scene clip" data-start="51.03" data-duration="31.67" data-track-index="2">
+<div id="sc-intro" class="scene clip" data-start="43.57" data-duration="22.23" data-track-index="2">
 
 <div id="i-eye" class="h eyebrow" style="left:940px;top:250px;width:920px;text-align:center">PART 1 / 50</div>
 <div id="i-t1" class="h title" style="left:940px;top:330px;width:920px;text-align:center;font-size:74px">Middle-Class Family Ka</div>
@@ -154,23 +146,20 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 <div id="i-dots" class="h" style="left:1100px;top:660px;width:600px;text-align:center;font-size:0"><i class="sd first"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i><i class="sd"></i></div>
 
 </div>
-<div id="sc-family" class="scene clip" data-start="82.70" data-duration="54.83" data-track-index="1">
+<div id="sc-family" class="scene clip" data-start="65.80" data-duration="42.83" data-track-index="1">
 <div id="f-tag" class="tag h"><span class="dot"></span><span>1 · Verma family</span><span class="pips"><i class="pip on"></i><i class="pip"></i><i class="pip"></i><i class="pip"></i><i class="pip"></i><i class="pip"></i><i class="pip"></i></span></div>
 <div id="f-title" class="h title" style="left:940px;top:150px;width:920px;text-align:center">Verma family</div>
 <div id="f-where" class="h" style="left:940px;top:252px;width:920px;text-align:center;font-size:38px;color:rgba(255,255,255,.85)"><span class="cyan">●</span> Lucknow · kiraye ka 2BHK</div>
-<div id="f-p0" class="h" style="left:970px;top:310px;width:194px;text-align:center"><svg width="194" height="330" viewBox="0 0 200 340" aria-label="Amit"><rect x="70" y="232" width="26" height="88" rx="11" fill="#2B2F3A"/><rect x="104" y="232" width="26" height="88" rx="11" fill="#2B2F3A"/><ellipse cx="81" cy="322" rx="19" ry="8" fill="#1a1a1a"/><ellipse cx="119" cy="322" rx="19" ry="8" fill="#1a1a1a"/><rect x="58" y="128" width="84" height="116" rx="26" fill="#2F6FDB"/><path d="M86 128 L100 150 L114 128 Z" fill="#ffffff" opacity=".9"/><rect x="36" y="134" width="22" height="94" rx="11" fill="#2F6FDB"/><circle cx="47" cy="230" r="11" fill="#C68A5C"/><g id="f-amit-arm" class="ch-arm"><rect x="142" y="134" width="22" height="94" rx="11" fill="#2F6FDB"/><circle cx="153" cy="230" r="11" fill="#C68A5C"/></g><rect x="90" y="110" width="20" height="24" fill="#C68A5C"/><circle cx="56" cy="82" r="8" fill="#C68A5C"/><circle cx="144" cy="82" r="8" fill="#C68A5C"/><circle cx="100" cy="78" r="44" fill="#C68A5C"/><path d="M55 78 Q54 30 100 30 Q146 30 145 78 Q134 50 100 50 Q68 50 55 78 Z" fill="#1E1A18"/><g id="f-amit-eyes" class="ch-part"><ellipse cx="84" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/><ellipse cx="116" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/></g><g fill="none" stroke="#1b1b1b" stroke-width="3"><circle cx="84" cy="80" r="13"/><circle cx="116" cy="80" r="13"/><path d="M97 80 L103 80"/></g><circle cx="74" cy="96" r="6" fill="#E46A6A" opacity=".25"/><circle cx="126" cy="96" r="6" fill="#E46A6A" opacity=".25"/><path id="f-amit-happy" d="M86 100 Q100 113 114 100" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round"/><path id="f-amit-sad" d="M88 108 Q100 97 112 108" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round" opacity="0"/></svg><div style="font-size:36px;font-weight:700;margin-top:4px">Amit</div><div style="font-size:24px;color:rgba(255,255,255,.75);white-space:nowrap;margin-left:-40px;margin-right:-40px">35 · private job</div></div>
-<div id="f-p1" class="h" style="left:1190px;top:310px;width:194px;text-align:center"><svg width="194" height="330" viewBox="0 0 200 340" aria-label="Neha"><rect x="70" y="232" width="26" height="88" rx="11" fill="#5B2A4C"/><rect x="104" y="232" width="26" height="88" rx="11" fill="#5B2A4C"/><ellipse cx="81" cy="322" rx="19" ry="8" fill="#1a1a1a"/><ellipse cx="119" cy="322" rx="19" ry="8" fill="#1a1a1a"/><path d="M52 82 Q50 26 100 26 Q150 26 148 82 L154 172 Q132 160 126 120 L74 120 Q68 160 46 172 Z" fill="#1E1A18"/><path d="M60 130 Q100 118 140 130 L150 270 L50 270 Z" fill="#C2367A"/><path d="M60 130 Q100 118 140 130 L136 150 Q100 140 64 150 Z" fill="#FFB904" opacity=".85"/><rect x="36" y="134" width="22" height="94" rx="11" fill="#C2367A"/><circle cx="47" cy="230" r="11" fill="#D9A070"/><g id="f-neha-arm" class="ch-arm"><rect x="142" y="134" width="22" height="94" rx="11" fill="#C2367A"/><circle cx="153" cy="230" r="11" fill="#D9A070"/></g><rect x="90" y="110" width="20" height="24" fill="#D9A070"/><circle cx="56" cy="82" r="8" fill="#D9A070"/><circle cx="144" cy="82" r="8" fill="#D9A070"/><circle cx="100" cy="78" r="44" fill="#D9A070"/><path d="M55 84 Q54 30 100 30 Q146 30 145 84 Q132 50 100 50 Q68 50 55 84 Z" fill="#1E1A18"/><circle cx="100" cy="28" r="17" fill="#1E1A18"/><circle cx="100" cy="62" r="3.5" fill="#E0242E"/><g id="f-neha-eyes" class="ch-part"><ellipse cx="84" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/><ellipse cx="116" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/></g><circle cx="74" cy="96" r="6" fill="#E46A6A" opacity=".25"/><circle cx="126" cy="96" r="6" fill="#E46A6A" opacity=".25"/><path id="f-neha-happy" d="M86 100 Q100 113 114 100" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round"/><path id="f-neha-sad" d="M88 108 Q100 97 112 108" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round" opacity="0"/></svg><div style="font-size:36px;font-weight:700;margin-top:4px">Neha</div><div style="font-size:24px;color:rgba(255,255,255,.75);white-space:nowrap;margin-left:-40px;margin-right:-40px">33 · tuitions</div></div>
-<div id="f-p2" class="h" style="left:1420px;top:395px;width:144px;text-align:center"><svg width="144" height="245" viewBox="0 0 200 340" aria-label="Aarav"><rect x="70" y="232" width="26" height="88" rx="11" fill="#2E4A7A"/><rect x="104" y="232" width="26" height="88" rx="11" fill="#2E4A7A"/><ellipse cx="81" cy="322" rx="19" ry="8" fill="#1a1a1a"/><ellipse cx="119" cy="322" rx="19" ry="8" fill="#1a1a1a"/><rect x="58" y="128" width="84" height="116" rx="26" fill="#F2A71B"/><text x="100" y="196" text-anchor="middle" font-size="34" font-weight="700" fill="#1a1a1a" font-family="DM Sans, sans-serif">8</text><rect x="36" y="134" width="22" height="94" rx="11" fill="#F2A71B"/><circle cx="47" cy="230" r="11" fill="#C68A5C"/><g id="f-aarav-arm" class="ch-arm"><rect x="142" y="134" width="22" height="94" rx="11" fill="#F2A71B"/><circle cx="153" cy="230" r="11" fill="#C68A5C"/><rect x="158" y="150" width="11" height="100" rx="5" fill="#D9A35B" transform="rotate(14 163 150)"/></g><rect x="90" y="110" width="20" height="24" fill="#C68A5C"/><circle cx="56" cy="82" r="8" fill="#C68A5C"/><circle cx="144" cy="82" r="8" fill="#C68A5C"/><circle cx="100" cy="78" r="44" fill="#C68A5C"/><path d="M55 78 Q54 30 100 30 Q146 30 145 78 Q134 50 100 50 Q68 50 55 78 Z" fill="#1E1A18"/><g id="f-aarav-eyes" class="ch-part"><ellipse cx="84" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/><ellipse cx="116" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/></g><circle cx="74" cy="96" r="6" fill="#E46A6A" opacity=".25"/><circle cx="126" cy="96" r="6" fill="#E46A6A" opacity=".25"/><path id="f-aarav-happy" d="M86 100 Q100 113 114 100" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round"/><path id="f-aarav-sad" d="M88 108 Q100 97 112 108" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round" opacity="0"/></svg><div style="font-size:36px;font-weight:700;margin-top:4px">Aarav</div><div style="font-size:24px;color:rgba(255,255,255,.75);white-space:nowrap;margin-left:-40px;margin-right:-40px">8 saal</div></div>
-<div id="f-p3" class="h" style="left:1610px;top:440px;width:118px;text-align:center"><svg width="118" height="200" viewBox="0 0 200 340" aria-label="Pihu"><rect x="70" y="232" width="26" height="88" rx="11" fill="#D9A070"/><rect x="104" y="232" width="26" height="88" rx="11" fill="#D9A070"/><ellipse cx="81" cy="322" rx="19" ry="8" fill="#1a1a1a"/><ellipse cx="119" cy="322" rx="19" ry="8" fill="#1a1a1a"/><path d="M70 128 L130 128 L156 262 L44 262 Z" fill="#FF7BB0"/><rect x="60" y="250" width="80" height="14" rx="7" fill="#ffffff" opacity=".55"/><rect x="36" y="134" width="22" height="94" rx="11" fill="#FF7BB0"/><circle cx="47" cy="230" r="11" fill="#D9A070"/><g id="f-pihu-arm" class="ch-arm"><rect x="142" y="134" width="22" height="94" rx="11" fill="#FF7BB0"/><circle cx="153" cy="230" r="11" fill="#D9A070"/></g><g transform="translate(18 196)"><circle cx="18" cy="14" r="16" fill="#B07A4C"/><circle cx="6" cy="0" r="7" fill="#B07A4C"/><circle cx="30" cy="0" r="7" fill="#B07A4C"/><circle cx="12" cy="12" r="2.5" fill="#1a1a1a"/><circle cx="24" cy="12" r="2.5" fill="#1a1a1a"/></g><rect x="90" y="110" width="20" height="24" fill="#D9A070"/><circle cx="56" cy="82" r="8" fill="#D9A070"/><circle cx="144" cy="82" r="8" fill="#D9A070"/><circle cx="100" cy="78" r="44" fill="#D9A070"/><path d="M56 80 Q56 32 100 32 Q144 32 144 80 Q130 54 100 56 Q70 54 56 80 Z" fill="#1E1A18"/><circle cx="48" cy="62" r="15" fill="#1E1A18"/><circle cx="152" cy="62" r="15" fill="#1E1A18"/><circle cx="56" cy="56" r="5" fill="#FF7BB0"/><circle cx="144" cy="56" r="5" fill="#FF7BB0"/><g id="f-pihu-eyes" class="ch-part"><ellipse cx="84" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/><ellipse cx="116" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/></g><circle cx="74" cy="96" r="6" fill="#E46A6A" opacity=".25"/><circle cx="126" cy="96" r="6" fill="#E46A6A" opacity=".25"/><path id="f-pihu-happy" d="M86 100 Q100 113 114 100" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round"/><path id="f-pihu-sad" d="M88 108 Q100 97 112 108" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round" opacity="0"/></svg><div style="font-size:36px;font-weight:700;margin-top:4px">Pihu</div><div style="font-size:24px;color:rgba(255,255,255,.75);white-space:nowrap;margin-left:-40px;margin-right:-40px">4 saal</div></div>
-<div id="f-inc" class="card h" style="left:1080px;top:735px;width:640px;height:150px;text-align:center;padding-top:14px"><div id="f-incv" class="amber" style="font-size:78px;font-weight:700;line-height:1.1">₹0</div><div style="font-size:28px;color:rgba(255,255,255,.78)">har mahine · ghar ki kul take-home</div></div>
+<div id="f-pic" class="h" style="left:1010px;top:300px;width:780px;height:439px;border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.55)"><img src="assets/img/verma-family.png" style="width:100%;height:100%;object-fit:cover"></div>
+<div id="f-p0" class="h namechip" style="left:1040px;top:379px"><b>Amit</b><span>35 · private job</span></div>
+<div id="f-p1" class="h namechip" style="left:1587px;top:404px"><b>Neha</b><span>33 · tuitions</span></div>
+<div id="f-p2" class="h namechip" style="left:1085px;top:530px"><b>Aarav</b><span>8 saal</span></div>
+<div id="f-p3" class="h namechip" style="left:1530px;top:554px"><b>Pihu</b><span>4 saal</span></div>
+<div id="f-inc" class="card h" style="left:1080px;top:762px;width:640px;height:150px;text-align:center;padding-top:14px"><div id="f-incv" class="amber" style="font-size:78px;font-weight:700;line-height:1.1">₹0</div><div style="font-size:28px;color:rgba(255,255,255,.78)">har mahine · ghar ki kul take-home</div></div>
 <div id="f-ex" class="chip h" style="left:1140px;top:760px;width:520px">Example family ·&nbsp;<b class="mag">asli nahi</b></div>
 </div>
-<div id="sc-today" class="scene clip" data-start="137.53" data-duration="52.20" data-track-index="2">
+<div id="sc-today" class="scene clip" data-start="108.63" data-duration="47.90" data-track-index="2">
 <div id="t-tag" class="tag h"><span class="dot"></span><span>2 · Aaj ka paisa</span><span class="pips"><i class="pip on"></i><i class="pip on"></i><i class="pip"></i><i class="pip"></i><i class="pip"></i><i class="pip"></i><i class="pip"></i></span></div>
-<div id="t-sun" class="h eyebrow" style="left:940px;top:160px;width:920px;text-align:center">EK SUNDAY · HISAAB</div>
-<div id="t-amit" class="h" style="left:1110px;top:330px"><svg width="253" height="430" viewBox="0 0 200 340" aria-label="Amit"><rect x="70" y="232" width="26" height="88" rx="11" fill="#2B2F3A"/><rect x="104" y="232" width="26" height="88" rx="11" fill="#2B2F3A"/><ellipse cx="81" cy="322" rx="19" ry="8" fill="#1a1a1a"/><ellipse cx="119" cy="322" rx="19" ry="8" fill="#1a1a1a"/><rect x="58" y="128" width="84" height="116" rx="26" fill="#2F6FDB"/><path d="M86 128 L100 150 L114 128 Z" fill="#ffffff" opacity=".9"/><rect x="36" y="134" width="22" height="94" rx="11" fill="#2F6FDB"/><circle cx="47" cy="230" r="11" fill="#C68A5C"/><g id="t-amit-arm" class="ch-arm"><rect x="142" y="134" width="22" height="94" rx="11" fill="#2F6FDB"/><circle cx="153" cy="230" r="11" fill="#C68A5C"/></g><rect x="90" y="110" width="20" height="24" fill="#C68A5C"/><circle cx="56" cy="82" r="8" fill="#C68A5C"/><circle cx="144" cy="82" r="8" fill="#C68A5C"/><circle cx="100" cy="78" r="44" fill="#C68A5C"/><path d="M55 78 Q54 30 100 30 Q146 30 145 78 Q134 50 100 50 Q68 50 55 78 Z" fill="#1E1A18"/><g id="t-amit-eyes" class="ch-part"><ellipse cx="84" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/><ellipse cx="116" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/></g><g fill="none" stroke="#1b1b1b" stroke-width="3"><circle cx="84" cy="80" r="13"/><circle cx="116" cy="80" r="13"/><path d="M97 80 L103 80"/></g><circle cx="74" cy="96" r="6" fill="#E46A6A" opacity=".25"/><circle cx="126" cy="96" r="6" fill="#E46A6A" opacity=".25"/><path id="t-amit-happy" d="M86 100 Q100 113 114 100" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round"/><path id="t-amit-sad" d="M88 108 Q100 97 112 108" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round" opacity="0"/></svg></div>
-<div id="t-neha" class="h" style="left:1410px;top:350px"><svg width="241" height="410" viewBox="0 0 200 340" aria-label="Neha"><rect x="70" y="232" width="26" height="88" rx="11" fill="#5B2A4C"/><rect x="104" y="232" width="26" height="88" rx="11" fill="#5B2A4C"/><ellipse cx="81" cy="322" rx="19" ry="8" fill="#1a1a1a"/><ellipse cx="119" cy="322" rx="19" ry="8" fill="#1a1a1a"/><path d="M52 82 Q50 26 100 26 Q150 26 148 82 L154 172 Q132 160 126 120 L74 120 Q68 160 46 172 Z" fill="#1E1A18"/><path d="M60 130 Q100 118 140 130 L150 270 L50 270 Z" fill="#C2367A"/><path d="M60 130 Q100 118 140 130 L136 150 Q100 140 64 150 Z" fill="#FFB904" opacity=".85"/><rect x="36" y="134" width="22" height="94" rx="11" fill="#C2367A"/><circle cx="47" cy="230" r="11" fill="#D9A070"/><g id="t-neha-arm" class="ch-arm"><rect x="142" y="134" width="22" height="94" rx="11" fill="#C2367A"/><circle cx="153" cy="230" r="11" fill="#D9A070"/><rect x="150" y="200" width="7" height="44" rx="2" fill="#FFB904" transform="rotate(-30 153 222)"/><rect x="150" y="238" width="7" height="7" fill="#3a2a1a" transform="rotate(-30 153 222)"/></g><rect x="90" y="110" width="20" height="24" fill="#D9A070"/><circle cx="56" cy="82" r="8" fill="#D9A070"/><circle cx="144" cy="82" r="8" fill="#D9A070"/><circle cx="100" cy="78" r="44" fill="#D9A070"/><path d="M55 84 Q54 30 100 30 Q146 30 145 84 Q132 50 100 50 Q68 50 55 84 Z" fill="#1E1A18"/><circle cx="100" cy="28" r="17" fill="#1E1A18"/><circle cx="100" cy="62" r="3.5" fill="#E0242E"/><g id="t-neha-eyes" class="ch-part"><ellipse cx="84" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/><ellipse cx="116" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/></g><circle cx="74" cy="96" r="6" fill="#E46A6A" opacity=".25"/><circle cx="126" cy="96" r="6" fill="#E46A6A" opacity=".25"/><path id="t-neha-happy" d="M86 100 Q100 113 114 100" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round"/><path id="t-neha-sad" d="M88 108 Q100 97 112 108" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round" opacity="0"/></svg></div>
-<div id="t-bub" class="h bub" style="left:1240px;top:215px;width:560px;white-space:normal">Chalo, aaj <b>poora hisaab</b> lagate hain!</div>
 <div id="t-s" class="card h" style="left:960px;top:170px;width:430px;height:176px;padding:22px 28px"><div style="font-size:28px;color:rgba(255,255,255,.75)">Savings account</div><div id="t-sv" class="amber" style="font-size:64px;font-weight:700;margin-top:6px;white-space:nowrap">₹0</div></div>
 <div id="t-e" class="card h" style="left:1410px;top:170px;width:430px;height:176px;padding:22px 28px"><div style="font-size:28px;color:rgba(255,255,255,.75)">Amit ka EPF</div><div id="t-ev" class="amber" style="font-size:64px;font-weight:700;margin-top:6px;white-space:nowrap">₹0</div></div>
 <div id="t-h" class="card h" style="left:960px;top:370px;width:430px;height:176px;padding:22px 28px"><div style="font-size:28px;color:rgba(255,255,255,.75)">Health cover</div><div id="t-hv" class="" style="font-size:52px;font-weight:700;margin-top:6px;white-space:nowrap">Company policy</div></div>
@@ -185,7 +174,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 <div id="t-one" class="chip h" style="left:1170px;top:830px;width:460px"><b class="amber">≈ sirf 1 mahina</b></div>
 
 </div>
-<div id="sc-budget" class="scene clip" data-start="189.73" data-duration="110.03" data-track-index="1">
+<div id="sc-budget" class="scene clip" data-start="156.53" data-duration="94.43" data-track-index="1">
 <div id="b-tag" class="tag h"><span class="dot"></span><span>3 · ₹1 lakh kahan jaata hai</span><span class="pips"><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip"></i><i class="pip"></i><i class="pip"></i><i class="pip"></i></span></div>
 <div id="b-title" class="h" style="left:940px;top:150px;width:920px;text-align:center;font-size:56px;font-weight:700"><span class="amber">₹1,00,000</span> har mahine</div>
 <div id="b-bar" class="h" style="left:960px;top:250px;width:880px;height:84px;border-radius:16px;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.18)"><div id="b-s1" class="seg" style="left:0px;width:506px;background:rgba(255,255,255,.88)"></div><div id="b-s2" class="seg" style="left:510px;width:49px;background:#FFB904"></div><div id="b-s3" class="seg" style="left:563px;width:40px;background:rgba(255,185,4,.55)"></div><div id="b-s4" class="seg" style="left:607px;width:269px;background:#0AF0F0"></div></div>
@@ -199,7 +188,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 <div id="b-p2" class="h" style="left:1580px;top:430px;width:230px;height:400px"><div class="jar"><div id="b-pf2" class="jarfill" style="height:200px"></div></div><div style="text-align:center;font-size:34px;font-weight:700;margin-top:14px">Padhai</div><div class="amber" style="text-align:center;font-size:40px;font-weight:700">₹10,000</div></div>
 <div id="b-q" class="chip h" style="left:1120px;top:920px;width:560px">Par kya ye&nbsp;<b class="mag">kaafi</b>&nbsp;hai?</div>
 </div>
-<div id="sc-goals" class="scene clip" data-start="299.77" data-duration="56.60" data-track-index="2">
+<div id="sc-goals" class="scene clip" data-start="250.97" data-duration="58.80" data-track-index="2">
 <div id="g-tag" class="tag h"><span class="dot"></span><span>4 · Goals aur deadline</span><span class="pips"><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip"></i><i class="pip"></i><i class="pip"></i></span></div>
 <div id="g-axis" class="h" style="left:1000px;top:640px;width:800px;height:4px;background:rgba(255,255,255,.7);border-radius:2px"></div>
 <div id="g-t0" class="h ticklab" style="left:920px;top:658px">Abhi</div>
@@ -217,19 +206,16 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 <div id="g-g4" class="card h goal" style="left:1530px;top:150px;border-color:rgba(255,255,255,.5)">Retirement</div>
 <div id="g-s4" class="h" style="left:1799px;top:230px;width:3px;height:410px;background:rgba(255,255,255,.5)"></div>
 <div id="g-par" class="h" style="left:1000px;top:710px;width:570px;height:46px;border-radius:12px;background:rgba(255,185,4,.16);border:2px solid rgba(255,185,4,.6);font-size:28px;font-weight:700;display:flex;align-items:center;padding-left:18px">Parents ki care: <span class="amber" style="margin-left:10px">kabhi bhi</span></div>
-<div id="g-amit" class="h" style="left:1630px;top:720px"><svg width="100" height="170" viewBox="0 0 200 340" aria-label="Amit"><rect x="70" y="232" width="26" height="88" rx="11" fill="#2B2F3A"/><rect x="104" y="232" width="26" height="88" rx="11" fill="#2B2F3A"/><ellipse cx="81" cy="322" rx="19" ry="8" fill="#1a1a1a"/><ellipse cx="119" cy="322" rx="19" ry="8" fill="#1a1a1a"/><rect x="58" y="128" width="84" height="116" rx="26" fill="#2F6FDB"/><path d="M86 128 L100 150 L114 128 Z" fill="#ffffff" opacity=".9"/><rect x="36" y="134" width="22" height="94" rx="11" fill="#2F6FDB"/><circle cx="47" cy="230" r="11" fill="#C68A5C"/><g id="g-amit-arm" class="ch-arm"><rect x="142" y="134" width="22" height="94" rx="11" fill="#2F6FDB"/><circle cx="153" cy="230" r="11" fill="#C68A5C"/></g><rect x="90" y="110" width="20" height="24" fill="#C68A5C"/><circle cx="56" cy="82" r="8" fill="#C68A5C"/><circle cx="144" cy="82" r="8" fill="#C68A5C"/><circle cx="100" cy="78" r="44" fill="#C68A5C"/><path d="M55 78 Q54 30 100 30 Q146 30 145 78 Q134 50 100 50 Q68 50 55 78 Z" fill="#1E1A18"/><g id="g-amit-eyes" class="ch-part"><ellipse cx="84" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/><ellipse cx="116" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/></g><g fill="none" stroke="#1b1b1b" stroke-width="3"><circle cx="84" cy="80" r="13"/><circle cx="116" cy="80" r="13"/><path d="M97 80 L103 80"/></g><circle cx="74" cy="96" r="6" fill="#E46A6A" opacity=".25"/><circle cx="126" cy="96" r="6" fill="#E46A6A" opacity=".25"/><path id="g-amit-happy" d="M86 100 Q100 113 114 100" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round"/><path id="g-amit-sad" d="M88 108 Q100 97 112 108" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round" opacity="0"/></svg></div>
-<div id="g-neha" class="h" style="left:1740px;top:720px"><svg width="100" height="170" viewBox="0 0 200 340" aria-label="Neha"><rect x="70" y="232" width="26" height="88" rx="11" fill="#5B2A4C"/><rect x="104" y="232" width="26" height="88" rx="11" fill="#5B2A4C"/><ellipse cx="81" cy="322" rx="19" ry="8" fill="#1a1a1a"/><ellipse cx="119" cy="322" rx="19" ry="8" fill="#1a1a1a"/><path d="M52 82 Q50 26 100 26 Q150 26 148 82 L154 172 Q132 160 126 120 L74 120 Q68 160 46 172 Z" fill="#1E1A18"/><path d="M60 130 Q100 118 140 130 L150 270 L50 270 Z" fill="#C2367A"/><path d="M60 130 Q100 118 140 130 L136 150 Q100 140 64 150 Z" fill="#FFB904" opacity=".85"/><rect x="36" y="134" width="22" height="94" rx="11" fill="#C2367A"/><circle cx="47" cy="230" r="11" fill="#D9A070"/><g id="g-neha-arm" class="ch-arm"><rect x="142" y="134" width="22" height="94" rx="11" fill="#C2367A"/><circle cx="153" cy="230" r="11" fill="#D9A070"/><rect x="150" y="200" width="7" height="44" rx="2" fill="#FFB904" transform="rotate(-30 153 222)"/><rect x="150" y="238" width="7" height="7" fill="#3a2a1a" transform="rotate(-30 153 222)"/></g><rect x="90" y="110" width="20" height="24" fill="#D9A070"/><circle cx="56" cy="82" r="8" fill="#D9A070"/><circle cx="144" cy="82" r="8" fill="#D9A070"/><circle cx="100" cy="78" r="44" fill="#D9A070"/><path d="M55 84 Q54 30 100 30 Q146 30 145 84 Q132 50 100 50 Q68 50 55 84 Z" fill="#1E1A18"/><circle cx="100" cy="28" r="17" fill="#1E1A18"/><circle cx="100" cy="62" r="3.5" fill="#E0242E"/><g id="g-neha-eyes" class="ch-part"><ellipse cx="84" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/><ellipse cx="116" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/></g><circle cx="74" cy="96" r="6" fill="#E46A6A" opacity=".25"/><circle cx="126" cy="96" r="6" fill="#E46A6A" opacity=".25"/><path id="g-neha-happy" d="M86 100 Q100 113 114 100" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round"/><path id="g-neha-sad" d="M88 108 Q100 97 112 108" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round" opacity="0"/></svg></div>
 <div id="g-ghar" class="h goal" style="left:1128px;top:780px;border:3px dashed rgba(255,185,4,.8);border-radius:20px;background:rgba(255,185,4,.06)">Apna ghar:&nbsp;<span class="amber">kabhi na kabhi?</span></div>
 </div>
-<div id="sc-jama" class="scene clip" data-start="356.37" data-duration="44.50" data-track-index="1">
+<div id="sc-jama" class="scene clip" data-start="309.77" data-duration="30.13" data-track-index="1">
 <div id="j-tag" class="tag h"><span class="dot"></span><span>5 · Sirf jama rakam</span><span class="pips"><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip"></i><i class="pip"></i></span></div>
 <div id="j-c0" class="card h" style="left:960px;top:170px;width:660px;height:270px;padding:24px 34px"><div style="font-size:36px;font-weight:700;color:rgba(255,255,255,.88)">Padhai · ₹10,000 × 10 saal</div><div id="j-v0" class="amber" style="font-size:100px;font-weight:700;line-height:1.25">₹0</div><div style="font-size:30px;color:rgba(255,255,255,.75)">dono bachchon ke liye</div></div>
 <div id="j-c1" class="card h" style="left:960px;top:470px;width:660px;height:270px;padding:24px 34px"><div style="font-size:36px;font-weight:700;color:rgba(255,255,255,.88)">Retirement · ₹13,000 × 25 saal</div><div id="j-v1" class="amber" style="font-size:100px;font-weight:700;line-height:1.25">₹0</div><div style="font-size:30px;color:rgba(255,255,255,.75)">EPF alag se</div></div>
 <div id="j-cap" class="h" style="left:960px;top:790px;width:880px;text-align:center;font-size:28px;color:rgba(255,255,255,.8)">Sirf jama rakam: growth aur mehngai shamil nahi · <b>Illustrative</b></div>
 <div id="j-ep" class="chip h" style="left:1060px;top:880px;width:680px">Asli kharcha kitna?&nbsp;<b class="cyan">Episode 41 &amp; 46</b></div>
-<div id="j-amit" class="h" style="left:1630px;top:330px"><svg width="235" height="400" viewBox="0 0 200 340" aria-label="Amit"><rect x="70" y="232" width="26" height="88" rx="11" fill="#2B2F3A"/><rect x="104" y="232" width="26" height="88" rx="11" fill="#2B2F3A"/><ellipse cx="81" cy="322" rx="19" ry="8" fill="#1a1a1a"/><ellipse cx="119" cy="322" rx="19" ry="8" fill="#1a1a1a"/><rect x="58" y="128" width="84" height="116" rx="26" fill="#2F6FDB"/><path d="M86 128 L100 150 L114 128 Z" fill="#ffffff" opacity=".9"/><rect x="36" y="134" width="22" height="94" rx="11" fill="#2F6FDB"/><circle cx="47" cy="230" r="11" fill="#C68A5C"/><g id="j-amit-arm" class="ch-arm"><rect x="142" y="134" width="22" height="70" rx="11" fill="#2F6FDB"/><rect x="128" y="168" width="22" height="58" rx="11" fill="#2F6FDB" transform="rotate(-38 139 172)"/><rect x="104" y="168" width="26" height="44" rx="5" fill="#121418" stroke="#3a3f4a" stroke-width="2"/><rect x="108" y="173" width="18" height="30" rx="2" fill="#0AF0F0" opacity=".85"/><circle cx="112" cy="206" r="9" fill="#C68A5C"/></g><rect x="90" y="110" width="20" height="24" fill="#C68A5C"/><circle cx="56" cy="82" r="8" fill="#C68A5C"/><circle cx="144" cy="82" r="8" fill="#C68A5C"/><circle cx="100" cy="78" r="44" fill="#C68A5C"/><path d="M55 78 Q54 30 100 30 Q146 30 145 78 Q134 50 100 50 Q68 50 55 78 Z" fill="#1E1A18"/><g id="j-amit-eyes" class="ch-part"><ellipse cx="84" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/><ellipse cx="116" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/></g><g fill="none" stroke="#1b1b1b" stroke-width="3"><circle cx="84" cy="80" r="13"/><circle cx="116" cy="80" r="13"/><path d="M97 80 L103 80"/></g><circle cx="74" cy="96" r="6" fill="#E46A6A" opacity=".25"/><circle cx="126" cy="96" r="6" fill="#E46A6A" opacity=".25"/><path id="j-amit-happy" d="M86 100 Q100 113 114 100" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round"/><path id="j-amit-sad" d="M88 108 Q100 97 112 108" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round" opacity="0"/></svg></div>
 </div>
-<div id="sc-dabba" class="scene clip" data-start="400.87" data-duration="41.77" data-track-index="2">
+<div id="sc-dabba" class="scene clip" data-start="339.89" data-duration="30.91" data-track-index="2">
 <div id="d-tag" class="tag h"><span class="dot"></span><span>6 · Har goal ka dabba</span><span class="pips"><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip"></i></span></div>
 <div id="d-j0" class="h" style="left:1000px;top:170px;width:230px"><div class="jar" style="height:200px"><div class="jarfill" style="height:60px"></div></div><div class="cyan" style="text-align:center;font-size:36px;font-weight:700;margin-top:12px">1 saal</div><div style="text-align:center;font-size:30px;color:rgba(255,255,255,.8)">Emergency</div></div>
 <div id="d-j1" class="h" style="left:1290px;top:170px;width:230px"><div class="jar" style="height:200px"><div class="jarfill" style="height:110px"></div></div><div class="cyan" style="text-align:center;font-size:36px;font-weight:700;margin-top:12px">10–14 saal</div><div style="text-align:center;font-size:30px;color:rgba(255,255,255,.8)">College</div></div>
@@ -238,13 +224,12 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 <!-- d-o1 class="card h step" style="left:960px;top:680px"><b class="cyan">1</b> Pehle safety<div class="stepsub">emergency fund · insurance · mehnga karz nahi</div></div> -->
 <!-- d-o2 class="card h step" style="left:1410px;top:680px"><b class="cyan">2</b> Phir lambe goals<div class="stepsub">college · ghar · retirement</div></div> -->
 </div>
-<div id="sc-kaam" class="scene clip" data-start="442.63" data-duration="30.97" data-track-index="1">
+<div id="sc-kaam" class="scene clip" data-start="370.80" data-duration="28.87" data-track-index="1">
 <div id="k-tag" class="tag h"><span class="dot"></span><span>7 · Aapka kaam</span><span class="pips"><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i><i class="pip on"></i></span></div>
 <div id="k-paper" class="h paper" style="left:980px;top:160px"><div class="phead">Hamare 5 goals</div><div class="prow pcols"><span>Goal</span><span>Kab</span><span>Kitna (andaaza)</span></div><div class="prow" id="k-r0"><span>Emergency fund</span><span>Abhi</span><span>₹ ______</span><div id="k-m0" class="pmask"></div></div><div class="prow" id="k-r1"><span>Aarav ka college</span><span>2036</span><span>₹ ______</span><div id="k-m1" class="pmask"></div></div><div class="prow" id="k-r2"><span>Pihu ka college</span><span>2040</span><span>₹ ______</span><div id="k-m2" class="pmask"></div></div><div class="prow" id="k-r3"><span>Retirement</span><span>2051</span><span>₹ ______</span><div id="k-m3" class="pmask"></div></div><div class="prow" id="k-r4"><span>Apna ghar</span><span><b class="amber">? sapna</b></span><span>₹ ______</span><div id="k-m4" class="pmask"></div></div></div>
-<div id="k-neha" class="h" style="left:1660px;top:590px;z-index:3"><svg width="176" height="300" viewBox="0 0 200 340" aria-label="Neha"><rect x="70" y="232" width="26" height="88" rx="11" fill="#5B2A4C"/><rect x="104" y="232" width="26" height="88" rx="11" fill="#5B2A4C"/><ellipse cx="81" cy="322" rx="19" ry="8" fill="#1a1a1a"/><ellipse cx="119" cy="322" rx="19" ry="8" fill="#1a1a1a"/><path d="M52 82 Q50 26 100 26 Q150 26 148 82 L154 172 Q132 160 126 120 L74 120 Q68 160 46 172 Z" fill="#1E1A18"/><path d="M60 130 Q100 118 140 130 L150 270 L50 270 Z" fill="#C2367A"/><path d="M60 130 Q100 118 140 130 L136 150 Q100 140 64 150 Z" fill="#FFB904" opacity=".85"/><rect x="36" y="134" width="22" height="94" rx="11" fill="#C2367A"/><circle cx="47" cy="230" r="11" fill="#D9A070"/><g id="k-neha-arm" class="ch-arm"><rect x="142" y="134" width="22" height="94" rx="11" fill="#C2367A"/><circle cx="153" cy="230" r="11" fill="#D9A070"/><rect x="150" y="200" width="7" height="44" rx="2" fill="#FFB904" transform="rotate(-30 153 222)"/><rect x="150" y="238" width="7" height="7" fill="#3a2a1a" transform="rotate(-30 153 222)"/></g><rect x="90" y="110" width="20" height="24" fill="#D9A070"/><circle cx="56" cy="82" r="8" fill="#D9A070"/><circle cx="144" cy="82" r="8" fill="#D9A070"/><circle cx="100" cy="78" r="44" fill="#D9A070"/><path d="M55 84 Q54 30 100 30 Q146 30 145 84 Q132 50 100 50 Q68 50 55 84 Z" fill="#1E1A18"/><circle cx="100" cy="28" r="17" fill="#1E1A18"/><circle cx="100" cy="62" r="3.5" fill="#E0242E"/><g id="k-neha-eyes" class="ch-part"><ellipse cx="84" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/><ellipse cx="116" cy="80" rx="5" ry="6.5" fill="#1b1b1b"/></g><circle cx="74" cy="96" r="6" fill="#E46A6A" opacity=".25"/><circle cx="126" cy="96" r="6" fill="#E46A6A" opacity=".25"/><path id="k-neha-happy" d="M86 100 Q100 113 114 100" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round"/><path id="k-neha-sad" d="M88 108 Q100 97 112 108" fill="none" stroke="#5A2A1A" stroke-width="4" stroke-linecap="round" opacity="0"/></svg></div>
 <div id="k-chip" class="chip h" style="left:1090px;top:920px;width:620px">Saal nahi? Toh abhi&nbsp;<b class="mag">sapna</b>&nbsp;hai</div>
 </div>
-<div id="sc-end" class="scene clip" data-start="473.60" data-duration="35.43" data-track-index="2">
+<div id="sc-end" class="scene clip" data-start="399.67" data-duration="33.16" data-track-index="2">
 
 <div id="e-eye" class="h eyebrow" style="left:940px;top:170px;width:920px;text-align:center">AGLA PART 2</div>
 <div id="e-t" class="h" style="left:960px;top:230px;width:880px;text-align:center;font-size:60px;font-weight:700;line-height:1.15">Salary aati hai, phir <span class="cyan">gayab kahan</span> hoti hai?</div>
@@ -259,52 +244,83 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 </div>
 
 </div>
-<audio id="sfx-cc0" src="assets/sfx/chaching.mp3" data-start="8.14" data-duration="3.37" data-track-index="12" data-volume="0.16"></audio>
-<audio id="sfx-cc1" src="assets/sfx/chaching.mp3" data-start="121.28" data-duration="1.17" data-track-index="12" data-volume="0.16"></audio>
-<audio id="sfx-cc2" src="assets/sfx/chaching.mp3" data-start="364.96" data-duration="1.67" data-track-index="12" data-volume="0.16"></audio>
-<audio id="sfx-cc3" src="assets/sfx/chaching.mp3" data-start="378.20" data-duration="2.13" data-track-index="12" data-volume="0.16"></audio>
+<audio id="sfx-cc0" src="assets/sfx/chaching.mp3" data-start="6.93" data-duration="3.26" data-track-index="12" data-volume="0.16"></audio>
+<audio id="sfx-cc1" src="assets/sfx/chaching.mp3" data-start="94.66" data-duration="1.00" data-track-index="12" data-volume="0.16"></audio>
+<audio id="sfx-cc2" src="assets/sfx/chaching.mp3" data-start="312.94" data-duration="0.20" data-track-index="12" data-volume="0.16"></audio>
+<audio id="sfx-cc3" src="assets/sfx/chaching.mp3" data-start="318.70" data-duration="1.35" data-track-index="12" data-volume="0.16"></audio>
 <div id="screenfx"></div>
-<video id="v-lko-v" class="clip" src="assets/broll/04-ai-lucknow-evening.mp4" muted playsinline data-start="87.70" data-duration="3.95" data-media-start="0.00" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>
-<div id="v-lko" class="clip bslot" data-layout-allow-occlusion data-start="87.70" data-duration="3.95" data-track-index="6" style="background:none;opacity:0"><div class="bcap">Lucknow · kiraye ka 2BHK</div></div>
-<video id="v-diwali-v" class="clip" src="assets/broll/06-ai-diwali-market.mp4" muted playsinline data-start="242.27" data-duration="10.04" data-media-start="0.00" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>
-<div id="v-diwali" class="clip bslot" data-layout-allow-occlusion data-start="242.27" data-duration="10.04" data-track-index="6" style="background:none;opacity:0"><div class="bcap">Ye har saal aate hain</div></div>
-<div id="x-donut" class="clip" data-composition-id="chart-story" data-composition-src="compositions/components/chart-story.html" data-start="281.28" data-duration="18.48" data-track-index="7" data-variable-values='{"type": "donut", "data": "58, 6, 5, 31", "labels": "Zaroori, Saal bhar, Masti, Future", "emphasize": 3, "unit": "%", "accent": "green", "exit": "none"}' style="position:absolute;left:960px;top:130px;width:880px;height:760px;z-index:6"></div>
-<video id="v-ghar-v" class="clip" src="assets/broll/09-ai-apna-ghar.mp4" muted playsinline data-start="337.93" data-duration="6.67" data-media-start="0.00" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>
-<div id="v-ghar" class="clip bslot" data-layout-allow-occlusion data-start="337.93" data-duration="6.67" data-track-index="6" style="background:none;opacity:0"><div class="bcap">Apna ghar: kab?</div></div>
-<div id="x-safety" class="clip" data-composition-id="marker-checklist-card" data-composition-src="compositions/components/marker-checklist-card.html" data-start="425.58" data-duration="16.99" data-track-index="7" data-variable-values='{"top": "SABSE", "mid": "PEHLE", "circled": "SAFETY", "rest": "!", "l1": "EMERGENCY", "v1": "FUND", "l2": "INSURANCE", "v2": "CHECK", "l3": "KARZ", "v3": "NAHI"}' style="position:absolute;left:960px;top:120px;width:880px;height:780px;z-index:6"></div>
-<div id="o-sec1" class="clip secard" data-start="82.70" data-duration="2.30" data-track-index="10"><div class="secn">#1</div><div class="secq">Verma family kaun hai?</div></div>
-<div id="o-sec2" class="clip secard" data-start="137.53" data-duration="2.30" data-track-index="10"><div class="secn">#2</div><div class="secq">Aaj unke paas kya hai?</div></div>
-<div id="o-sec3" class="clip secard" data-start="189.73" data-duration="2.30" data-track-index="10"><div class="secn">#3</div><div class="secq">₹1 lakh kahan jaata hai?</div></div>
-<div id="o-sec4" class="clip secard" data-start="299.77" data-duration="2.30" data-track-index="10"><div class="secn">#4</div><div class="secq">Kaunsa goal kab?</div></div>
-<div id="o-sec5" class="clip secard" data-start="356.37" data-duration="2.30" data-track-index="10"><div class="secn">#5</div><div class="secq">Kitna jama hoga?</div></div>
-<div id="o-sec6" class="clip secard" data-start="400.87" data-duration="2.30" data-track-index="10"><div class="secn">#6</div><div class="secq">Paisa kaise baantein?</div></div>
-<div id="o-sec7" class="clip secard" data-start="442.63" data-duration="2.30" data-track-index="10"><div class="secn">#7</div><div class="secq">Aapko kya karna hai?</div></div>
-<div id="o-web" class="clip webcard" data-start="495.77" data-duration="13.27" data-track-index="10"><div class="wbar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="wurl">🔒&nbsp;<b>samjhowithraj.online</b>/#tracker</span></div><img id="o-web-img" src="assets/img/tracker-top.jpg" alt=""></div>
+<div id="h-c1-bk" class="clip" data-start="1.32" data-duration="13.01" data-track-index="7" style="position:absolute;left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:7;opacity:0"></div>
+<video id="h-c1-v" class="clip" src="assets/broll/01-ai-salary-sms.mp4" muted playsinline data-start="1.32" data-duration="13.01" data-media-start="0.00" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>
+<div id="h-c1" class="clip bslot" data-layout-allow-occlusion data-start="1.32" data-duration="13.01" data-track-index="6" style="background:none;opacity:0"><div class="bcap">1 tareekh · ₹1,00,000 salary aayi</div></div>
+<div id="h-c2-bk" class="clip" data-start="14.33" data-duration="10.36" data-track-index="7" style="position:absolute;left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:7;opacity:0"></div>
+<video id="h-c2-v" class="clip" src="assets/broll/02-ai-month-end-worry.mp4" muted playsinline data-start="14.33" data-duration="10.36" data-media-start="0.00" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>
+<div id="h-c2" class="clip bslot" data-layout-allow-occlusion data-start="14.33" data-duration="10.36" data-track-index="6" style="background:none;opacity:0"><div class="bcap">25 tareekh… account khaali</div></div>
+<div id="h-c3-bk" class="clip" data-start="24.69" data-duration="11.40" data-track-index="7" style="position:absolute;left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:7;opacity:0"></div>
+<video id="h-c3-v" class="clip" src="assets/broll/03-ai-neha-asks.mp4" muted playsinline data-start="24.69" data-duration="11.40" data-media-start="0.00" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>
+<div id="h-c3" class="clip bslot" data-layout-allow-occlusion data-start="24.69" data-duration="11.40" data-track-index="6" style="background:none;opacity:0"><div class="bcap">College fees? Apna ghar?</div></div>
+<div id="h-c4-bk" class="clip" data-start="36.09" data-duration="7.48" data-track-index="7" style="position:absolute;left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:7;opacity:0"></div>
+<video id="h-c4-v" class="clip" src="assets/broll/00-ai-family-still.mp4" muted playsinline data-start="36.09" data-duration="7.48" data-media-start="0.00" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>
+<div id="h-c4" class="clip bslot" data-layout-allow-occlusion data-start="36.09" data-duration="7.48" data-track-index="6" style="background:none;opacity:0"><div class="bcap">Ye kahani aapki bhi hai</div></div>
+<div id="v-lko-bk" class="clip" data-start="68.90" data-duration="3.55" data-track-index="7" style="position:absolute;left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:7;opacity:0"></div>
+<video id="v-lko-v" class="clip" src="assets/broll/04-ai-lucknow-evening.mp4" muted playsinline data-start="68.90" data-duration="3.55" data-media-start="0.00" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>
+<div id="v-lko" class="clip bslot" data-layout-allow-occlusion data-start="68.90" data-duration="3.55" data-track-index="6" style="background:none;opacity:0"><div class="bcap">Lucknow · kiraye ka 2BHK</div></div>
+<div id="t-c10-bk" class="clip" data-start="108.63" data-duration="6.45" data-track-index="7" style="position:absolute;left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:7;opacity:0"></div>
+<video id="t-c10-v" class="clip" src="assets/broll/10-ai-write-goals.mp4" muted playsinline data-start="108.63" data-duration="6.45" data-media-start="0.00" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>
+<div id="t-c10" class="clip bslot" data-layout-allow-occlusion data-start="108.63" data-duration="6.45" data-track-index="6" style="background:none;opacity:0"><div class="bcap">Ek Sunday · poora hisaab</div></div>
+<div id="b-c5-bk" class="clip" data-start="168.18" data-duration="7.17" data-track-index="7" style="position:absolute;left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:7;opacity:0"></div>
+<video id="b-c5-v" class="clip" src="assets/broll/05-ai-kirana.mp4" muted playsinline data-start="168.18" data-duration="7.17" data-media-start="0.00" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>
+<div id="b-c5" class="clip bslot" data-layout-allow-occlusion data-start="168.18" data-duration="7.17" data-track-index="6" style="background:none;opacity:0"><div class="bcap">Kiraya, ration, bills…</div></div>
+<div id="v-diwali-bk" class="clip" data-start="202.97" data-duration="8.39" data-track-index="7" style="position:absolute;left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:7;opacity:0"></div>
+<video id="v-diwali-v" class="clip" src="assets/broll/06-ai-diwali-market.mp4" muted playsinline data-start="202.97" data-duration="8.39" data-media-start="0.00" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>
+<div id="v-diwali" class="clip bslot" data-layout-allow-occlusion data-start="202.97" data-duration="8.39" data-track-index="6" style="background:none;opacity:0"><div class="bcap">Ye har saal aate hain</div></div>
+<div id="x-donut" class="clip" data-composition-id="chart-story" data-composition-src="compositions/components/chart-story.html" data-start="236.14" data-duration="14.83" data-track-index="7" data-variable-values='{"type": "donut", "data": "58, 6, 5, 31", "labels": "Zaroori, Saal bhar, Masti, Future", "emphasize": 3, "unit": "%", "accent": "green", "exit": "none"}' style="position:absolute;left:960px;top:130px;width:880px;height:760px;z-index:6"></div>
+<div id="g-c7-bk" class="clip" data-start="268.29" data-duration="2.02" data-track-index="7" style="position:absolute;left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:7;opacity:0"></div>
+<video id="g-c7-v" class="clip" src="assets/broll/07-ai-aarav-study.mp4" muted playsinline data-start="268.29" data-duration="2.02" data-media-start="0.00" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>
+<div id="g-c7" class="clip bslot" data-layout-allow-occlusion data-start="268.29" data-duration="2.02" data-track-index="6" style="background:none;opacity:0"><div class="bcap">Aarav ka college</div></div>
+<div id="g-c8-bk" class="clip" data-start="281.53" data-duration="3.62" data-track-index="7" style="position:absolute;left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:7;opacity:0"></div>
+<video id="g-c8-v" class="clip" src="assets/broll/08-ai-parents-care.mp4" muted playsinline data-start="281.53" data-duration="3.62" data-media-start="0.00" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>
+<div id="g-c8" class="clip bslot" data-layout-allow-occlusion data-start="281.53" data-duration="3.62" data-track-index="6" style="background:none;opacity:0"><div class="bcap">Maa-papa ki dekhbhaal</div></div>
+<div id="v-ghar-bk" class="clip" data-start="285.29" data-duration="4.98" data-track-index="7" style="position:absolute;left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:7;opacity:0"></div>
+<video id="v-ghar-v" class="clip" src="assets/broll/09-ai-apna-ghar.mp4" muted playsinline data-start="285.29" data-duration="4.98" data-media-start="0.00" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>
+<div id="v-ghar" class="clip bslot" data-layout-allow-occlusion data-start="285.29" data-duration="4.98" data-track-index="6" style="background:none;opacity:0"><div class="bcap">Apna ghar: kab?</div></div>
+<div id="x-safety" class="clip" data-composition-id="marker-checklist-card" data-composition-src="compositions/components/marker-checklist-card.html" data-start="355.97" data-duration="14.83" data-track-index="7" data-variable-values='{"top": "SABSE", "mid": "PEHLE", "circled": "SAFETY", "rest": "!", "l1": "EMERGENCY", "v1": "FUND", "l2": "INSURANCE", "v2": "CHECK", "l3": "KARZ", "v3": "NAHI"}' style="position:absolute;left:960px;top:120px;width:880px;height:780px;z-index:6"></div>
+<div id="k-c10-bk" class="clip" data-start="390.85" data-duration="1.60" data-track-index="7" style="position:absolute;left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:7;opacity:0"></div>
+<video id="k-c10-v" class="clip" src="assets/broll/10-ai-write-goals.mp4" muted playsinline data-start="390.85" data-duration="1.60" data-media-start="3.00" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>
+<div id="k-c10" class="clip bslot" data-layout-allow-occlusion data-start="390.85" data-duration="1.60" data-track-index="6" style="background:none;opacity:0"><div class="bcap">Hamare 5 goals: likh liye!</div></div>
+<div id="o-sec1" class="clip secard" data-start="65.80" data-duration="2.30" data-track-index="10"><div class="secn">#1</div><div class="secq">Verma family kaun hai?</div></div>
+<div id="o-sec2" class="clip secard" data-start="108.63" data-duration="2.30" data-track-index="10"><div class="secn">#2</div><div class="secq">Aaj unke paas kya hai?</div></div>
+<div id="o-sec3" class="clip secard" data-start="156.53" data-duration="2.30" data-track-index="10"><div class="secn">#3</div><div class="secq">₹1 lakh kahan jaata hai?</div></div>
+<div id="o-sec4" class="clip secard" data-start="250.97" data-duration="2.30" data-track-index="10"><div class="secn">#4</div><div class="secq">Kaunsa goal kab?</div></div>
+<div id="o-sec5" class="clip secard" data-start="309.77" data-duration="2.30" data-track-index="10"><div class="secn">#5</div><div class="secq">Kitna jama hoga?</div></div>
+<div id="o-sec6" class="clip secard" data-start="339.89" data-duration="2.30" data-track-index="10"><div class="secn">#6</div><div class="secq">Paisa kaise baantein?</div></div>
+<div id="o-sec7" class="clip secard" data-start="370.80" data-duration="2.30" data-track-index="10"><div class="secn">#7</div><div class="secq">Aapko kya karna hai?</div></div>
+<div id="o-webback" class="clip webback" data-start="419.07" data-duration="13.96" data-track-index="9"></div>
+<div id="o-web" class="clip webcard" data-start="419.07" data-duration="13.96" data-track-index="10"><div class="wbar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="wurl">🔒&nbsp;<b>samjhowithraj.online</b>/#tracker</span></div><div class="wview"><img id="o-web-img" src="assets/img/tracker-top.jpg" alt=""></div><div class="wfoot">🧮 Free <b>Financial Tracker</b> · apna plan khud banao</div></div>
 </div>
-<video id="raj" class="clip" src="assets/cam/raj.mp4" muted playsinline data-start="0.00" data-duration="509.63" data-track-index="3" style="position:absolute;left:-279px;top:0;width:1920px;height:1080px;z-index:15;mix-blend-mode:screen"></video><audio id="voice" src="assets/audio/voice.m4a" data-start="0.00" data-duration="509.63" data-track-index="4" data-volume="1"></audio>
-<div id="h-l1" class="clip ll" data-start="42.31" data-duration="8.21" data-track-index="13"><span class="w">Shuruaat</span><span class="w cyan">kahan</span><span class="w cyan">se</span><span class="w">karein?</span></div>
-<div id="f-l1" class="clip ll" data-start="134.31" data-duration="1.37" data-track-index="13"><span class="w">Bilkul</span><span class="w cyan">hamari-aapki</span><span class="w">jaisi</span><span class="w">family</span></div>
-<div id="t-l1" class="clip ll" data-start="180.59" data-duration="8.65" data-track-index="13"><span class="w">Buffer</span><span class="w">sirf</span><span class="w amber">ek</span><span class="w amber">mahine</span><span class="w">ka</span></div>
-<div id="b-l1" class="clip ll" data-start="231.96" data-duration="4.45" data-track-index="13"><span class="w">Har</span><span class="w">mahine</span><span class="w">ka</span><span class="w cyan">pakka</span><span class="w">kharcha</span></div>
-<div id="b-l2" class="clip ll" data-start="252.63" data-duration="12.48" data-track-index="13"><span class="w">Ye</span><span class="w">har</span><span class="w cyan">saal</span><span class="w cyan">aate</span><span class="w">hain</span></div>
-<div id="b-l3" class="clip ll" data-start="285.62" data-duration="5.96" data-track-index="13"><span class="w cyan">31%</span><span class="w cyan">bachat:</span><span class="w">achha</span><span class="w">start</span><span class="w">hai</span></div>
-<div id="g-l1" class="clip ll" data-start="349.93" data-duration="5.94" data-track-index="13"><span class="w">Har</span><span class="w">goal</span><span class="w">ki</span><span class="w cyan">apni</span><span class="w cyan">deadline</span></div>
-<div id="k-l1" class="clip ll" data-start="451.67" data-duration="7.12" data-track-index="13"><span class="w cyan">Kab</span><span class="w cyan">chahiye</span><span class="w">+</span><span class="w cyan">lagbhag</span><span class="w cyan">kitna</span></div>
-<div id="o-disc" class="clip disc" data-start="9.10" data-duration="4.81" data-track-index="9"><div class="dtitle">Educational example</div><div class="dsub">Financial advice nahi · numbers illustrative hain · apni situation ke hisaab se decide karein</div></div>
-<div id="o-name" class="clip lt3" data-start="51.17" data-duration="15.50" data-track-index="9"><div class="ltbar"></div><div><div class="ltname">RAJ</div><div class="ltsub">Samjho with Raj</div></div></div>
-<div id="o-kw1" class="clip kwbox" data-start="183.23" data-duration="2.84" data-track-index="11"><div class="kw">Sirf 1 mahina</div></div>
-<div id="o-kw2" class="clip kwbox" data-start="297.67" data-duration="0.63" data-track-index="11"><div class="kw">Kaafi?</div></div>
-<div id="o-kw3" class="clip kwbox" data-start="350.11" data-duration="1.27" data-track-index="11"><div class="kw">Deadline!</div></div>
-<div id="o-kw4" class="clip kwbox" data-start="381.86" data-duration="8.98" data-track-index="11"><div class="kwx">Final amount</div><div class="kw">Sirf jama</div></div>
-<div id="o-kw5" class="clip kwbox" data-start="465.80" data-duration="1.76" data-track-index="11"><div class="kw">Sapna ≠ Goal</div></div>
-<div id="o-kw6" class="clip kwbox" data-start="353.19" data-duration="1.67" data-track-index="11"><div class="kw">Mushkil!</div></div>
-<div id="o-kw7" class="clip kwbox" data-start="427.12" data-duration="11.75" data-track-index="11"><div class="kw">Pehle safety</div></div>
+<video id="raj" class="clip" src="assets/cam/raj.mp4" muted playsinline data-start="0.00" data-duration="433.63" data-track-index="3" style="position:absolute;left:-221px;top:389px;width:1229px;height:691px;z-index:15;mix-blend-mode:screen"></video><audio id="voice" src="assets/audio/voice.m4a" data-start="0.00" data-duration="433.63" data-track-index="4" data-volume="1"></audio>
+<div id="h-l1" class="clip ll" data-start="36.48" data-duration="6.67" data-track-index="13"><span class="w">Shuruaat</span><span class="w cyan">kahan</span><span class="w cyan">se</span><span class="w">karein?</span></div>
+<div id="f-l1" class="clip ll" data-start="104.19" data-duration="1.90" data-track-index="13"><span class="w">Bilkul</span><span class="w cyan">hamari-aapki</span><span class="w">jaisi</span><span class="w">family</span></div>
+<div id="t-l1" class="clip ll" data-start="150.78" data-duration="5.45" data-track-index="13"><span class="w">Buffer</span><span class="w">sirf</span><span class="w amber">ek</span><span class="w amber">mahine</span><span class="w">ka</span></div>
+<div id="b-l1" class="clip ll" data-start="194.51" data-duration="3.37" data-track-index="13"><span class="w">Har</span><span class="w">mahine</span><span class="w">ka</span><span class="w cyan">pakka</span><span class="w">kharcha</span></div>
+<div id="b-l2" class="clip ll" data-start="211.63" data-duration="13.66" data-track-index="13"><span class="w">Ye</span><span class="w">har</span><span class="w cyan">saal</span><span class="w cyan">aate</span><span class="w">hain</span></div>
+<div id="b-l3" class="clip ll" data-start="237.15" data-duration="5.94" data-track-index="13"><span class="w cyan">31%</span><span class="w cyan">bachat:</span><span class="w">achha</span><span class="w">start</span><span class="w">hai</span></div>
+<div id="g-l1" class="clip ll" data-start="294.10" data-duration="13.51" data-track-index="13"><span class="w">Har</span><span class="w">goal</span><span class="w">ki</span><span class="w cyan">apni</span><span class="w cyan">deadline</span></div>
+<div id="k-l1" class="clip ll" data-start="378.46" data-duration="5.65" data-track-index="13"><span class="w cyan">Kab</span><span class="w cyan">chahiye</span><span class="w">+</span><span class="w cyan">lagbhag</span><span class="w cyan">kitna</span></div>
+<div id="o-disc" class="clip disc" data-start="7.86" data-duration="4.65" data-track-index="9"><div class="dtitle">Educational example</div><div class="dsub">Financial advice nahi · numbers illustrative hain · apni situation ke hisaab se decide karein</div></div>
+<div id="o-name" class="clip lt3" data-start="43.65" data-duration="10.52" data-track-index="9"><div class="ltbar"></div><div><div class="ltname">RAJ</div><div class="ltsub">Samjho with Raj</div></div></div>
+<div id="o-kw1" class="clip kwbox" data-start="152.57" data-duration="1.74" data-track-index="11"><div class="kw">Sirf 1 mahina</div></div>
+<div id="o-kw2" class="clip kwbox" data-start="248.86" data-duration="0.64" data-track-index="11"><div class="kw">Kaafi?</div></div>
+<div id="o-kw3" class="clip kwbox" data-start="294.22" data-duration="0.79" data-track-index="11"><div class="kw">Deadline!</div></div>
+<div id="o-kw4" class="clip kwbox" data-start="321.03" data-duration="8.28" data-track-index="11"><div class="kwx">Final amount</div><div class="kw">Sirf jama</div></div>
+<div id="o-kw5" class="clip kwbox" data-start="389.78" data-duration="0.93" data-track-index="11"><div class="kw">Sapna ≠ Goal</div></div>
+<div id="o-kw6" class="clip kwbox" data-start="296.14" data-duration="7.17" data-track-index="11"><div class="kw">Mushkil!</div></div>
+<div id="o-kw7" class="clip kwbox" data-start="355.97" data-duration="11.29" data-track-index="11"><div class="kw">Pehle safety</div></div>
 
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 const tl = gsap.timeline({ paused: true });
-const WARP = [[0.0, 0.1], [1.2, 4.766], [5.2, 14.393], [7.0, 16.327], [7.5, 22.453], [8.6, 26.7], [9.1, 29.16], [11.6, 42.307], [15.0, 51.033], [16.0, 51.166], [17.2, 60.866], [30.0, 82.7], [31.0, 82.833], [33.0, 86.713], [36.0, 91.646], [38.0, 99.046], [41.0, 110.187], [43.0, 116.047], [48.0, 119.94], [56.0, 126.633], [60.0, 134.313], [75.0, 137.533], [77.0, 137.733], [80.6, 146.646], [81.6, 151.373], [82.6, 154.233], [83.4, 158.84], [88.0, 166.594], [91.0, 177.094], [95.0, 180.594], [97.0, 183.234], [105.0, 189.733], [107.5, 196.473], [110.0, 200.547], [114.0, 207.087], [118.0, 210.527], [121.0, 216.247], [124.0, 221.867], [128.0, 225.387], [132.0, 229.387], [149.0, 236.667], [151.2, 242.267], [157.6, 252.633], [159.8, 256.053], [163.8, 259.673], [179.0, 265.333], [181.0, 266.293], [186.0, 270.92], [190.0, 274.78], [194.0, 276.8], [199.0, 280.2], [200.0, 285.62], [212.0, 292.5], [213.0, 297.666], [224.6, 299.767], [225.0, 299.767], [228.0, 310.073], [232.0, 314.974], [238.0, 319.934], [244.0, 322.934], [246.0, 325.614], [248.0, 328.534], [250.5, 337.934], [255.4, 345.193], [268.0, 349.927], [277.0, 353.187], [284.6, 356.367], [285.0, 356.367], [286.0, 359.4], [289.0, 363.06], [295.0, 370.2], [298.0, 375.76], [302.0, 381.86], [305.0, 391.48], [319.6, 400.733], [320.0, 400.866], [321.0, 405.306], [324.0, 409.866], [328.0, 418.14], [331.2, 421.22], [334.0, 425.58], [340.0, 427.12], [344.6, 442.567], [345.0, 442.633], [345.9, 444.947], [350.0, 448.407], [366.0, 458.86], [386.0, 460.32], [388.0, 465.8], [398.0, 470.84], [400.0, 473.6], [400.3, 473.727], [400.6, 476.74], [404.0, 482.214], [406.5, 488.66], [408.0, 495.766], [410.0, 503.666], [420.0, 509.033]];
+const WARP = [[0.0, 0.143], [1.2, 3.673], [5.2, 12.974], [7.0, 14.334], [7.5, 20.623], [8.6, 24.693], [9.1, 26.87], [11.6, 36.476], [15.0, 43.567], [16.0, 43.654], [17.2, 49.967], [30.0, 65.8], [31.0, 65.827], [33.0, 68.017], [36.0, 72.456], [38.0, 78.756], [41.0, 86.033], [43.0, 89.97], [48.0, 93.526], [56.0, 99.22], [60.0, 104.187], [75.0, 108.633], [77.0, 108.633], [80.6, 115.89], [81.6, 126.406], [82.6, 127.216], [83.4, 131.127], [88.0, 139.433], [91.0, 149.063], [95.0, 150.783], [97.0, 152.567], [105.0, 156.533], [107.5, 161.526], [110.0, 165.327], [114.0, 168.327], [118.0, 175.716], [121.0, 184.366], [124.0, 192.433], [128.0, 192.503], [132.0, 192.563], [149.0, 198.067], [151.2, 202.974], [157.6, 211.63], [159.8, 215.664], [163.8, 218.893], [179.0, 225.556], [181.0, 225.676], [186.0, 227.513], [190.0, 230.72], [194.0, 232.9], [199.0, 235.89], [200.0, 237.15], [212.0, 244.007], [213.0, 248.856], [224.6, 250.967], [225.0, 250.967], [228.0, 261.086], [232.0, 264.853], [238.0, 268.187], [244.0, 271.223], [246.0, 275.234], [248.0, 281.527], [250.5, 285.293], [255.4, 290.713], [268.0, 294.103], [277.0, 296.144], [284.6, 309.767], [285.0, 309.767], [286.0, 311.564], [289.0, 312.894], [295.0, 313.064], [298.0, 317.157], [302.0, 321.027], [305.0, 329.903], [319.6, 339.883], [320.0, 339.893], [321.0, 340.303], [324.0, 343.433], [328.0, 350.8], [331.2, 352.96], [334.0, 355.966], [340.0, 355.967], [344.6, 370.8], [345.0, 370.8], [345.9, 372.007], [350.0, 375.867], [366.0, 384.164], [386.0, 385.943], [388.0, 389.783], [398.0, 392.453], [400.0, 399.673], [400.3, 399.713], [400.6, 400.923], [404.0, 405.82], [406.5, 412.073], [408.0, 419.07], [410.0, 425.71], [420.0, 432.834]];
 function W(t){ for (let i = 1; i < WARP.length; i++){ const [a0,b0] = WARP[i-1], [a1,b1] = WARP[i];
   if (t <= a1) return a1 > a0 ? b0 + (b1-b0)*(t-a0)/(a1-a0) : b1; } return WARP[WARP.length-1][1]; }
 ['to','fromTo','set','from'].forEach(m => { const f = tl[m].bind(tl);
@@ -322,21 +338,10 @@ function count(s,a,b,t,d){ const el=document.querySelector(s); const p={v:a}; el
   tl.to(p,{v:b,duration:d||1.4,ease:'power2.out',onUpdate:()=>{ el.textContent='₹'+inr(p.v); }},t); }
 tl.fromTo('#sc-hook',{opacity:0},{opacity:1,duration:.4,ease:'power2.out'},0.00);
 tl.to('#sc-hook',{opacity:0,duration:.35,ease:'power2.in'},14.60);
-rise('#h-cal',0.3);
-rise('#h-amit',0.6);
-rise('#h-sms',1.0);
-count('#h-amt',0,100000,1.2,1.4);
-blink('#c-amit-eyes',2.9);
-rise('#h-b1',5.2); out('#h-b1',6.8);
-tl.to('#h-d1',{opacity:0,duration:.35},7.0);
-tl.fromTo('#h-d25',{opacity:0},{opacity:1,duration:.4},7.1);
-out('#h-sms',7.0);
-mood('c-amit',7.5,'sad');
-blink('#c-amit-eyes',8.3);
-rise('#h-neha',8.6);
-rise('#h-b2',9.1);
-blink('#c-neha-eyes',10.2);
-blink('#c-amit-eyes',11.0);
+tl.fromTo(['#h-c1','#h-c1-v','#h-c1-bk'],{opacity:0},{opacity:1,duration:.3},0.40); tl.to(['#h-c1','#h-c1-v','#h-c1-bk'],{opacity:0,duration:.3},6.70);
+tl.fromTo(['#h-c2','#h-c2-v','#h-c2-bk'],{opacity:0},{opacity:1,duration:.3},7.00); tl.to(['#h-c2','#h-c2-v','#h-c2-bk'],{opacity:0,duration:.3},8.30);
+tl.fromTo(['#h-c3','#h-c3-v','#h-c3-bk'],{opacity:0},{opacity:1,duration:.3},8.60); tl.to(['#h-c3','#h-c3-v','#h-c3-bk'],{opacity:0,duration:.3},11.20);
+tl.fromTo(['#h-c4','#h-c4-v','#h-c4-bk'],{opacity:0},{opacity:1,duration:.3},11.50); tl.to(['#h-c4','#h-c4-v','#h-c4-bk'],{opacity:0,duration:.3},14.70);
 tl.fromTo('#h-l1 .w',{opacity:0,y:26},{opacity:1,y:0,duration:.4,ease:'power2.out',stagger:.055},11.60);
 tl.to('#h-l1',{opacity:0,duration:.35,ease:'power2.in'},14.40);
 tl.fromTo('#sc-intro',{opacity:0},{opacity:1,duration:.4,ease:'power2.out'},15.00);
@@ -350,13 +355,13 @@ tl.fromTo('#i-dots .first',{backgroundColor:'rgba(255,255,255,.18)',boxShadow:'0
 tl.fromTo('#sc-family',{opacity:0},{opacity:1,duration:.4,ease:'power2.out'},30.00);
 tl.to('#sc-family',{opacity:0,duration:.35,ease:'power2.in'},74.60);
 rise('#f-tag',30.20); out('#f-tag',35.20);
-rise('#f-p0',36.00); blink('#f-amit-eyes',37.60);
-rise('#f-p1',38.00); blink('#f-neha-eyes',39.60);
-rise('#f-p2',41.00); blink('#f-aarav-eyes',42.60);
-rise('#f-p3',43.00); blink('#f-pihu-eyes',44.60);
-tl.fromTo('#f-aarav-arm',{rotation:0},{rotation:-24,duration:.3,yoyo:true,repeat:3,ease:'power1.inOut'},41.5);
-blink('#f-amit-eyes',47.0); blink('#f-neha-eyes',52.5); blink('#f-pihu-eyes',58.0); blink('#f-aarav-eyes',63.0);
-tl.fromTo(['#v-lko','#v-lko-v'],{opacity:0},{opacity:1,duration:.3},33.60); tl.to(['#v-lko','#v-lko-v'],{opacity:0,duration:.3},35.70);
+rise('#f-pic',35.9);
+rise('#f-p0',36.00);
+rise('#f-p1',38.00);
+rise('#f-p2',41.00);
+rise('#f-p3',43.00);
+out('#f-pic,#f-p0,#f-p1,#f-p2,#f-p3',59.6);
+tl.fromTo(['#v-lko','#v-lko-v','#v-lko-bk'],{opacity:0},{opacity:1,duration:.3},33.60); tl.to(['#v-lko','#v-lko-v','#v-lko-bk'],{opacity:0,duration:.3},35.70);
 rise('#f-title',31.0);
 rise('#f-where',33.0);
 rise('#f-inc',48.0);
@@ -369,12 +374,7 @@ tl.to('#f-l1',{opacity:0,duration:.35,ease:'power2.in'},66.00);
 tl.fromTo('#sc-today',{opacity:0},{opacity:1,duration:.4,ease:'power2.out'},75.00);
 tl.to('#sc-today',{opacity:0,duration:.35,ease:'power2.in'},104.60);
 rise('#t-tag',75.20); out('#t-tag',80.20);
-rise('#t-sun',77.0);
-rise('#t-amit',77.1);
-rise('#t-neha',77.3);
-rise('#t-bub',78.0);
-blink('#t-amit-eyes',79.0);
-out('#t-sun,#t-amit,#t-neha,#t-bub',80.2);
+tl.fromTo(['#t-c10','#t-c10-v','#t-c10-bk'],{opacity:0},{opacity:1,duration:.3},77.00); tl.to(['#t-c10','#t-c10-v','#t-c10-bk'],{opacity:0,duration:.3},79.90);
 rise('#t-s',80.60);
 count('#t-sv',0,60000,80.80,1.2);
 rise('#t-e',81.60);
@@ -399,6 +399,7 @@ grow('#b-s4',181.00,.7);
 rise('#b-title',105.4);
 rise('#b-bar',106.6);
 rise('#b-lab1',132.0);
+tl.fromTo(['#b-c5','#b-c5-v','#b-c5-bk'],{opacity:0},{opacity:1,duration:.3},113.80); tl.to(['#b-c5','#b-c5-v','#b-c5-bk'],{opacity:0,duration:.3},117.50);
 tl.fromTo('#b-hl0',{scaleX:0,opacity:1},{scaleX:1,duration:.35,ease:'power2.out'},110.00);
 tl.to('#b-hl0',{opacity:0,duration:.25},113.90);
 tl.fromTo('#b-hl1',{scaleX:0,opacity:1},{scaleX:1,duration:.35,ease:'power2.out'},114.00);
@@ -420,7 +421,7 @@ tl.to('#b-l1',{opacity:0,duration:.35,ease:'power2.in'},148.00);
 rise('#b-ann',160.0);
 rise('#b-fun',164.0);
 out('#b-ann,#b-fun',179.0);
-tl.fromTo(['#v-diwali','#v-diwali-v'],{opacity:0},{opacity:1,duration:.3},151.20); tl.to(['#v-diwali','#v-diwali-v'],{opacity:0,duration:.3},157.10);
+tl.fromTo(['#v-diwali','#v-diwali-v','#v-diwali-bk'],{opacity:0},{opacity:1,duration:.3},151.20); tl.to(['#v-diwali','#v-diwali-v','#v-diwali-bk'],{opacity:0,duration:.3},157.10);
 tl.fromTo('#b-l2 .w',{opacity:0,y:26},{opacity:1,y:0,duration:.4,ease:'power2.out',stagger:.055},157.60);
 tl.to('#b-l2',{opacity:0,duration:.35,ease:'power2.in'},178.00);
 rise('#b-p0',186.00); tl.fromTo('#b-pf0',{scaleY:0},{scaleY:1,duration:.8,ease:'power2.out'},186.20);
@@ -445,15 +446,9 @@ rise('#g-g2',238.00); rise('#g-s2',238.10);
 rise('#g-g3',244.00); rise('#g-s3',244.10);
 rise('#g-g4',246.00); rise('#g-s4',246.10);
 grow('#g-axis',226.0,.8);
-rise('#g-amit',228.0);
-rise('#g-neha',228.3);
-write('#g-neha-arm',228.8);
-write('#g-neha-arm',253.6);
-blink('#g-amit-eyes',236.0);
-blink('#g-neha-eyes',241.0);
-mood('g-amit',254.0,'sad');
-blink('#g-amit-eyes',262.5);
-tl.fromTo(['#v-ghar','#v-ghar-v'],{opacity:0},{opacity:1,duration:.3},250.50); tl.to(['#v-ghar','#v-ghar-v'],{opacity:0,duration:.3},254.70);
+tl.fromTo(['#g-c7','#g-c7-v','#g-c7-bk'],{opacity:0},{opacity:1,duration:.3},238.20); tl.to(['#g-c7','#g-c7-v','#g-c7-bk'],{opacity:0,duration:.3},241.90);
+tl.fromTo(['#g-c8','#g-c8-v','#g-c8-bk'],{opacity:0},{opacity:1,duration:.3},248.00); tl.to(['#g-c8','#g-c8-v','#g-c8-bk'],{opacity:0,duration:.3},250.10);
+tl.fromTo(['#v-ghar','#v-ghar-v','#v-ghar-bk'],{opacity:0},{opacity:1,duration:.3},250.50); tl.to(['#v-ghar','#v-ghar-v','#v-ghar-bk'],{opacity:0,duration:.3},254.70);
 rise('#g-ghar',255.4);
 rise('#g-par',248.0);
 tl.fromTo('#g-l1 .w',{opacity:0,y:26},{opacity:1,y:0,duration:.4,ease:'power2.out',stagger:.055},268.00);
@@ -465,11 +460,6 @@ rise('#j-c0',286.00); count('#j-v0',0,1200000,289.00,1.6);
 rise('#j-c1',295.00); count('#j-v1',0,3900000,298.00,1.6);
 rise('#j-cap',289.0);
 rise('#j-ep',305.0);
-rise('#j-amit',285.8);
-blink('#j-amit-eyes',290.5);
-blink('#j-amit-eyes',300.0);
-mood('j-amit',305.2,'sad');
-blink('#j-amit-eyes',312.0);
 tl.fromTo('#sc-dabba',{opacity:0},{opacity:1,duration:.4,ease:'power2.out'},320.00);
 tl.to('#sc-dabba',{opacity:0,duration:.35,ease:'power2.in'},344.60);
 rise('#d-tag',320.20); out('#d-tag',325.20);
@@ -487,15 +477,6 @@ tl.fromTo('#sc-kaam',{opacity:0},{opacity:1,duration:.4,ease:'power2.out'},345.0
 tl.to('#sc-kaam',{opacity:0,duration:.35,ease:'power2.in'},399.60);
 rise('#k-tag',345.20); out('#k-tag',350.20);
 rise('#k-paper',345.9);
-rise('#k-neha',350.0);
-write('#k-neha-arm',350.10);
-write('#k-neha-arm',354.10);
-write('#k-neha-arm',358.10);
-write('#k-neha-arm',362.10);
-write('#k-neha-arm',366.10);
-blink('#k-neha-eyes',356.5);
-blink('#k-neha-eyes',371.0);
-blink('#k-neha-eyes',384.0);
 tl.fromTo('#k-m0',{scaleX:1},{scaleX:0,duration:1.0,ease:'power1.inOut'},350.00);
 tl.fromTo('#k-m1',{scaleX:1},{scaleX:0,duration:1.0,ease:'power1.inOut'},354.00);
 tl.fromTo('#k-m2',{scaleX:1},{scaleX:0,duration:1.0,ease:'power1.inOut'},358.00);
@@ -504,7 +485,8 @@ tl.fromTo('#k-m4',{scaleX:1},{scaleX:0,duration:1.0,ease:'power1.inOut'},366.00)
 tl.fromTo('#k-l1 .w',{opacity:0,y:26},{opacity:1,y:0,duration:.4,ease:'power2.out',stagger:.055},355.00);
 tl.to('#k-l1',{opacity:0,duration:.35,ease:'power2.in'},365.50);
 rise('#k-chip',386.0);
-out('#k-chip',398.0);
+out('#k-chip',391.6);
+tl.fromTo(['#k-c10','#k-c10-v','#k-c10-bk'],{opacity:0},{opacity:1,duration:.3},392.00); tl.to(['#k-c10','#k-c10-v','#k-c10-bk'],{opacity:0,duration:.3},397.70);
 tl.fromTo('#sc-end',{opacity:0},{opacity:1,duration:.4,ease:'power2.out'},400.00);
 rise('#e-eye',400.3);
 rise('#e-t',400.6);
@@ -515,15 +497,16 @@ rise('#e-sb',410.0);
 tl.fromTo('#e-btn',{scale:1},{scale:1.08,duration:.22,yoyo:true,repeat:5,ease:'power1.inOut'},410.6);
 tl.fromTo('#o-disc',{opacity:0},{opacity:1,duration:.25},3.0); tl.to('#o-disc',{opacity:0,duration:.25},4.75);
 tl.fromTo('#o-name',{opacity:0,x:-40},{opacity:1,x:0,duration:.4,ease:'power2.out'},16.0); out('#o-name',20.2);
-tl.fromTo('#o-sec1',{opacity:0},{opacity:1,duration:.25},10082.70); tl.to('#o-sec1',{opacity:0,duration:.25},10084.70);
-tl.fromTo('#o-sec2',{opacity:0},{opacity:1,duration:.25},10137.53); tl.to('#o-sec2',{opacity:0,duration:.25},10139.53);
-tl.fromTo('#o-sec3',{opacity:0},{opacity:1,duration:.25},10189.73); tl.to('#o-sec3',{opacity:0,duration:.25},10191.73);
-tl.fromTo('#o-sec4',{opacity:0},{opacity:1,duration:.25},10299.77); tl.to('#o-sec4',{opacity:0,duration:.25},10301.77);
-tl.fromTo('#o-sec5',{opacity:0},{opacity:1,duration:.25},10356.37); tl.to('#o-sec5',{opacity:0,duration:.25},10358.37);
-tl.fromTo('#o-sec6',{opacity:0},{opacity:1,duration:.25},10400.87); tl.to('#o-sec6',{opacity:0,duration:.25},10402.87);
-tl.fromTo('#o-sec7',{opacity:0},{opacity:1,duration:.25},10442.63); tl.to('#o-sec7',{opacity:0,duration:.25},10444.63);
-tl.fromTo('#o-web',{opacity:0,y:30},{opacity:1,y:0,duration:.45,ease:'power2.out'},10495.77);
-tl.to('#o-web-img',{y:-160,duration:6,ease:'power1.inOut'},10497.27);
+tl.fromTo('#o-sec1',{opacity:0},{opacity:1,duration:.25},10065.80); tl.to('#o-sec1',{opacity:0,duration:.25},10067.80);
+tl.fromTo('#o-sec2',{opacity:0},{opacity:1,duration:.25},10108.63); tl.to('#o-sec2',{opacity:0,duration:.25},10110.63);
+tl.fromTo('#o-sec3',{opacity:0},{opacity:1,duration:.25},10156.53); tl.to('#o-sec3',{opacity:0,duration:.25},10158.53);
+tl.fromTo('#o-sec4',{opacity:0},{opacity:1,duration:.25},10250.97); tl.to('#o-sec4',{opacity:0,duration:.25},10252.97);
+tl.fromTo('#o-sec5',{opacity:0},{opacity:1,duration:.25},10309.77); tl.to('#o-sec5',{opacity:0,duration:.25},10311.77);
+tl.fromTo('#o-sec6',{opacity:0},{opacity:1,duration:.25},10339.89); tl.to('#o-sec6',{opacity:0,duration:.25},10341.89);
+tl.fromTo('#o-sec7',{opacity:0},{opacity:1,duration:.25},10370.80); tl.to('#o-sec7',{opacity:0,duration:.25},10372.80);
+tl.fromTo('#o-webback',{opacity:0},{opacity:1,duration:.35},10419.07);
+tl.fromTo('#o-web',{opacity:0,y:30},{opacity:1,y:0,duration:.45,ease:'power2.out'},10419.07);
+tl.to('#o-web-img',{y:-120,duration:6,ease:'power1.inOut'},10420.57);
 rise('#o-kw1',97.00); out('#o-kw1',100.15);
 rise('#o-kw2',213.00); out('#o-kw2',216.15);
 rise('#o-kw3',268.50); out('#o-kw3',271.65);
@@ -531,7 +514,7 @@ rise('#o-kw4',302.00); out('#o-kw4',304.45);
 rise('#o-kw5',388.00); out('#o-kw5',391.15);
 rise('#o-kw6',277.00); out('#o-kw6',280.65);
 rise('#o-kw7',340.00); out('#o-kw7',343.15);
-tl.to({}, { duration: 509.63 }, 0);
+tl.to({}, { duration: 433.63 }, 0);
 
 window.__timelines["main"] = tl;
 </script>

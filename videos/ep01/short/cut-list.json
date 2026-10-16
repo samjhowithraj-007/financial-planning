@@ -1,39 +1,39 @@
 {
- "source_duration": 597.056,
+ "source_duration": 562.551,
  "kept": [
   {
-   "start": 19.59,
-   "end": 25.33,
+   "start": 11.56,
+   "end": 20.03,
    "name": "sms"
   },
   {
-   "start": 331.29,
-   "end": 337.59,
+   "start": 308.48,
+   "end": 315.61,
    "name": "bachat"
   },
   {
-   "start": 342.53,
-   "end": 348.23,
+   "start": 319.16,
+   "end": 324.79,
    "name": "kaafi"
   },
   {
-   "start": 414.31,
-   "end": 426.65,
+   "start": 394.48,
+   "end": 401.45,
    "name": "lakh"
   },
   {
-   "start": 438.77,
-   "end": 448.49,
+   "start": 414.74,
+   "end": 426.98,
    "name": "jama"
   },
   {
-   "start": 508.05,
-   "end": 523.61,
+   "start": 484.42,
+   "end": 499.49,
    "name": "goals"
   },
   {
-   "start": 570.53,
-   "end": 581.93,
+   "start": 541.78,
+   "end": 553.25,
    "name": "website"
   }
  ]

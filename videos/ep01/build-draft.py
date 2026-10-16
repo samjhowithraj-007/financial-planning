@@ -29,21 +29,9 @@ def raw2flat(r):
         if r <= g["src_end"]:
             return g["flat_start"] + (r - g["src_start"])
     return FLAT
-# (plan second, raw second where Raj says it), from the transcript of the take
-ANCHORS = [(0.0, 13.9), (1.2, 20.0), (5.2, 30.16), (7.0, 33.36), (7.5, 40.72), (8.6, 46.0), (9.1, 48.46), (11.6, 64.04),
-    (15.0, 74.3), (16.0, 74.6), (17.2, 84.3), (30.0, 108.6), (31.0, 109.2), (33.0, 113.78), (36.0, 119.38), (38.0, 126.78),
-    (41.0, 140.82), (43.0, 147.18), (48.0, 152.14), (56.0, 159.9), (60.0, 167.58), (75.0, 172.5), (77.0, 173.3),
-    (80.6, 183.48), (81.6, 189.44), (82.6, 192.3), (83.4, 197.94), (88.0, 206.46), (91.0, 216.96), (95.0, 220.46),
-    (97.0, 223.1), (105.0, 230.8), (107.5, 238.64), (110.0, 244.78), (114.0, 251.32), (118.0, 254.76), (121.0, 260.48),
-    (124.0, 266.1), (128.0, 269.62), (132.0, 273.62), (149.0, 280.9), (151.2, 286.5), (157.6, 297.8), (159.8, 301.22),
-    (163.8, 304.84), (179.0, 310.5), (181.0, 311.46), (186.0, 316.72), (190.0, 320.58), (194.0, 322.6), (199.0, 326.0),
-    (200.0, 331.42), (212.0, 339.6), (213.0, 345.2), (224.6, 348.3), (225.0, 348.6), (228.0, 360.34), (232.0, 365.84),
-    (238.0, 370.8), (244.0, 373.8), (246.0, 376.48), (248.0, 379.9), (250.5, 389.3), (255.4, 397.86), (268.0, 403.16),
-    (277.0, 406.42), (284.6, 410.8), (285.0, 411.0), (286.0, 415.0), (289.0, 418.66), (295.0, 427.2), (298.0, 432.76),
-    (302.0, 438.86), (305.0, 448.48), (319.6, 458.6), (320.0, 459.0), (321.0, 463.44), (324.0, 468.0), (328.0, 477.94),
-    (331.2, 481.02), (334.0, 486.38), (340.0, 487.92), (344.6, 504.9), (345.0, 505.4), (345.9, 508.58), (350.0, 512.04),
-    (366.0, 524.06), (386.0, 526.12), (388.0, 531.6), (398.0, 537.34), (400.0, 541.0), (400.3, 541.46), (400.6, 545.04),
-    (404.0, 553.68), (406.5, 562.56), (408.0, 571.1), (410.0, 579.0), (420.0, 585.6)]
+# (plan second, raw second where Raj says it). Reshoot (16 Oct 2026): reshoot-cut.py maps every v1 anchor onto the
+# reshoot by aligning the two transcripts; the v1 table is kept in v1/build-draft.py.
+ANCHORS = [tuple(a) for a in _json.load(open(os.path.join(HERE, "reshoot-anchors.json")))]
 WARP = [(a, round(raw2flat(b), 3)) for a, b in ANCHORS]
 def TW(t):
     for (a0, b0), (a1, b1) in zip(WARP, WARP[1:]):
@@ -124,19 +112,22 @@ USE_STOCK = True
 STOCK = {"v-lko": ("04-ai-lucknow-evening.mp4", "Lucknow · kiraye ka 2BHK"),
          "v-diwali": ("06-ai-diwali-market.mp4", "Ye har saal aate hain"),
          "v-ghar": ("09-ai-apna-ghar.mp4", "Apna ghar: kab?")}
-# the other AI clips, slotted on their lines when the cut is timed to the reshoot voice
+# the other AI clips, placed on their story beats in the scenes below
 AI_MOMENTS = {"salary-sms": "01-ai-salary-sms.mp4", "month-end": "02-ai-month-end-worry.mp4",
               "neha-asks": "03-ai-neha-asks.mp4", "kirana": "05-ai-kirana.mp4",
               "college": "07-ai-aarav-study.mp4", "parents": "08-ai-parents-care.mp4",
-              "five-goals": "10-ai-write-goals.mp4"}
+              "five-goals": "10-ai-write-goals.mp4", "family-still": "00-ai-family-still.mp4"}
 # the clips the draft plays are copied from broll/ into draft/assets/broll/ on every build
 import shutil as _sh
 os.makedirs(os.path.join(HERE, "draft", "assets", "broll"), exist_ok=True)
-for _clip, _cap in STOCK.values():
+for _clip in [c for c, _ in STOCK.values()] + list(AI_MOMENTS.values()):
     _sh.copy2(os.path.join(HERE, "broll", _clip), os.path.join(HERE, "draft", "assets", "broll", _clip))
 
 def stock(bid, clip, caption, t_in, t_out, skip=0.0):
     """A stock clip on the studio screen (the bslot box), muted, with the white caption at the bottom."""
+    roots.append('<div id="%s-bk" class="clip" data-start="%.2f" data-duration="%.2f" data-track-index="7" style="position:absolute;'
+                 'left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:7;opacity:0"></div>'
+                 % (bid, t_in, t_out - t_in))
     roots.append('<video id="%s-v" class="clip" src="assets/broll/%s" muted playsinline data-start="%.2f" data-duration="%.2f" '
                  'data-media-start="%.2f" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;'
                  'height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>'
@@ -144,8 +135,8 @@ def stock(bid, clip, caption, t_in, t_out, skip=0.0):
     roots.append('<div id="%s" class="clip bslot" data-layout-allow-occlusion data-start="%.2f" data-duration="%.2f" '
                  'data-track-index="6" style="background:none;opacity:0"><div class="bcap">%s</div></div>'
                  % (bid, t_in, t_out - t_in, E(caption)))
-    js.append("tl.fromTo(['#%s','#%s-v'],{opacity:0},{opacity:1,duration:.3},%.2f); tl.to(['#%s','#%s-v'],{opacity:0,duration:.3},%.2f);"
-              % (bid, bid, t_in, bid, bid, t_out - 0.3))
+    js.append("tl.fromTo(['#%s','#%s-v','#%s-bk'],{opacity:0},{opacity:1,duration:.3},%.2f); tl.to(['#%s','#%s-v','#%s-bk'],{opacity:0,duration:.3},%.2f);"
+              % (bid, bid, bid, t_in, bid, bid, bid, t_out - 0.3))
 
 def broll(bid, what, t_in, t_out):
     """An explanation cutaway on the studio screen: a stock clip (STOCK) or an animated scene (scenes_art.py)."""
@@ -162,25 +153,11 @@ def broll(bid, what, t_in, t_out):
 
 # ---------------------------------------------------------------------------------------------- 1. Hook
 scene_open("hook", 1)
-html.append('''
-<div id="h-cal" class="card h" style="left:%dpx;top:150px;width:220px;height:250px;padding:0;overflow:hidden">
-  <div style="height:62px;background:#FFB904;color:#111;font-size:28px;font-weight:700;display:flex;align-items:center;justify-content:center;letter-spacing:.08em">TAREEKH</div>
-  <div id="h-d1" style="position:absolute;left:0;right:0;top:80px;text-align:center;font-size:150px;font-weight:700;line-height:1">1</div>
-  <div id="h-d25" class="h" style="position:absolute;left:0;right:0;top:80px;text-align:center;font-size:150px;font-weight:700;line-height:1">25</div>
-</div>
-<div id="h-sms" class="h sms" style="left:%dpx;top:170px"><div class="smsh">BANK · SMS · 9:00</div>
-  <div style="font-size:28px">Salary credited</div><div id="h-amt" class="amber" style="font-size:66px;font-weight:700;line-height:1.1">₹0</div></div>
-<div id="h-amit" class="h" style="left:%dpx;top:380px">%s</div>
-<div id="h-neha" class="h" style="left:%dpx;top:420px">%s</div>
-<div id="h-b1" class="h bub" style="left:%dpx;top:450px">Is mahine toh <b>sab set</b> hai!</div>
-<div id="h-b2" class="h bub" style="left:%dpx;top:170px;width:470px;white-space:normal">Aarav ki college fees ka kya socha? Aur <b>apna ghar</b> kab?</div>
-''' % (L + 20, L + 590, L + 300, character("amit", "c-amit", 510, phone=True), L + 640, character("neha", "c-neha", 470),
-       L + 20, L + 260))
-js += ["rise('#h-cal',0.3);", "rise('#h-amit',0.6);", "rise('#h-sms',1.0);", "count('#h-amt',0,100000,1.2,1.4);",
-       "blink('#c-amit-eyes',2.9);", "rise('#h-b1',5.2); out('#h-b1',6.8);",
-       "tl.to('#h-d1',{opacity:0,duration:.35},7.0);", "tl.fromTo('#h-d25',{opacity:0},{opacity:1,duration:.4},7.1);",
-       "out('#h-sms',7.0);", "mood('c-amit',7.5,'sad');", "blink('#c-amit-eyes',8.3);",
-       "rise('#h-neha',8.6);", "rise('#h-b2',9.1);", "blink('#c-neha-eyes',10.2);", "blink('#c-amit-eyes',11.0);"]
+# AI family (CapCut): 1 tareekh salary SMS -> 25 tareekh worry -> Neha asks
+stock("h-c1", AI_MOMENTS["salary-sms"], "1 tareekh · ₹1,00,000 salary aayi", 0.4, 7.0)
+stock("h-c2", AI_MOMENTS["month-end"], "25 tareekh… account khaali", 7.0, 8.6)
+stock("h-c3", AI_MOMENTS["neha-asks"], "College fees? Apna ghar?", 8.6, 11.5)
+stock("h-c4", AI_MOMENTS["family-still"], "Ye kahani aapki bhi hai", 11.5, 15.0)
 money_sounds.append(2.6)
 line("h-l1", "Shuruaat kahan se karein?", {1, 2}, "cyan", 11.6, 14.4)
 scene_close()
@@ -209,16 +186,24 @@ people = [("amit", "Amit", "35 · private job", 330, 30, 36.0), ("neha", "Neha",
 html.append('<div id="f-title" class="h title" style="left:%dpx;top:150px;width:%dpx;text-align:center">Verma family</div>' % (L, W))
 html.append('<div id="f-where" class="h" style="left:%dpx;top:252px;width:%dpx;text-align:center;font-size:38px;color:rgba(255,255,255,.85)">'
             '<span class="cyan">●</span> Lucknow · kiraye ka 2BHK</div>' % (L, W))
+# the AI family reference picture (same faces as every AI clip), names tagged next to each face
+FIMG_W, FIMG_H, FIMG_T = 780, 439, 300
+fx = CX - FIMG_W // 2
+html.append('<div id="f-pic" class="h" style="left:%dpx;top:%dpx;width:%dpx;height:%dpx;border-radius:18px;overflow:hidden;'
+            'box-shadow:0 20px 60px rgba(0,0,0,.55)"><img src="assets/img/verma-family.png" style="width:100%%;height:100%%;object-fit:cover"></div>'
+            % (fx, FIMG_T, FIMG_W, FIMG_H))
+js.append("rise('#f-pic',35.9);")
+# face positions in the 1920x1080 picture -> name chip anchors (chip sits beside the face, never on it)
+faces = {"amit": (690, 270, -1), "neha": (1250, 330, 1), "aarav": (800, 640, -1), "pihu": (1110, 700, 1)}
 for k, (kind, name, sub, h, dx, t) in enumerate(people):
-    w = round(h * 200 / 340)
-    html.append('<div id="f-p%d" class="h" style="left:%dpx;top:%dpx;width:%dpx;text-align:center">%s'
-                '<div style="font-size:36px;font-weight:700;margin-top:4px">%s</div>'
-                '<div style="font-size:24px;color:rgba(255,255,255,.75);white-space:nowrap;margin-left:-40px;margin-right:-40px">%s</div></div>'
-                % (k, L + dx, 640 - h, w, character(kind, "f-" + kind, h), name, sub))
-    js.append("rise('#f-p%d',%.2f); blink('#f-%s-eyes',%.2f);" % (k, t, kind, t + 1.6))
-js.append("tl.fromTo('#f-aarav-arm',{rotation:0},{rotation:-24,duration:.3,yoyo:true,repeat:3,ease:'power1.inOut'},41.5);")
-js.append("blink('#f-amit-eyes',47.0); blink('#f-neha-eyes',52.5); blink('#f-pihu-eyes',58.0); blink('#f-aarav-eyes',63.0);")
-html.append('<div id="f-inc" class="card h" style="left:%dpx;top:735px;width:640px;height:150px;text-align:center;padding-top:14px">'
+    px, py, side = faces[kind]
+    x = fx + px * FIMG_W / 1920; y = FIMG_T + py * FIMG_H / 1080
+    left = x - 250 if side < 0 else x + 70
+    html.append('<div id="f-p%d" class="h namechip" style="left:%dpx;top:%dpx"><b>%s</b><span>%s</span></div>'
+                % (k, left, y - 30, name, sub))
+    js.append("rise('#f-p%d',%.2f);" % (k, t))
+js.append("out('#f-pic,#f-p0,#f-p1,#f-p2,#f-p3',59.6);")
+html.append('<div id="f-inc" class="card h" style="left:%dpx;top:762px;width:640px;height:150px;text-align:center;padding-top:14px">'
             '<div id="f-incv" class="amber" style="font-size:78px;font-weight:700;line-height:1.1">₹0</div>'
             '<div style="font-size:28px;color:rgba(255,255,255,.78)">har mahine · ghar ki kul take-home</div></div>' % (CX - 320))
 html.append('<div id="f-ex" class="chip h" style="left:%dpx;top:760px;width:520px">Example family ·&nbsp;<b class="mag">asli nahi</b></div>' % (CX - 260))
@@ -232,12 +217,7 @@ scene_close()
 # ---------------------------------------------------------------------------------------------- 4. Aaj ka paisa
 scene_open("today", 2)
 tag("t-tag", 2, 75.2)
-html.append('<div id="t-sun" class="h eyebrow" style="left:%dpx;top:160px;width:%dpx;text-align:center">EK SUNDAY · HISAAB</div>' % (L, W))
-html.append('<div id="t-amit" class="h" style="left:%dpx;top:330px">%s</div>' % (L + 170, character("amit", "t-amit", 430)))
-html.append('<div id="t-neha" class="h" style="left:%dpx;top:350px">%s</div>' % (L + 470, character("neha", "t-neha", 410, pencil=True)))
-html.append('<div id="t-bub" class="h bub" style="left:%dpx;top:215px;width:560px;white-space:normal">Chalo, aaj <b>poora hisaab</b> lagate hain!</div>' % (L + 300))
-js += ["rise('#t-sun',77.0);", "rise('#t-amit',77.1);", "rise('#t-neha',77.3);", "rise('#t-bub',78.0);", "blink('#t-amit-eyes',79.0);",
-       "out('#t-sun,#t-amit,#t-neha,#t-bub',80.2);"]
+stock("t-c10", AI_MOMENTS["five-goals"], "Ek Sunday · poora hisaab", 77.0, 80.2)
 tiles = [("t-s", "Savings account", "₹0", 80.6, 60000), ("t-e", "Amit ka EPF", "₹0", 81.6, 400000),
          ("t-h", "Health cover", "Company policy", 82.6, None), ("t-k", "Karz", "₹0", 83.4, None)]
 for k, (tid, lab, val, t, n) in enumerate(tiles):
@@ -286,6 +266,7 @@ html.append('<div id="b-bar" class="h" style="left:%dpx;top:250px;width:%dpx;hei
 html.append('<div id="b-lab1" class="h seglab" style="left:%dpx;top:350px">Zaroori <span class="amber">₹58,000</span> · 58%%</div>' % (L + 20))
 html.append('<div id="b-lab4" class="h seglab" style="left:%dpx;top:350px;width:%dpx;text-align:right">Future <span class="cyan">₹31,000</span> · 31%%</div>' % (L + 20, BW))
 js += ["rise('#b-title',105.4);", "rise('#b-bar',106.6);", "rise('#b-lab1',132.0);"]
+stock("b-c5", AI_MOMENTS["kirana"], "Kiraya, ration, bills…", 113.8, 117.8)
 # essentials: a white data card (Pranjal style), the yellow marker moves to each row as it is said
 ess = [("Kiraya", 18000, 110.0), ("Ration", 14000, 114.0), ("Bills", 4000, 118.0),
        ("Transport", 6000, 121.0), ("School", 10000, 124.0), ("Health", 6000, 128.0), ("Zaroori total", 58000, 132.0)]
@@ -356,10 +337,8 @@ js.append("grow('#g-axis',226.0,.8);")
 html.append('<div id="g-par" class="h" style="left:%dpx;top:%dpx;width:%dpx;height:46px;border-radius:12px;background:rgba(255,185,4,.16);'
             'border:2px solid rgba(255,185,4,.6);font-size:28px;font-weight:700;display:flex;align-items:center;padding-left:18px">'
             'Parents ki care: <span class="amber" style="margin-left:10px">kabhi bhi</span></div>' % (AX0, AY + 70, AX1 - AX0 - 230))
-html.append('<div id="g-amit" class="h" style="left:%dpx;top:720px">%s</div>' % (L + 690, character("amit", "g-amit", 170)))
-html.append('<div id="g-neha" class="h" style="left:%dpx;top:720px">%s</div>' % (L + 800, character("neha", "g-neha", 170, pencil=True)))
-js += ["rise('#g-amit',228.0);", "rise('#g-neha',228.3);", "write('#g-neha-arm',228.8);", "write('#g-neha-arm',253.6);",
-       "blink('#g-amit-eyes',236.0);", "blink('#g-neha-eyes',241.0);", "mood('g-amit',254.0,'sad');", "blink('#g-amit-eyes',262.5);"]
+stock("g-c7", AI_MOMENTS["college"], "Aarav ka college", 238.2, 242.2)
+stock("g-c8", AI_MOMENTS["parents"], "Maa-papa ki dekhbhaal", 248.0, 250.4)
 html.append('<div id="g-ghar" class="h goal" style="left:%dpx;top:%dpx;border:3px dashed rgba(255,185,4,.8);border-radius:20px;'
             'background:rgba(255,185,4,.06)">Apna ghar:&nbsp;<span class="amber">kabhi na kabhi?</span></div>' % (gx(4), AY + 140))
 broll("v-ghar", "A couple looking at a flat for sale", 250.5, 255.0)
@@ -382,9 +361,7 @@ for k, (lab, n, sub, t) in enumerate([("Padhai · ₹10,000 × 10 saal", 1200000
 html.append('<div id="j-cap" class="h" style="left:%dpx;top:790px;width:880px;text-align:center;font-size:28px;'
             'color:rgba(255,255,255,.8)">Sirf jama rakam: growth aur mehngai shamil nahi · <b>Illustrative</b></div>' % (L + 20))
 html.append('<div id="j-ep" class="chip h" style="left:%dpx;top:880px;width:680px">Asli kharcha kitna?&nbsp;<b class="cyan">Episode 41 &amp; 46</b></div>' % (CX - 340))
-html.append('<div id="j-amit" class="h" style="left:%dpx;top:330px">%s</div>' % (L + 690, character("amit", "j-amit", 400, phone=True)))
-js += ["rise('#j-cap',289.0);", "rise('#j-ep',305.0);", "rise('#j-amit',285.8);", "blink('#j-amit-eyes',290.5);",
-       "blink('#j-amit-eyes',300.0);", "mood('j-amit',305.2,'sad');", "blink('#j-amit-eyes',312.0);"]
+js += ["rise('#j-cap',289.0);", "rise('#j-ep',305.0);"]
 scene_close()
 
 # ---------------------------------------------------------------------------------------------- 8. Har goal ka dabba
@@ -423,14 +400,11 @@ html.append('<div id="k-paper" class="h paper" style="left:%dpx;top:160px">'
             '<div class="phead">Hamare 5 goals</div>'
             '<div class="prow pcols"><span>Goal</span><span>Kab</span><span>Kitna (andaaza)</span></div>%s</div>' % (L + 40, rh))
 js.append("rise('#k-paper',345.9);")
-html.append('<div id="k-neha" class="h" style="left:%dpx;top:590px;z-index:3">%s</div>' % (L + 720, character("neha", "k-neha", 300, pencil=True)))
-js.append("rise('#k-neha',350.0);")
-js += ["write('#k-neha-arm',%.2f);" % (t + 0.1) for t in (350.0, 354.0, 358.0, 362.0, 366.0)]
-js += ["blink('#k-neha-eyes',356.5);", "blink('#k-neha-eyes',371.0);", "blink('#k-neha-eyes',384.0);"]
 js += ["tl.fromTo('#k-m%d',{scaleX:1},{scaleX:0,duration:1.0,ease:'power1.inOut'},%.2f);" % (k, t) for k, (_, _, t, _) in enumerate(rows)]
 line("k-l1", "Kab chahiye + lagbhag kitna", {0, 1, 3, 4}, "cyan", 355.0, 365.5)
 html.append('<div id="k-chip" class="chip h" style="left:%dpx;top:920px;width:620px">Saal nahi? Toh abhi&nbsp;<b class="mag">sapna</b>&nbsp;hai</div>' % (CX - 310))
-js += ["rise('#k-chip',386.0);", "out('#k-chip',398.0);"]
+js += ["rise('#k-chip',386.0);", "out('#k-chip',391.6);"]
+stock("k-c10", AI_MOMENTS["five-goals"], "Hamare 5 goals: likh liye!", 392.0, 398.0, skip=3.0)
 scene_close()
 
 # ---------------------------------------------------------------------------------------------- 10. End
@@ -475,13 +449,16 @@ for n, (key, q) in enumerate(SECTIONS, 1):
                     '<div class="secn">#%d</div><div class="secq">%s</div></div>' % (n, f, n, E(q)))
     js.append("tl.fromTo('#o-sec%d',{opacity:0},{opacity:1,duration:.25},%.2f); tl.to('#o-sec%d',{opacity:0,duration:.25},%.2f);"
               % (n, 10000 + f, n, 10000 + f + 2.0))
-WEB0 = raw2flat(571.1)
+WEB0 = raw2flat(541.87)   # reshoot: "agar aapko apni family ka financial tracker..."
+SEC_HTML.append('<div id="o-webback" class="clip webback" data-start="%.2f" data-duration="%.2f" data-track-index="9"></div>' % (WEB0, FLAT - WEB0))
+js.append("tl.fromTo('#o-webback',{opacity:0},{opacity:1,duration:.35},%.2f);" % (10000 + WEB0))
 SEC_HTML.append('<div id="o-web" class="clip webcard" data-start="%.2f" data-duration="%.2f" data-track-index="10">'
                 '<div class="wbar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i>'
                 '<span class="wurl">🔒&nbsp;<b>samjhowithraj.online</b>/#tracker</span></div>'
-                '<img id="o-web-img" src="assets/img/tracker-top.jpg" alt=""></div>' % (WEB0, FLAT - WEB0))
+                '<div class="wview"><img id="o-web-img" src="assets/img/tracker-top.jpg" alt=""></div>'
+                '<div class="wfoot">🧮 Free <b>Financial Tracker</b> · apna plan khud banao</div></div>' % (WEB0, FLAT - WEB0))
 js.append("tl.fromTo('#o-web',{opacity:0,y:30},{opacity:1,y:0,duration:.45,ease:'power2.out'},%.2f);" % (10000 + WEB0))
-js.append("tl.to('#o-web-img',{y:-160,duration:6,ease:'power1.inOut'},%.2f);" % (10000 + WEB0 + 1.5))
+js.append("tl.to('#o-web-img',{y:-120,duration:6,ease:'power1.inOut'},%.2f);" % (10000 + WEB0 + 1.5))
 roots.append("<!--SECCARDS-->")
 
 # white keyword labels next to Raj's head (one at a time, 2-4 s); a struck label = "X nahi, Y"
@@ -499,14 +476,18 @@ for k, t in enumerate(money_sounds):
     chaching("sfx-cc%d" % k, t)
 
 # ---------------------------------------------------------------------------------------------- placeholder (left third)
-# Raj: the cut-out from the black-background recording at natural size (1.0 = no upscale), anchored to the bottom edge,
-# body centre at x 700. Measured envelope over the whole take: hands from 16% to 86% of the source width, head top at
-# ~28% height, so at this offset his hands stay inside the frame and pass IN FRONT of the studio screen.
-RAJ_X = 700 - 979
+# Raj (reshoot, 16 Oct 2026): a closer head-and-shoulders take, so he goes in at 64% (not natural size), bottom-anchored,
+# body centre at x 480. Reach measured over the whole take (place/reshoot/union.npy): torso 540-1652 and hands 336-1768
+# of the 1920 source, centre 1096 -> at 64% his hands stay inside x 0-910, left of the bigger studio screen (x 950+).
+RAJ_S = 0.64
+RAJ_CX = 480
+RAJ_X = round(RAJ_CX - 1096 * RAJ_S)
+RAJ_W, RAJ_H = round(1920 * RAJ_S), round(1080 * RAJ_S)
+RAJ_Y = 1080 - RAJ_H
 placeholder = ('<video id="raj" class="clip" src="assets/cam/raj.mp4" muted playsinline data-start="0" data-duration="%.2f" '
-               'data-track-index="3" style="position:absolute;left:%dpx;top:0;width:1920px;height:1080px;z-index:15;mix-blend-mode:screen"></video>'
+               'data-track-index="3" style="position:absolute;left:%dpx;top:%dpx;width:%dpx;height:%dpx;z-index:15;mix-blend-mode:screen"></video>'
                '<audio id="voice" src="assets/audio/voice.m4a" data-start="0" data-duration="%.2f" data-track-index="4" data-volume="1"></audio>'
-               % (FLAT, RAJ_X, FLAT))
+               % (FLAT, RAJ_X, RAJ_Y, RAJ_W, RAJ_H, FLAT))
 
 CSS = '''
 @font-face{font-family:"DM Sans";src:url(fonts/DMSans-400.woff2) format("woff2");font-weight:400}
@@ -577,7 +558,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 .bslot{position:absolute;left:926px;top:118px;width:948px;height:848px;border-radius:16px;z-index:8;display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:18px;padding:60px;text-align:center;
   background:#0b1826}
-.bcap{position:absolute;left:0;right:0;bottom:34px;text-align:center;font-size:44px;font-weight:700;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.8)}
+.bcap{position:absolute;left:0;right:0;bottom:4px;text-align:center;font-size:44px;font-weight:700;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.8)}
 .btag{font-size:30px;font-weight:700;letter-spacing:.2em;color:#FFB904}
 .bwhat{font-size:46px;font-weight:700;line-height:1.2}
 .disc{position:absolute;left:40px;top:40px;width:560px;padding:16px 22px;z-index:30;opacity:0;background:rgba(10,13,20,.88);border:2px solid rgba(255,185,4,.55);border-radius:16px;display:flex;flex-direction:column;gap:6px}
@@ -611,7 +592,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
   box-shadow:0 18px 50px rgba(0,0,0,.45)}
 .bub b{color:#0005EE}
 /*CHAR_CSS*/
-#panel{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:940px 120px;transform:translate(157px,-63px) scale(.85)}
+#panel{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:940px 120px;transform:translate(30px,-72px) scale(.99)}
 .endc{position:absolute;inset:0;z-index:40;opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:46px;
   background:radial-gradient(900px 600px at 50% 40%,rgba(10,240,240,.12),transparent 70%),#0a0d14}
 .endt{font-size:84px;font-weight:700}
@@ -625,11 +606,16 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 .btn{font-size:30px;font-weight:700;padding:14px 26px;border-radius:9999px;color:#fff}
 .btn.red{background:#FF0000}.btn.blue{background:#0095F6}
 .endw{font-size:40px;color:rgba(255,255,255,.88)}.endw b{color:#0AF0F0}
-.webcard{position:absolute;left:926px;top:118px;width:948px;height:848px;border-radius:16px;z-index:11;overflow:hidden;background:#141414;opacity:0}
+.namechip{position:absolute;display:flex;flex-direction:column;padding:8px 16px;border-radius:12px;background:rgba(10,13,20,.88);border:2px solid rgba(10,240,240,.6);width:180px}.namechip b{font-size:30px}.namechip span{font-size:20px;color:rgba(255,255,255,.75)}
+.webback{position:absolute;left:926px;top:118px;width:948px;height:848px;border-radius:16px;z-index:10;background:#0a0d14;opacity:0}
+.webcard{position:absolute;left:1060px;top:262px;width:680px;height:540px;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 2px rgba(10,240,240,.35);border-radius:16px;z-index:11;overflow:hidden;background:#141414;opacity:0}
 .wbar{position:absolute;left:0;top:0;right:0;height:58px;background:#24262b;display:flex;align-items:center;gap:10px;padding:0 20px;z-index:2}
 .wbar i{width:13px;height:13px;border-radius:50%;display:inline-block}
 .wurl{margin-left:18px;height:34px;padding:0 18px;border-radius:17px;background:#15171b;display:flex;align-items:center;font-size:21px;color:rgba(255,255,255,.85)}
-#o-web-img{position:absolute;left:0;top:58px;width:948px}
+#o-web-img{position:absolute;left:0;top:0;width:680px}
+.wview{position:absolute;left:0;right:0;top:58px;bottom:66px;overflow:hidden}
+.wfoot{position:absolute;left:0;right:0;bottom:0;height:66px;display:flex;align-items:center;justify-content:center;font-size:27px;color:#fff;background:#0b0f16;border-top:1px solid rgba(255,255,255,.08)}
+.wfoot b{color:#0AF0F0;margin:0 .3em}
 #draftmark{position:absolute;right:40px;bottom:22px;font-size:20px;color:rgba(255,255,255,.6);letter-spacing:.08em}
 '''
 

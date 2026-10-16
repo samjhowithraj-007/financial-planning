@@ -1,0 +1,64 @@
+{
+ "cuts": [
+  5.733,
+  12.033,
+  17.733,
+  30.067,
+  39.8,
+  55.333
+ ],
+ "segments": [
+  {
+   "flat_start": 0.0,
+   "flat_end": 5.733,
+   "src_start": 19.6,
+   "src_end": 25.3333,
+   "frames": 172
+  },
+  {
+   "flat_start": 5.733,
+   "flat_end": 12.033,
+   "src_start": 331.3,
+   "src_end": 337.6,
+   "frames": 189
+  },
+  {
+   "flat_start": 12.033,
+   "flat_end": 17.733,
+   "src_start": 342.5333,
+   "src_end": 348.2333,
+   "frames": 171
+  },
+  {
+   "flat_start": 17.733,
+   "flat_end": 30.067,
+   "src_start": 414.3,
+   "src_end": 426.6333,
+   "frames": 370
+  },
+  {
+   "flat_start": 30.067,
+   "flat_end": 39.8,
+   "src_start": 438.7667,
+   "src_end": 448.5,
+   "frames": 292
+  },
+  {
+   "flat_start": 39.8,
+   "flat_end": 55.333,
+   "src_start": 508.0667,
+   "src_end": 523.6,
+   "frames": 466
+  },
+  {
+   "flat_start": 55.333,
+   "flat_end": 66.733,
+   "src_start": 570.5333,
+   "src_end": 581.9333,
+   "frames": 342
+  }
+ ],
+ "flat_duration": 66.733,
+ "source_fps": "30/1",
+ "frame_origin": 0.0
+}

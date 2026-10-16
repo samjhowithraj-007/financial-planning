@@ -13,52 +13,73 @@ from characters import character, CHAR_CSS
 HERE = os.path.dirname(os.path.abspath(__file__))
 PLAT = sys.argv[1] if len(sys.argv) > 1 else "yt"
 OUT = os.path.join(HERE, "short", "index.html")
-FLAT = 66.733
-DUR = 70.0
+import json as _json
+_CM = _json.load(open(os.path.join(HERE, "short", "cut-map.json")))
+FLAT = _CM["flat_duration"]                        # reshoot cut (16 Oct 2026): 7 lines, 67.0 s
+END = FLAT + 0.03
+DUR = round(END + 3.24, 2)
+# the scene times below were written for the v1 cut; M() maps them onto the reshoot cut line by line
+OB = [0, 5.74, 12.04, 17.74, 30.08, 39.80, 55.36, 66.76]
+NB = [g["flat_start"] for g in _CM["segments"]] + [END]
+def M(t):
+    for (a0, b0), (a1, b1) in zip(zip(OB, NB), zip(OB[1:], NB[1:])):
+        if t <= a1:
+            return b0 + (b1 - b0) * (t - a0) / (a1 - a0)
+    return NB[-1] + (t - OB[-1])
 E = lambda s: escape(s, quote=False)
 html, js = [], []
+VBOX = (60, 380, 960, 798)     # AI clip box: 1.2:1 like the clips, between the title and the caption (y 1270)
+
+def vid(vid_id, clip, a, b, box=VBOX, skip=0.0):
+    """An AI family clip (CapCut, broll/) in the top area; times are v1-cut times, mapped by M()."""
+    x, y, w, h = box
+    a, b = M(a), M(b)
+    html.append('<video id="%s" class="clip aiv" src="assets/broll/%s" muted playsinline data-start="%.2f" data-duration="%.2f" '
+                'data-media-start="%.2f" data-track-index="5" style="left:%dpx;top:%dpx;width:%dpx;height:%dpx"></video>'
+                % (vid_id, clip, a, b - a, skip, x, y, w, h))
+    js.append("tl.fromTo('#%s',{opacity:0},{opacity:1,duration:.3},%.2f); tl.to('#%s',{opacity:0,duration:.3},%.2f);"
+              % (vid_id, a + 10000, vid_id, b - 0.3 + 10000))
 
 def scene(sid, a, b, inner):
+    a, b = M(a), M(b)
     html.append('<div id="%s" class="clip scene" data-start="%.2f" data-duration="%.2f" data-track-index="%d">%s</div>'
                 % (sid, a, b - a, 1 + len(html) % 2, inner))
-    js.append("tl.fromTo('#%s',{opacity:0},{opacity:1,duration:.3},%.2f);" % (sid, a))
-    js.append("tl.to('#%s',{opacity:0,duration:.3},%.2f);" % (sid, b - 0.3))
+    js.append("tl.fromTo('#%s',{opacity:0},{opacity:1,duration:.3},%.2f);" % (sid, a + 10000))
+    js.append("tl.to('#%s',{opacity:0,duration:.3},%.2f);" % (sid, b - 0.3 + 10000))
 
 def cap(cid, text, em, a, b):
+    a, b = M(a), M(b)
     words = "".join('<span class="w%s">%s</span>' % (" " + c if c else "", E(w))
                     for w, c in [(w, em.get(i, "")) for i, w in enumerate(text.split())])
     html.append('<div id="%s" class="clip cap" data-start="%.2f" data-duration="%.2f" data-track-index="6">%s</div>' % (cid, a, b - a, words))
-    js.append("tl.fromTo('#%s .w',{opacity:0,y:20},{opacity:1,y:0,duration:.35,ease:'power2.out',stagger:.05},%.2f);" % (cid, a))
-    js.append("tl.to('#%s',{opacity:0,duration:.25},%.2f);" % (cid, b - 0.25))
+    js.append("tl.fromTo('#%s .w',{opacity:0,y:20},{opacity:1,y:0,duration:.35,ease:'power2.out',stagger:.05},%.2f);" % (cid, a + 10000))
+    js.append("tl.to('#%s',{opacity:0,duration:.25},%.2f);" % (cid, b - 0.25 + 10000))
 
 # ---- A. SMS hook 0.00-5.74
 scene("sA", 0.0, 5.74, '''
 <div class="hook">₹1 lakh salary. <b class="cyan">Future set?</b></div>
-<div id="a-amit" class="h" style="left:90px;top:560px">%s</div>
-<div id="a-sms" class="h sms" style="left:470px;top:520px"><div class="smsh">BANK · SMS · 9:00</div>
-  <div style="font-size:34px">Salary credited</div><div id="a-amt" class="amber" style="font-size:84px;font-weight:700;line-height:1.1">₹0</div></div>
-''' % character("amit", "a-c", 560, phone=True))
-js += ["rise('#a-amit',.2);", "rise('#a-sms',.9);", "count('#a-amt',0,100000,1.0,1.4);", "blink('#a-c-eyes',3.2);"]
+''')
+vid("a-v", "01-ai-salary-sms.mp4", 0.05, 5.74)
 cap("cA1", "Amit ke phone pe SMS aaya…", {}, 0.1, 2.7)
 cap("cA2", "₹1,00,000 credited!", {0: "amber"}, 2.7, 5.6)
 
 # ---- B. 31% bachat 5.74-12.04
 scene("sB", 5.74, 12.04, '''
-<div id="b-neha" class="h" style="left:90px;top:470px">%s</div>
-<div id="b-bub" class="h bub" style="left:420px;top:420px">31%% bachat!<br>Hum <b>achha</b> kar rahe hain.</div>
-<div id="b-bar" class="h" style="left:420px;top:760px;width:570px">
-  <div class="sbar"><i style="width:58%%;background:rgba(255,255,255,.85)"></i><i style="width:11%%;background:#FFB904"></i><i id="b-fut" style="width:31%%;background:#0AF0F0"></i></div>
-  <div class="slab"><span>Zaroori 58%%</span><span class="cyan">Future 31%%</span></div></div>
-''' % character("neha", "b-c", 520))
-js += ["rise('#b-neha',5.9);", "rise('#b-bub',6.5);", "rise('#b-bar',7.6);", "blink('#b-c-eyes',9.2);"]
+<div id="b-fam" class="h" style="left:60px;top:380px;width:960px;height:540px;border-radius:28px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.55)">
+  <img src="assets/img/verma-family.png" style="width:100%;height:100%;object-fit:cover"></div>
+<div id="b-bar" class="h" style="left:60px;top:970px;width:960px">
+  <div class="sbar"><i style="width:58%;background:rgba(255,255,255,.85)"></i><i style="width:11%;background:#FFB904"></i><i id="b-fut" style="width:31%;background:#0AF0F0"></i></div>
+  <div class="slab"><span>Zaroori 58%</span><span class="cyan">Future 31%</span></div></div>
+''')
+js += ["rise('#b-fam',5.9);", "rise('#b-bar',7.6);"]
 cap("cB", "31% bachat: achha start hai", {0: "cyan", 1: "cyan"}, 6.0, 11.9)
 
 # ---- C. kya kaafi hai 12.04-17.74
 scene("sC", 12.04, 17.74, '''
-<div id="c-amit" class="h" style="left:90px;top:560px">%s</div>
-<div id="c-q" class="h big" style="left:470px;top:640px;width:560px">Kya ye <b class="mag">sach mein kaafi</b> hai?</div>
-''' % character("amit", "c-c", 560))
-js += ["rise('#c-amit',12.2);", "mood('c-c',13.4,'sad');", "rise('#c-q',13.9);", "blink('#c-c-eyes',15.6);"]
+<div id="c-q" class="h hook" style="top:225px">Kya ye <b class="mag">sach mein kaafi</b> hai?</div>
+''')
+vid("c-v", "02-ai-month-end-worry.mp4", 12.1, 17.74, (60, 420, 960, 798))
+js += ["rise('#c-q',12.4);"]
 cap("cC", "Man mein ek sawaal…", {}, 12.2, 17.6)
 
 # ---- D. 12 lakh 17.74-30.08
@@ -94,11 +115,10 @@ rh = "".join('<div class="prow"><span>%s</span><span>%s</span><span>₹ ____</sp
 scene("sF", 39.80, 55.36, '''
 <div id="f-paper" class="h paper" style="left:60px;top:380px"><div class="phead">Hamare 5 goals</div>
   <div class="prow pcols"><span>Goal</span><span>Kab</span><span>Kitna</span></div>%s</div>
-<div id="f-neha" class="h" style="left:780px;top:880px">%s</div>
-''' % (rh, character("neha", "f-c", 300, pencil=True)))
-js += ["rise('#f-paper',40.0);", "rise('#f-neha',40.6);"]
+''' % rh)
+js += ["rise('#f-paper',40.0);"]
+vid("f-v", "10-ai-write-goals.mp4", 51.2, 55.36, skip=3.0)
 js += ["tl.fromTo('#f-m%d',{scaleX:1},{scaleX:0,duration:.9,ease:'power1.inOut'},%.2f);" % (k, t) for k, (_, _, t) in enumerate(rows)]
-js += ["write('#f-c-arm',%.2f);" % t for (_, _, t) in rows]
 cap("cF1", "Aaj raat ek kaagaz lo…", {}, 39.9, 44.6)
 cap("cF2", "5 goals likho: kab chahiye, kitna", {0: "cyan", 1: "cyan"}, 44.6, 55.2)
 
@@ -117,14 +137,14 @@ cap("cG2", "samjhowithraj.online pe free!", {0: "cyan"}, 60.4, 66.6)
 btn = '<span class="btn red">Subscribe</span>' if PLAT == "yt" else '<span class="btn blue">Follow</span>'
 who = '<span class="ico">▶</span><div><div class="endk">YouTube</div><div class="endh">@SamjhowithRaj</div></div>' if PLAT == "yt" else \
       '<span class="ico ig">◎</span><div><div class="endk">Instagram · Facebook</div><div class="endh">@samjhowithraj</div></div>'
-html.append('''<div id="sH" class="clip endc" data-start="66.76" data-duration="3.24" data-track-index="8">
+html.append('''<div id="sH" class="clip endc" data-start="@@END@@" data-duration="3.24" data-track-index="8">
 <div class="endt">Poori series:<br><b class="cyan">50 parts</b></div>
 <div id="h-b" class="endb">%s%s</div>
 <div class="endw">Part 2: salary <b>gayab kahan</b> hoti hai?</div></div>''' % (who, btn))
 js += ["tl.fromTo('#sH',{opacity:0},{opacity:1,duration:.35},66.76);", "rise('#h-b',67.1);",
        "tl.fromTo('#h-b .btn',{scale:1},{scale:1.1,duration:.22,yoyo:true,repeat:5,ease:'power1.inOut'},67.6);"]
 
-money = [2.4, 23.2]
+money = [M(2.4), M(23.2)]
 sounds = "".join('<audio id="cc%d" src="assets/sfx/chaching.mp3" data-start="%.2f" data-duration="1.4" data-track-index="12" data-volume="0.16"></audio>'
                  % (k, t) for k, t in enumerate(money))
 
@@ -172,7 +192,8 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 .cap span{display:inline-block;font-size:62px;font-weight:700;margin:0 .14em;opacity:0;text-shadow:0 4px 18px rgba(0,0,0,.8)}
 #cam{position:absolute;left:616px;top:1440px;width:420px;height:420px;border-radius:40px;overflow:hidden;z-index:7;background:#000;
   box-shadow:0 0 0 4px rgba(10,240,240,.55),0 0 40px rgba(10,240,240,.35)}
-#cam video{position:absolute;left:-320px;top:-177px;width:1061px;height:597px}
+#cam video{position:absolute;left:-360px;top:22px;width:1000px;height:563px}
+.aiv{position:absolute;object-fit:cover;border-radius:28px;opacity:0;z-index:4;box-shadow:0 24px 70px rgba(0,0,0,.55)}
 #foot{position:absolute;left:48px;top:1560px;width:530px;font-size:30px;line-height:1.4;color:rgba(255,255,255,.75)}
 #foot b{color:#fff}
 .endc{position:absolute;inset:0;z-index:20;opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:60px;
@@ -201,6 +222,12 @@ page = '''<!doctype html>
 <script>
 window.__timelines = window.__timelines || {};
 const tl = gsap.timeline({ paused: true });
+const OB=@@OB@@, NB=@@NB@@;
+function W(t){ if(typeof t!=='number') return t; if(t>=10000) return t-10000;
+  for(let i=1;i<OB.length;i++){ if(t<=OB[i]) return NB[i-1]+(NB[i]-NB[i-1])*(t-OB[i-1])/(OB[i]-OB[i-1]); }
+  return NB[NB.length-1]+(t-OB[OB.length-1]); }
+for (const k of ['to','fromTo','set']) { const f=tl[k].bind(tl);
+  tl[k]=(...a)=>{ const n=a.length-1; if(typeof a[n]==='number') a[n]=W(a[n]); return f(...a); }; }
 function rise(s,t){ tl.fromTo(s,{opacity:0,y:26},{opacity:1,y:0,duration:.4,ease:'power2.out'},t); }
 function blink(s,t){ tl.to(s,{scaleY:.1,duration:.07,ease:'none'},t); tl.to(s,{scaleY:1,duration:.09,ease:'none'},t+.07); }
 function mood(c,t,m){ tl.to('#'+c+'-'+(m==='sad'?'happy':'sad'),{opacity:0,duration:.2},t); tl.to('#'+c+'-'+m,{opacity:1,duration:.2},t+.1); }
@@ -215,5 +242,6 @@ tl.to('#foot',{opacity:0,duration:.3},66.6);
 tl.to({}, { duration: %.2f }, 0);
 window.__timelines["short"] = tl;
 </script></body></html>''' % (CSS, DUR, "\n".join(html), FLAT, FLAT, FLAT, sounds, "\n".join(js), DUR)
+page = page.replace("@@OB@@", _json.dumps(OB)).replace("@@NB@@", _json.dumps(NB)).replace("@@END@@", "%.2f" % END)
 open(OUT, "w", encoding="utf-8").write(page)
 print("wrote", OUT, PLAT)
