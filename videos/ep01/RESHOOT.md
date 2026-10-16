@@ -28,5 +28,5 @@ Save them as `raw/thumb-1.jpg` … `thumb-4.jpg` (or keep the camera rolling; I'
 - `raw/ep01-reshoot.mp4` (one file or several `ep01-reshoot-*.mp4` in scene order)
 - `raw/thumb-*.jpg`
 
-## AI video clips
-See `BROLL-AI.md`: 10 clips, prompts ready. **Nothing generates until you top up credits and say yes.**
+## Explanation clips
+Free Pexels stock video, already downloaded and wired in: see `STOCK.md`. The paid AI prompts are kept in `BROLL-AI.md` in case you top up credits later.

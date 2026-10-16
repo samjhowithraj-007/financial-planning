@@ -117,9 +117,30 @@ def block(bid, src, cid, t_in, t_out, box, values, track):
                  "data-variable-values='%s' style=\"position:absolute;left:%dpx;top:%dpx;width:%dpx;height:%dpx;z-index:6\"></div>"
                  % (bid, cid, src, t_in, t_out - t_in, track, _j.dumps(values, ensure_ascii=False), x, y, w, h))
 
+# Reshoot: free Pexels stock clips (broll/, conformed 1422x1182 to the screen slot; list in STOCK.md) replace the drawn
+# scenes. USE_STOCK = False brings the animated cutaways (scenes_art.py) back.
+USE_STOCK = True
+STOCK = {"v-lko": ("04-city-rooftops.mp4", "Lucknow · kiraye ka 2BHK"),
+         "v-diwali": ("06-diwali-street.mp4", "Ye har saal aate hain"),
+         "v-ghar": ("09-flat-viewing.mp4", "Apna ghar: kab?")}
+
+def stock(bid, clip, caption, t_in, t_out, skip=0.0):
+    """A stock clip on the studio screen (the bslot box), muted, with the white caption at the bottom."""
+    roots.append('<video id="%s-v" class="clip" src="assets/broll/%s" muted playsinline data-start="%.2f" data-duration="%.2f" '
+                 'data-media-start="%.2f" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;'
+                 'height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>'
+                 % (bid, clip, t_in, t_out - t_in, skip))
+    roots.append('<div id="%s" class="clip bslot" data-layout-allow-occlusion data-start="%.2f" data-duration="%.2f" '
+                 'data-track-index="6" style="background:none;opacity:0"><div class="bcap">%s</div></div>'
+                 % (bid, t_in, t_out - t_in, E(caption)))
+    js.append("tl.fromTo(['#%s','#%s-v'],{opacity:0},{opacity:1,duration:.3},%.2f); tl.to(['#%s','#%s-v'],{opacity:0,duration:.3},%.2f);"
+              % (bid, bid, t_in, bid, bid, t_out - 0.3))
+
 def broll(bid, what, t_in, t_out):
-    """An explanation cutaway on the studio screen: an animated scene (scenes_art.py) in place of a stock/AI clip."""
+    """An explanation cutaway on the studio screen: a stock clip (STOCK) or an animated scene (scenes_art.py)."""
     broll_slots.append((bid, what, t_in, t_out))
+    if USE_STOCK and bid in STOCK:
+        return stock(bid, STOCK[bid][0], STOCK[bid][1], t_in, t_out)
     svg, caption, lines = ART[bid](bid, t_in)
     roots.append('<div id="%s" class="clip bslot" data-layout-allow-occlusion data-start="%.2f" data-duration="%.2f" data-track-index="5">'
                  '<svg width="948" height="788" viewBox="0 0 948 788" style="position:absolute;left:0;top:0;border-radius:16px">%s</svg>'
