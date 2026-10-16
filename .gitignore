@@ -20,3 +20,5 @@ place/*.png
 place/*.npy
 raw-sheet.png
 transcript*.log
+*.m4a
+*.webm

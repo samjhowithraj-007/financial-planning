@@ -11,10 +11,44 @@ Usage: python build-draft.py   (then: npx --yes hyperframes@0.8.154 check draft)
 import os
 from html import escape
 from characters import character, CHAR_CSS
+from scenes_art import ART
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "draft", "index.html")
 DUR = 420.0
+import json as _json
+_CM = _json.load(open(os.path.join(HERE, "cut-map.json")))
+FLAT = _CM["flat_duration"]
+FINAL = round(FLAT + 0.6, 2)
+def raw2flat(r):
+    """A moment in the raw take -> the flat cut (inside a kept segment, or the next kept start)."""
+    for g in _CM["segments"]:
+        if r < g["src_start"]:
+            return g["flat_start"]
+        if r <= g["src_end"]:
+            return g["flat_start"] + (r - g["src_start"])
+    return FLAT
+# (plan second, raw second where Raj says it), from the transcript of the take
+ANCHORS = [(0.0, 13.9), (1.2, 20.0), (5.2, 30.16), (7.0, 33.36), (7.5, 40.72), (8.6, 46.0), (9.1, 48.46), (11.6, 64.04),
+    (15.0, 74.3), (16.0, 74.6), (17.2, 84.3), (30.0, 108.6), (31.0, 109.2), (33.0, 113.78), (36.0, 119.38), (38.0, 126.78),
+    (41.0, 140.82), (43.0, 147.18), (48.0, 152.14), (56.0, 159.9), (60.0, 167.58), (75.0, 172.5), (77.0, 173.3),
+    (80.6, 183.48), (81.6, 189.44), (82.6, 192.3), (83.4, 197.94), (88.0, 206.46), (91.0, 216.96), (95.0, 220.46),
+    (97.0, 223.1), (105.0, 230.8), (107.5, 238.64), (110.0, 244.78), (114.0, 251.32), (118.0, 254.76), (121.0, 260.48),
+    (124.0, 266.1), (128.0, 269.62), (132.0, 273.62), (149.0, 280.9), (151.2, 286.5), (157.6, 297.8), (159.8, 301.22),
+    (163.8, 304.84), (179.0, 310.5), (181.0, 311.46), (186.0, 316.72), (190.0, 320.58), (194.0, 322.6), (199.0, 326.0),
+    (200.0, 331.42), (212.0, 339.6), (213.0, 345.2), (224.6, 348.3), (225.0, 348.6), (228.0, 360.34), (232.0, 365.84),
+    (238.0, 370.8), (244.0, 373.8), (246.0, 376.48), (248.0, 379.9), (250.5, 389.3), (255.4, 397.86), (268.0, 403.16),
+    (277.0, 406.42), (284.6, 410.8), (285.0, 411.0), (286.0, 415.0), (289.0, 418.66), (295.0, 427.2), (298.0, 432.76),
+    (302.0, 438.86), (305.0, 448.48), (319.6, 458.6), (320.0, 459.0), (321.0, 463.44), (324.0, 468.0), (328.0, 477.94),
+    (331.2, 481.02), (334.0, 486.38), (340.0, 487.92), (344.6, 504.9), (345.0, 505.4), (345.9, 508.58), (350.0, 512.04),
+    (366.0, 524.06), (386.0, 526.12), (388.0, 531.6), (398.0, 537.34), (400.0, 541.0), (400.3, 541.46), (400.6, 545.04),
+    (404.0, 553.68), (406.5, 562.56), (408.0, 571.1), (410.0, 579.0), (420.0, 585.6)]
+WARP = [(a, round(raw2flat(b), 3)) for a, b in ANCHORS]
+def TW(t):
+    for (a0, b0), (a1, b1) in zip(WARP, WARP[1:]):
+        if t <= a1:
+            return b0 + (b1 - b0) * (t - a0) / (a1 - a0) if a1 > a0 else b1
+    return WARP[-1][1]
 
 # Scene windows (seconds), from the storyboard in episodes/EP01-*.md
 T = {"hook": (0.0, 15.0), "intro": (15.0, 30.0), "family": (30.0, 75.0), "today": (75.0, 105.0),
@@ -82,12 +116,15 @@ def block(bid, src, cid, t_in, t_out, box, values, track):
                  % (bid, cid, src, t_in, t_out - t_in, track, _j.dumps(values, ensure_ascii=False), x, y, w, h))
 
 def broll(bid, what, t_in, t_out):
-    """An explanation cutaway on the studio screen: AI or stock video goes here (placeholder in the draft)."""
+    """An explanation cutaway on the studio screen: an animated scene (scenes_art.py) in place of a stock/AI clip."""
     broll_slots.append((bid, what, t_in, t_out))
+    svg, caption, lines = ART[bid](bid, t_in)
     roots.append('<div id="%s" class="clip bslot" data-layout-allow-occlusion data-start="%.2f" data-duration="%.2f" data-track-index="5">'
-                 '<div class="btag">AI / STOCK VIDEO</div><div class="bwhat">%s</div></div>' % (bid, t_in, t_out - t_in, E(what)))
+                 '<svg width="948" height="788" viewBox="0 0 948 788" style="position:absolute;left:0;top:0;border-radius:16px">%s</svg>'
+                 '<div class="bcap">%s</div></div>' % (bid, t_in, t_out - t_in, svg, E(caption)))
     js.append("tl.fromTo('#%s',{opacity:0},{opacity:1,duration:.3},%.2f); tl.to('#%s',{opacity:0,duration:.3},%.2f);"
               % (bid, t_in, bid, t_out - 0.3))
+    js.extend(lines)
 
 # ---------------------------------------------------------------------------------------------- 1. Hook
 scene_open("hook", 1)
@@ -164,7 +201,7 @@ tag("t-tag", 2, 75.2)
 html.append('<div id="t-sun" class="h eyebrow" style="left:%dpx;top:160px;width:%dpx;text-align:center">EK SUNDAY · HISAAB</div>' % (L, W))
 html.append('<div id="t-amit" class="h" style="left:%dpx;top:330px">%s</div>' % (L + 170, character("amit", "t-amit", 430)))
 html.append('<div id="t-neha" class="h" style="left:%dpx;top:350px">%s</div>' % (L + 470, character("neha", "t-neha", 410, pencil=True)))
-html.append('<div id="t-bub" class="h bub" style="left:%dpx;top:215px;width:560px;white-space:normal">Koi loan nahi! Hum <b>theek chal rahe</b> hain.</div>' % (L + 300))
+html.append('<div id="t-bub" class="h bub" style="left:%dpx;top:215px;width:560px;white-space:normal">Chalo, aaj <b>poora hisaab</b> lagate hain!</div>' % (L + 300))
 js += ["rise('#t-sun',77.0);", "rise('#t-amit',77.1);", "rise('#t-neha',77.3);", "rise('#t-bub',78.0);", "blink('#t-amit-eyes',79.0);",
        "out('#t-sun,#t-amit,#t-neha,#t-bub',80.2);"]
 tiles = [("t-s", "Savings account", "₹0", 80.6, 60000), ("t-e", "Amit ka EPF", "₹0", 81.6, 400000),
@@ -201,8 +238,8 @@ tag("b-tag", 3, 105.2)
 html.append('<div id="b-title" class="h" style="left:%dpx;top:150px;width:%dpx;text-align:center;font-size:56px;font-weight:700">'
             '<span class="amber">₹1,00,000</span> har mahine</div>' % (L, W))
 BW = 880
-segs = [("b-s1", 58, "rgba(255,255,255,.88)", 107.5), ("b-s2", 6, "#FFB904", 151.0),
-        ("b-s3", 5, "rgba(255,185,4,.55)", 158.0), ("b-s4", 31, "#0AF0F0", 181.0)]
+segs = [("b-s1", 58, "rgba(255,255,255,.88)", 107.5), ("b-s2", 6, "#FFB904", 159.8),
+        ("b-s3", 5, "rgba(255,185,4,.55)", 163.8), ("b-s4", 31, "#0AF0F0", 181.0)]
 x = 0
 bar = []
 for sid, pct, col, t in segs:
@@ -236,9 +273,9 @@ html.append('<div id="b-ann" class="card h" style="left:%dpx;top:440px;width:880
             '<div style="font-size:32px;color:rgba(255,255,255,.78);margin-top:10px">Diwali · admission · shaadi ke gifts</div></div>' % (L + 20))
 html.append('<div id="b-fun" class="card h" style="left:%dpx;top:640px;width:880px;height:110px;padding:22px 30px">'
             '<div style="font-size:46px;font-weight:700">Masti <span class="amber">₹5,000</span></div></div>' % (L + 20))
-js += ["rise('#b-ann',152.0);", "rise('#b-fun',159.0);", "out('#b-ann,#b-fun',179.0);"]
-broll("v-diwali", "Family shopping for Diwali; school admission desk", 165.0, 170.0)
-line("b-l2", "Ye har saal aate hain", {2, 3}, "cyan", 165.0, 178.0)
+js += ["rise('#b-ann',160.0);", "rise('#b-fun',164.0);", "out('#b-ann,#b-fun',179.0);"]
+broll("v-diwali", "Family shopping for Diwali; school admission desk", 151.2, 157.4)
+line("b-l2", "Ye har saal aate hain", {2, 3}, "cyan", 157.6, 178.0)
 # future: three pots, heights by amount
 pots = [("Emergency", 8000, 186.0), ("Retirement", 13000, 190.0), ("Padhai", 10000, 194.0)]
 for k, (lab, amt, t) in enumerate(pots):
@@ -273,7 +310,7 @@ for k, (yrs, lab) in enumerate([(0, "Abhi"), (10, "10 saal"), (14, "14 saal"), (
     js.append("rise('#g-t%d',%.2f);" % (k, 226.6 + k * 0.15))
 goals = [("Emergency fund", 0, 150, 228.0, "cyan"), ("Insurance check", 0, 250, 232.0, "cyan"),
          ("Aarav ka college", 10, 350, 238.0, ""), ("Pihu ka college", 14, 450, 244.0, ""),
-         ("Retirement", 25, 150, 256.0, "")]
+         ("Retirement", 25, 150, 246.0, "")]
 for k, (lab, yrs, top, t, tone) in enumerate(goals):
     x = gx(yrs) - 12 if yrs < 20 else gx(yrs) - 270
     border = "#0AF0F0" if tone == "cyan" else "rgba(255,255,255,.5)"
@@ -291,8 +328,8 @@ js += ["rise('#g-amit',228.0);", "rise('#g-neha',228.3);", "write('#g-neha-arm',
        "blink('#g-amit-eyes',236.0);", "blink('#g-neha-eyes',241.0);", "mood('g-amit',254.0,'sad');", "blink('#g-amit-eyes',262.5);"]
 html.append('<div id="g-ghar" class="h goal" style="left:%dpx;top:%dpx;border:3px dashed rgba(255,185,4,.8);border-radius:20px;'
             'background:rgba(255,185,4,.06)">Apna ghar:&nbsp;<span class="amber">kabhi na kabhi?</span></div>' % (gx(4), AY + 140))
-broll("v-ghar", "A couple looking at a flat for sale", 248.6, 253.0)
-js += ["rise('#g-ghar',253.4);", "rise('#g-par',262.0);"]
+broll("v-ghar", "A couple looking at a flat for sale", 250.5, 255.0)
+js += ["rise('#g-ghar',255.4);", "rise('#g-par',248.0);"]
 line("g-l1", "Har goal ki apni deadline", {3, 4}, "cyan", 268.0, 283.0, top=912)
 scene_close()
 
@@ -351,14 +388,13 @@ rh = "".join('<div class="prow" id="k-r%d"><span>%s</span><span>%s</span><span>�
 html.append('<div id="k-paper" class="h paper" style="left:%dpx;top:160px">'
             '<div class="phead">Hamare 5 goals</div>'
             '<div class="prow pcols"><span>Goal</span><span>Kab</span><span>Kitna (andaaza)</span></div>%s</div>' % (L + 40, rh))
-broll("v-write", "A hand writing a goals list in a notebook", 345.4, 349.6)
-js.append("rise('#k-paper',349.7);")
+js.append("rise('#k-paper',345.9);")
 html.append('<div id="k-neha" class="h" style="left:%dpx;top:590px;z-index:3">%s</div>' % (L + 720, character("neha", "k-neha", 300, pencil=True)))
 js.append("rise('#k-neha',350.0);")
 js += ["write('#k-neha-arm',%.2f);" % (t + 0.1) for t in (350.0, 354.0, 358.0, 362.0, 366.0)]
 js += ["blink('#k-neha-eyes',356.5);", "blink('#k-neha-eyes',371.0);", "blink('#k-neha-eyes',384.0);"]
 js += ["tl.fromTo('#k-m%d',{scaleX:1},{scaleX:0,duration:1.0,ease:'power1.inOut'},%.2f);" % (k, t) for k, (_, _, t, _) in enumerate(rows)]
-line("k-l1", "Kab chahiye + lagbhag kitna", {0, 1, 3, 4}, "cyan", 375.0, 385.0)
+line("k-l1", "Kab chahiye + lagbhag kitna", {0, 1, 3, 4}, "cyan", 355.0, 365.5)
 html.append('<div id="k-chip" class="chip h" style="left:%dpx;top:920px;width:620px">Saal nahi? Toh abhi&nbsp;<b class="mag">sapna</b>&nbsp;hai</div>' % (CX - 310))
 js += ["rise('#k-chip',386.0);", "out('#k-chip',398.0);"]
 scene_close()
@@ -378,7 +414,7 @@ html.append('''
   <div id="e-btn" class="sbbtn">Subscribe</div>
 </div>
 ''' % (L, W, L + 20, W - 40, CX - 350, L, W, L, W, L + 70))
-js += ["rise('#e-eye',400.3);", "rise('#e-t',400.6);", "rise('#e-c',404.0);", "rise('#e-web',407.0);", "rise('#e-dis',408.0);",
+js += ["rise('#e-eye',400.3);", "rise('#e-t',400.6);", "rise('#e-c',404.0);", "rise('#e-web',408.0);", "rise('#e-dis',406.5);",
        "rise('#e-sb',410.0);",
        "tl.fromTo('#e-btn',{scale:1},{scale:1.08,duration:.22,yoyo:true,repeat:5,ease:'power1.inOut'},410.6);"]
 scene_close()
@@ -407,7 +443,7 @@ for n, (key, q) in enumerate(SECTIONS, 1):
 
 # white keyword labels next to Raj's head (one at a time, 2-4 s); a struck label = "X nahi, Y"
 KW = [("o-kw1", "Sirf 1 mahina", None, 97.0, 100.5), ("o-kw2", "Kaafi?", None, 213.0, 216.5),
-      ("o-kw3", "Deadline!", None, 268.5, 272.0), ("o-kw4", "Sirf jama", "Final amount", 309.0, 313.0),
+      ("o-kw3", "Deadline!", None, 268.5, 272.0), ("o-kw4", "Sirf jama", "Final amount", 302.0, 304.8),
       ("o-kw5", "Sapna ≠ Goal", None, 388.0, 391.5),
       ("o-kw6", "Mushkil!", None, 277.0, 281.0), ("o-kw7", "Pehle safety", None, 340.0, 343.5)]
 for kid, word, struck, a, b in KW:
@@ -424,7 +460,10 @@ for k, t in enumerate(money_sounds):
 # body centre at x 700. Measured envelope over the whole take: hands from 16% to 86% of the source width, head top at
 # ~28% height, so at this offset his hands stay inside the frame and pass IN FRONT of the studio screen.
 RAJ_X = 700 - 979
-placeholder = '<img id="raj" src="assets/img/raj-still.png" alt="" style="position:absolute;left:%dpx;top:0;width:1920px;height:1080px;z-index:15">' % RAJ_X
+placeholder = ('<video id="raj" class="clip" src="assets/cam/raj.mp4" muted playsinline data-start="0" data-duration="%.2f" '
+               'data-track-index="3" style="position:absolute;left:%dpx;top:0;width:1920px;height:1080px;z-index:15;mix-blend-mode:screen"></video>'
+               '<audio id="voice" src="assets/audio/voice.m4a" data-start="0" data-duration="%.2f" data-track-index="4" data-volume="1"></audio>'
+               % (FLAT, RAJ_X, FLAT))
 
 CSS = '''
 @font-face{font-family:"DM Sans";src:url(fonts/DMSans-400.woff2) format("woff2");font-weight:400}
@@ -437,7 +476,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
   background:radial-gradient(900px 700px at 78% 22%,rgba(10,240,240,.10),transparent 70%),
              radial-gradient(1100px 800px at 100% 100%,rgba(0,5,238,.22),transparent 70%),
              radial-gradient(800px 600px at 8% 90%,rgba(205,0,238,.08),transparent 70%),#0a0d14}
-#grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 2px,transparent 2px),
+#grid{position:absolute;inset:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 55%,#000 62%);mask-image:linear-gradient(90deg,transparent 0,transparent 55%,#000 62%);background-image:linear-gradient(rgba(255,255,255,.045) 2px,transparent 2px),
   linear-gradient(90deg,rgba(255,255,255,.045) 2px,transparent 2px);background-size:96px 96px}
 .scene{position:absolute;left:0;top:0;width:1920px;height:1080px}
 .scene>*{position:absolute}
@@ -495,11 +534,12 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 .bslot{position:absolute;left:926px;top:118px;width:948px;height:788px;border-radius:16px;z-index:8;display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:18px;padding:60px;text-align:center;
   background:repeating-linear-gradient(135deg,rgba(255,185,4,.10) 0 18px,rgba(255,185,4,.03) 18px 36px),#111520}
+.bcap{position:absolute;left:0;right:0;bottom:34px;text-align:center;font-size:44px;font-weight:700;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.8)}
 .btag{font-size:30px;font-weight:700;letter-spacing:.2em;color:#FFB904}
 .bwhat{font-size:46px;font-weight:700;line-height:1.2}
-.disc{position:absolute;inset:0;z-index:30;opacity:0;background:#0b0d12;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}
-.dtitle{font-size:72px;font-weight:700;color:#FFB904}
-.dsub{font-size:34px;color:rgba(255,255,255,.85);max-width:1300px;text-align:center;line-height:1.35}
+.disc{position:absolute;left:40px;top:40px;width:560px;padding:16px 22px;z-index:30;opacity:0;background:rgba(10,13,20,.88);border:2px solid rgba(255,185,4,.55);border-radius:16px;display:flex;flex-direction:column;gap:6px}
+.dtitle{font-size:34px;font-weight:700;color:#FFB904}
+.dsub{font-size:22px;color:rgba(255,255,255,.85);line-height:1.35}
 .lt3{position:absolute;left:60px;top:150px;z-index:12;display:flex;align-items:center;gap:18px;padding:12px 26px 12px 16px;border-radius:14px;
   background:rgba(10,13,20,.85)}
 .ltbar{width:8px;height:78px;border-radius:4px;background:#0AF0F0;box-shadow:0 0 14px rgba(10,240,240,.8)}
@@ -547,12 +587,15 @@ page = '''<!doctype html>
 </div>
 %s
 %s
-<div id="draftmark">DRAFT 3 · your recording, placement test · timed to the plan, not the voice</div>
-<audio id="bed" src="assets/audio/bed.mp3" data-start="0" data-duration="%.2f" data-track-index="11" data-volume="0.35"></audio>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 const tl = gsap.timeline({ paused: true });
+const WARP = /*WARPDATA*/[];
+function W(t){ for (let i = 1; i < WARP.length; i++){ const [a0,b0] = WARP[i-1], [a1,b1] = WARP[i];
+  if (t <= a1) return a1 > a0 ? b0 + (b1-b0)*(t-a0)/(a1-a0) : b1; } return WARP[WARP.length-1][1]; }
+['to','fromTo','set','from'].forEach(m => { const f = tl[m].bind(tl);
+  tl[m] = function(...a){ const i = a.length-1; if (typeof a[i] === 'number' && a[i] > 0) a[i] = W(a[i]); return f(...a); }; });
 function rise(s,t){ tl.fromTo(s,{opacity:0,y:26},{opacity:1,y:0,duration:.4,ease:'power2.out'},t); }
 function out(s,t){ tl.to(s,{opacity:0,duration:.35,ease:'power2.in'},t); }
 function blink(s,t){ tl.to(s,{scaleY:.1,duration:.07,ease:'none'},t); tl.to(s,{scaleY:1,duration:.09,ease:'none'},t+.07); }
@@ -568,8 +611,20 @@ tl.to({}, { duration: %.2f }, 0);
 window.__timelines["main"] = tl;
 </script>
 </body></html>
-''' % (CSS.replace('/*CHAR_CSS*/', CHAR_CSS), DUR, "\n".join(html), "\n".join(roots), placeholder, "\n".join(fullroots), DUR, "\n".join(js), DUR)
+''' % (CSS.replace('/*CHAR_CSS*/', CHAR_CSS), FINAL, "\n".join(html), "\n".join(roots), placeholder, "\n".join(fullroots), "\n".join(js), FINAL)
 
+import re as _re
+def _warp_attr(m):
+    a = float(m.group(1)); d = float(m.group(2))
+    if d >= DUR - 1:     # whole-video elements
+        return 'data-start="0.00" data-duration="%.2f"' % FINAL
+    s0, s1 = TW(a), TW(a + d)
+    return 'data-start="%.2f" data-duration="%.2f"' % (s0, max(0.2, s1 - s0))
+_head, _sep, _tail = page.partition('<div id="stage"')
+_stage, _sep2, _script = _tail.partition("<script>")
+_stage = _re.sub(r'data-start="([0-9.]+)" data-duration="([0-9.]+)"', _warp_attr, _stage)
+page = _head + _sep + _stage + _sep2 + _script
+page = page.replace('/*WARPDATA*/[]', _json.dumps(WARP))
 with open(OUT, "w", encoding="utf-8") as f:
     f.write(page)
 NL = chr(10)
