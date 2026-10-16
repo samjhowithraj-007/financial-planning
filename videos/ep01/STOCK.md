@@ -1,5 +1,7 @@
 # Part 1 reshoot: free stock clips (Pexels)
 
+> **Superseded for Part 1 (16 Oct 2026):** Part 1 now uses the 10 AI clips made in CapCut (`BROLL-AI.md`). These Pexels clips stay as the fallback, and the Pexels family library remains available for later parts.
+
 These 10 clips replace the animated cutaways on the studio screen. Downloaded on 16 Oct 2026.
 
 **Licence:** Pexels License. Free for commercial use (YouTube monetisation included), no attribution required, no watermark. You may not sell the clip on its own. Credit is optional; the description can say "Stock video: Pexels".

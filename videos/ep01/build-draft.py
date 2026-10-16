@@ -120,9 +120,15 @@ def block(bid, src, cid, t_in, t_out, box, values, track):
 # Reshoot: free Pexels stock clips (broll/; the Verma family ones come from videos/_shared/verma-family/, conformed 1422x1182 to the screen slot; list in STOCK.md) replace the drawn
 # scenes. USE_STOCK = False brings the animated cutaways (scenes_art.py) back.
 USE_STOCK = True
-STOCK = {"v-lko": ("04-city-rooftops.mp4", "Lucknow · kiraye ka 2BHK"),
-         "v-diwali": ("06-family-9346226.mp4", "Ye har saal aate hain"),
-         "v-ghar": ("09-family-9346245.mp4", "Apna ghar: kab?")}
+# Part 1 uses the AI Verma family made in CapCut (BROLL-AI.md); one family per episode, so no Pexels family clips here.
+STOCK = {"v-lko": ("04-ai-lucknow-evening.mp4", "Lucknow · kiraye ka 2BHK"),
+         "v-diwali": ("06-ai-diwali-market.mp4", "Ye har saal aate hain"),
+         "v-ghar": ("09-ai-apna-ghar.mp4", "Apna ghar: kab?")}
+# the other AI clips, slotted on their lines when the cut is timed to the reshoot voice
+AI_MOMENTS = {"salary-sms": "01-ai-salary-sms.mp4", "month-end": "02-ai-month-end-worry.mp4",
+              "neha-asks": "03-ai-neha-asks.mp4", "kirana": "05-ai-kirana.mp4",
+              "college": "07-ai-aarav-study.mp4", "parents": "08-ai-parents-care.mp4",
+              "five-goals": "10-ai-write-goals.mp4"}
 # the clips the draft plays are copied from broll/ into draft/assets/broll/ on every build
 import shutil as _sh
 os.makedirs(os.path.join(HERE, "draft", "assets", "broll"), exist_ok=True)
