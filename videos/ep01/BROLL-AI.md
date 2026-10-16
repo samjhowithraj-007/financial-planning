@@ -15,6 +15,7 @@ Pick **one** source for the family in an episode: these AI Vermas or the Pexels 
 ## Done
 - **Family reference (16 Oct 2026):** `_shared/verma-family/ai-reference/family.png` (a still taken from `family-ref.mp4`). Use it for every Image-to-video clip. Amit has a moustache, no beard; the prompts below say so.
 - **Clip 1:** CapCut's export was 20 s: the family picture flashes at 0 s and again at 10 s, around two near-identical takes. Kept: take 1 from 0.8 s to 10.0 s as `broll/ai/01-clean-16x9.mp4` (9.2 s), and the reading-then-smile part from 3.8 s to 9.9 s, sized for the screen, as `broll/01-ai-salary-sms.mp4` (6.1 s).
+- **Clip 2:** a 10 s export with the family picture in the first 0.7 s. Kept: the clean take from 0.8 s as `broll/ai/02-clean-16x9.mp4` (9.3 s), and from 3.4 s to 9.8 s (scrolling, phone down, rubbing his forehead) as `broll/02-ai-month-end-worry.mp4` (6.4 s). Cropped a little tighter (`crop=1150:956:180:90`) because he is small in the dark frame; the lamp stays in. No grade, to keep it moody.
   Tip: in CapCut, delete the family picture from the timeline before exporting, or export just the generated clip.
 
 ## Prompt 0: family reference picture (AI image)
