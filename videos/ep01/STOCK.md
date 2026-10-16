@@ -13,7 +13,7 @@ Real people appear in these clips, so the upload's "Altered or synthetic content
 
 | # | Story moment (line it cuts in on) | Clip | Pexels page | Length | In the draft |
 |---|---|---|---|---|---|
-| 1 | Hook: "1 tareekh… SMS aaya" | Smiling man on the phone | https://www.pexels.com/video/7581309/ | 9.9 s | place on the reshoot |
+| 1 | Hook: "1 tareekh… SMS aaya" | Man reading his phone with a morning coffee (swapped 16 Oct: the first pick looked like a call) | https://www.pexels.com/video/7567654/ | 10.4 s (cropped left: `--vf "crop=1299:1080:40:0"`) | place on the reshoot |
 | 2 | Hook: "25 tareekh… chup ho gaya" | Worried man at night with phone | https://www.pexels.com/video/7280528/ | 10 s (from 2 s) | place on the reshoot |
 | 3 | Hook: Neha asks about fees and the house | Mother and son at the dining table | https://www.pexels.com/video/9347903/ | 10 s (portrait, centre crop) | place on the reshoot |
 | 4 | Verma family: Lucknow, rented 2BHK | Indian city rooftops at sunset | https://www.pexels.com/video/36159111/ | 6.0 s (portrait, centre crop) | **v-lko** |
