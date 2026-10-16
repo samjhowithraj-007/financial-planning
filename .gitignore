@@ -23,3 +23,8 @@ transcript*.log
 *.m4a
 *.webm
 videos/ep01/short/renders/
+videos/ep01/thumbnail/f-*.png
+videos/ep01/thumbnail/g-*.png
+videos/ep01/thumbnail/h-*.png
+videos/ep01/thumbnail/faces*.png
+videos/ep01/thumbnail/raj-*.png

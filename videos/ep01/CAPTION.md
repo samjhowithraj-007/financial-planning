@@ -36,6 +36,8 @@ middle class money plan, family budget india, 1 lakh salary budget, financial pl
 budget kaise banaye, emergency fund, retirement planning india, child education planning, goal based investing,
 samjho with raj, samjhowithraj
 
+**Thumbnail:** money-plan-01-thumbnail.png (1280x720) · **Shorts/Reels cover:** money-plan-01-short-cover.png (1080x1920)
+
 **Upload settings:** Not made for kids · Altered or synthetic content: **No** (animations only, no AI video) ·
 Playlist: "Middle-Class Family Ka Money Plan (50 Parts)" (create it on first upload).
 
