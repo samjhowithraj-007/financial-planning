@@ -117,7 +117,7 @@ scene("sF", 39.80, 55.36, '''
   <div class="prow pcols"><span>Goal</span><span>Kab</span><span>Kitna</span></div>%s</div>
 ''' % rh)
 js += ["rise('#f-paper',40.0);"]
-vid("f-v", "10-ai-write-goals.mp4", 51.2, 55.36, skip=3.0)
+vid("f-v", "10-ai-write-goals.mp4", 51.2, 55.36, skip=2.3)
 js += ["tl.fromTo('#f-m%d',{scaleX:1},{scaleX:0,duration:.9,ease:'power1.inOut'},%.2f);" % (k, t) for k, (_, _, t) in enumerate(rows)]
 cap("cF1", "Aaj raat ek kaagaz lo…", {}, 39.9, 44.6)
 cap("cF2", "5 goals likho: kab chahiye, kitna", {0: "cyan", 1: "cyan"}, 44.6, 55.2)

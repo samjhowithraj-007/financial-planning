@@ -133,7 +133,13 @@ for _clip in [c for c, _ in STOCK.values()] + list(AI_MOMENTS.values()):
     _sh.copy2(os.path.join(HERE, "broll", _clip), os.path.join(HERE, "draft", "assets", "broll", _clip))
 
 def stock(bid, clip, caption, t_in, t_out, skip=0.0):
-    """A stock clip on the studio screen (the bslot box), muted, with the white caption at the bottom."""
+    """A stock clip on the studio screen (the bslot box), muted, with the white caption at the bottom.
+    If fit-clips.py made broll/fit/<bid>.mp4 (exactly the slot's length), that file plays instead."""
+    fit = os.path.join(HERE, "broll", "fit", bid + ".mp4")
+    if os.path.exists(fit):
+        os.makedirs(os.path.join(HERE, "draft", "assets", "broll", "fit"), exist_ok=True)
+        _sh.copy2(fit, os.path.join(HERE, "draft", "assets", "broll", "fit", bid + ".mp4"))
+        clip, skip = "fit/" + bid + ".mp4", 0.0
     roots.append('<div id="%s-bk" class="clip" data-start="%.2f" data-duration="%.2f" data-track-index="7" style="position:absolute;'
                  'left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:7;opacity:0"></div>'
                  % (bid, t_in, t_out - t_in + 0.25))
