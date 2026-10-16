@@ -5,7 +5,7 @@ set -u
 cd "$(dirname "$0")"
 SK="$HOME/.claude/skills/youtube-edit/scripts"
 OUT="/c/Users/rajpr/Videos/YouTube Renders/money-plan-01"
-BED="/c/samjhowithraj/vlog1/videos/_shared/music/all-of-the-things.mp3"
+BED="../_shared/music/every-dawn-loop10.mp3"
 mkdir -p renders "$OUT"
 log(){ echo "[$(date +%H:%M:%S)] $*"; }
 

@@ -3,7 +3,7 @@
 set -u
 cd "$(dirname "$0")"
 OUT="/c/Users/rajpr/Videos/YouTube Renders/money-plan-01"
-BED="/c/samjhowithraj/vlog1/videos/_shared/music/all-of-the-things.mp3"
+BED="../_shared/music/every-dawn-loop10.mp3"
 log(){ echo "[$(date +%H:%M:%S)] $*"; }
 log "waiting for the long video to finish"
 until grep -q "ALL DONE\|RENDER FAILED TWICE" finish.log 2>/dev/null; do sleep 30; done
