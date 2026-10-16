@@ -1,6 +1,6 @@
 # Part 1 — post text
 
-**Published:** YouTube long video, Public, 16 Oct 2026: https://youtu.be/FieckKjQgJE · Playlist "Middle-Class Family Ka Money Plan 💰 | Personal Finance in Hindi (50 Parts)" (public). Shorts / Instagram / Facebook: not posted yet.
+**YouTube long video:** published 16 Oct 2026 (https://youtu.be/FieckKjQgJE), then set to **Private** the same day: Raj is reshooting (low energy, AI video instead of animations, new closed-mouth thumbnail). · Playlist "Middle-Class Family Ka Money Plan 💰 | Personal Finance in Hindi (50 Parts)" (public). Shorts / Instagram / Facebook: not posted yet.
 
 ## YouTube (long video: money-plan-01-yt.mp4)
 
