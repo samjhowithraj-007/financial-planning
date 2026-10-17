@@ -42,11 +42,17 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 #g-img{position:absolute;left:0;top:64px;width:960px}
 .cap{position:absolute;left:40px;right:40px;top:1270px;text-align:center;font-size:0;z-index:6}
 .cap span{display:inline-block;font-size:62px;font-weight:700;margin:0 .14em;opacity:0;text-shadow:0 4px 18px rgba(0,0,0,.8)}
-#cam{position:absolute;left:616px;top:1440px;width:420px;height:420px;border-radius:40px;overflow:hidden;z-index:7;background:#000;
+#cam{position:absolute;left:556px;top:1380px;width:484px;height:500px;border-radius:40px;overflow:hidden;z-index:7;background:#000;
   box-shadow:0 0 0 4px rgba(10,240,240,.55),0 0 40px rgba(10,240,240,.35)}
-#cam video{position:absolute;left:-360px;top:22px;width:1000px;height:563px}
+#cam video{position:absolute;left:-235px;top:28px;width:840px;height:473px}
 .aiv{position:absolute;object-fit:cover;border-radius:28px;opacity:0;z-index:4;box-shadow:0 24px 70px rgba(0,0,0,.55)}
-#foot{position:absolute;left:48px;top:1560px;width:530px;font-size:30px;line-height:1.4;color:rgba(255,255,255,.75)}
+#foot{position:absolute;left:48px;top:1790px;width:480px;font-size:24px;line-height:1.35;color:rgba(255,255,255,.65)}
+.pt{position:absolute;left:48px;top:1390px;width:480px;padding:22px 26px;border-radius:26px;background:rgba(255,255,255,.07);border:3px solid rgba(10,240,240,.55);z-index:6;opacity:0}
+.pt .pn{font-size:30px;font-weight:700;color:#0AF0F0;letter-spacing:.06em}
+.pt .px{font-size:46px;font-weight:700;line-height:1.12;margin-top:8px}
+.pt .px b{color:#FFB904}
+.cta{position:absolute;left:48px;top:1390px;width:480px;padding:22px 26px;border-radius:26px;background:#FF0000;z-index:6;opacity:0;font-size:40px;font-weight:700;line-height:1.15}
+.cta small{display:block;font-size:26px;font-weight:500;opacity:.9;margin-top:6px}
 #foot b{color:#fff}
 .endc{position:absolute;inset:0;z-index:20;opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:60px;
   background:radial-gradient(800px 700px at 50% 40%,rgba(10,240,240,.14),transparent 70%),#0a0d14}
@@ -113,10 +119,16 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 </div>
 <div id="cG1" class="clip cap" data-start="55.64" data-duration="4.96" data-track-index="6"><span class="w">Financial</span><span class="w cyan">planner</span><span class="w">chahiye?</span></div>
 <div id="cG2" class="clip cap" data-start="60.60" data-duration="6.27" data-track-index="6"><span class="w cyan">samjhowithraj.online</span><span class="w">pe</span><span class="w">free!</span></div>
+<div id="p1" class="clip pt" data-start="8.47" data-duration="7.13" data-track-index="9"><div class="pn">POINT 1 / 5</div><div class="px">31% bachat: <b>achha start</b></div></div>
+<div id="p2" class="clip pt" data-start="15.60" data-duration="5.63" data-track-index="9"><div class="pn">POINT 2 / 5</div><div class="px">Par kya ye <b>kaafi</b> hai?</div></div>
+<div id="p3" class="clip pt" data-start="21.23" data-duration="19.20" data-track-index="9"><div class="pn">POINT 3 / 5</div><div class="px">₹12 lakh = <b>sirf jama rakam</b></div></div>
+<div id="p4" class="clip pt" data-start="40.43" data-duration="15.07" data-track-index="9"><div class="pn">POINT 4 / 5</div><div class="px">Aaj raat <b>5 goals</b> likho</div></div>
+<div id="p5" class="clip pt" data-start="55.50" data-duration="5.91" data-track-index="9"><div class="pn">POINT 5 / 5</div><div class="px">Free <b>Financial Tracker</b></div></div>
+<div id="p6" class="clip cta" data-start="61.41" data-duration="5.62" data-track-index="9">Poora episode dekho 👆<small>Full video: Money Plan Part 1 (link upar)</small></div>
 <div id="sH" class="clip endc" data-start="67.03" data-duration="3.24" data-track-index="8">
-<div class="endt">Poori series:<br><b class="cyan">50 parts</b></div>
+<div class="endt">Poori details:<br><b class="cyan">Full episode</b> dekho</div>
 <div id="h-b" class="endb"><span class="ico">▶</span><div><div class="endk">YouTube</div><div class="endh">@SamjhowithRaj</div></div><span class="btn red">Subscribe</span></div>
-<div class="endw">Part 2: salary <b>gayab kahan</b> hoti hai?</div></div>
+<div class="endw">👆 Upar <b>Money Plan Part 1</b> pe tap karo</div></div>
 <div id="cam" class="clip" data-start="0" data-duration="67.00" data-track-index="3"><video id="camv" src="assets/cam/raj.mp4" muted playsinline
   class="clip" data-start="0" data-duration="67.00" data-track-index="4"></video></div>
 <div id="foot">Educational example<br><b>Financial advice nahi</b> · numbers illustrative</div>
@@ -205,6 +217,18 @@ tl.fromTo('#cG1 .w',{opacity:0,y:20},{opacity:1,y:0,duration:.35,ease:'power2.ou
 tl.to('#cG1',{opacity:0,duration:.25},10060.35);
 tl.fromTo('#cG2 .w',{opacity:0,y:20},{opacity:1,y:0,duration:.35,ease:'power2.out',stagger:.05},10060.60);
 tl.to('#cG2',{opacity:0,duration:.25},10066.62);
+tl.fromTo('#p1',{opacity:0,x:-30},{opacity:1,x:0,duration:.35,ease:'power2.out'},10008.57);
+tl.to('#p1',{opacity:0,duration:.25},10015.35);
+tl.fromTo('#p2',{opacity:0,x:-30},{opacity:1,x:0,duration:.35,ease:'power2.out'},10015.70);
+tl.to('#p2',{opacity:0,duration:.25},10020.98);
+tl.fromTo('#p3',{opacity:0,x:-30},{opacity:1,x:0,duration:.35,ease:'power2.out'},10021.33);
+tl.to('#p3',{opacity:0,duration:.25},10040.18);
+tl.fromTo('#p4',{opacity:0,x:-30},{opacity:1,x:0,duration:.35,ease:'power2.out'},10040.53);
+tl.to('#p4',{opacity:0,duration:.25},10055.25);
+tl.fromTo('#p5',{opacity:0,x:-30},{opacity:1,x:0,duration:.35,ease:'power2.out'},10055.60);
+tl.to('#p5',{opacity:0,duration:.25},10061.16);
+tl.fromTo('#p6',{opacity:0,scale:.9},{opacity:1,scale:1,duration:.35,ease:'back.out(1.6)'},10061.51);
+tl.fromTo('#p6',{scale:1},{scale:1.05,duration:.3,yoyo:true,repeat:3,ease:'power1.inOut'},10062.62);
 tl.fromTo('#sH',{opacity:0},{opacity:1,duration:.35},66.76);
 rise('#h-b',67.1);
 tl.fromTo('#h-b .btn',{scale:1},{scale:1.1,duration:.22,yoyo:true,repeat:5,ease:'power1.inOut'},67.6);

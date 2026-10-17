@@ -166,6 +166,10 @@ def broll(bid, what, t_in, t_out):
               % (bid, t_in, bid, t_out - 0.3))
     js.extend(lines)
 
+# background life on the studio screen (never blank, even during a fade between two beats)
+_h, _j = XA.idle("x-idle", FLAT)
+roots.append(_h.replace('data-duration="9999.00"', 'data-duration="%.2f"' % DUR)); js.extend(_j)
+
 # ---------------------------------------------------------------------------------------------- 1. Hook
 scene_open("hook", 1)
 # AI family (CapCut): 1 tareekh salary SMS -> 25 tareekh worry -> Neha asks
@@ -380,6 +384,7 @@ html.append('<div id="j-cap" class="h" style="left:%dpx;top:790px;width:880px;te
             'color:rgba(255,255,255,.8)">Sirf jama rakam: growth aur mehngai shamil nahi · <b>Illustrative</b></div>' % (L + 20))
 html.append('<div id="j-ep" class="chip h" style="left:%dpx;top:880px;width:680px">Asli kharcha kitna?&nbsp;<b class="cyan">Episode 41 &amp; 46</b></div>' % (CX - 340))
 js += ["rise('#j-cap',289.0);", "rise('#j-ep',305.0);"]
+stock("j-c1", AI_MOMENTS["salary-sms"], "Amit ne phone ka calculator khola", 285.0, 286.0)
 scene_close()
 
 # ---------------------------------------------------------------------------------------------- 8. Har goal ka dabba
@@ -537,7 +542,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
   justify-content:center;font-size:46px;font-weight:700;white-space:nowrap}
 .ll{position:absolute;left:40px;top:168px;width:860px;text-align:center;font-size:0;white-space:normal;line-height:1.25;z-index:14}
 .ll span{display:inline-block;font-size:58px;text-shadow:0 4px 18px rgba(0,0,0,.7);font-weight:700;letter-spacing:-.015em;margin:0 .14em;opacity:0}
-.tag{right:60px;top:70px;height:66px;padding:0 26px;border-radius:9999px;background:rgba(255,255,255,.1);border:3px solid rgba(255,255,255,.45);
+.tag{left:21px;top:126px;height:66px;z-index:12;background:rgba(10,13,20,.85) !important;padding:0 26px;border-radius:9999px;background:rgba(255,255,255,.1);border:3px solid rgba(255,255,255,.45);
   display:flex;align-items:center;gap:14px;font-size:32px;font-weight:700;white-space:nowrap}
 .tag .dot{width:16px;height:16px;border-radius:50%;background:#0AF0F0;box-shadow:0 0 14px #0AF0F0}
 .pips{display:flex;gap:7px;margin-left:6px}.pips i{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.25)}.pips i.on{background:#0AF0F0}

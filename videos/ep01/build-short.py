@@ -133,14 +133,31 @@ js += ["rise('#g-t',55.6);", "rise('#g-win',56.0);", "tl.to('#g-img',{y:-420,dur
 cap("cG1", "Financial planner chahiye?", {1: "cyan"}, 55.5, 60.4)
 cap("cG2", "samjhowithraj.online pe free!", {0: "cyan"}, 60.4, 66.6)
 
+# ---- numbered points (left of Raj's box), so the Short reads as 5 clear takeaways
+def pt(pid, n, text, a, b):
+    a, b = M(a), M(b)
+    html.append('<div id="%s" class="clip pt" data-start="%.2f" data-duration="%.2f" data-track-index="9">'
+                '<div class="pn">POINT %d / 5</div><div class="px">%s</div></div>' % (pid, a, b - a, n, text))
+    js.append("tl.fromTo('#%s',{opacity:0,x:-30},{opacity:1,x:0,duration:.35,ease:'power2.out'},%.2f);" % (pid, a + 10000.1))
+    js.append("tl.to('#%s',{opacity:0,duration:.25},%.2f);" % (pid, b - 0.25 + 10000))
+pt("p1", 1, "31% bachat: <b>achha start</b>", 5.74, 12.04)
+pt("p2", 2, "Par kya ye <b>kaafi</b> hai?", 12.04, 17.74)
+pt("p3", 3, "₹12 lakh = <b>sirf jama rakam</b>", 17.74, 39.80)
+pt("p4", 4, "Aaj raat <b>5 goals</b> likho", 39.80, 55.36)
+pt("p5", 5, "Free <b>Financial Tracker</b>", 55.36, 61.2)
+_cta = "Full episode dekho 👆<small>Full video: Money Plan Part 1 (link upar)</small>" if PLAT == "yt" else        "Poora episode YouTube par<small>Samjho with Raj · Money Plan Part 1</small>"
+html.append('<div id="p6" class="clip cta" data-start="%.2f" data-duration="%.2f" data-track-index="9">%s</div>' % (M(61.2), M(66.76) - M(61.2), _cta))
+js.append("tl.fromTo('#p6',{opacity:0,scale:.9},{opacity:1,scale:1,duration:.35,ease:'back.out(1.6)'},%.2f);" % (M(61.2) + 10000.1))
+js.append("tl.fromTo('#p6',{scale:1},{scale:1.05,duration:.3,yoyo:true,repeat:3,ease:'power1.inOut'},%.2f);" % (M(62.4) + 10000))
+
 # ---- H. ending 66.76-70.0
 btn = '<span class="btn red">Subscribe</span>' if PLAT == "yt" else '<span class="btn blue">Follow</span>'
 who = '<span class="ico">▶</span><div><div class="endk">YouTube</div><div class="endh">@SamjhowithRaj</div></div>' if PLAT == "yt" else \
       '<span class="ico ig">◎</span><div><div class="endk">Instagram · Facebook</div><div class="endh">@samjhowithraj</div></div>'
 html.append('''<div id="sH" class="clip endc" data-start="@@END@@" data-duration="3.24" data-track-index="8">
-<div class="endt">Poori series:<br><b class="cyan">50 parts</b></div>
+<div class="endt">Poori details:<br><b class="cyan">Full episode</b> dekho</div>
 <div id="h-b" class="endb">%s%s</div>
-<div class="endw">Part 2: salary <b>gayab kahan</b> hoti hai?</div></div>''' % (who, btn))
+<div class="endw">%s</div></div>''' % (who, btn, ("👆 Upar <b>Money Plan Part 1</b> pe tap karo" if PLAT == "yt" else "YouTube: <b>Samjho with Raj</b> · Money Plan Part 1")))
 js += ["tl.fromTo('#sH',{opacity:0},{opacity:1,duration:.35},66.76);", "rise('#h-b',67.1);",
        "tl.fromTo('#h-b .btn',{scale:1},{scale:1.1,duration:.22,yoyo:true,repeat:5,ease:'power1.inOut'},67.6);"]
 
@@ -190,11 +207,17 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 #g-img{position:absolute;left:0;top:64px;width:960px}
 .cap{position:absolute;left:40px;right:40px;top:1270px;text-align:center;font-size:0;z-index:6}
 .cap span{display:inline-block;font-size:62px;font-weight:700;margin:0 .14em;opacity:0;text-shadow:0 4px 18px rgba(0,0,0,.8)}
-#cam{position:absolute;left:616px;top:1440px;width:420px;height:420px;border-radius:40px;overflow:hidden;z-index:7;background:#000;
+#cam{position:absolute;left:556px;top:1380px;width:484px;height:500px;border-radius:40px;overflow:hidden;z-index:7;background:#000;
   box-shadow:0 0 0 4px rgba(10,240,240,.55),0 0 40px rgba(10,240,240,.35)}
-#cam video{position:absolute;left:-360px;top:22px;width:1000px;height:563px}
+#cam video{position:absolute;left:-235px;top:28px;width:840px;height:473px}
 .aiv{position:absolute;object-fit:cover;border-radius:28px;opacity:0;z-index:4;box-shadow:0 24px 70px rgba(0,0,0,.55)}
-#foot{position:absolute;left:48px;top:1560px;width:530px;font-size:30px;line-height:1.4;color:rgba(255,255,255,.75)}
+#foot{position:absolute;left:48px;top:1790px;width:480px;font-size:24px;line-height:1.35;color:rgba(255,255,255,.65)}
+.pt{position:absolute;left:48px;top:1390px;width:480px;padding:22px 26px;border-radius:26px;background:rgba(255,255,255,.07);border:3px solid rgba(10,240,240,.55);z-index:6;opacity:0}
+.pt .pn{font-size:30px;font-weight:700;color:#0AF0F0;letter-spacing:.06em}
+.pt .px{font-size:46px;font-weight:700;line-height:1.12;margin-top:8px}
+.pt .px b{color:#FFB904}
+.cta{position:absolute;left:48px;top:1390px;width:480px;padding:22px 26px;border-radius:26px;background:#FF0000;z-index:6;opacity:0;font-size:40px;font-weight:700;line-height:1.15}
+.cta small{display:block;font-size:26px;font-weight:500;opacity:.9;margin-top:6px}
 #foot b{color:#fff}
 .endc{position:absolute;inset:0;z-index:20;opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:60px;
   background:radial-gradient(800px 700px at 50% 40%,rgba(10,240,240,.14),transparent 70%),#0a0d14}

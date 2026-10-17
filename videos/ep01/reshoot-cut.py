@@ -57,7 +57,8 @@ MANUAL_DROP = [(479.8, 481.4), (515.0, 517.1)]   # "Aapka kaam" and the scene 10
 drop = set()
 for i, c in enumerate(T):
     t = c["text"].lower()
-    if (re.search(r"\bcut\b|कट|कत दिस|कट दिस", t) or (c["end"] - c["start"] < 0.45 and len(t.strip()) < 6)
+    # (short chunks are real words: "Aarav" was a 0.3 s chunk, so nothing is dropped for being short)
+    if (re.search(r"\bcut\b|कट|कत दिस|कट दिस", t)
             or (LABEL.search(c["text"]) and c["end"] - c["start"] < 3.0) or c["end"] <= FIRST_LINE
             or any(a <= c["start"] and c["end"] <= b for a, b in MANUAL_DROP)):
         drop.add(i)
@@ -131,5 +132,19 @@ for plan, r in A:
     if new and rr <= new[-1][1]:
         rr = new[-1][1] + 0.05
     new.append((plan, round(rr, 2)))
+# beats the transcript alignment got wrong, pinned by hand to the reshoot (Raj: ₹12/39 lakh came in after he said them)
+MANUAL = {284.6: 389.0, 285.0: 390.4, 286.0: 394.6, 289.0: 399.2, 295.0: 405.0, 298.0: 411.0, 302.0: 414.8,
+          305.0: 427.6, 319.6: 439.6, 320.0: 440.0, 321.0: 442.6, 324.0: 446.7}
+merged = sorted({**dict(new), **MANUAL}.items())
+fixed = []
+for plan, rr in merged:
+    if fixed and rr <= fixed[-1][1]:
+        if plan in MANUAL:                       # a pinned beat wins: drop earlier unpinned points that now run backwards
+            while fixed and fixed[-1][1] >= rr and fixed[-1][0] not in MANUAL:
+                fixed.pop()
+        else:
+            continue
+    fixed.append((plan, round(rr, 2)))
+new = fixed
 json.dump(new, open("reshoot-anchors.json", "w"))
 print("anchors", len(new), "first", new[:3], "last", new[-3:])

@@ -172,5 +172,29 @@ CSS = """
 .xa-t b{color:#FFB904}.xa-t i{font-style:normal;color:#0AF0F0}
 .xa-s{font-size:32px;color:rgba(255,255,255,.8);text-align:center;max-width:860px}
 .xa-svg{display:block}
+.xa-idle{position:absolute;left:926px;top:118px;width:948px;height:848px;z-index:2;overflow:hidden;border-radius:16px;pointer-events:none}
 .xa.low{justify-content:flex-end;padding-bottom:30px}.xa.low .xa-svg{width:860px;height:535px}
 """
+
+
+def idle(eid, flat_total, coins=9):
+    """Background life for the studio screen: ₹ coins drifting up, behind everything (z 2). Whenever no clip or
+    animation covers the screen (a hand-over, a fade) the screen still moves. Positions are flat (+10000)."""
+    import random
+    rnd = random.Random(7)
+    svg, js = [], []
+    for k in range(coins):
+        cid = "%s-k%d" % (eid, k)
+        r = rnd.choice((26, 34, 42, 52))
+        x = 60 + k * (830 / (coins - 1))
+        svg.append('<g id="%s" opacity=".32"><g transform="translate(%d,0)">%s</g></g>' % (cid, x, _coin(cid + "i", 0, 0, r)))
+        dur = rnd.uniform(9, 14)
+        y0 = rnd.uniform(-80, 900)                       # start somewhere on the way up, then loop bottom -> top
+        first = dur * (y0 + 80) / 980
+        rep = int(flat_total / dur) + 1
+        js.append("tl.fromTo('#%s',{y:%.0f},{y:-80,duration:%.2f,ease:'none'},10000);" % (cid, y0, first))
+        js.append("tl.fromTo('#%s',{y:900},{y:-80,duration:%.2f,ease:'none',repeat:%d,immediateRender:false},%.2f);"
+                  % (cid, dur, rep, 10000 + first))
+    html = ('<div id="%s" class="clip xa-idle" data-start="0.00" data-duration="%.2f" data-track-index="2">'
+            '<svg viewBox="0 0 948 848" width="948" height="848">%s</svg></div>' % (eid, 9999, "".join(svg)))
+    return html, js
