@@ -2,7 +2,7 @@
 
 `outro.mp4` (30 s, 1080p, silent audio track) is appended after Raj's last word in **every episode**:
 
-1. 0–24 s: a walkthrough of the **Financial Tracker** on samjhowithraj.online (browser window, cursor click on the tab,
+1. 0–24 s: a walkthrough of the **Financial Tracker** on samjhowithraj.online (old site; the planner now lives at www.paisasamjhoraj.com/#planner, re-record this walkthrough there) (browser window, cursor click on the tab,
    scroll through household → monthly bucket split → safety check → long-term goals, 5 numbered Hinglish captions,
    then "Bilkul free · private").
 2. 24–30 s: **Subscribe** (YouTube @SamjhowithRaj) + **Follow** (Instagram @samjhowithraj, Facebook Samjho with Raj).
