@@ -1,7 +1,7 @@
 <!doctype html>
-<!-- Money Plan series outro (every episode): a 24 s walkthrough of the Financial Tracker on samjhowithraj.online,
+<!-- Money Plan series outro (every episode): a 24 s walkthrough of the Money Planner on www.paisasamjhoraj.com,
      then 6 s of Subscribe + Follow. Rendered once to outro.mp4 and appended after Raj's last word in each episode.
-     The page image is a real 2x capture of the tracker (capture/tracker-full.png, Verma family example);
+     The page image is a real 2x capture of the tracker (capture/planner-full.png from capture-planner.cjs, Verma family example);
      re-capture it when the tracker changes (see README.md). -->
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=1920, height=1080">
 <script src="vendor/gsap.min.js"></script>
@@ -51,20 +51,20 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 </style></head>
 <body>
 <div id="stage" data-composition-id="outro" data-start="0" data-duration="30" data-fps="30" data-width="1920" data-height="1080">
-  <div id="title" class="h">Free <b>Financial Tracker</b> · aapki family ka money plan</div>
+  <div id="title" class="h">Free <b>Money Planner</b> · paisasamjhoraj.com</div>
   <div id="win" class="h">
     <div id="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i>
-      <div id="url">🔒&nbsp;<b>samjhowithraj.online</b>/#tracker</div></div>
+      <div id="url">🔒&nbsp;<b>paisasamjhoraj.com</b>/#planner</div></div>
     <div id="view"><img id="shot" src="assets/tracker-full.jpg" alt=""></div>
   </div>
   <div id="ring"></div>
   <svg id="cur" class="h" viewBox="0 0 24 24"><path d="M4 2 L4 20 L9 15 L12.5 22 L15.5 20.6 L12 13.8 L19 13.8 Z" fill="#fff" stroke="#111" stroke-width="1.4" stroke-linejoin="round"/></svg>
-  <div id="c1" class="cap h"><span class="n">1</span>samjhowithraj.online pe <b style="color:#0AF0F0">Financial Tracker</b> kholo</div>
+  <div id="c1" class="cap h"><span class="n">1</span>paisasamjhoraj.com pe <b style="color:#0AF0F0">Money Planner</b> kholo</div>
   <div id="c2" class="cap h"><span class="n">2</span>Household, income aur kharche bharo</div>
   <div id="c3" class="cap h"><span class="n">3</span>Har bucket ka <b style="color:#FFB904">monthly suggestion</b></div>
   <div id="c4" class="cap h"><span class="n">4</span>Safety check: emergency fund, insurance, karz</div>
   <div id="c5" class="cap h"><span class="n">5</span>Padhai, retirement, parents ki care</div>
-  <div id="cta" class="h"><div class="a">Bilkul free · private</div><div class="b">samjhowithraj.online → Financial Tracker</div>
+  <div id="cta" class="h"><div class="a">Bilkul free · private</div><div class="b">paisasamjhoraj.com → Money Planner</div>
     <div class="c">Koi sign-up nahi · data aapke browser se bahar nahi jaata · educational, financial advice nahi</div></div>
   <div id="end" class="endc">
     <div class="endt">Video pasand aaya?</div>
@@ -73,7 +73,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
       <div id="e-ig" class="endb"><span class="ico ig">◎</span><div><div class="endk">Instagram</div><div class="endh">@samjhowithraj</div></div><span class="btn blue">Follow</span></div>
       <div id="e-fb" class="endb"><span class="ico fb">f</span><div><div class="endk">Facebook</div><div class="endh">Samjho with Raj</div></div><span class="btn blue">Follow</span></div>
     </div>
-    <div class="endw">Free notes: <b>samjhowithraj.online</b> · Agla part jaldi!</div>
+    <div class="endw">Free lessons + Money Planner: <b>paisasamjhoraj.com</b> · Agla part jaldi!</div>
   </div>
 </div>
 <script>
@@ -93,7 +93,7 @@ function scroll(s, t, d){ tl.to('#shot', { y: scr(s), duration: d || 1.2, ease: 
 rise('#title', .2); rise('#win', .3);
 tl.fromTo('#cur', { opacity: 0, x: 1300, y: 760 }, { opacity: 1, duration: .3 }, .8);
 rise('#c1', .6);
-const tab = at(333, 93, 0); move(tab, 1.0, 1.0); click(tab, 2.15); out('#c1', 3.4);
+const tab = at(480, 93, 0); move(tab, 1.0, 1.0); click(tab, 2.15); out('#c1', 3.4);
 scroll(470, 3.5); rise('#c2', 3.8);
 const ex = at(214, 504, 470); move(ex, 4.2); click(ex, 5.25); out('#c2', 7.9);
 const inc = at(377, 1100, 470); move(inc, 6.0, 1.1);

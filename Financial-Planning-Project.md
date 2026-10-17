@@ -23,9 +23,19 @@ Recurring fictional household: Two adults, two children, ₹1,00,000 monthly hou
 - Label every scenario and projection as illustrative. State horizon, inflation, returns, fees/taxes treatment and contribution timing. Recheck arithmetic.
 - Avoid guaranteed-return claims and fabricated proof, balances or earnings. Match risk to the goal and deadline.
 - Use only supplied or appropriately licensed footage and music. Verify social links before publication.
-- **Every episode ends the same way:** Raj says "agar aapko financial planner chahiye, visit karo paisasamjhoraj.com" (the
-  studio screen shows the tracker), then the shared outro `videos/_shared/outro/outro.mp4` plays: a 24 s Financial Tracker (now the Money Planner at www.paisasamjhoraj.com/#planner; the outro footage still shows the old site and needs a re-record)
-  walkthrough, then 6 s of Subscribe (YouTube) + Follow (Instagram, Facebook). Put the website line in every script's ending.
+- **Every episode ends the same way:** Raj says "agar aapko apni family ka money plan banana hai, visit karo
+  paisasamjhoraj.com" (the studio screen shows the Money Planner in a small browser window), then the shared outro
+  `videos/_shared/outro/outro.mp4` plays: a 24 s walkthrough of the Money Planner at www.paisasamjhoraj.com/#planner
+  (re-recorded 17 Oct 2026), then 6 s of Subscribe (YouTube) + Follow (Instagram, Facebook).
+- **The series exists to bring people to www.paisasamjhoraj.com** (Raj, 17 Oct 2026). It is his finance home: free
+  lessons (Learn), calculators, the Money Planner and the Money Plan Series pages today; later his paid financial
+  courses and iOS/Android apps for financial education. So every script:
+  1. names the site at least twice: once mid-episode, tied to the exact tool for that topic (a calculator, the
+     Money Planner, a lesson: "is ka calculator paisasamjhoraj.com pe free hai"), and once in the ending;
+  2. gives viewers a reason to go: "apne numbers daal ke dekho", "poori lesson website pe", "checklist download karo";
+  3. shows the matching page on the studio screen when he says it (capture the real page, never a mock-up);
+  4. puts the site first in the YouTube description, the pinned comment, the Short's last beat and the Reels caption.
+  Never promise returns, and keep the "educational, not advice" line next to every site mention.
 - Creating scripts or assets does not publish them. Publishing needs an explicit publishing request and access to the destination.
 
 ## Episode roadmap

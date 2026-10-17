@@ -7,7 +7,8 @@ Reads the slot lengths from draft/index.html (flat seconds), takes the longest c
   - slot <= 1.5 x take: slows it down (setpts) to fill the slot;
   - longer: plays it forward then backward (ping-pong), slowed if still short.
 Writes broll/fit/<slot id>.mp4 (1422x1182, 30 fps, no audio); build-draft.py's stock() uses these when present.
-Usage: python fit-clips.py   (after build-draft.py; run build-draft.py again afterwards)
+Usage: rm -rf broll/fit draft/assets/broll/fit; python build-draft.py; python fit-clips.py; python build-draft.py
+(the slot list is read from a build WITHOUT fit files; with them present the clips are skipped)
 """
 import os, re, subprocess, json
 

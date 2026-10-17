@@ -29,7 +29,7 @@ import sys, json
 if "--windows" in sys.argv:          # empty seconds -> padded flat windows for the idle coins
     w = []
     for t in blank:
-        a, b = max(0.0, t - 0.8), t + 0.8
+        a, b = max(0.0, t - 0.3), t + 0.3
         if w and a <= w[-1][1] + 0.4:
             w[-1][1] = b
         else:

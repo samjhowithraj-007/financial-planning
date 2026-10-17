@@ -132,7 +132,7 @@ os.makedirs(os.path.join(HERE, "draft", "assets", "broll"), exist_ok=True)
 for _clip in [c for c, _ in STOCK.values()] + list(AI_MOMENTS.values()):
     _sh.copy2(os.path.join(HERE, "broll", _clip), os.path.join(HERE, "draft", "assets", "broll", _clip))
 
-def stock(bid, clip, caption, t_in, t_out, skip=0.0):
+def stock(bid, clip, caption, t_in, t_out, skip=0.0, fade=0.3):
     """A stock clip on the studio screen (the bslot box), muted, with the white caption at the bottom.
     If fit-clips.py made broll/fit/<bid>.mp4 (exactly the slot's length), that file plays instead."""
     fit = os.path.join(HERE, "broll", "fit", bid + ".mp4")
@@ -142,22 +142,22 @@ def stock(bid, clip, caption, t_in, t_out, skip=0.0):
         clip, skip = "fit/" + bid + ".mp4", 0.0
     roots.append('<div id="%s-bk" class="clip" data-start="%.2f" data-duration="%.2f" data-track-index="7" style="position:absolute;'
                  'left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:8;opacity:0"></div>'
-                 % (bid, t_in, t_out - t_in + 0.25))
+                 % (bid, t_in, t_out - t_in + 0.25 + fade))
     roots.append('<video id="%s-v" class="clip" src="assets/broll/%s" muted playsinline data-start="%.2f" data-duration="%.2f" '
                  'data-media-start="%.2f" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;'
                  'height:788px;object-fit:cover;border-radius:16px 16px 0 0;z-index:8;opacity:0"></video>'
-                 % (bid, clip, t_in, t_out - t_in + 0.25, skip))
+                 % (bid, clip, t_in, t_out - t_in + 0.25 + fade, skip))
     roots.append('<div id="%s" class="clip bslot" data-layout-allow-occlusion data-start="%.2f" data-duration="%.2f" '
                  'data-track-index="6" style="background:none;opacity:0"><div class="bcap">%s</div></div>'
-                 % (bid, t_in, t_out - t_in + 0.25, E(caption)))
-    js.append("tl.fromTo(['#%s','#%s-v','#%s-bk'],{opacity:0},{opacity:1,duration:.3},%.2f); tl.to(['#%s','#%s-v','#%s-bk'],{opacity:0,duration:.3},%.2f);"
-              % (bid, bid, bid, t_in, bid, bid, bid, t_out - 0.05))
+                 % (bid, t_in, t_out - t_in + 0.25 + fade, E(caption)))
+    js.append("tl.fromTo(['#%s','#%s-v','#%s-bk'],{opacity:0},{opacity:1,duration:%.2f},%.2f); tl.to(['#%s','#%s-v','#%s-bk'],{opacity:0,duration:%.2f},%.2f);"
+              % (bid, bid, bid, fade, t_in, bid, bid, bid, fade, t_out - 0.05))
 
 def broll(bid, what, t_in, t_out):
     """An explanation cutaway on the studio screen: a stock clip (STOCK) or an animated scene (scenes_art.py)."""
     broll_slots.append((bid, what, t_in, t_out))
     if USE_STOCK and bid in STOCK:
-        return stock(bid, STOCK[bid][0], STOCK[bid][1], t_in, t_out)
+        return stock(bid, STOCK[bid][0], STOCK[bid][1], t_in, t_out, fade=1.0 if bid == "v-ghar" else 0.3)
     svg, caption, lines = ART[bid](bid, t_in)
     roots.append('<div id="%s" class="clip bslot" data-layout-allow-occlusion data-start="%.2f" data-duration="%.2f" data-track-index="5">'
                  '<svg width="948" height="788" viewBox="0 0 948 788" style="position:absolute;left:0;top:0;border-radius:16px">%s</svg>'
@@ -346,7 +346,7 @@ html.append('<div id="g-axis" class="h" style="left:%dpx;top:%dpx;width:%dpx;hei
             % (AX0, AY, AX1 - AX0))
 for k, (yrs, lab) in enumerate([(0, "Abhi"), (10, "10 saal"), (14, "14 saal"), (25, "25 saal")]):
     html.append('<div id="g-t%d" class="h ticklab" style="left:%dpx;top:%dpx">%s</div>' % (k, gx(yrs) - 80, AY + 18, lab))
-    js.append("rise('#g-t%d',%.2f);" % (k, 226.6 + k * 0.15))
+    js.append("rise('#g-t%d',%.2f);" % (k, (228.0, 238.0, 244.0, 246.0)[k]))
 goals = [("Emergency fund", 0, 150, 228.0, "cyan"), ("Insurance check", 0, 250, 232.0, "cyan"),
          ("Aarav ka college", 10, 350, 238.0, ""), ("Pihu ka college", 14, 450, 244.0, ""),
          ("Retirement", 25, 150, 246.0, "")]
@@ -363,7 +363,7 @@ html.append('<div id="g-par" class="h" style="left:%dpx;top:%dpx;width:%dpx;heig
             'Parents ki care: <span class="amber" style="margin-left:10px">kabhi bhi</span></div>' % (AX0, AY + 70, AX1 - AX0 - 230))
 stock("g-c10", AI_MOMENTS["night-writing"], "Us raat: saare sapne, ek-ek karke", FP(251.0), FP(261.0))
 stock("g-c7", AI_MOMENTS["college"], "Aarav ka college", 238.2, 242.2)
-stock("g-c8", AI_MOMENTS["parents"], "Maa-papa ki dekhbhaal", 248.0, 250.4)
+stock("g-c8", AI_MOMENTS["parents"], "Maa-papa ki dekhbhaal", 247.2, 250.9, fade=1.0)
 html.append('<div id="g-ghar" class="h goal" style="left:%dpx;top:%dpx;border:3px dashed rgba(255,185,4,.8);border-radius:20px;'
             'background:rgba(255,185,4,.06)">Apna ghar:&nbsp;<span class="amber">kabhi na kabhi?</span></div>' % (gx(4), AY + 140))
 broll("v-ghar", "A couple looking at a flat for sale", 250.5, 255.0)
@@ -439,7 +439,7 @@ html.append('''
 <div id="e-eye" class="h eyebrow" style="left:%dpx;top:170px;width:%dpx;text-align:center">AGLA PART 2</div>
 <div id="e-t" class="h" style="left:%dpx;top:230px;width:%dpx;text-align:center;font-size:60px;font-weight:700;line-height:1.15">Salary aati hai, phir <span class="cyan">gayab kahan</span> hoti hai?</div>
 <div id="e-c" class="chip h" style="left:%dpx;top:430px;width:700px">Comment: aapka&nbsp;<b class="cyan">sabse bada goal</b>?</div>
-<div id="e-web" class="h" style="left:%dpx;top:560px;width:%dpx;text-align:center;font-size:40px;font-weight:700">Free notes: <span class="cyan">samjhowithraj.online</span></div>
+<div id="e-web" class="h" style="left:%dpx;top:560px;width:%dpx;text-align:center;font-size:40px;font-weight:700">Free Money Planner: <span class="cyan">paisasamjhoraj.com</span></div>
 <div id="e-dis" class="h" style="left:%dpx;top:630px;width:%dpx;text-align:center;font-size:28px;color:rgba(255,255,255,.72)">Educational example · financial advice nahi</div>
 <div id="e-sb" class="h sbar" style="left:%dpx;top:740px">
   <div class="sbav"><img src="assets/img/raj-mark.png" alt=""></div>
@@ -486,9 +486,9 @@ SEC_HTML.append('<div id="o-webback" class="clip webback" data-start="%.2f" data
 js.append("tl.fromTo('#o-webback',{opacity:0},{opacity:1,duration:.35},%.2f);" % (10000 + WEB0))
 SEC_HTML.append('<div id="o-web" class="clip webcard" data-start="%.2f" data-duration="%.2f" data-track-index="10">'
                 '<div class="wbar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i>'
-                '<span class="wurl">🔒&nbsp;<b>samjhowithraj.online</b>/#tracker</span></div>'
+                '<span class="wurl">🔒&nbsp;<b>paisasamjhoraj.com</b>/#planner</span></div>'
                 '<div class="wview"><img id="o-web-img" src="assets/img/tracker-top.jpg" alt=""></div>'
-                '<div class="wfoot">🧮 Free <b>Financial Tracker</b> · apna plan khud banao</div></div>' % (WEB0, FLAT - WEB0))
+                '<div class="wfoot">🧮 Free <b>Money Planner</b> · paisasamjhoraj.com</div></div>' % (WEB0, FLAT - WEB0))
 js.append("tl.fromTo('#o-web',{opacity:0,y:30},{opacity:1,y:0,duration:.45,ease:'power2.out'},%.2f);" % (10000 + WEB0))
 js.append("tl.to('#o-web-img',{y:-120,duration:6,ease:'power1.inOut'},%.2f);" % (10000 + WEB0 + 1.5))
 roots.append("<!--SECCARDS-->")
@@ -511,8 +511,8 @@ for k, t in enumerate(money_sounds):
 # Raj (reshoot, 16 Oct 2026): a closer head-and-shoulders take, so he goes in at 64% (not natural size), bottom-anchored,
 # body centre at x 480. Reach measured over the whole take (place/reshoot/union.npy): torso 540-1652 and hands 336-1768
 # of the 1920 source, centre 1096 -> at 64% his hands stay inside x 0-910, left of the bigger studio screen (x 950+).
-RAJ_S = 0.64
-RAJ_CX = 480
+RAJ_S = 0.58
+RAJ_CX = 520
 RAJ_X = round(RAJ_CX - 1096 * RAJ_S)
 RAJ_W, RAJ_H = round(1920 * RAJ_S), round(1080 * RAJ_S)
 RAJ_Y = 1080 - RAJ_H
@@ -713,7 +713,7 @@ ENDCARD = ('<div id="o-end" class="clip endc" data-start="%.2f" data-duration="%
   '<div id="o-end-yt" class="endb yt"><span class="ico">▶</span><div><div class="endk">YouTube</div><div class="endh">@SamjhowithRaj</div></div><span class="btn red">Subscribe</span></div>'
   '<div id="o-end-ig" class="endb"><span class="ico ig">◎</span><div><div class="endk">Instagram</div><div class="endh">@samjhowithraj</div></div><span class="btn blue">Follow</span></div>'
   '<div id="o-end-fb" class="endb"><span class="ico fb">f</span><div><div class="endk">Facebook</div><div class="endh">Samjho with Raj</div></div><span class="btn blue">Follow</span></div>'
-  '</div><div class="endw">Free notes: <b>samjhowithraj.online</b> · Part 2 jaldi aa raha hai!</div></div>') % (END0, FINAL - END0)
+  '</div><div class="endw">Free lessons + Money Planner: <b>paisasamjhoraj.com</b> · Part 2 jaldi!</div></div>') % (END0, FINAL - END0)
 END_JS = ("tl.fromTo('#o-end',{opacity:0},{opacity:1,duration:.5},%.2f);"
           "tl.fromTo('#o-end .endt',{opacity:0,y:30},{opacity:1,y:0,duration:.45,ease:'power2.out'},%.2f);"
           "tl.fromTo('#o-end-yt',{opacity:0,y:40},{opacity:1,y:0,duration:.45,ease:'power2.out'},%.2f);"

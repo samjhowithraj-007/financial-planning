@@ -124,14 +124,14 @@ cap("cF2", "5 goals likho: kab chahiye, kitna", {0: "cyan", 1: "cyan"}, 44.6, 55
 
 # ---- G. website 55.36-66.76
 scene("sG", 55.36, 66.76, '''
-<div id="g-t" class="h big" style="left:60px;top:300px;width:960px;text-align:center">Free <b class="cyan">Financial Tracker</b></div>
+<div id="g-t" class="h big" style="left:60px;top:300px;width:960px;text-align:center">Free <b class="cyan">Money Planner</b></div>
 <div id="g-win" class="h webwin" style="left:60px;top:440px"><div class="wbar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i>
-  <i style="background:#28c840"></i><span class="wurl">🔒&nbsp;<b>samjhowithraj.online</b>/#tracker</span></div>
+  <i style="background:#28c840"></i><span class="wurl">🔒&nbsp;<b>paisasamjhoraj.com</b>/#planner</span></div>
   <img id="g-img" src="assets/img/tracker-top.jpg" alt=""></div>
 ''')
 js += ["rise('#g-t',55.6);", "rise('#g-win',56.0);", "tl.to('#g-img',{y:-420,duration:8,ease:'power1.inOut'},57.6);"]
 cap("cG1", "Financial planner chahiye?", {1: "cyan"}, 55.5, 60.4)
-cap("cG2", "samjhowithraj.online pe free!", {0: "cyan"}, 60.4, 66.6)
+cap("cG2", "paisasamjhoraj.com pe free!", {0: "cyan"}, 60.4, 66.6)
 
 # ---- numbered points (left of Raj's box), so the Short reads as 5 clear takeaways
 def pt(pid, n, text, a, b):
@@ -144,7 +144,7 @@ pt("p1", 1, "31% bachat: <b>achha start</b>", 5.74, 12.04)
 pt("p2", 2, "Par kya ye <b>kaafi</b> hai?", 12.04, 17.74)
 pt("p3", 3, "₹12 lakh = <b>sirf jama rakam</b>", 17.74, 39.80)
 pt("p4", 4, "Aaj raat <b>5 goals</b> likho", 39.80, 55.36)
-pt("p5", 5, "Free <b>Financial Tracker</b>", 55.36, 61.2)
+pt("p5", 5, "Free <b>Money Planner</b>", 55.36, 61.2)
 _cta = "Full episode dekho 👆<small>Full video: Money Plan Part 1 (link upar)</small>" if PLAT == "yt" else        "Poora episode YouTube par<small>Samjho with Raj · Money Plan Part 1</small>"
 html.append('<div id="p6" class="clip cta" data-start="%.2f" data-duration="%.2f" data-track-index="9">%s</div>' % (M(61.2), M(66.76) - M(61.2), _cta))
 js.append("tl.fromTo('#p6',{opacity:0,scale:.9},{opacity:1,scale:1,duration:.35,ease:'back.out(1.6)'},%.2f);" % (M(61.2) + 10000.1))
