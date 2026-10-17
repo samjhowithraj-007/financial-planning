@@ -1,6 +1,6 @@
 # Part 1 — post text
 
-**YouTube long video:** published 16 Oct 2026 (https://youtu.be/FieckKjQgJE), then set to **Private** the same day: Raj is reshooting (low energy, AI video instead of animations, new closed-mouth thumbnail). · Playlist "Middle-Class Family Ka Money Plan 💰 | Personal Finance in Hindi (50 Parts)" (public). Shorts / Instagram / Facebook: not posted yet. Reshoot edit delivered 17 Oct 2026 (7:46 with outro), not uploaded yet.
+**YouTube long video:** published 16 Oct 2026 (https://youtu.be/FieckKjQgJE), then set to **Private** the same day: Raj is reshooting (low energy, AI video instead of animations, new closed-mouth thumbnail). · Playlist "Middle-Class Family Ka Money Plan 💰 | Personal Finance in Hindi (50 Parts)" (public). YouTube Short: **published Public 17 Oct 2026** (https://youtube.com/shorts/h5MHdj_Zv24), in the series playlist. Instagram / Facebook: not posted yet. Reshoot edit delivered 17 Oct 2026 (7:46 with outro), not uploaded yet.
 
 ## YouTube (long video: money-plan-01-yt.mp4)
 
@@ -42,13 +42,15 @@ samjho with raj, samjhowithraj
 
 **Thumbnail:** money-plan-01-thumbnail.png (1280x720) · **Shorts/Reels cover:** money-plan-01-short-cover.png (1080x1920)
 
-**Upload settings:** Not made for kids · Altered or synthetic content: **No** (animations only, no AI video) ·
-Playlist: "Middle-Class Family Ka Money Plan (50 Parts)" (create it on first upload).
+**Upload settings:** Not made for kids · Altered or synthetic content: **Yes** (the Verma family clips are AI-generated) ·
+Playlist: "Middle-Class Family Ka Money Plan 💰 | Personal Finance in Hindi (50 Parts)" (exists since Part 1) · Language Hindi ·
+Category Education · Thumbnail: `thumbnail/thumb-1280x720.png` (closed-mouth photo).
 
 ## YouTube Shorts (money-plan-01-short-yt.mp4)
-**Title:** ₹1 Lakh Salary, 31% Bachat… Kya Ye Kaafi Hai? 🤔 #shorts
+**Title:** ₹1 Lakh Salary, 31% Bachat… Kya Ye Kaafi Hai? 🤔 | Money Plan Part 1 #shorts
 
 **Description**
+Middle-Class Family Ka Money Plan · Part 1/50 💰
 Verma family har mahine ₹31,000 bachati hai. Par padhai ke ₹12 lakh "sirf jama rakam" hai: na growth, na mehngai.
 Apni family ke 5 goals likho, aur free Money Planner try karo 👇
 🧮 Free Money Planner: https://www.paisasamjhoraj.com/#planner
@@ -56,6 +58,11 @@ Apni family ke 5 goals likho, aur free Money Planner try karo 👇
 📸 Instagram: https://www.instagram.com/samjhowithraj/
 👍 Facebook: https://www.facebook.com/profile.php?id=61595088790170&sk=reels_tab
 Educational example, financial advice nahi. Characters fictional (AI). #shorts #personalfinance #moneyplan
+
+**Shorts settings:** playlist as above · Not made for kids · Altered or synthetic content **Yes** · Hindi · Education ·
+tags: money plan, personal finance hindi, family budget, salary planning, 1 lakh salary, middle class family, financial
+planning india, emergency fund, saving tips hindi, paisa samjho raj, samjho with raj, money planner, verma family
+· cover: `thumbnail/cover-1080x1920.png` (YouTube may only let you pick a frame for Shorts).
 
 ## Instagram (Reel: money-plan-01-short-ig.mp4, cover money-plan-01-short-cover.png)
 ₹1 lakh salary. 31% bachat. Kya future set hai? 🤔
