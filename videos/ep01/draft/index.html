@@ -73,6 +73,12 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 .bcap{position:absolute;left:0;right:0;bottom:4px;text-align:center;font-size:44px;font-weight:700;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.8)}
 .btag{font-size:30px;font-weight:700;letter-spacing:.2em;color:#FFB904}
 .bwhat{font-size:46px;font-weight:700;line-height:1.2}
+.fixc{position:absolute;left:40px;top:150px;width:860px;padding:22px 30px;z-index:31;opacity:0;background:rgba(10,13,20,.92);
+  border:3px solid #FFB904;border-radius:22px;text-align:center}
+.fx1{font-size:30px;font-weight:700;color:#FFB904;letter-spacing:.04em}
+.fx2{position:relative;display:inline-block;margin-top:8px;font-size:44px;font-weight:700;color:rgba(255,255,255,.6);--strike:0}
+.fx2::after{content:"";position:absolute;left:-6px;top:52%;height:6px;width:calc((100% + 12px) * var(--strike));background:#E0242E;border-radius:3px}
+.fx3{font-size:64px;font-weight:700;color:#0AF0F0;margin-top:4px;opacity:0}
 .disc{position:absolute;left:40px;top:40px;width:640px;padding:16px 22px;z-index:30;opacity:0;background:rgba(10,13,20,.88);border:2px solid rgba(255,185,4,.55);border-radius:16px;display:flex;flex-direction:column;gap:6px}
 .dtitle{font-size:34px;font-weight:700;color:#FFB904}
 .dsub{font-size:24px;color:rgba(255,255,255,.85);line-height:1.35}.dsub b{color:#fff}
@@ -324,6 +330,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 <div id="g-l1" class="clip ll" data-start="295.30" data-duration="3.86" data-track-index="13"><span class="w">Har</span><span class="w">goal</span><span class="w">ki</span><span class="w cyan">apni</span><span class="w cyan">deadline</span></div>
 <div id="k-l1" class="clip ll" data-start="380.79" data-duration="5.65" data-track-index="13"><span class="w cyan">Kab</span><span class="w cyan">chahiye</span><span class="w">+</span><span class="w cyan">lagbhag</span><span class="w cyan">kitna</span></div>
 <div id="o-disc" class="clip disc" data-start="0.29" data-duration="8.31" data-track-index="9"><div class="dtitle">Financial education video</div><div class="dsub"><b>Financial advice nahi</b> · numbers illustrative hain · apni situation ke hisaab se decide karein.</div><div class="dsub">Verma family aur sabhi characters <b>kaalpanik (fictional)</b> hain, AI se banaye gaye. Kisi asli vyakti ya parivaar se milaan sirf sanyog hai.</div></div>
+<div id="o-fix" class="clip fixc" data-start="425.89" data-duration="6.71" data-track-index="9"><div class="fx1">Correction · website badal gayi hai</div><div class="fx2">samjhowithraj.online</div><div class="fx3">paisasamjhoraj.com ✓</div></div>
 <div id="o-name" class="clip lt3" data-start="43.65" data-duration="10.52" data-track-index="9"><div class="ltbar"></div><div><div class="ltname">RAJ</div><div class="ltsub">Samjho with Raj</div></div></div>
 <div id="o-kw1" class="clip kwbox" data-start="153.23" data-duration="1.97" data-track-index="11"><div class="kw">Sirf 1 mahina</div></div>
 <div id="o-kw2" class="clip kwbox" data-start="250.06" data-duration="0.64" data-track-index="11"><div class="kw">Kaafi?</div></div>
@@ -558,6 +565,10 @@ rise('#e-dis',406.5);
 rise('#e-sb',410.0);
 tl.fromTo('#e-btn',{scale:1},{scale:1.08,duration:.22,yoyo:true,repeat:5,ease:'power1.inOut'},410.6);
 tl.fromTo('#o-disc',{opacity:0},{opacity:1,duration:.3},10000.3); tl.to('#o-disc',{opacity:0,duration:.3},10008.3);
+tl.fromTo('#o-fix',{opacity:0,y:20},{opacity:1,y:0,duration:.35,ease:'power2.out'},10425.90);
+tl.fromTo('#o-fix .fx2',{'--strike':0},{'--strike':1,duration:.5},10426.50);
+tl.fromTo('#o-fix .fx3',{opacity:0,scale:.8},{opacity:1,scale:1,duration:.4,ease:'back.out(1.8)'},10427.00);
+tl.to('#o-fix',{opacity:0,duration:.3},10432.30);
 tl.fromTo('#o-name',{opacity:0,x:-40},{opacity:1,x:0,duration:.4,ease:'power2.out'},16.0); out('#o-name',20.2);
 tl.fromTo('#o-sec1',{opacity:0},{opacity:1,duration:.25},10065.80); tl.to('#o-sec1',{opacity:0,duration:.25},10067.80);
 tl.fromTo('#o-sec2',{opacity:0},{opacity:1,duration:.25},10109.23); tl.to('#o-sec2',{opacity:0,duration:.25},10111.23);

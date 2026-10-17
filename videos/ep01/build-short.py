@@ -150,6 +150,16 @@ html.append('<div id="p6" class="clip cta" data-start="%.2f" data-duration="%.2f
 js.append("tl.fromTo('#p6',{opacity:0,scale:.9},{opacity:1,scale:1,duration:.35,ease:'back.out(1.6)'},%.2f);" % (M(61.2) + 10000.1))
 js.append("tl.fromTo('#p6',{scale:1},{scale:1.05,duration:.3,yoyo:true,repeat:3,ease:'power1.inOut'},%.2f);" % (M(62.4) + 10000))
 
+# ---- website correction: he says "samjhowithraj.online"; the site is now paisasamjhoraj.com (flat seconds)
+_f0 = 55.5 + (546.4 - 541.7667)
+html.append('<div id="fixs" class="clip fixs" data-start="%.2f" data-duration="%.2f" data-track-index="11">'
+            '<div class="fx1">Correction · nayi website</div><div class="fx2">samjhowithraj.online</div>'
+            '<div class="fx3">paisasamjhoraj.com ✓</div></div>' % (_f0, FLAT - _f0))
+js.append("tl.fromTo('#fixs',{opacity:0,y:20},{opacity:1,y:0,duration:.35,ease:'power2.out'},%.2f);" % (10000 + _f0))
+js.append("tl.fromTo('#fixs .fx2',{'--strike':0},{'--strike':1,duration:.5},%.2f);" % (10000 + _f0 + 0.6))
+js.append("tl.fromTo('#fixs .fx3',{opacity:0,scale:.8},{opacity:1,scale:1,duration:.4,ease:'back.out(1.8)'},%.2f);" % (10000 + _f0 + 1.1))
+js.append("tl.to('#fixs',{opacity:0,duration:.3},%.2f);" % (10000 + FLAT - 0.3))
+
 # ---- H. ending 66.76-70.0
 btn = '<span class="btn red">Subscribe</span>' if PLAT == "yt" else '<span class="btn blue">Follow</span>'
 who = '<span class="ico">▶</span><div><div class="endk">YouTube</div><div class="endh">@SamjhowithRaj</div></div>' if PLAT == "yt" else \
@@ -207,6 +217,12 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 #g-img{position:absolute;left:0;top:64px;width:960px}
 .cap{position:absolute;left:40px;right:40px;top:1270px;text-align:center;font-size:0;z-index:6}
 .cap span{display:inline-block;font-size:62px;font-weight:700;margin:0 .14em;opacity:0;text-shadow:0 4px 18px rgba(0,0,0,.8)}
+.fixs{position:absolute;left:90px;top:960px;width:900px;padding:20px 28px;z-index:12;opacity:0;background:rgba(10,13,20,.94);
+  border:4px solid #FFB904;border-radius:26px;text-align:center}
+.fixs .fx1{font-size:34px;font-weight:700;color:#FFB904}
+.fixs .fx2{position:relative;display:inline-block;margin-top:6px;font-size:48px;font-weight:700;color:rgba(255,255,255,.6);--strike:0}
+.fixs .fx2::after{content:"";position:absolute;left:-6px;top:52%;height:7px;width:calc((100% + 12px) * var(--strike));background:#E0242E;border-radius:3px}
+.fixs .fx3{font-size:66px;font-weight:700;color:#0AF0F0;opacity:0}
 #cam{position:absolute;left:556px;top:1380px;width:484px;height:500px;border-radius:40px;overflow:hidden;z-index:7;background:#000;
   box-shadow:0 0 0 4px rgba(10,240,240,.55),0 0 40px rgba(10,240,240,.35)}
 #cam video{position:absolute;left:-235px;top:28px;width:840px;height:473px}

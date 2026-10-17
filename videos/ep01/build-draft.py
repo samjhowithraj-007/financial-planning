@@ -465,6 +465,17 @@ fullroots.append('<div id="o-disc" class="clip disc" data-start="%.2f" data-dura
              'vyakti ya parivaar se milaan sirf sanyog hai.</div></div>' % (_d0, _d1 - _d0))
 js.append("tl.fromTo('#o-disc',{opacity:0},{opacity:1,duration:.3},10000.3); tl.to('#o-disc',{opacity:0,duration:.3},10008.3);")
 
+# website correction (Raj, 17 Oct 2026): the reshoot says "samjhowithraj.online"; the site is now paisasamjhoraj.com.
+# The old name is struck through on screen while he says it, through to his last word.
+_c0, _c1 = 425.9, 432.6          # flat seconds: "...hamari website, samjho with raj dot online pe" -> end of talk
+fullroots.append('<div id="o-fix" class="clip fixc" data-start="%.2f" data-duration="%.2f" data-track-index="9">'
+                 '<div class="fx1">Correction · website badal gayi hai</div><div class="fx2">samjhowithraj.online</div>'
+                 '<div class="fx3">paisasamjhoraj.com ✓</div></div>' % (FP(_c0), FP(_c1) - FP(_c0)))
+js.append("tl.fromTo('#o-fix',{opacity:0,y:20},{opacity:1,y:0,duration:.35,ease:'power2.out'},%.2f);" % (10000 + _c0))
+js.append("tl.fromTo('#o-fix .fx2',{'--strike':0},{'--strike':1,duration:.5},%.2f);" % (10000 + _c0 + 0.6))
+js.append("tl.fromTo('#o-fix .fx3',{opacity:0,scale:.8},{opacity:1,scale:1,duration:.4,ease:'back.out(1.8)'},%.2f);" % (10000 + _c0 + 1.1))
+js.append("tl.to('#o-fix',{opacity:0,duration:.3},%.2f);" % (10000 + _c1 - 0.3))
+
 # name lower-third, left of Raj's feet (never over the body)
 fullroots.append('<div id="o-name" class="clip lt3" data-start="16.00" data-duration="4.60" data-track-index="9">'
              '<div class="ltbar"></div><div><div class="ltname">RAJ</div><div class="ltsub">Samjho with Raj</div></div></div>')
@@ -593,6 +604,12 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 .bcap{position:absolute;left:0;right:0;bottom:4px;text-align:center;font-size:44px;font-weight:700;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.8)}
 .btag{font-size:30px;font-weight:700;letter-spacing:.2em;color:#FFB904}
 .bwhat{font-size:46px;font-weight:700;line-height:1.2}
+.fixc{position:absolute;left:40px;top:150px;width:860px;padding:22px 30px;z-index:31;opacity:0;background:rgba(10,13,20,.92);
+  border:3px solid #FFB904;border-radius:22px;text-align:center}
+.fx1{font-size:30px;font-weight:700;color:#FFB904;letter-spacing:.04em}
+.fx2{position:relative;display:inline-block;margin-top:8px;font-size:44px;font-weight:700;color:rgba(255,255,255,.6);--strike:0}
+.fx2::after{content:"";position:absolute;left:-6px;top:52%;height:6px;width:calc((100% + 12px) * var(--strike));background:#E0242E;border-radius:3px}
+.fx3{font-size:64px;font-weight:700;color:#0AF0F0;margin-top:4px;opacity:0}
 .disc{position:absolute;left:40px;top:40px;width:640px;padding:16px 22px;z-index:30;opacity:0;background:rgba(10,13,20,.88);border:2px solid rgba(255,185,4,.55);border-radius:16px;display:flex;flex-direction:column;gap:6px}
 .dtitle{font-size:34px;font-weight:700;color:#FFB904}
 .dsub{font-size:24px;color:rgba(255,255,255,.85);line-height:1.35}.dsub b{color:#fff}

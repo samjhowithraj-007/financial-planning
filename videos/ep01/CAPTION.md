@@ -1,6 +1,6 @@
 # Part 1 — post text
 
-**YouTube long video:** published 16 Oct 2026 (https://youtu.be/FieckKjQgJE), then set to **Private** the same day: Raj is reshooting (low energy, AI video instead of animations, new closed-mouth thumbnail). · Playlist "Middle-Class Family Ka Money Plan 💰 | Personal Finance in Hindi (50 Parts)" (public). Shorts / Instagram / Facebook: not posted yet.
+**YouTube long video:** published 16 Oct 2026 (https://youtu.be/FieckKjQgJE), then set to **Private** the same day: Raj is reshooting (low energy, AI video instead of animations, new closed-mouth thumbnail). · Playlist "Middle-Class Family Ka Money Plan 💰 | Personal Finance in Hindi (50 Parts)" (public). Shorts / Instagram / Facebook: not posted yet. Reshoot edit delivered 17 Oct 2026 (7:46 with outro), not uploaded yet.
 
 ## YouTube (long video: money-plan-01-yt.mp4)
 
@@ -14,21 +14,23 @@
 Is series mein hum ek middle-class family — Amit, Neha, Aarav aur Pihu (Verma family, Lucknow) — ke saath unka poora
 money plan banayenge. Part 1 mein: ₹1 lakh kahan jaata hai, saare goals ki deadline, aur pehla kadam.
 
-📘 Free notes: https://www.samjhowithraj.online
+🧮 Free Money Planner (apni family ka plan banao): https://www.paisasamjhoraj.com/#planner
+📘 Free lessons + calculators: https://www.paisasamjhoraj.com
 📸 Instagram: https://www.instagram.com/samjhowithraj/
 👍 Facebook: https://www.facebook.com/profile.php?id=61595088790170&sk=reels_tab
 
 Chapters
 0:00 Hook: 1 tareekh se 25 tareekh tak
-0:51 Middle-Class Family Ka Money Plan
-1:22 Milo Verma family
-2:17 Aaj ka paisa
-3:09 ₹1 lakh kahan jaata hai
-4:59 Goals aur deadline
-5:56 Sirf jama rakam (₹12 lakh, ₹39 lakh)
-6:40 Har goal ka dabba: sabse pehle safety
-7:22 Aapka kaam: 5 goals likhiye
-7:53 Agla part
+0:43 Middle-Class Family Ka Money Plan
+1:05 Milo Verma family
+1:49 Aaj ka paisa
+2:37 ₹1 lakh kahan jaata hai
+4:12 Goals aur deadline
+4:59 Sirf jama rakam (₹12 lakh, ₹39 lakh)
+5:38 Har goal ka dabba: sabse pehle safety
+6:12 Aapka kaam: 5 goals likhiye
+7:01 Free Money Planner: paisasamjhoraj.com
+7:15 Money Planner walkthrough
 
 ⚠️ Financial education video, not financial advice. The Verma family and all characters are fictional and AI-generated; any resemblance to a real person or family is purely coincidental. All numbers are illustrative.
 Multi-year amounts are contributions only — no returns, inflation, fees or taxes included.
@@ -48,8 +50,8 @@ Playlist: "Middle-Class Family Ka Money Plan (50 Parts)" (create it on first upl
 
 **Description**
 Verma family har mahine ₹31,000 bachati hai. Par padhai ke ₹12 lakh "sirf jama rakam" hai: na growth, na mehngai.
-Apni family ke 5 goals likho, aur free Financial Tracker try karo 👇
-🧮 Free Financial Tracker: https://www.samjhowithraj.online/#tracker
+Apni family ke 5 goals likho, aur free Money Planner try karo 👇
+🧮 Free Money Planner: https://www.paisasamjhoraj.com/#planner
 ▶️ Poora Part 1: youtube.com/@SamjhowithRaj
 📸 Instagram: https://www.instagram.com/samjhowithraj/
 👍 Facebook: https://www.facebook.com/profile.php?id=61595088790170&sk=reels_tab
@@ -58,14 +60,14 @@ Educational example, financial advice nahi. Characters fictional (AI). #shorts #
 ## Instagram (Reel: money-plan-01-short-ig.mp4, cover money-plan-01-short-cover.png)
 ₹1 lakh salary. 31% bachat. Kya future set hai? 🤔
 Verma family ka poora money plan, Part 1 se 50 tak 👇
-🧮 Free Financial Tracker: samjhowithraj.online (link in bio)
+🧮 Free Money Planner: paisasamjhoraj.com (link in bio)
 ▶️ Full video: youtube.com/@SamjhowithRaj
 Educational example, financial advice nahi. Characters fictional (AI).
 #personalfinance #moneyplan #familybudget #financehindi #samjhowithraj
 
 ## Facebook (Reel: same -ig file)
 ₹1 lakh salary mein family ka future kaise banayein? Part 1: Verma family ka hisaab.
-🧮 Free Financial Tracker: https://www.samjhowithraj.online/#tracker
+🧮 Free Money Planner: https://www.paisasamjhoraj.com/#planner
 ▶️ YouTube: https://www.youtube.com/@SamjhowithRaj
 📸 Instagram: https://www.instagram.com/samjhowithraj/
 Educational example, financial advice nahi. Characters fictional (AI).
