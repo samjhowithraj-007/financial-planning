@@ -172,12 +172,12 @@ CSS = """
 .xa-t b{color:#FFB904}.xa-t i{font-style:normal;color:#0AF0F0}
 .xa-s{font-size:32px;color:rgba(255,255,255,.8);text-align:center;max-width:860px}
 .xa-svg{display:block}
-.xa-idle{position:absolute;left:926px;top:118px;width:948px;height:848px;z-index:2;overflow:hidden;border-radius:16px;pointer-events:none}
+.xa-idle{opacity:0;position:absolute;left:926px;top:118px;width:948px;height:848px;z-index:2;overflow:hidden;border-radius:16px;pointer-events:none}
 .xa.low{justify-content:flex-end;padding-bottom:30px}.xa.low .xa-svg{width:860px;height:535px}
 """
 
 
-def idle(eid, flat_total, coins=9):
+def idle(eid, flat_total, coins=9, windows=()):
     """Background life for the studio screen: ₹ coins drifting up, behind everything (z 2). Whenever no clip or
     animation covers the screen (a hand-over, a fade) the screen still moves. Positions are flat (+10000)."""
     import random
@@ -195,6 +195,45 @@ def idle(eid, flat_total, coins=9):
         js.append("tl.fromTo('#%s',{y:%.0f},{y:-80,duration:%.2f,ease:'none'},10000);" % (cid, y0, first))
         js.append("tl.fromTo('#%s',{y:900},{y:-80,duration:%.2f,ease:'none',repeat:%d,immediateRender:false},%.2f);"
                   % (cid, dur, rep, 10000 + first))
+    for a, b in windows:
+        js.append("tl.fromTo('#%s',{opacity:0},{opacity:1,duration:.3},%.2f);" % (eid, 10000 + a))
+        js.append("tl.to('#%s',{opacity:0,duration:.3},%.2f);" % (eid, 10000 + b - 0.3))
     html = ('<div id="%s" class="clip xa-idle" data-start="0.00" data-duration="%.2f" data-track-index="2">'
             '<svg viewBox="0 0 948 848" width="948" height="848">%s</svg></div>' % (eid, 9999, "".join(svg)))
     return html, js
+
+
+def diary(eid, t_in, t_out, title="", sub="", lines=(), low=False):
+    """An old diary opening, a pen writing the spends in line by line (the family's hisaab)."""
+    svg = ['<g id="%s-b" opacity="0">' % eid,
+           '<rect x="120" y="60" width="660" height="450" rx="18" fill="#5b3b22"/>',                 # cover edge
+           '<rect x="140" y="72" width="310" height="426" rx="8" fill="#F5F1E8"/>',                  # left page
+           '<rect x="450" y="72" width="310" height="426" rx="8" fill="#EFE9DC"/>',                  # right page
+           '<rect x="444" y="72" width="12" height="426" fill="#c9bfa9"/>']
+    for k in range(9):
+        y = 130 + k * 42
+        svg.append('<line x1="160" y1="%d" x2="430" y2="%d" stroke="#c8d6e5" stroke-width="2"/>' % (y, y))
+        svg.append('<line x1="470" y1="%d" x2="740" y2="%d" stroke="#c8d6e5" stroke-width="2"/>' % (y, y))
+    svg.append('<text x="295" y="115" text-anchor="middle" font-size="30" font-weight="700" fill="#7a2c2c" '
+               'font-family="Comic Sans MS, Segoe Print, cursive">Ghar ka hisaab</text>')
+    js = ["tl.fromTo('#%s-b',{opacity:0,scale:.85,transformOrigin:'50%% 50%%'},{opacity:1,scale:1,duration:.5,ease:'back.out(1.4)'},%.2f);"
+          % (eid, t_in + .2)]
+    n = max(1, len(lines))
+    step = min(1.0, (t_out - t_in - 1.4) / n)
+    for k, ln in enumerate(lines):
+        col = 160 if k < 5 else 470
+        y = 168 + (k % 5) * 68
+        lid = "%s-l%d" % (eid, k)
+        svg.append('<g id="%s" opacity="0"><text x="%d" y="%d" font-size="34" font-weight="700" fill="#1b2a4a" '
+                   'font-family="Comic Sans MS, Segoe Print, cursive">%s</text></g>' % (lid, col + 6, y, E(ln)))
+        t = t_in + 0.9 + k * step
+        js.append("tl.fromTo('#%s',{opacity:0,x:-14},{opacity:1,x:0,duration:.35,ease:'power1.out'},%.2f);" % (lid, t))
+    svg.append('<g id="%s-p" opacity="0"><rect x="0" y="-8" width="150" height="16" rx="8" fill="%s" transform="rotate(-35)"/>'
+               '<path d="M0 0 L-16 10 L-4 -6 Z" fill="#222" transform="rotate(-35)"/></g>' % (eid, AMBER))
+    js.append("tl.to('#%s-p',{opacity:1,duration:.2},%.2f);" % (eid, t_in + .8))
+    for k in range(len(lines)):
+        col = 160 if k < 5 else 470
+        js.append("tl.fromTo('#%s-p',{x:%d,y:%d},{x:%d,y:%d,duration:%.2f,ease:'none'},%.2f);"
+                  % (eid, col + 10, 163 + (k % 5) * 68, col + 250, 158 + (k % 5) * 68, step * .9, t_in + 0.9 + k * step))
+    html, j0 = _wrap(eid, t_in, t_out, "".join(svg), title, sub, low)
+    return html, j0 + js

@@ -24,3 +24,15 @@ for t in blank:
 for t, b, m in rows:
     print("%6.1f %5.3f %4.0f %s" % (t, b, m, "BLANK" if t in blank else ("sparse" if t in sparse else "")))
 print("\nblank runs:", [(round(a - 1, 1), round(b + 1, 1)) for a, b in runs])
+
+import sys, json
+if "--windows" in sys.argv:          # empty seconds -> padded flat windows for the idle coins
+    w = []
+    for t in blank:
+        a, b = max(0.0, t - 0.8), t + 0.8
+        if w and a <= w[-1][1] + 0.4:
+            w[-1][1] = b
+        else:
+            w.append([a, b])
+    json.dump([[round(a, 2), round(b, 2)] for a, b in w], open("idle-windows.json", "w"))
+    print("idle windows:", w)

@@ -30,7 +30,7 @@ Chapters
 7:22 Aapka kaam: 5 goals likhiye
 7:53 Agla part
 
-⚠️ Educational example only, not financial advice. Verma family is fictional; all numbers are illustrative.
+⚠️ Financial education video, not financial advice. The Verma family and all characters are fictional and AI-generated; any resemblance to a real person or family is purely coincidental. All numbers are illustrative.
 Multi-year amounts are contributions only — no returns, inflation, fees or taxes included.
 
 **Tags**
@@ -53,14 +53,14 @@ Apni family ke 5 goals likho, aur free Financial Tracker try karo 👇
 ▶️ Poora Part 1: youtube.com/@SamjhowithRaj
 📸 Instagram: https://www.instagram.com/samjhowithraj/
 👍 Facebook: https://www.facebook.com/profile.php?id=61595088790170&sk=reels_tab
-Educational example, financial advice nahi. #shorts #personalfinance #moneyplan
+Educational example, financial advice nahi. Characters fictional (AI). #shorts #personalfinance #moneyplan
 
 ## Instagram (Reel: money-plan-01-short-ig.mp4, cover money-plan-01-short-cover.png)
 ₹1 lakh salary. 31% bachat. Kya future set hai? 🤔
 Verma family ka poora money plan, Part 1 se 50 tak 👇
 🧮 Free Financial Tracker: samjhowithraj.online (link in bio)
 ▶️ Full video: youtube.com/@SamjhowithRaj
-Educational example, financial advice nahi.
+Educational example, financial advice nahi. Characters fictional (AI).
 #personalfinance #moneyplan #familybudget #financehindi #samjhowithraj
 
 ## Facebook (Reel: same -ig file)
@@ -68,5 +68,5 @@ Educational example, financial advice nahi.
 🧮 Free Financial Tracker: https://www.samjhowithraj.online/#tracker
 ▶️ YouTube: https://www.youtube.com/@SamjhowithRaj
 📸 Instagram: https://www.instagram.com/samjhowithraj/
-Educational example, financial advice nahi.
+Educational example, financial advice nahi. Characters fictional (AI).
 #personalfinance #familybudget #moneyplan

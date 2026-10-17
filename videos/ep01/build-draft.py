@@ -141,7 +141,7 @@ def stock(bid, clip, caption, t_in, t_out, skip=0.0):
         _sh.copy2(fit, os.path.join(HERE, "draft", "assets", "broll", "fit", bid + ".mp4"))
         clip, skip = "fit/" + bid + ".mp4", 0.0
     roots.append('<div id="%s-bk" class="clip" data-start="%.2f" data-duration="%.2f" data-track-index="7" style="position:absolute;'
-                 'left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:7;opacity:0"></div>'
+                 'left:916px;top:108px;width:968px;height:890px;border-radius:20px;background:#0a0d14;z-index:8;opacity:0"></div>'
                  % (bid, t_in, t_out - t_in + 0.25))
     roots.append('<video id="%s-v" class="clip" src="assets/broll/%s" muted playsinline data-start="%.2f" data-duration="%.2f" '
                  'data-media-start="%.2f" data-track-index="5" style="position:absolute;left:926px;top:118px;width:948px;'
@@ -167,7 +167,9 @@ def broll(bid, what, t_in, t_out):
     js.extend(lines)
 
 # background life on the studio screen (never blank, even during a fade between two beats)
-_h, _j = XA.idle("x-idle", FLAT)
+# only where the screen is otherwise empty: idle-windows.json comes from screen-scan.py --windows (flat seconds)
+_IW = os.path.join(HERE, "idle-windows.json")
+_h, _j = XA.idle("x-idle", FLAT, windows=_json.load(open(_IW)) if os.path.exists(_IW) else ())
 roots.append(_h.replace('data-duration="9999.00"', 'data-duration="%.2f"' % DUR)); js.extend(_j)
 
 # ---------------------------------------------------------------------------------------------- 1. Hook
@@ -284,8 +286,9 @@ html.append('<div id="b-bar" class="h" style="left:%dpx;top:250px;width:%dpx;hei
 html.append('<div id="b-lab1" class="h seglab" style="left:%dpx;top:350px">Zaroori <span class="amber">₹58,000</span> · 58%%</div>' % (L + 20))
 html.append('<div id="b-lab4" class="h seglab" style="left:%dpx;top:350px;width:%dpx;text-align:right">Future <span class="cyan">₹31,000</span> · 31%%</div>' % (L + 20, BW))
 js += ["rise('#b-title',105.4);", "rise('#b-bar',106.6);", "rise('#b-lab1',132.0);"]
-# "₹1 lakh jaata kahan hai?": a wallet sends notes out to the big spends, under the title and bar, until the table comes
-_h, _j = XA.wallet("x-wal", FP(156.4), 109.6, out_labels=("Kiraya", "Ration", "Bills", "School"), low=True)
+# "Amit ne purani diary nikaali… ek lakh jaata kahan hai?": the diary opens and the spends get written in, under the
+# title and bar, until the table comes
+_h, _j = XA.diary("x-wal", FP(156.4), 109.6, lines=("Kiraya ₹18,000", "Ration ₹14,000", "Bills ₹4,000", "School ₹10,000", "Total: ?"), low=True)
 roots.append(_h); js.extend(_j)
 stock("b-c5", AI_MOMENTS["kirana"], "Kiraya, ration, bills…", 113.8, 117.8)
 # essentials: a white data card (Pranjal style), the yellow marker moves to each row as it is said
@@ -453,10 +456,14 @@ js += ["rise('#e-eye',400.3);", "rise('#e-t',400.6);", "rise('#e-c',404.0);", "r
 scene_close()
 
 # disclaimer card (2 s, after the hook visual)
-fullroots.append('<div id="o-disc" class="clip disc" data-start="3.00" data-duration="2.00" data-track-index="9">'
-             '<div class="dtitle">Educational example</div><div class="dsub">Financial advice nahi · numbers illustrative hain · '
-             'apni situation ke hisaab se decide karein</div></div>')
-js.append("tl.fromTo('#o-disc',{opacity:0},{opacity:1,duration:.25},3.0); tl.to('#o-disc',{opacity:0,duration:.25},4.75);")
+# disclaimer for the first ~8 s (Raj, 17 Oct 2026): education only, and every character is fictional / AI-generated
+_d0, _d1 = FP(0.3), FP(8.6)
+fullroots.append('<div id="o-disc" class="clip disc" data-start="%.2f" data-duration="%.2f" data-track-index="9">'
+             '<div class="dtitle">Financial education video</div>'
+             '<div class="dsub"><b>Financial advice nahi</b> · numbers illustrative hain · apni situation ke hisaab se decide karein.</div>'
+             '<div class="dsub">Verma family aur sabhi characters <b>kaalpanik (fictional)</b> hain, AI se banaye gaye. Kisi asli '
+             'vyakti ya parivaar se milaan sirf sanyog hai.</div></div>' % (_d0, _d1 - _d0))
+js.append("tl.fromTo('#o-disc',{opacity:0},{opacity:1,duration:.3},10000.3); tl.to('#o-disc',{opacity:0,duration:.3},10008.3);")
 
 # name lower-third, left of Raj's feet (never over the body)
 fullroots.append('<div id="o-name" class="clip lt3" data-start="16.00" data-duration="4.60" data-track-index="9">'
@@ -586,9 +593,9 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 .bcap{position:absolute;left:0;right:0;bottom:4px;text-align:center;font-size:44px;font-weight:700;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.8)}
 .btag{font-size:30px;font-weight:700;letter-spacing:.2em;color:#FFB904}
 .bwhat{font-size:46px;font-weight:700;line-height:1.2}
-.disc{position:absolute;left:40px;top:40px;width:560px;padding:16px 22px;z-index:30;opacity:0;background:rgba(10,13,20,.88);border:2px solid rgba(255,185,4,.55);border-radius:16px;display:flex;flex-direction:column;gap:6px}
+.disc{position:absolute;left:40px;top:40px;width:640px;padding:16px 22px;z-index:30;opacity:0;background:rgba(10,13,20,.88);border:2px solid rgba(255,185,4,.55);border-radius:16px;display:flex;flex-direction:column;gap:6px}
 .dtitle{font-size:34px;font-weight:700;color:#FFB904}
-.dsub{font-size:22px;color:rgba(255,255,255,.85);line-height:1.35}
+.dsub{font-size:24px;color:rgba(255,255,255,.85);line-height:1.35}.dsub b{color:#fff}
 .lt3{position:absolute;left:60px;top:150px;z-index:12;display:flex;align-items:center;gap:18px;padding:12px 26px 12px 16px;border-radius:14px;
   background:rgba(10,13,20,.85)}
 .ltbar{width:8px;height:78px;border-radius:4px;background:#0AF0F0;box-shadow:0 0 14px rgba(10,240,240,.8)}
