@@ -20,6 +20,10 @@ In the episode itself, when Raj says "visit karo hamara website", the studio scr
 (the top of the tracker in a browser frame) until his last word. Each episode's `finish.sh` joins the episode render
 and `outro.mp4`, then mixes the lo-fi bed over both (the bed comes up under the outro).
 
+**Re-captured 19 Oct 2026** after the fintech redesign (site commit df22b13): planner sections sit ~64 px lower, the
+sign-up box moved to y 2992 (`HS` 2615), and the highlighter is now rgba yellow + ring (multiply vanished on the dark site).
+The 17–18 Oct version is kept as `outro-v1.mp4`, `index-v1.html`, `assets-v1/` and `capture/old/v1-20261018/`.
+
 **Update it when the site changes** (puppeteer-core is at `C:/Users/rajpr/node_modules/puppeteer-core`):
 
 - Planner: `cd capture && node capture-planner.cjs <puppeteer-core path>` (live site, 1440x900 at 2x, dark, Verma
