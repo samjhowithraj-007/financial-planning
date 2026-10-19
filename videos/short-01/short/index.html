@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=1080, height=1920">
+<script src="vendor/gsap.min.js"></script><style>
+@font-face{font-family:"DM Sans";src:url(fonts/DMSans-400.woff2) format("woff2");font-weight:400}
+@font-face{font-family:"DM Sans";src:url(fonts/DMSans-500.woff2) format("woff2");font-weight:500}
+@font-face{font-family:"DM Sans";src:url(fonts/DMSans-700.woff2) format("woff2");font-weight:700}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0a0d14}
+body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;
+  background:radial-gradient(800px 700px at 70% 18%,rgba(10,240,240,.10),transparent 70%),
+             radial-gradient(900px 800px at 100% 100%,rgba(0,5,238,.22),transparent 70%),#0a0d14}
+.scene{position:absolute;inset:0}.scene>*{position:absolute}
+.h{opacity:0}.cyan{color:#0AF0F0}.amber{color:#FFB904}.mag{color:#E04CF0}.red{color:#FF4D4D}
+#tag{position:absolute;left:0;right:0;top:110px;display:flex;justify-content:center;z-index:9}
+#tag span{padding:14px 30px;border-radius:9999px;background:rgba(255,255,255,.1);border:3px solid rgba(255,255,255,.4);font-size:32px;font-weight:700;letter-spacing:.06em}
+.hook{left:60px;right:60px;top:210px;text-align:center;font-size:76px;font-weight:700;line-height:1.1}
+.big{font-size:84px;font-weight:700;line-height:1.15}
+.cal{width:300px;height:330px;border-radius:30px;background:#f4f6fa;color:#111;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.55)}
+.calh{height:84px;background:#FFB904;display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:700;letter-spacing:.08em}
+.cald{text-align:center;font-size:200px;font-weight:700;line-height:240px}
+.bank{width:520px;padding:30px 36px;border-radius:30px;background:rgba(255,255,255,.08);border:3px solid rgba(255,255,255,.35)}
+.bankh{font-size:30px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.75)}
+.bankv{font-size:96px;font-weight:700;line-height:1.2}
+.bankbar{height:26px;border-radius:13px;background:rgba(255,255,255,.12);overflow:hidden;margin-top:14px}
+.bankbar i{display:block;height:100%;background:linear-gradient(90deg,#0AF0F0,#FFB904);transform-origin:0 50%}
+.kchip{display:flex;align-items:center;gap:12px;width:450px;padding:24px 22px;border-radius:26px;background:#f4f6fa;color:#111;
+  font-size:38px;font-weight:700;box-shadow:0 18px 50px rgba(0,0,0,.5)}
+.kchip span{font-size:56px}.kchip b{margin-left:auto;color:#b37400}
+.ktot{left:60px;right:60px;top:1080px;text-align:center;font-size:72px;font-weight:700}
+.diary{width:860px;height:640px;padding:36px 46px;border-radius:24px;background:#F5F1E8;color:#1b1a17;box-shadow:0 30px 90px rgba(0,0,0,.55);
+  background-image:repeating-linear-gradient(transparent 0 73px,rgba(70,110,170,.25) 73px 75px);background-position:0 46px}
+.dhead{font-size:46px;font-weight:700;color:#7a2c2c;border-bottom:5px solid #FFB904;display:inline-block;margin-bottom:22px}
+.drow{display:grid;grid-template-columns:1fr 1.4fr .8fr;font-size:44px;height:74px;align-items:center;color:#1b2a4a}
+.drow b{text-align:right;color:#9a3b00}
+.pen{position:absolute;left:40px;top:110px;width:160px;height:20px;border-radius:10px;background:#FFB904;transform:rotate(-35deg);box-shadow:0 6px 16px rgba(0,0,0,.35)}
+.chip2{display:inline-block;padding:16px 28px;border-radius:16px;background:rgba(17,17,17,.6);border:2px solid rgba(255,255,255,.25);font-size:44px;font-weight:700}
+.verm{left:60px;right:60px;top:400px;text-align:center;font-size:40px;color:rgba(255,255,255,.8)}
+.jar{width:300px;text-align:center}
+.jarlid{width:200px;height:34px;margin:0 auto;border-radius:12px;background:#7d8590}
+.jarbody{position:relative;width:260px;height:420px;margin:0 auto;border:8px solid rgba(255,255,255,.75);border-top:none;border-radius:0 0 50px 50px;overflow:hidden;background:rgba(255,255,255,.05)}
+.jarfill{position:absolute;left:0;right:0;bottom:0;transform-origin:50% 100%;opacity:.9}
+.jarv{font-size:60px;font-weight:700;margin-top:18px}
+.jarl{font-size:34px;font-weight:700;color:rgba(255,255,255,.85);line-height:1.15;margin-top:6px}
+.illus{left:770px;top:450px;padding:10px 20px;border-radius:12px;background:#FFB904;color:#111;font-size:30px;font-weight:700;transform:rotate(4deg)}
+.webwin{width:960px;height:720px;border-radius:22px;overflow:hidden;background:#141414;box-shadow:0 0 0 3px rgba(255,255,255,.14),0 30px 90px rgba(0,0,0,.6)}
+.wbar{position:absolute;left:0;top:0;right:0;height:64px;background:#24262b;display:flex;align-items:center;gap:10px;padding:0 22px;z-index:2}
+.wbar i{width:14px;height:14px;border-radius:50%;display:inline-block}
+.wurl{margin-left:18px;height:38px;padding:0 20px;border-radius:19px;background:#15171b;display:flex;align-items:center;font-size:24px;color:rgba(255,255,255,.85)}
+.wview{position:absolute;left:0;right:0;top:64px;bottom:0;overflow:hidden}
+#f-img{position:absolute;left:-150px;top:0;width:1440px}
+.hl{position:absolute;left:255px;top:62px;width:151px;height:62px;border-radius:10px;background:rgba(255,225,77,.38);transform-origin:0 50%;
+  box-shadow:0 0 0 3px rgba(255,225,77,.9)}
+.cap{position:absolute;left:40px;right:40px;top:1270px;text-align:center;font-size:0;z-index:6}
+.cap span{display:inline-block;font-size:62px;font-weight:700;margin:0 .14em;opacity:0;text-shadow:0 4px 18px rgba(0,0,0,.8)}
+#cam{position:absolute;left:556px;top:1380px;width:484px;height:500px;border-radius:40px;overflow:hidden;z-index:7;background:#000;
+  box-shadow:0 0 0 4px rgba(10,240,240,.55),0 0 40px rgba(10,240,240,.35)}
+#cam video{position:absolute;left:0;top:0;width:484px;height:500px}
+.camph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;font-size:40px;color:rgba(255,255,255,.45);
+  background:repeating-linear-gradient(45deg,#0d1117 0 24px,#111723 24px 48px)}
+#foot{position:absolute;left:48px;top:1790px;width:480px;font-size:24px;line-height:1.35;color:rgba(255,255,255,.65)}
+#foot b{color:#fff}
+.pt{position:absolute;left:48px;top:1390px;width:480px;padding:22px 26px;border-radius:26px;background:rgba(255,255,255,.07);border:3px solid rgba(10,240,240,.55);z-index:6;opacity:0}
+.pt .pn{font-size:30px;font-weight:700;color:#0AF0F0;letter-spacing:.06em}
+.pt .px{font-size:44px;font-weight:700;line-height:1.12;margin-top:8px}
+.pt .px b{color:#FFB904}
+.cta{position:absolute;left:48px;top:1390px;width:480px;padding:22px 26px;border-radius:26px;background:#FF0000;z-index:6;opacity:0;font-size:44px;font-weight:700;line-height:1.15}
+.cta small{display:block;font-size:26px;font-weight:500;opacity:.9;margin-top:6px}
+.endc{position:absolute;inset:0;z-index:20;opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:60px;
+  background:radial-gradient(800px 700px at 50% 40%,rgba(10,240,240,.14),transparent 70%),#0a0d14}
+.endt{font-size:92px;font-weight:700;text-align:center;line-height:1.1}
+.endb{display:flex;align-items:center;gap:22px;padding:28px 32px;border-radius:32px;background:rgba(255,255,255,.08);border:3px solid rgba(255,255,255,.3)}
+.endb .ico{width:96px;height:96px;border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:50px;font-weight:700;background:#FF0000;color:#fff}
+.endb .ico.ig{background:linear-gradient(135deg,#F58529,#DD2A7B,#8134AF)}
+.endk{font-size:30px;color:rgba(255,255,255,.75)}.endh{font-size:46px;font-weight:700}
+.btn{font-size:38px;font-weight:700;padding:18px 32px;border-radius:9999px;color:#fff}.btn.red{background:#FF0000}.btn.blue{background:#0095F6}
+.endw{font-size:44px;color:rgba(255,255,255,.88)}.endw b{color:#0AF0F0}
+</style></head><body>
+<div id="stage" data-composition-id="short" data-start="0" data-duration="63.47" data-fps="30" data-width="1080" data-height="1920">
+<div id="tag"><span>PAISA SAMJHO · <b class="cyan">PART 1</b> / 20</span></div>
+<div id="sA" class="clip scene" data-start="0.00" data-duration="6.41" data-track-index="1">
+<div class="hook" style="opacity:1">1 tareekh <b class="amber">₹1 lakh</b>…<br>25 tareekh <b class="red">₹0?</b></div>
+<div id="a-cal" class="cal" style="left:110px;top:520px"><div class="calh">TAREEKH</div>
+  <div id="a-d" class="cald">1</div></div>
+<div id="a-bank" class="bank" style="left:470px;top:560px"><div class="bankh">BANK BALANCE</div>
+  <div id="a-bal" class="bankv amber">₹1,00,000</div><div class="bankbar"><i id="a-bar"></i></div></div>
+</div>
+<div id="cA" class="clip cap" data-start="0.28" data-duration="5.99" data-track-index="6"><span class="w">Paisa</span><span class="w amber">gaya</span><span class="w amber">kahan?</span></div>
+<div id="sB" class="clip scene" data-start="6.41" data-duration="9.51" data-track-index="1">
+<div class="hook" style="top:230px">Chhote kharche,<br><b class="mag">bada bill</b></div>
+<div id="b-k0" class="kchip h" style="left:70px;top:820px"><span>☕</span>Chai <b>₹50</b></div><div id="b-k1" class="kchip h" style="left:560px;top:820px"><span>🛵</span>Delivery <b>₹200</b></div><div id="b-k2" class="kchip h" style="left:70px;top:680px"><span>📺</span>Subscription <b>₹99</b></div><div id="b-k3" class="kchip h" style="left:560px;top:680px"><span>🍪</span>Snacks <b>₹80</b></div><div id="b-k4" class="kchip h" style="left:70px;top:540px"><span>🚕</span>Auto <b>₹120</b></div><div id="b-k5" class="kchip h" style="left:560px;top:540px"><span>☕</span>Chai <b>₹50</b></div>
+<div id="b-tot" class="h ktot">Total: <b id="b-totv" class="amber">₹0</b></div>
+</div>
+<div id="cB1" class="clip cap" data-start="6.52" data-duration="4.65" data-track-index="6"><span class="w amber">₹50</span><span class="w">ki</span><span class="w">chai,</span><span class="w">₹200</span><span class="w amber">ka</span><span class="w">delivery…</span></div>
+<div id="cB2" class="clip cap" data-start="11.17" data-duration="4.65" data-track-index="6"><span class="w">chupchap</span><span class="w">bada</span><span class="w">bill</span><span class="w mag">ban</span><span class="w mag">jaate</span><span class="w">hain</span></div>
+<div id="p1" class="clip pt" data-start="6.41" data-duration="9.51" data-track-index="9"><div class="pn">POINT 1 / 3</div><div class="px">Hisaab sirf <b>dimaag</b> mein = problem</div></div>
+<div id="sC" class="clip scene" data-start="15.92" data-duration="9.72" data-track-index="1">
+<div class="hook" style="top:230px"><b class="cyan">30 din</b>, har kharcha <b class="amber">likho</b></div>
+<div id="c-dia" class="diary h" style="left:110px;top:420px"><div class="dhead">Mera kharcha · 30 din</div><div id="c-r0" class="drow h"><span>1 Oct</span><span>Chai</span><b>₹50</b></div><div id="c-r1" class="drow h"><span>1 Oct</span><span>Sabzi</span><b>₹180</b></div><div id="c-r2" class="drow h"><span>2 Oct</span><span>Delivery</span><b>₹200</b></div><div id="c-r3" class="drow h"><span>3 Oct</span><span>Recharge</span><b>₹299</b></div><div id="c-r4" class="drow h"><span>4 Oct</span><span>Auto</span><b>₹120</b></div><div id="c-r5" class="drow h"><span>5 Oct</span><span>Chai</span><b>₹50</b></div>
+  <div id="c-pen" class="pen"></div></div>
+<div id="c-tip" class="h chip2" style="position:absolute;left:180px;top:1130px">₹10 ka bhi · notes ya diary</div>
+</div>
+<div id="cC" class="clip cap" data-start="16.06" data-duration="9.44" data-track-index="6"><span class="w">Sirf</span><span class="w cyan">30</span><span class="w cyan">din,</span><span class="w">har</span><span class="w">kharcha</span><span class="w amber">likho</span></div>
+<div id="p2" class="clip pt" data-start="15.92" data-duration="9.72" data-track-index="9"><div class="pn">POINT 2 / 3</div><div class="px"><b>30 din</b>, har kharcha likho</div></div>
+<div id="sD" class="clip scene" data-start="25.64" data-duration="16.50" data-track-index="2">
+<div class="hook" style="top:230px"><b class="amber">3 dabbe</b> mein daalo</div>
+<div class="h verm" id="d-verm">Verma family · ₹1,00,000 / mahina</div>
+<div id="d-j0" class="jar h" style="left:70px;top:520px"><div class="jarlid"></div><div class="jarbody"><div id="d-f0" class="jarfill" style="height:231px;background:#F5F1E8"></div></div><div id="d-v0" class="jarv" style="color:#fff">₹0</div><div class="jarl">Zaroori</div></div><div id="d-j1" class="jar h" style="left:390px;top:520px"><div class="jarlid"></div><div class="jarbody"><div id="d-f1" class="jarfill" style="height:96px;background:#FFB904"></div></div><div id="d-v1" class="jarv" style="color:#FFB904">₹0</div><div class="jarl">Saal ke kharche<br>+ masti</div></div><div id="d-j2" class="jar h" style="left:710px;top:520px"><div class="jarlid"></div><div class="jarbody"><div id="d-f2" class="jarfill" style="height:210px;background:#0AF0F0"></div></div><div id="d-v2" class="jarv" style="color:#0AF0F0">₹0</div><div class="jarl">Future</div></div>
+<div id="d-ill" class="h illus">Illustrative</div>
+</div>
+<div id="cD1" class="clip cap" data-start="25.76" data-duration="8.50" data-track-index="6"><span class="w">Zaroori</span><span class="w amber">₹58,000</span><span class="w">·</span><span class="w amber">Saal</span><span class="w">₹11,000</span></div>
+<div id="cD2" class="clip cap" data-start="34.26" data-duration="7.76" data-track-index="6"><span class="w cyan">Future</span><span class="w cyan">₹31,000:</span><span class="w">control</span><span class="w">aata</span><span class="w">hai</span></div>
+<div id="p3" class="clip pt" data-start="25.64" data-duration="16.50" data-track-index="9"><div class="pn">POINT 3 / 3</div><div class="px"><b>3 dabbe</b>: zaroori · saal · future</div></div>
+<div id="sE" class="clip scene" data-start="42.15" data-duration="3.62" data-track-index="2">
+<div id="e-t" class="h big" style="left:60px;top:520px;width:960px;text-align:center">Jo kharcha <b class="cyan">dikhta</b> hai,<br>wahi <b class="amber">kam</b> hota hai</div>
+<div id="e-eye" class="h" style="left:0;right:0;top:340px;text-align:center;font-size:150px">👀</div>
+</div>
+<div id="cE" class="clip cap" data-start="42.23" data-duration="3.46" data-track-index="6"><span class="w">Yaad</span><span class="w">rakhna!</span></div>
+<div id="sF" class="clip scene" data-start="45.77" data-duration="14.70" data-track-index="2">
+<div id="f-t" class="h big" style="left:60px;top:300px;width:960px;text-align:center">Free <b class="cyan">Money Planner</b></div>
+<div id="f-win" class="h webwin" style="left:60px;top:440px"><div class="wbar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i>
+  <i style="background:#28c840"></i><span class="wurl">🔒&nbsp;<b>paisasamjhoraj.com</b>/#planner</span></div>
+  <div class="wview"><img id="f-img" src="assets/img/planner-top.jpg" alt=""><div id="f-hl" class="hl"></div></div></div>
+</div>
+<div id="cF1" class="clip cap" data-start="45.96" data-duration="6.97" data-track-index="6"><span class="w">Apne</span><span class="w">numbers</span><span class="w">daalo,</span><span class="w cyan">free!</span></div>
+<div id="cF2" class="clip cap" data-start="52.93" data-duration="7.35" data-track-index="6"><span class="w cyan">paisasamjhoraj.com</span></div>
+<div id="p6" class="clip cta" data-start="52.17" data-duration="8.29" data-track-index="9">Part 2 kal 👉<small>Follow karo · zaroorat ya pressure?</small></div>
+<div id="sH" class="clip endc" data-start="60.47" data-duration="3.00" data-track-index="8">
+<div class="endt">Part 2 <b class="cyan">kal</b>:<br>zaroorat ya <b class="amber">pressure?</b></div>
+<div id="h-b" class="endb"><span class="ico ig">◎</span><div><div class="endk">Instagram · Facebook</div><div class="endh">@samjhowithraj</div></div><span class="btn blue">Follow</span></div>
+<div class="endw">Free Money Planner: <b>paisasamjhoraj.com</b></div></div>
+<div id="cam"><video id="camv" src="assets/cam/raj.mp4" muted playsinline class="clip" data-start="0" data-duration="60.44" data-track-index="4"></video></div>
+<div id="foot">Financial education, <b>advice nahi</b><br>Verma family fictional (AI) · illustrative</div>
+<audio id="voice" src="assets/voice.m4a" data-start="0" data-duration="60.44" data-track-index="10" data-volume="1"></audio>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+function W(t){ return (typeof t==='number' && t>=10000) ? t-10000 : t; }
+for (const k of ['to','fromTo','set']) { const f=tl[k].bind(tl);
+  tl[k]=(...a)=>{ const n=a.length-1; if(typeof a[n]==='number') a[n]=W(a[n]); return f(...a); }; }
+function rise(s,t){ tl.fromTo(s,{opacity:0,y:26},{opacity:1,y:0,duration:.4,ease:'power2.out'},t); }
+function inr(n){ const s=String(Math.round(n)); if(s.length<=3) return s; return s.slice(0,-3).replace(/\B(?=(\d{2})+(?!\d))/g,',')+','+s.slice(-3); }
+function count(s,a,b,t,d){ const el=document.querySelector(s); const p={v:a}; el.textContent='₹'+inr(a);
+  tl.to(p,{v:b,duration:d||1.4,ease:'power2.out',onUpdate:()=>{ el.textContent='₹'+inr(p.v); }},t); }
+function dcount(s,a,b,t,d){ const el=document.querySelector(s); const p={v:a};
+  tl.to(p,{v:b,duration:d,ease:'power1.in',onUpdate:()=>{ el.textContent=String(Math.round(p.v)); }},t); }
+tl.to('#cam',{opacity:0,duration:.3},10060.27);
+tl.to('#foot',{opacity:0,duration:.3},10060.27);
+tl.to('#sA',{opacity:0,duration:.3},10006.11);
+dcount('#a-d',1,25,10000.84,3.2);
+count('#a-bal',100000,0,10000.84,3.2);
+tl.fromTo('#a-bar',{scaleX:1},{scaleX:0,duration:3.2,ease:'power2.in'},10000.84);
+tl.to('#a-bal',{color:'#E0242E',duration:.3},10005.02);
+tl.fromTo('#cA .w',{opacity:0,y:20},{opacity:1,y:0,duration:.35,ease:'power2.out',stagger:.05},10000.28);
+tl.to('#cA',{opacity:0,duration:.25},10006.02);
+tl.fromTo('#sB',{opacity:0},{opacity:1,duration:.3},10006.41);
+tl.to('#sB',{opacity:0,duration:.3},10015.62);
+tl.fromTo('#b-k0',{opacity:0,y:-260,rotation:-8},{opacity:1,y:0,rotation:0,duration:.55,ease:'bounce.out'},10007.92);
+tl.fromTo('#b-k1',{opacity:0,y:-260,rotation:7},{opacity:1,y:0,rotation:0,duration:.55,ease:'bounce.out'},10009.44);
+tl.fromTo('#b-k2',{opacity:0,y:-260,rotation:-5},{opacity:1,y:0,rotation:0,duration:.55,ease:'bounce.out'},10010.95);
+tl.fromTo('#b-k3',{opacity:0,y:-260,rotation:6},{opacity:1,y:0,rotation:0,duration:.55,ease:'bounce.out'},10012.03);
+tl.fromTo('#b-k4',{opacity:0,y:-260,rotation:-7},{opacity:1,y:0,rotation:0,duration:.55,ease:'bounce.out'},10012.89);
+tl.fromTo('#b-k5',{opacity:0,y:-260,rotation:5},{opacity:1,y:0,rotation:0,duration:.55,ease:'bounce.out'},10013.65);
+rise('#b-tot',10008.14);
+count('#b-totv',0,50,10008.25,.5);
+count('#b-totv',50,250,10009.76,.5);
+count('#b-totv',250,349,10011.27,.5);
+count('#b-totv',349,429,10012.35,.5);
+count('#b-totv',429,549,10013.22,.5);
+count('#b-totv',549,599,10013.98,.5);
+tl.fromTo('#cB1 .w',{opacity:0,y:20},{opacity:1,y:0,duration:.35,ease:'power2.out',stagger:.05},10006.52);
+tl.to('#cB1',{opacity:0,duration:.25},10010.92);
+tl.fromTo('#cB2 .w',{opacity:0,y:20},{opacity:1,y:0,duration:.35,ease:'power2.out',stagger:.05},10011.17);
+tl.to('#cB2',{opacity:0,duration:.25},10015.56);
+tl.fromTo('#p1',{opacity:0,x:-30},{opacity:1,x:0,duration:.35,ease:'power2.out'},10006.51);
+tl.to('#p1',{opacity:0,duration:.25},10015.67);
+tl.fromTo('#sC',{opacity:0},{opacity:1,duration:.3},10015.92);
+tl.to('#sC',{opacity:0,duration:.3},10025.34);
+rise('#c-dia',10016.20);
+tl.fromTo('#c-r0',{opacity:0,x:-20},{opacity:1,x:0,duration:.3},10017.17);
+tl.to('#c-pen',{x:560,y:122,duration:.75,ease:'none'},10017.17);
+tl.fromTo('#c-r1',{opacity:0,x:-20},{opacity:1,x:0,duration:.3},10018.28);
+tl.to('#c-pen',{x:560,y:196,duration:.75,ease:'none'},10018.28);
+tl.fromTo('#c-r2',{opacity:0,x:-20},{opacity:1,x:0,duration:.3},10019.39);
+tl.to('#c-pen',{x:560,y:270,duration:.75,ease:'none'},10019.39);
+tl.fromTo('#c-r3',{opacity:0,x:-20},{opacity:1,x:0,duration:.3},10020.50);
+tl.to('#c-pen',{x:560,y:344,duration:.75,ease:'none'},10020.50);
+tl.fromTo('#c-r4',{opacity:0,x:-20},{opacity:1,x:0,duration:.3},10021.61);
+tl.to('#c-pen',{x:560,y:418,duration:.75,ease:'none'},10021.61);
+tl.fromTo('#c-r5',{opacity:0,x:-20},{opacity:1,x:0,duration:.3},10022.73);
+tl.to('#c-pen',{x:560,y:492,duration:.75,ease:'none'},10022.73);
+rise('#c-tip',10023.14);
+tl.fromTo('#cC .w',{opacity:0,y:20},{opacity:1,y:0,duration:.35,ease:'power2.out',stagger:.05},10016.06);
+tl.to('#cC',{opacity:0,duration:.25},10025.25);
+tl.fromTo('#p2',{opacity:0,x:-30},{opacity:1,x:0,duration:.35,ease:'power2.out'},10016.02);
+tl.to('#p2',{opacity:0,duration:.25},10025.39);
+tl.fromTo('#sD',{opacity:0},{opacity:1,duration:.3},10025.64);
+tl.to('#sD',{opacity:0,duration:.3},10041.85);
+rise('#d-verm',10026.38);
+rise('#d-j0',10026.87);
+tl.fromTo('#d-f0',{scaleY:0},{scaleY:1,duration:1.4,ease:'power2.out'},10029.09);
+count('#d-v0',0,58000,10029.09,1.4);
+rise('#d-j1',10027.24);
+tl.fromTo('#d-f1',{scaleY:0},{scaleY:1,duration:1.4,ease:'power2.out'},10032.05);
+count('#d-v1',0,11000,10032.05,1.4);
+rise('#d-j2',10027.61);
+tl.fromTo('#d-f2',{scaleY:0},{scaleY:1,duration:1.4,ease:'power2.out'},10035.00);
+count('#d-v2',0,31000,10035.00,1.4);
+rise('#d-ill',10029.34);
+tl.fromTo('#cD1 .w',{opacity:0,y:20},{opacity:1,y:0,duration:.35,ease:'power2.out',stagger:.05},10025.76);
+tl.to('#cD1',{opacity:0,duration:.25},10034.01);
+tl.fromTo('#cD2 .w',{opacity:0,y:20},{opacity:1,y:0,duration:.35,ease:'power2.out',stagger:.05},10034.26);
+tl.to('#cD2',{opacity:0,duration:.25},10041.77);
+tl.fromTo('#p3',{opacity:0,x:-30},{opacity:1,x:0,duration:.35,ease:'power2.out'},10025.74);
+tl.to('#p3',{opacity:0,duration:.25},10041.90);
+tl.fromTo('#sE',{opacity:0},{opacity:1,duration:.3},10042.15);
+tl.to('#sE',{opacity:0,duration:.3},10045.47);
+rise('#e-eye',10042.23);
+rise('#e-t',10042.47);
+tl.fromTo('#cE .w',{opacity:0,y:20},{opacity:1,y:0,duration:.35,ease:'power2.out',stagger:.05},10042.23);
+tl.to('#cE',{opacity:0,duration:.25},10045.44);
+tl.fromTo('#sF',{opacity:0},{opacity:1,duration:.3},10045.77);
+tl.to('#sF',{opacity:0,duration:.3},10060.17);
+rise('#f-t',10046.14);
+rise('#f-win',10046.71);
+tl.fromTo('#f-hl',{scaleX:0},{scaleX:1,duration:.5,ease:'power2.out'},10048.41);
+tl.to('#f-img',{y:-420,duration:4,ease:'power1.inOut'},10051.42);
+tl.to('#f-hl',{opacity:0,duration:.3},10051.04);
+tl.fromTo('#cF1 .w',{opacity:0,y:20},{opacity:1,y:0,duration:.35,ease:'power2.out',stagger:.05},10045.96);
+tl.to('#cF1',{opacity:0,duration:.25},10052.68);
+tl.fromTo('#cF2 .w',{opacity:0,y:20},{opacity:1,y:0,duration:.35,ease:'power2.out',stagger:.05},10052.93);
+tl.to('#cF2',{opacity:0,duration:.25},10060.03);
+tl.fromTo('#p6',{opacity:0,scale:.9},{opacity:1,scale:1,duration:.35,ease:'back.out(1.6)'},10052.27);
+tl.fromTo('#p6',{scale:1},{scale:1.05,duration:.3,yoyo:true,repeat:3,ease:'power1.inOut'},10054.06);
+tl.fromTo('#sH',{opacity:0},{opacity:1,duration:.35},10060.47);
+rise('#h-b',10060.77);
+tl.fromTo('#h-b .btn',{scale:1},{scale:1.1,duration:.22,yoyo:true,repeat:5,ease:'power1.inOut'},10061.27);
+tl.to({}, { duration: 63.47 }, 0);
+window.__timelines["short"] = tl;
+</script></body></html>
