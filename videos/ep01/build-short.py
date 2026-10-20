@@ -101,7 +101,7 @@ scene("sE", 30.08, 39.80, '''
 <div id="e-p1" class="h pillx" style="left:120px;top:800px">✗ growth</div>
 <div id="e-p2" class="h pillx" style="left:400px;top:800px">✗ mehngai</div>
 <div id="e-p3" class="h pillx" style="left:700px;top:800px">✗ inflation</div>
-<div id="e-ep" class="h chip2" style="position:absolute;left:180px;top:960px">Asli kharcha: Episode 41 &amp; 46</div>
+<div id="e-ep" class="h chip2" style="position:absolute;left:180px;top:960px">Asli kharcha: Episode 41 &amp; 42</div>
 ''')
 js += ["rise('#e-x',30.3);", "rise('#e-t',30.8);", "rise('#e-p1',34.2);", "rise('#e-p2',35.9);", "rise('#e-p3',37.3);", "rise('#e-ep',38.2);"]
 cap("cE1", "Ye sirf jama rakam hai", {2: "cyan", 3: "cyan"}, 30.2, 34.0)
@@ -145,7 +145,7 @@ pt("p2", 2, "Par kya ye <b>kaafi</b> hai?", 12.04, 17.74)
 pt("p3", 3, "₹12 lakh = <b>sirf jama rakam</b>", 17.74, 39.80)
 pt("p4", 4, "Aaj raat <b>5 goals</b> likho", 39.80, 55.36)
 pt("p5", 5, "Free <b>Money Planner</b>", 55.36, 61.2)
-_cta = "Full episode dekho 👆<small>Full video: Money Plan Part 1 (link upar)</small>" if PLAT == "yt" else        "Poora episode YouTube par<small>Samjho with Raj · Money Plan Part 1</small>"
+_cta = "Full episode dekho 👆<small>Full video: Money Plan Part 1 (link upar)</small>" if PLAT == "yt" else        "Poora episode YouTube par<small>Paisa Samjho Raj · Money Plan Part 1</small>"
 html.append('<div id="p6" class="clip cta" data-start="%.2f" data-duration="%.2f" data-track-index="9">%s</div>' % (M(61.2), M(66.76) - M(61.2), _cta))
 js.append("tl.fromTo('#p6',{opacity:0,scale:.9},{opacity:1,scale:1,duration:.35,ease:'back.out(1.6)'},%.2f);" % (M(61.2) + 10000.1))
 js.append("tl.fromTo('#p6',{scale:1},{scale:1.05,duration:.3,yoyo:true,repeat:3,ease:'power1.inOut'},%.2f);" % (M(62.4) + 10000))
@@ -162,12 +162,12 @@ js.append("tl.to('#fixs',{opacity:0,duration:.3},%.2f);" % (10000 + FLAT - 0.3))
 
 # ---- H. ending 66.76-70.0
 btn = '<span class="btn red">Subscribe</span>' if PLAT == "yt" else '<span class="btn blue">Follow</span>'
-who = '<span class="ico">▶</span><div><div class="endk">YouTube</div><div class="endh">@SamjhowithRaj</div></div>' if PLAT == "yt" else \
-      '<span class="ico ig">◎</span><div><div class="endk">Instagram · Facebook</div><div class="endh">@samjhowithraj</div></div>'
+who = '<span class="ico">▶</span><div><div class="endk">YouTube</div><div class="endh">@PaisaSamjhoRaj</div></div>' if PLAT == "yt" else \
+      '<span class="ico ig">◎</span><div><div class="endk">Instagram · Facebook</div><div class="endh">@paisasamjhoraj</div></div>'
 html.append('''<div id="sH" class="clip endc" data-start="@@END@@" data-duration="3.24" data-track-index="8">
 <div class="endt">Poori details:<br><b class="cyan">Full episode</b> dekho</div>
 <div id="h-b" class="endb">%s%s</div>
-<div class="endw">%s</div></div>''' % (who, btn, ("👆 Upar <b>Money Plan Part 1</b> pe tap karo" if PLAT == "yt" else "YouTube: <b>Samjho with Raj</b> · Money Plan Part 1")))
+<div class="endw">%s</div></div>''' % (who, btn, ("👆 Upar <b>Money Plan Part 1</b> pe tap karo" if PLAT == "yt" else "YouTube: <b>Paisa Samjho Raj</b> · Money Plan Part 1")))
 js += ["tl.fromTo('#sH',{opacity:0},{opacity:1,duration:.35},66.76);", "rise('#h-b',67.1);",
        "tl.fromTo('#h-b .btn',{scale:1},{scale:1.1,duration:.22,yoyo:true,repeat:5,ease:'power1.inOut'},67.6);"]
 

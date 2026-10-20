@@ -385,7 +385,7 @@ for k, (lab, n, sub, t) in enumerate([("Padhai · ₹10,000 × 10 saal", 1200000
     money_sounds.append(t + 4.6)
 html.append('<div id="j-cap" class="h" style="left:%dpx;top:790px;width:880px;text-align:center;font-size:28px;'
             'color:rgba(255,255,255,.8)">Sirf jama rakam: growth aur mehngai shamil nahi · <b>Illustrative</b></div>' % (L + 20))
-html.append('<div id="j-ep" class="chip h" style="left:%dpx;top:880px;width:680px">Asli kharcha kitna?&nbsp;<b class="cyan">Episode 41 &amp; 46</b></div>' % (CX - 340))
+html.append('<div id="j-ep" class="chip h" style="left:%dpx;top:880px;width:680px">Asli kharcha kitna?&nbsp;<b class="cyan">Episode 41 &amp; 42</b></div>' % (CX - 340))
 js += ["rise('#j-cap',289.0);", "rise('#j-ep',305.0);"]
 stock("j-c1", AI_MOMENTS["salary-sms"], "Amit ne phone ka calculator khola", 285.0, 286.0)
 scene_close()
@@ -727,9 +727,9 @@ page = page.replace('/*WARPDATA*/[]', _json.dumps(WARP))
 ENDCARD = ('<div id="o-end" class="clip endc" data-start="%.2f" data-duration="%.2f" data-track-index="15">'
   '<div class="endt">Video pasand aaya?</div>'
   '<div class="endrow">'
-  '<div id="o-end-yt" class="endb yt"><span class="ico">▶</span><div><div class="endk">YouTube</div><div class="endh">@SamjhowithRaj</div></div><span class="btn red">Subscribe</span></div>'
-  '<div id="o-end-ig" class="endb"><span class="ico ig">◎</span><div><div class="endk">Instagram</div><div class="endh">@samjhowithraj</div></div><span class="btn blue">Follow</span></div>'
-  '<div id="o-end-fb" class="endb"><span class="ico fb">f</span><div><div class="endk">Facebook</div><div class="endh">Samjho with Raj</div></div><span class="btn blue">Follow</span></div>'
+  '<div id="o-end-yt" class="endb yt"><span class="ico">▶</span><div><div class="endk">YouTube</div><div class="endh">@PaisaSamjhoRaj</div></div><span class="btn red">Subscribe</span></div>'
+  '<div id="o-end-ig" class="endb"><span class="ico ig">◎</span><div><div class="endk">Instagram</div><div class="endh">@paisasamjhoraj</div></div><span class="btn blue">Follow</span></div>'
+  '<div id="o-end-fb" class="endb"><span class="ico fb">f</span><div><div class="endk">Facebook</div><div class="endh">Paisa Samjho Raj</div></div><span class="btn blue">Follow</span></div>'
   '</div><div class="endw">Free lessons + Money Planner: <b>paisasamjhoraj.com</b> · Part 2 jaldi!</div></div>') % (END0, FINAL - END0)
 END_JS = ("tl.fromTo('#o-end',{opacity:0},{opacity:1,duration:.5},%.2f);"
           "tl.fromTo('#o-end .endt',{opacity:0,y:30},{opacity:1,y:0,duration:.45,ease:'power2.out'},%.2f);"

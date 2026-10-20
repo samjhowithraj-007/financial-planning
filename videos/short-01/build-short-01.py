@@ -10,6 +10,7 @@ short/cut-map.json exists and BEATS_ACTUAL (the flat second each beat starts on 
 Rules (memory shorts-performance-rules): payoff/question in frame 1, <= 45-50 s, captions on, end line
 "Part 2 kal, subscribe/follow karo", disclaimer foot note, Every Dawn ducked under the voice (mixed in finish).
 Usage: python build-short-01.py yt|ig   -> short/index.html
+Branding (20 Oct): new channel "Paisa Samjho Raj": YT @PaisaSamjhoRaj, IG/FB @paisasamjhoraj (planned).
 """
 import os, sys, json
 from html import escape
@@ -167,16 +168,16 @@ js += ["rise('#f-t',%.2f);" % at(38.4), "rise('#f-win',%.2f);" % at(38.7),
        "tl.to('#f-hl',{opacity:0,duration:.3},%.2f);" % at(41.0)]
 cap("cF1", "Apne numbers daalo, free!", {3: "cyan"}, 38.3, 42.0)
 cap("cF2", "paisasamjhoraj.com", {0: "cyan"}, 42.0, 45.9)
-_cta = "Part 2 kal 👉<small>Subscribe karo · zaroorat ya pressure?</small>" if PLAT == "yt" else \
-       "Part 2 kal 👉<small>Follow karo · zaroorat ya pressure?</small>"
+_cta = "Part 2 kal 👉<small>Paisa Samjho Raj ko subscribe karo</small>" if PLAT == "yt" else \
+       "Part 2 kal 👉<small>Follow @paisasamjhoraj</small>"
 html.append('<div id="p6" class="clip cta" data-start="%.2f" data-duration="%.2f" data-track-index="9">%s</div>' % (M(41.6), M(46.0) - M(41.6), _cta))
 js.append("tl.fromTo('#p6',{opacity:0,scale:.9},{opacity:1,scale:1,duration:.35,ease:'back.out(1.6)'},%.2f);" % (at(41.6) + 0.1))
 js.append("tl.fromTo('#p6',{scale:1},{scale:1.05,duration:.3,yoyo:true,repeat:3,ease:'power1.inOut'},%.2f);" % at(42.6))
 
 # ---- G. end card (3 s after his last word) -----------------------------------------------------------------------
 btn = '<span class="btn red">Subscribe</span>' if PLAT == "yt" else '<span class="btn blue">Follow</span>'
-who = '<span class="ico">▶</span><div><div class="endk">YouTube</div><div class="endh">@SamjhowithRaj</div></div>' if PLAT == "yt" else \
-      '<span class="ico ig">◎</span><div><div class="endk">Instagram · Facebook</div><div class="endh">@samjhowithraj</div></div>'
+who = '<span class="ico">▶</span><div><div class="endk">YouTube</div><div class="endh">@PaisaSamjhoRaj</div></div>' if PLAT == "yt" else \
+      '<span class="ico ig">◎</span><div><div class="endk">Instagram · Facebook</div><div class="endh">@paisasamjhoraj</div></div>'
 html.append('''<div id="sH" class="clip endc" data-start="%.2f" data-duration="3.00" data-track-index="8">
 <div class="endt">Part 2 <b class="cyan">kal</b>:<br>zaroorat ya <b class="amber">pressure?</b></div>
 <div id="h-b" class="endb">%s%s</div>

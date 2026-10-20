@@ -1,5 +1,7 @@
 # Part 1 — post text
 
+**Reshoot (Sun 25 Oct) posts on the NEW channel "Paisa Samjho Raj"** (YT @PaisaSamjhoRaj, IG/FB @paisasamjhoraj once created; X stays x.com/samjhowithraj). Links below are switched to the new channel; the v1 links above/below are history.
+
 **YouTube long video:** published 16 Oct 2026 (https://youtu.be/FieckKjQgJE), then set to **Private** the same day: Raj is reshooting (low energy, AI video instead of animations, new closed-mouth thumbnail). · Playlist "Middle-Class Family Ka Money Plan 💰 | Personal Finance in Hindi (50 Parts)" (public). YouTube long video (reshoot): **published Public 17 Oct 2026** (https://youtu.be/GyPQ-RxBRi8), end screen 7:40–7:46; old v1 FieckKjQgJE deleted by Raj 17 Oct 2026. YouTube Short: **published Public 17 Oct 2026** (https://youtube.com/shorts/h5MHdj_Zv24), in the series playlist. Instagram Reel: **posted 17 Oct 2026** (https://www.instagram.com/samjhowithraj/reel/DemGUAZyElG/). Facebook Reel: **posted 17 Oct 2026** (https://www.facebook.com/reel/1595616935581819/, share link https://www.facebook.com/share/r/19jzJb2HHD/). X (Twitter) post of the Short: **posted 18 Oct 2026** (https://x.com/samjhowithraj/status/2111590771858305176; text + https://youtube.com/shorts/h5MHdj_Zv24 + paisasamjhoraj.com). Facebook page photo post ("Naya series shuru!", thumbnail + YouTube and Money Planner links): **posted 17 Oct 2026** on https://www.facebook.com/profile.php?id=61595088790170. Reshoot edit delivered 17 Oct 2026 (7:46 with outro), not uploaded yet.
 
 ## YouTube (long video: money-plan-01-yt.mp4)
@@ -54,7 +56,7 @@ Middle-Class Family Ka Money Plan · Part 1/50 💰
 Verma family har mahine ₹31,000 bachati hai. Par padhai ke ₹12 lakh "sirf jama rakam" hai: na growth, na mehngai.
 Apni family ke 5 goals likho, aur free Money Planner try karo 👇
 🧮 Free Money Planner: https://www.paisasamjhoraj.com/#planner
-▶️ Poora Part 1: youtube.com/@SamjhowithRaj
+▶️ Poora Part 1: youtube.com/@PaisaSamjhoRaj
 📸 Instagram: https://www.instagram.com/samjhowithraj/
 👍 Facebook: https://www.facebook.com/profile.php?id=61595088790170&sk=reels_tab
 Educational example, financial advice nahi. Characters fictional (AI). #shorts #personalfinance #moneyplan
@@ -68,14 +70,14 @@ planning india, emergency fund, saving tips hindi, paisa samjho raj, samjho with
 ₹1 lakh salary. 31% bachat. Kya future set hai? 🤔
 Verma family ka poora money plan, Part 1 se 50 tak 👇
 🧮 Free Money Planner: paisasamjhoraj.com (link in bio)
-▶️ Full video: youtube.com/@SamjhowithRaj
+▶️ Full video: youtube.com/@PaisaSamjhoRaj
 Educational example, financial advice nahi. Characters fictional (AI).
 #personalfinance #moneyplan #familybudget #financehindi #samjhowithraj
 
 ## Facebook (Reel: same -ig file)
 ₹1 lakh salary mein family ka future kaise banayein? Part 1: Verma family ka hisaab.
 🧮 Free Money Planner: https://www.paisasamjhoraj.com/#planner
-▶️ YouTube: https://www.youtube.com/@SamjhowithRaj
+▶️ YouTube: https://www.youtube.com/@PaisaSamjhoRaj
 📸 Instagram: https://www.instagram.com/samjhowithraj/
 Educational example, financial advice nahi. Characters fictional (AI).
 #personalfinance #familybudget #moneyplan
