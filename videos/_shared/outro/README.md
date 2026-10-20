@@ -10,8 +10,11 @@
    sweeps the heading, the cursor goes to the email box and clicks **Notify me** (a ring only; nothing is typed or
    submitted). Caption 6: "Email pe naye lessons, course updates aur discount offers: abhi sign up karo".
 3. 27.5–30 s: "Bilkul free · private" (Money Planner, no login).
-4. 30–36 s: **Subscribe** (YouTube @SamjhowithRaj) + **Follow** (Instagram @samjhowithraj, Facebook Samjho with Raj,
-   X @samjhowithraj), 2x2 grid, "Free lessons + email updates: paisasamjhoraj.com".
+4. 30–36 s: **Subscribe** (YouTube @PaisaSamjhoRaj) + **Follow** (Instagram @paisasamjhoraj, Facebook Paisa Samjho Raj,
+   X @samjhowithraj), 2x2 grid, "Free lessons + email updates: paisasamjhoraj.com". Since 20 Oct 2026 the Money Plan
+   series lives on the separate **Paisa Samjho Raj** channel (Raj's platform split, via 💰 Money PM). The Instagram and Facebook
+   pages were planned but not yet created on 20 Oct: create them before any episode with this outro is posted.
+   The previous end card (Samjho with Raj handles) is kept as `outro-v2.mp4` / `index-v2.html`.
 
 The end of every script also asks viewers to sign up for email updates (course updates and discount offers) at
 paisasamjhoraj.com, so the outro picks it up.
