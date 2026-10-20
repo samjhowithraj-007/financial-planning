@@ -46,9 +46,27 @@ mistake, and each chapter ends with a fill-in worksheet + the matching paisasamj
 Facts rule: rates, tax and RBI/SEBI rules (Parts 9–19) are checked against primary sources with a date in each script file.
 
 ## Status
-| Part | Script | Recorded | Edited | Posted |
-|---|---|---|---|---|
-| 1 | ready | 19 Oct (IMG_6740) | 19 Oct, 63.5 s · kit `videos/short-01/POST.md` | 20 Oct: YT https://youtube.com/shorts/JSuSP7NCd4Q · X · IG/FB pending |
-| 2 | ready | | | |
-| 3 | ready | | | |
-| 4 | ready | | | |
+Schedule (Raj, 20 Oct): each part is shot one day and posted the next at 19:30 IST. No money Short on Wed 21 Oct (never double-post to catch up). The Money Plan Ep 1 reshoot stays on Sun 25 Oct.
+
+| Part | Script | Shoot | Post (19:30 IST) | Recorded | Edited | Posted |
+|---|---|---|---|---|---|---|
+| 1 | ready | 19 Oct | 20 Oct | 19 Oct (IMG_6740) | 19 Oct, 63.5 s · kit `videos/short-01/POST.md` | 20 Oct: YT https://youtube.com/shorts/JSuSP7NCd4Q · X · IG/FB pending |
+| 2 | ready (~102 words) | Wed 21 Oct | Thu 22 Oct | | | |
+| 3 | ready (~100 words) | Thu 22 Oct | Fri 23 Oct | | | |
+| 4 | ready | Fri 23 Oct | Sat 24 Oct | | | |
+| 5 |  | Sat 24 Oct | Sun 25 Oct | | | |
+| 6 |  | Sun 25 Oct | Mon 26 Oct | | | |
+| 7 |  | Mon 26 Oct | Tue 27 Oct | | | |
+| 8 |  | Tue 27 Oct | Wed 28 Oct | | | |
+| 9 |  | Wed 28 Oct | Thu 29 Oct | | | |
+| 10 |  | Thu 29 Oct | Fri 30 Oct | | | |
+| 11 |  | Fri 30 Oct | Sat 31 Oct | | | |
+| 12 |  | Sat 31 Oct | Sun 01 Nov | | | |
+| 13 |  | Sun 01 Nov | Mon 02 Nov | | | |
+| 14 |  | Mon 02 Nov | Tue 03 Nov | | | |
+| 15 |  | Tue 03 Nov | Wed 04 Nov | | | |
+| 16 |  | Wed 04 Nov | Thu 05 Nov | | | |
+| 17 |  | Thu 05 Nov | Fri 06 Nov | | | |
+| 18 |  | Fri 06 Nov | Sat 07 Nov | | | |
+| 19 |  | Sat 07 Nov | Sun 08 Nov | | | |
+| 20 |  | Sun 08 Nov | Mon 09 Nov | | | |
