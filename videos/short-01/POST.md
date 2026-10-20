@@ -1,7 +1,7 @@
 # Paisa Samjho · PART 1/20: posting kit
 
 **Schedule:** Tue 20 Oct 2026, 19:30 IST (16:00 CEST). Chatbot Part 4 goes at 12:30 IST, so they're 7 h apart.
-**Status:** rendered and checked 19 Oct. Not uploaded yet: Raj uploads it (or tells Claude in the Money Plan session to upload it) and clicks Schedule himself.
+**Status:** YouTube + X posted 20 Oct (Raj: "just post it now"). Instagram + Facebook: Raj picks the -ig file.
 
 ## Files
 - YouTube Short: `C:\Users\rajpr\Videos\YouTube Renders\paisa-samjho-01\paisa-samjho-01-yt.mp4`
@@ -50,7 +50,7 @@ Salary aati hai… 25 tareekh ko gayab kyun? 30 din har kharcha likho, phir 3 da
 ```
 
 ## Links (fill in after posting)
-- YouTube:
+- YouTube: https://youtube.com/shorts/JSuSP7NCd4Q (published 20 Oct, public)
 - Instagram:
 - Facebook:
-- X:
+- X: https://x.com/samjhowithraj/status/2112473894154326265 (20 Oct)

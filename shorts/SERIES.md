@@ -48,6 +48,7 @@ Facts rule: rates, tax and RBI/SEBI rules (Parts 9–19) are checked against pri
 ## Status
 | Part | Script | Recorded | Edited | Posted |
 |---|---|---|---|---|
-| 1 | ready | 19 Oct (IMG_6740) | 19 Oct, 63.5 s, awaiting Raj's OK · kit `videos/short-01/POST.md` | sched. Tue 20 Oct 19:30 IST (Raj) |
+| 1 | ready | 19 Oct (IMG_6740) | 19 Oct, 63.5 s · kit `videos/short-01/POST.md` | 20 Oct: YT https://youtube.com/shorts/JSuSP7NCd4Q · X · IG/FB pending |
 | 2 | ready | | | |
 | 3 | ready | | | |
+| 4 | ready | | | |
