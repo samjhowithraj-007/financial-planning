@@ -15,6 +15,9 @@
    series lives on the separate **Paisa Samjho Raj** channel (Raj's platform split, via 💰 Money PM). The Instagram and Facebook
    pages were planned but not yet created on 20 Oct: create them before any episode with this outro is posted.
    The previous end card (Samjho with Raj handles) is kept as `outro-v2.mp4` / `index-v2.html`.
+   21 Oct (v3b, Delivery Manager QC): Gullak Bhai (`assets/gullak-bhai-happy.png` from `C:\samjhowithraj\brand\mascots\gullak-bhai\`,
+   white sticker outline) beside "Video pasand aaya?" and the "Financial education, advice nahi" line under the website
+   line, both required on all money content. v3 without them is kept as `outro-v3.mp4` / `index-v3.html`.
 
 The end of every script also asks viewers to sign up for email updates (course updates and discount offers) at
 paisasamjhoraj.com, so the outro picks it up.

@@ -41,7 +41,9 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
 #cta .c{font-size:28px;color:rgba(255,255,255,.75);margin-top:14px}
 .endc{position:absolute;inset:0;z-index:40;opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:46px;
   background:radial-gradient(900px 600px at 50% 40%,rgba(10,240,240,.12),transparent 70%),#0a0d14}
-.endt{font-size:84px;font-weight:700}
+.endt{font-size:84px;font-weight:700;display:flex;align-items:center;gap:30px}
+#gullak{width:150px;height:150px;filter:drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff) drop-shadow(0 10px 18px rgba(0,0,0,.5))}
+.endd{font-size:26px;color:rgba(255,255,255,.65);margin-top:-26px}.endd b{color:#fff}
 .endrow{display:grid;grid-template-columns:auto auto;gap:26px 34px}
 .endb{display:flex;align-items:center;gap:18px;padding:22px 26px;border-radius:28px;background:rgba(255,255,255,.08);border:3px solid rgba(255,255,255,.3)}
 .endb .ico{width:76px;height:76px;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:700;background:#FF0000;color:#fff}
@@ -75,7 +77,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
   <div id="cta" class="h"><div class="a">Bilkul free · private</div><div class="b">paisasamjhoraj.com → Money Planner</div>
     <div class="c">Planner ke liye koi login nahi · data aapke browser se bahar nahi jaata · educational, financial advice nahi</div></div>
   <div id="end" class="endc">
-    <div class="endt">Video pasand aaya?</div>
+    <div class="endt"><img id="gullak" src="assets/gullak-bhai-happy.png" alt="">Video pasand aaya?</div>
     <div class="endrow">
       <div id="e-yt" class="endb"><span class="ico">▶</span><div><div class="endk">YouTube</div><div class="endh">@PaisaSamjhoRaj</div></div><span class="btn red">Subscribe</span></div>
       <div id="e-ig" class="endb"><span class="ico ig">◎</span><div><div class="endk">Instagram</div><div class="endh">@paisasamjhoraj</div></div><span class="btn blue">Follow</span></div>
@@ -83,6 +85,7 @@ body{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif;color:#fff}
       <div id="e-x" class="endb"><span class="ico x"><svg viewBox="0 0 24 24"><path fill="#fff" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span><div><div class="endk">X</div><div class="endh">@samjhowithraj</div></div><span class="btn blue">Follow</span></div>
     </div>
     <div class="endw">Free lessons + email updates: <b>paisasamjhoraj.com</b> · Agla part jaldi!</div>
+    <div class="endd">Financial education, <b>advice nahi</b></div>
   </div>
 </div>
 <script>
@@ -133,7 +136,8 @@ tl.fromTo('#e-yt', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .45, eas
 tl.fromTo('#e-ig', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .45, ease: 'power2.out' }, 31.1);
 tl.fromTo('#e-fb', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .45, ease: 'power2.out' }, 31.4);
 tl.fromTo('#e-x', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .45, ease: 'power2.out' }, 31.7);
-tl.fromTo('#end .endw', { opacity: 0 }, { opacity: 1, duration: .4 }, 32.1);
+tl.fromTo('#end .endw,#end .endd', { opacity: 0 }, { opacity: 1, duration: .4 }, 32.1);
+tl.fromTo('#gullak', { scale: .6, rotation: -8 }, { scale: 1, rotation: 0, duration: .5, ease: 'back.out(2)' }, 30.4);
 tl.fromTo('#e-yt .btn', { scale: 1 }, { scale: 1.1, duration: .22, yoyo: true, repeat: 5, ease: 'power1.inOut' }, 31.4);
 tl.fromTo('#e-ig .btn,#e-fb .btn,#e-x .btn', { scale: 1 }, { scale: 1.08, duration: .22, yoyo: true, repeat: 3, ease: 'power1.inOut' }, 33.0);
 tl.to({}, { duration: 36 }, 0);
