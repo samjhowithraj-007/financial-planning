@@ -6,7 +6,7 @@
 
 ## Files
 - YouTube (new channel): `C:\Users\rajpr\Videos\YouTube Renders\paisa-samjho-01\paisa-samjho-01-psr-yt.mp4`
-- IG/FB (only once @paisasamjhoraj exists): `...\paisa-samjho-01\paisa-samjho-01-psr-ig.mp4`
+- IG @paisasamjhoraj (exists) / FB (Page not confirmed yet): `...\paisa-samjho-01\paisa-samjho-01-psr-ig.mp4`
 - Cover: `...\paisa-samjho-01\paisa-samjho-01-psr-cover.png`
 
 ## YouTube (channel @PaisaSamjhoRaj)
@@ -29,7 +29,8 @@ X: x.com/samjhowithraj
 #PaisaSamjho #PaisaSamjhoRaj #MoneyPlan #Budget #PersonalFinance #Hinglish
 ```
 
-## Instagram / Facebook (hold until @paisasamjhoraj exists)
+## Instagram @paisasamjhoraj (exists since 21 Oct; this is the account's FIRST Reel) / Facebook (hold until the Page is confirmed)
+Slot: set by Money PM, spaced from Part 2. File: `paisa-samjho-01-psr-ig.mp4`, cover `paisa-samjho-01-psr-cover.png`. Post to @paisasamjhoraj, NOT @samjhowithraj.
 ```
 Free Money Planner: paisasamjhoraj.com 👉 link in bio
 
